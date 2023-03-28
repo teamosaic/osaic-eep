@@ -12,6 +12,11 @@ export default {
       name: 'slug',
       type: 'slug',
       validation: Rule => Rule.required()
+    },
+    {
+      name: 'body',
+      type: 'text',
+      description: 'Quickly testing out another field',
     }
   ]
 }

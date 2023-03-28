@@ -10,6 +10,9 @@ import { deskTool } from 'sanity/desk'
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { schema } from './sanity/schema'
 
+// Preview
+import { defaultDocumentNode, structure } from './sanity/structure'
+
 export default defineConfig({
   basePath: '/studio',
   projectId,
@@ -17,7 +20,7 @@ export default defineConfig({
   //edit schemas in './sanity/schema'
   schema,
   plugins: [
-    deskTool(),
+    deskTool({ defaultDocumentNode, structure }),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
