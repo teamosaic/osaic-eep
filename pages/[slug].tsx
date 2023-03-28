@@ -29,6 +29,9 @@ export async function getStaticProps({ params, previewData}) {
   // Fetch the request page by slug
   const page = await client.fetch(getTowerBySlug, { slug })
 
+  // Return 404
+  if (!page) return { notFound: true }
+
   // Return data, including previewToken so it can be used to fetch more
   // data client side when using live preview
   return {
