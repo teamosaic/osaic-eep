@@ -9,8 +9,9 @@ export default function Tower({ page }) {
   )
 }
 
-export const query = groq`
-	*[_type == 'tower' && slug.current == 'bro']{
-		...
+export const getTowerBySlug = groq`
+	*[_type == 'tower' && slug.current == $slug]{
+		...,
+		'slug': slug.current
 	}[0]
 `

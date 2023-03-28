@@ -1,7 +1,8 @@
 import { usePreview } from '../sanity/preview'
-import Tower, { query } from './Tower'
+import Tower, { getTowerBySlug } from './Tower'
 
-export default function PreviewDocumentsCount({ previewToken, page }) {
-  const draftPage = usePreview(previewToken, query)
+export default function PreviewTower({ previewToken, page }) {
+	const { slug } = page
+  const draftPage = usePreview(previewToken, getTowerBySlug, { slug })
   return <Tower page={ draftPage } />
 }
