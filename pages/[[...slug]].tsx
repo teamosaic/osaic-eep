@@ -44,14 +44,19 @@ export async function getStaticProps({ params, previewData}) {
 }
 
 export async function getStaticPaths() {
+
+  // Get all Tower slugs
   const pages = await client.fetch(`
     *[_type == 'tower']{
       'slug': slug.current
     }`)
 
+  // Make the slug an array of path segments, which is what Next requires when
+  // doing an optional catach all file like [[...slug]].  I went this route
+  // so that pages could define their own subdirs but mostly so I could get
+  // return an empty string slug for the homepage.
   const paths = pages.map(page => ({ params: {
-      slug: (page.slug == '__home__' ? '' : page.slug)
-        .split('/') // Arrays required
+      slug: (page.slug == '__home__' ? '' : page.slug).split('/')
     }}))
 
   return {
