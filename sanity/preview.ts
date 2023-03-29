@@ -9,5 +9,7 @@ function onPublicAccessOnly() {
 export const usePreview = definePreview({
   projectId,
   dataset,
+
+  // Todo: determine whether this is needed with token auth
   onPublicAccessOnly,
 })

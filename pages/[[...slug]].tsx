@@ -1,12 +1,13 @@
 import { client } from '../sanity/lib/client'
-import Tower, { getTowerBySlug } from '../components/Tower'
-import { lazy } from 'react' // Todo: look into this wrapper
+import { lazy } from 'react'
 import { PreviewSuspense } from 'next-sanity/preview' // Todo: look into this
+import Tower, { getTowerBySlug } from '../components/Tower'
 
 const PreviewTower = lazy(() => import('../components/PreviewTower'))
 
 export default function TowerPage({ previewToken, page }) {
 
+  // Load preview component when in preview mode
   if (previewToken) {
     const fallback = <div className='p-8'>Loading preview...</div>
     return <PreviewSuspense fallback={ fallback }>
@@ -14,6 +15,7 @@ export default function TowerPage({ previewToken, page }) {
     </PreviewSuspense>
   }
 
+  // Render non-preview compoent
   return <Tower page={page} />
 }
 
