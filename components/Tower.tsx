@@ -2,10 +2,10 @@ import { groq } from 'next-sanity'
 
 export default function Tower({ page }) {
 	return (
-    <>
-      <h1>{ page.title }</h1>
+    <main className='p-8'>
+      <h1 className='text-2xl'>{ page.title }</h1>
       <p>{ page.body }</p>
-    </>
+   </main>
   )
 }
 

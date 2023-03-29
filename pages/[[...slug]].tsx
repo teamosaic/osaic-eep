@@ -8,7 +8,8 @@ const PreviewTower = lazy(() => import('../components/PreviewTower'))
 export default function TowerPage({ previewToken, page }) {
 
   if (previewToken) {
-    return <PreviewSuspense fallback='Loading...'>
+    const fallback = <div className='p-8'>Loading preview...</div>
+    return <PreviewSuspense fallback={ fallback }>
       <PreviewTower {...{ previewToken, page }}  />
     </PreviewSuspense>
   }
@@ -18,9 +19,12 @@ export default function TowerPage({ previewToken, page }) {
 
 export async function getStaticProps({ params, previewData}) {
 
-  // Get the requested slug and whether we're previewing
-  const { slug = '__home__' } = params,
-    previewToken = previewData?.token || null
+  // Get the preview token
+  const previewToken = previewData?.token || null
+
+  // Stringify slug arrays again
+  let { slug } = params
+  slug = (slug || ['__home__']).join('/')
 
   // If previewing, update the config to use the preview token so we can fetch
   // draft entries when previewing
