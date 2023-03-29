@@ -43,8 +43,9 @@ export default async function preview(
   }
 
   if (slug) {
+    const uri = slug == '__home__' ? '/' : `/${slug}`
     res.setPreviewData({ token: readToken })
-    res.writeHead(307, { Location: `/${slug}` })
+    res.writeHead(307, { Location: uri })
     res.end()
     return
   }

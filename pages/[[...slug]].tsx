@@ -19,7 +19,7 @@ export default function TowerPage({ previewToken, page }) {
 export async function getStaticProps({ params, previewData}) {
 
   // Get the requested slug and whether we're previewing
-  const { slug } = params,
+  const { slug = '__home__' } = params,
     previewToken = previewData?.token || null
 
   // If previewing, update the config to use the preview token so we can fetch
@@ -44,10 +44,14 @@ export async function getStaticPaths() {
     *[_type == 'tower']{
       'slug': slug.current
     }`)
+
+  const paths = pages.map(page => ({ params: {
+      slug: (page.slug == '__home__' ? '' : page.slug)
+        .split('/') // Arrays required
+    }}))
+
   return {
     fallback: 'blocking',
-    paths: pages.map(page => ({ params: {
-      slug: page.slug
-    }})),
+    paths,
   };
 }

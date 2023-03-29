@@ -1,4 +1,3 @@
-// schemas/pet.js
 export default {
   name: 'tower',
   type: 'document',
@@ -11,7 +10,6 @@ export default {
     {
       name: 'slug',
       type: 'slug',
-      validation: Rule => Rule.required()
     },
     {
       name: 'body',

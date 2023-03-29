@@ -17,6 +17,7 @@ export default defineConfig({
   basePath: '/studio',
   projectId,
   dataset,
+  title: 'Next Sanity Demo',
   //edit schemas in './sanity/schema'
   schema,
   plugins: [
