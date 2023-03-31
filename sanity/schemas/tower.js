@@ -20,7 +20,8 @@ export default {
       name: 'blocks',
       type: 'array',
       of: [
-        { type: 'marqueeBlock' }
+        { type: 'marqueeBlock' },
+        { type: 'spacerBlock' },
       ]
     },
   ]

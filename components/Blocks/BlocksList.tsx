@@ -1,7 +1,11 @@
 import MarqueeBlockComponent, { MarqueeBlock } from './MarqueeBlock'
+import SpacerBlockComponent, { SpacerBlock } from './SpacerBlock'
 
 interface BlocksListProps {
-  blocks: Array<MarqueeBlock>
+  blocks: Array<
+		MarqueeBlock |
+		SpacerBlock
+	>
 }
 
 // Conditionally render blocks based on type
@@ -22,5 +26,6 @@ function makeBlock(block: any): React.ReactElement {
 function getComponent(type: string): Function {
 	switch(type) {
 		case 'marqueeBlock': return MarqueeBlockComponent
+		case 'spacerBlock': return SpacerBlockComponent
 	}
 }
