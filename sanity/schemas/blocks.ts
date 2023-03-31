@@ -1,5 +1,15 @@
 import { SpacerHeights } from '~/components/Blocks/SpacerBlock'
 
+// https://www.sanity.io/docs/previewing-block-content
+function firstBlockText(blocks: any[]) {
+  const block = (blocks || []).find(block => block._type === 'block')
+  if (!block) return 'No title'
+  return block.children
+    .filter(child => child._type === 'span')
+    .map(span => span.text)
+    .join('')
+}
+
 export const marqueeBlock = {
   name: 'marqueeBlock',
   type: 'object',
@@ -11,6 +21,17 @@ export const marqueeBlock = {
       of: [{type: 'block'}]
     }
   ],
+  preview: {
+    select: {
+      body: 'body',
+    },
+    prepare({ body }) {
+      return {
+        title: firstBlockText(body),
+        subtitle: 'Marquee'
+      }
+    }
+  }
 }
 
 const HEIGHTS = [
@@ -37,11 +58,11 @@ export const spacerBlock = {
   ],
   preview: {
     select: {
-      title: 'height',
+      height: 'height',
     },
-    prepare({ title }) {
+    prepare({ height }) {
       return {
-        title: (HEIGHTS.find(opt => opt.value == title ))?.title || 'Unknown',
+        title: (HEIGHTS.find(opt => opt.value == height ))?.title || 'Unknown',
         subtitle: 'Spacer'
       }
     }
