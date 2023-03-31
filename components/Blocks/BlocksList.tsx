@@ -1,7 +1,7 @@
-import MarqueeBlock from './MarqueeBlock'
+import MarqueeBlockComponent, { MarqueeBlock } from './MarqueeBlock'
 
 interface BlocksListProps {
-  blocks: any[];
+  blocks: Array<MarqueeBlock>
 }
 
 // Conditionally render blocks based on type
@@ -21,6 +21,6 @@ function makeBlock(block: any): React.ReactElement {
 // Return the component class based on the type
 function getComponent(type: string): Function {
 	switch(type) {
-		case 'marqueeBlock': return MarqueeBlock
+		case 'marqueeBlock': return MarqueeBlockComponent
 	}
 }
