@@ -1,12 +1,17 @@
 import { groq } from 'next-sanity'
+import BlocksList from './Blocks/BlocksList'
+import Head from 'next/head'
 
 export default function Tower({ page }) {
-	return (
-    <main className='p-8'>
-      <h1 className='text-2xl'>{ page.title }</h1>
-      <p>{ page.body }</p>
+	const { blocks } = page
+	return (<>
+		<Head>
+			<title>{ page.title }</title>
+		</Head>
+    <main>
+			<BlocksList {...{ blocks }} />
    </main>
-  )
+  </>)
 }
 
 export const getTowerBySlug = groq`
