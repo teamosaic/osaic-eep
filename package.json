@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@next/font": "^13.1.1",
+    "@portabletext/react": "^2.0.2",
     "@sanity/demo": "^1.0.1",
     "@sanity/vision": "^3.1.4",
     "@tailwindcss/typography": "^0.5.8",
@@ -26,6 +27,7 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@portabletext/types": "^2.0.2",
     "@types/react": "^18.0.26",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.31.0",

@@ -1,5 +1,5 @@
-import MarqueeBlockComponent, { MarqueeBlock } from './MarqueeBlock'
-import SpacerBlockComponent, { SpacerBlock } from './SpacerBlock'
+import MarqueeBlockComponent, { type MarqueeBlock } from './MarqueeBlock'
+import SpacerBlockComponent, { type SpacerBlock } from './SpacerBlock'
 
 interface BlocksListProps {
   blocks: Array<

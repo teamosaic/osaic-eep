@@ -7,20 +7,10 @@ export const marqueeBlock = {
   fields: [
     {
       name: 'body',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}]
     }
   ],
-  preview: {
-    select: {
-      title: 'body',
-    },
-    prepare({ title }) {
-      return {
-        title,
-        subtitle: 'Marquee'
-      }
-    }
-  }
 }
 
 const HEIGHTS = [
