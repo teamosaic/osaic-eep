@@ -1,4 +1,4 @@
-import { usePreview } from '../sanity/preview'
+import { usePreview } from '~/sanity/preview'
 import Tower, { getTowerBySlug } from './Tower'
 
 export default function PreviewTower({ previewToken, page }) {

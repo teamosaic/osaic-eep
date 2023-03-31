@@ -1,9 +1,9 @@
-import { client } from '../sanity/lib/client'
+import { client } from '~/sanity/lib/client'
 import { lazy } from 'react'
 import { PreviewSuspense } from 'next-sanity/preview' // Todo: look into this
-import Tower, { getTowerBySlug } from '../components/Tower'
+import Tower, { getTowerBySlug } from '~/components/Tower'
 
-const PreviewTower = lazy(() => import('../components/PreviewTower'))
+const PreviewTower = lazy(() => import('~/components/PreviewTower'))
 
 export default function TowerPage({ previewToken, page }) {
 
