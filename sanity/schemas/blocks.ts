@@ -19,16 +19,33 @@ export const marqueeBlock = {
       name: 'body',
       type: 'array',
       of: [{type: 'block'}]
+    },
+    {
+      name: 'background',
+      type: 'image',
+      options: {
+        hotspot: true,
+        metadata: [ 'blurhash', 'lqip', 'palette'],
+      },
+      fields: [
+        {
+          name: 'title',
+          type: 'string',
+          description: 'This will be used as the image alt attribute.'
+        }
+      ]
     }
   ],
   preview: {
     select: {
       body: 'body',
+      background: 'background',
     },
-    prepare({ body }) {
+    prepare({ body, background }) {
       return {
         title: firstBlockText(body),
-        subtitle: 'Marquee'
+        subtitle: 'Marquee',
+        media: background,
       }
     }
   }
