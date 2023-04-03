@@ -18,7 +18,6 @@ export default defineConfig({
   projectId,
   dataset,
   title: 'Next Sanity Demo',
-  //edit schemas in './sanity/schema'
   schema,
   plugins: [
     deskTool({ defaultDocumentNode, structure }),
@@ -26,4 +25,11 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+  document: {
+
+    // Making async to address Typescript requirement
+    productionUrl: async (prev, context: any) => {
+      return `/${context.document?.slug?.current}`
+    },
+  },
 })
