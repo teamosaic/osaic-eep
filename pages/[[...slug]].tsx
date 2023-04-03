@@ -5,18 +5,18 @@ import Tower, { getTowerBySlug } from '~/components/Tower'
 
 const PreviewTower = lazy(() => import('~/components/PreviewTower'))
 
-export default function TowerPage({ previewToken, page }) {
+export default function TowerPage({ previewToken, page, settings }) {
 
   // Load preview component when in preview mode
   if (previewToken) {
     const fallback = <div className='p-8'>Loading preview...</div>
     return <PreviewSuspense fallback={ fallback }>
-      <PreviewTower {...{ previewToken, page }}  />
+      <PreviewTower {...{ previewToken, page, settings }}  />
     </PreviewSuspense>
   }
 
   // Render non-preview compoent
-  return <Tower page={page} />
+  return <Tower {...{ page, settings }} />
 }
 
 export async function getStaticProps({ params, previewData}) {
@@ -33,7 +33,10 @@ export async function getStaticProps({ params, previewData}) {
   if (previewToken) client.config({ token: previewToken })
 
   // Fetch the request page by slug
-  const page = await client.fetch(getTowerBySlug, { slug })
+  const [ page, settings ] = await Promise.all([
+    client.fetch(getTowerBySlug, { slug }),
+    client.fetch(`*[_type == 'settings'][0]`)
+  ])
 
   // Return 404
   if (!page) return { notFound: true }
@@ -41,7 +44,7 @@ export async function getStaticProps({ params, previewData}) {
   // Return data, including previewToken so it can be used to fetch more
   // data client side when using live preview
   return {
-    props: { page, previewToken }
+    props: { page, settings, previewToken }
   }
 }
 
