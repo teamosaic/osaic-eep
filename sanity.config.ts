@@ -8,10 +8,13 @@ import { deskTool } from 'sanity/desk'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import { apiVersion, dataset, projectId } from './sanity/env'
-import { schema } from './sanity/schema'
+import { schema, singletonTypes } from './sanity/schema'
 
 // Preview
 import { defaultDocumentNode, structure } from './sanity/structure'
+
+// Define the actions that should be available for singleton documents
+const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
 export default defineConfig({
   basePath: '/studio',
@@ -31,5 +34,12 @@ export default defineConfig({
     productionUrl: async (prev, context: any) => {
       return `/${context.document?.slug?.current}`
     },
+
+    // For singleton types, filter out actions that are not explicitly included
+    // in the `singletonActions` list defined above
+    actions: (input, context) =>
+      singletonTypes.has(context.schemaType)
+        ? input.filter(({ action }) => action && singletonActions.has(action))
+        : input,
   },
 })
