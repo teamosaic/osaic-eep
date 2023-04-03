@@ -1,6 +1,7 @@
 import { client } from '~/sanity/lib/client'
 import { lazy } from 'react'
 import { PreviewSuspense } from 'next-sanity/preview' // Todo: look into this
+import { SettingsContext } from '~/lib/contexts'
 import Tower, { getTowerBySlug } from '~/components/Tower'
 
 const PreviewTower = lazy(() => import('~/components/PreviewTower'))
@@ -10,13 +11,21 @@ export default function TowerPage({ previewToken, page, settings }) {
   // Load preview component when in preview mode
   if (previewToken) {
     const fallback = <div className='p-8'>Loading preview...</div>
-    return <PreviewSuspense fallback={ fallback }>
-      <PreviewTower {...{ previewToken, page, settings }}  />
-    </PreviewSuspense>
+    return (
+      <PreviewSuspense fallback={ fallback }>
+        <SettingsContext.Provider value={ settings } >
+          <PreviewTower {...{ previewToken, page }}  />
+        </SettingsContext.Provider>
+      </PreviewSuspense>
+    )
   }
 
   // Render non-preview compoent
-  return <Tower {...{ page, settings }} />
+  return (
+    <SettingsContext.Provider value={ settings } >
+      <Tower {...{ page }} />
+    </SettingsContext.Provider>
+  )
 }
 
 export async function getStaticProps({ params, previewData}) {

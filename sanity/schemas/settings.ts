@@ -1,24 +1,20 @@
 import { CogIcon } from '@sanity/icons'
+import { metaDescription } from './shared/seo'
 
 export default {
   name: 'settings',
   type: 'document',
-	icon: CogIcon,
-	groups: [
-		{
-			name: 'seo',
-			title: 'SEO',
-		},
-	],
-  fields: [
+  icon: CogIcon,
+  groups: [
     {
-      name: 'defaultMetaDescription',
-			description: 'Best practice is to stay under 160 characters.',
-      type: 'text',
-			group: 'seo',
+      name: 'seo',
+      title: 'SEO Defaults',
     },
   ],
-	preview: {
+  fields: [
+    metaDescription,
+  ],
+  preview: {
     prepare() {
       return {
         title: 'Settings'
