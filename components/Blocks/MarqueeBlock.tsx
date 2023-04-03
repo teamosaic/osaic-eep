@@ -1,6 +1,6 @@
 import { client } from '~/sanity/lib/client'
-import { PortableText } from '@portabletext/react'
-import Image, { type ImageLoader }  from 'next/image'
+import BasicPortableText from '~/components/PortableText/BasicPortableText'
+import Image, { type ImageLoader } from 'next/image'
 import imageUrlBuilder from '@sanity/image-url'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
@@ -38,9 +38,7 @@ export default function MarqueeBlock({ block }: {
 
 
       {/* Body text */}
-      { body && <div className={`prose text-inherit relative`}>
-        <PortableText value={ body }/>
-      </div> }
+      <BasicPortableText value={ body } className='relative' />
 
     </div>
   )
@@ -50,5 +48,4 @@ function makeImageLoader(source: SanityImageObject): ImageLoader {
   return ({ width, quality}) => {
     return imgBuilder.image(source).width(width).quality(quality).url()
   }
-
 }
