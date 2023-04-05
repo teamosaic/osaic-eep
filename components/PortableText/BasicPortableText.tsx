@@ -13,8 +13,11 @@ export default function BasicPortableText({ value, className = '' }: {
 
   // Render Tailwind prose wrapper but clear the default prose styles
   // with `text-inherit` and the configuration in tailwind.config.js.
+  // Also, make the weight of h1s lighter and bigger
   return (
-    <div className={`prose text-inherit ${className}`}>
+    <div className={`
+      prose text-inherit ${className}
+      prose-h1:font-extralight prose-h1:text-5xl`}>
       <PortableText {...{ value, components }} />
     </div>
   )
