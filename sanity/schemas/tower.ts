@@ -27,6 +27,9 @@ export default {
       name: 'slug',
       type: 'slug',
       group: 'content',
+      options: {
+        source: 'title'
+      }
     },
     {
       name: 'blocks',
