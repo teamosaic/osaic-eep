@@ -1,6 +1,7 @@
 import * as blocks from './schemas/blocks'
 import settings from './schemas/settings'
 import tower from './schemas/tower'
+import article from './schemas/article'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
 // Define the singleton document types
@@ -15,6 +16,7 @@ export const schema: {
   // The array of all types
   types: [
     tower,
+    article,
     settings,
     ...Object.values(blocks),
   ],

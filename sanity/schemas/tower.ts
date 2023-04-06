@@ -1,11 +1,11 @@
-import { DocumentsIcon } from '@sanity/icons'
+import { BsBuilding } from 'react-icons/bs'
 import { metaDescription } from './shared/seo'
 
 export default {
   name: 'tower',
   type: 'document',
   title: 'Towers',
-  icon: DocumentsIcon,
+  icon: BsBuilding,
   groups: [
     {
       name: 'content',
@@ -22,11 +22,13 @@ export default {
       name: 'title',
       type: 'string',
       group: 'content',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'slug',
       type: 'slug',
       group: 'content',
+      validation: Rule => Rule.required(),
       options: {
         source: 'title'
       }
