@@ -4,6 +4,7 @@ import { metaDescription } from './shared/seo'
 export default {
   name: 'settings',
   type: 'document',
+  title: 'Settings',
   icon: CogIcon,
   groups: [
     {
