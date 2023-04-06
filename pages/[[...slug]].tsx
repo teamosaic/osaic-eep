@@ -1,8 +1,8 @@
 import { PreviewSuspense } from 'next-sanity/preview' // Todo: look into this
 import dynamic from 'next/dynamic'
 
+import DefaultLayout from '~/layouts/Default'
 import Tower, { getTowerBySlug } from '~/components/Tower'
-import { SettingsContext } from '~/lib/contexts'
 import { client } from '~/sanity/lib/client'
 
 const PreviewTower = dynamic(() => import('~/components/PreviewTower'))
@@ -14,18 +14,18 @@ export default function TowerPage({ previewToken, page, settings }) {
     const fallback = <div className='p-8'>Loading preview...</div>
     return (
       <PreviewSuspense fallback={ fallback }>
-        <SettingsContext.Provider value={ settings } >
+        <DefaultLayout {...{ settings }} >
           <PreviewTower {...{ previewToken, page }}  />
-        </SettingsContext.Provider>
+        </DefaultLayout>
       </PreviewSuspense>
     )
   }
 
   // Render non-preview compoent
   return (
-    <SettingsContext.Provider value={ settings } >
+    <DefaultLayout {...{ settings }} >
       <Tower {...{ page }} />
-    </SettingsContext.Provider>
+    </DefaultLayout>
   )
 }
 
