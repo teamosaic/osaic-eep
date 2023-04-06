@@ -1,6 +1,6 @@
 import 'styles/global.css'
-import { AppProps } from 'next/app'
 
+import { AppProps } from 'next/app'
 // Example of using Google fonts via @next/font with a variable width font
 import { Inter } from 'next/font/google'
 const sans = Inter({

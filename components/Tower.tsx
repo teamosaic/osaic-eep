@@ -1,8 +1,10 @@
-import { groq } from 'next-sanity'
-import BlocksList from './Blocks/BlocksList'
 import Head from 'next/head'
-import { SettingsContext } from '~/lib/contexts'
+import { groq } from 'next-sanity'
 import { useContext } from 'react'
+
+import { SettingsContext } from '~/lib/contexts'
+
+import BlocksList from './Blocks/BlocksList'
 
 export default function Tower({ page }) {
   const { blocks } = page,

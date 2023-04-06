@@ -1,9 +1,10 @@
-import { client } from '~/sanity/lib/client'
-import BasicPortableText from '~/components/PortableText/BasicPortableText'
-import Image, { type ImageLoader } from 'next/image'
-import imageUrlBuilder from '@sanity/image-url'
 import type { PortableTextBlock } from '@portabletext/types'
+import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
+import Image, { type ImageLoader } from 'next/image'
+
+import BasicPortableText from '~/components/PortableText/BasicPortableText'
+import { client } from '~/sanity/lib/client'
 import type { SanityObject } from '~/types/sanity'
 
 const imgBuilder = imageUrlBuilder(client)

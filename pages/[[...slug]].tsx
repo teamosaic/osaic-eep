@@ -1,8 +1,9 @@
-import { client } from '~/sanity/lib/client'
-import { lazy } from 'react'
 import { PreviewSuspense } from 'next-sanity/preview' // Todo: look into this
-import { SettingsContext } from '~/lib/contexts'
+import { lazy } from 'react'
+
 import Tower, { getTowerBySlug } from '~/components/Tower'
+import { SettingsContext } from '~/lib/contexts'
+import { client } from '~/sanity/lib/client'
 
 const PreviewTower = lazy(() => import('~/components/PreviewTower'))
 
