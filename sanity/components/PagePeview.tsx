@@ -3,14 +3,10 @@ import dynamic from 'next/dynamic'
 
 const PreviewLoader = dynamic(() => import('~/sanity/components/PreviewLoader'))
 
-export default function PagePreview({
-  previewToken,
-  uri,
-  children: renderChildren
-}) {
+export default function PagePreview({ previewToken, uri, render }) {
   return (
     <PreviewSuspense fallback={ <Placeholder /> }>
-      <PreviewLoader {...{ previewToken, uri, renderChildren }} />
+      <PreviewLoader {...{ previewToken, uri, render }} />
     </PreviewSuspense>
   )
 }

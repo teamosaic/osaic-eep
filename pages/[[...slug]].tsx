@@ -4,22 +4,15 @@ import PagePreview from '~/sanity/components/PagePeview'
 import Tower, { getTowerBySlug } from '~/components/Tower'
 
 export default function TowerPage({ previewToken, page, settings }) {
-
-  // Load preview component when in preview mode
   if (previewToken) {
-    const uri = page.slug
-    return (
-      <PagePreview {...{ previewToken, uri }}>
-        {({ settings, page }) => (
-          <DefaultLayout {...{ settings }} >
-            <Tower {...{ page }} />
-          </DefaultLayout>
-        )}
-      </PagePreview>
-    )
+    return <PagePreview {...{ previewToken, uri: page.slug, render }} />
+  } else {
+    return render({ page, settings })
   }
+}
 
-  // Render non-preview component
+// Render page components given required data
+function render({ page, settings }) {
   return (
     <DefaultLayout {...{ settings }} >
       <Tower {...{ page }} />
