@@ -1,11 +1,11 @@
 import { PreviewSuspense } from 'next-sanity/preview' // Todo: look into this
-import { lazy } from 'react'
+import dynamic from 'next/dynamic'
 
 import Tower, { getTowerBySlug } from '~/components/Tower'
 import { SettingsContext } from '~/lib/contexts'
 import { client } from '~/sanity/lib/client'
 
-const PreviewTower = lazy(() => import('~/components/PreviewTower'))
+const PreviewTower = dynamic(() => import('~/components/PreviewTower'))
 
 export default function TowerPage({ previewToken, page, settings }) {
 
