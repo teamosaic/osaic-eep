@@ -1,6 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
-import type { Image as SanityImage } from 'sanity'
+import type { Image as SanityImage, ImageAsset } from 'sanity'
 import Image, { type ImageLoader } from 'next/image'
 
 import BasicPortableText from '~/components/PortableText/BasicPortableText'
@@ -12,8 +12,9 @@ const imgBuilder = imageUrlBuilder(client)
 
 export interface MarqueeBlock extends SanityObject {
   body: PortableTextBlock
-  background: SanityImage & {
+  background?: SanityImage & {
     title: string
+    asset: ImageAsset
   }
 }
 
@@ -21,6 +22,7 @@ export default function MarqueeBlock({ block }: {
   block: MarqueeBlock
 }): React.ReactElement {
   const { body, background } = block
+
   return (
 
     // Container
@@ -35,9 +37,10 @@ export default function MarqueeBlock({ block }: {
         loader={ makeImageLoader(background) }
         fill
         priority
+        placeholder='blur'
+        blurDataURL={ background.asset.metadata.lqip }
         alt= { background.title || '' }
         className='object-cover' /> }
-
 
       {/* Body text */}
       <BasicPortableText value={ body } className='relative' />
