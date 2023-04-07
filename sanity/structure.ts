@@ -2,27 +2,20 @@ import { DefaultDocumentNodeResolver, ListItemBuilder, StructureResolver } from 
 import { IFramePreviewView } from './components/IFramePreviewView'
 import { singletonTypes } from './schema'
 import type { SchemaType } from 'sanity'
+import { pageTypeValues } from '~/types/schemaTypes'
 
 // Example on how to add views for a schemaType
 // https://www.sanity.io/docs/create-custom-document-views-with-structure-builder
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, ctx) => {
   const schemaType = ctx.schema.get(ctx.schemaType)
 
-  // add preview based on schema tname
-  if (schemaType.name === 'tower') {
+  // add preview based on schema name
+  if (pageTypeValues.includes(schemaType.name)) {
     return S.document().views([
       S.view.form().title('Content'),
       S.view.component(IFramePreviewView).title('Preview'),
     ])
   }
-
-  // or add preview based on some custom property
-  // if (schemaType.options?.preview) {
-  //   return S.document().views([
-  //     S.view.form().title('Content'),
-  //     S.view.component(IFramePreviewView).title('Preview'),
-  //   ])
-  // }
 
   return S.document()
 }

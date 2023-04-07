@@ -32,7 +32,7 @@ export default defineConfig({
 
     // Making async to address Typescript requirement
     productionUrl: async (prev, context: any) => {
-      return `/${context.document?.slug?.current}`
+      return `/${context.document?.uri?.current}`
     },
 
     // For singleton types, filter out actions that are not explicitly included

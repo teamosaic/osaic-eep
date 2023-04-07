@@ -1,5 +1,6 @@
 import { BsNewspaper } from 'react-icons/bs'
 import { metaDescription } from './shared/seo'
+import { uriField } from '../lib/uri'
 import moment from 'moment'
 
 export default {
@@ -25,15 +26,7 @@ export default {
       group: 'content',
       validation: Rule => Rule.required(),
     },
-    {
-      name: 'slug',
-      type: 'slug',
-      group: 'content',
-      validation: Rule => Rule.required(),
-      options: {
-        source: 'title'
-      }
-    },
+    uriField('articles'),
     {
       name: 'date',
       type: 'datetime',

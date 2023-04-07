@@ -25,32 +25,32 @@ export function IFramePreviewView(props: ComponentProps<UserViewComponent>) {
 
   const id = documentId
   const type = schemaType.name
-  const slug =
-    isRecord(displayed.slug) && isString(displayed.slug.current)
-      ? displayed.slug.current
+  const uri =
+    isRecord(displayed.uri) && isString(displayed.uri.current)
+      ? displayed.uri.current
       : undefined
 
-  if (!slug) {
+  if (!uri) {
     return (
       <Box>
-        <Text>Missing slug</Text>
+        <Text>Missing uri</Text>
       </Box>
     )
   }
 
   return (
     <Suspense fallback={null}>
-      <PagePreviewWithSecret id={id} slug={slug} type={type} />
+      <PagePreviewWithSecret id={id} uri={uri} type={type} />
     </Suspense>
   )
 }
 
 function PagePreviewWithSecret(props: {
   id: string
-  slug: string
+  uri: string
   type: string
 }) {
-  const { id, slug, type } = props
+  const { id, uri, type } = props
 
   // This :any is dirty but casting as SanityClient always returned a warning
   const client: any = useClient({ apiVersion })
@@ -74,7 +74,7 @@ function PagePreviewWithSecret(props: {
 
   return (
     <StyledIframe
-      src={`/api/preview?type=${type}&id=${id}&slug=${slug}&secret=${secret}`}
+      src={`/api/preview?type=${type}&id=${id}&uri=${uri}&secret=${secret}`}
     />
   )
 }

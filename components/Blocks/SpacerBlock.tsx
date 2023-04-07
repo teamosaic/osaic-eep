@@ -1,4 +1,4 @@
-import type { SanityObject } from '~/types/sanity'
+import type { SanityObject } from '~/types/sanityTypes'
 
 export enum SpacerHeights {
   Small = 'small',
