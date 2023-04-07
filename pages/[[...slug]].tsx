@@ -1,27 +1,18 @@
-import { PreviewSuspense } from 'next-sanity/preview' // Todo: look into this
-import dynamic from 'next/dynamic'
-
-import DefaultLayout from '~/layouts/Default'
-import Tower, { getTowerBySlug } from '~/components/Tower'
 import { client } from '~/sanity/lib/client'
-
-const PreviewTower = dynamic(() => import('~/components/PreviewTower'))
+import DefaultLayout from '~/layouts/Default'
+import PagePreview from '~/sanity/components/PagePeview'
+import Tower, { getTowerBySlug } from '~/components/Tower'
 
 export default function TowerPage({ previewToken, page, settings }) {
-
-  // Load preview component when in preview mode
   if (previewToken) {
-    const fallback = <div className='p-8'>Loading preview...</div>
-    return (
-      <PreviewSuspense fallback={ fallback }>
-        <DefaultLayout {...{ settings }} >
-          <PreviewTower {...{ previewToken, page }}  />
-        </DefaultLayout>
-      </PreviewSuspense>
-    )
+    return <PagePreview {...{ previewToken, uri: page.slug, render }} />
+  } else {
+    return render({ page, settings })
   }
+}
 
-  // Render non-preview compoent
+// Render page components given required data
+function render({ page, settings }) {
   return (
     <DefaultLayout {...{ settings }} >
       <Tower {...{ page }} />
