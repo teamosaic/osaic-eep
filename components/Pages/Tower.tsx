@@ -23,9 +23,9 @@ export default function Tower({ page }) {
   </>)
 }
 
-export const getTowerBySlug = groq`
-  *[_type == 'tower' && slug.current == $slug]{
+export const getTower = groq`
+  *[_type == 'tower' && uri.current == $uri]{
     ...,
-    'slug': slug.current
+    'uri': uri.current
   }[0]
 `

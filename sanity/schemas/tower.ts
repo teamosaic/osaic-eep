@@ -1,5 +1,6 @@
 import { BsBuilding } from 'react-icons/bs'
 import { metaDescription } from './shared/seo'
+import { uriField } from '../lib/uri'
 
 export default {
   name: 'tower',
@@ -27,12 +28,15 @@ export default {
     {
       name: 'slug',
       type: 'slug',
+      hidden: true, // Mid deprecation
       group: 'content',
+      description: 'This can contain slashes to represent directories.',
       validation: Rule => Rule.required(),
       options: {
         source: 'title'
       }
     },
+    uriField(),
     {
       name: 'blocks',
       type: 'array',
@@ -47,13 +51,12 @@ export default {
   preview: {
     select: {
       title: 'title',
-      slug: 'slug',
+      uri: 'uri',
     },
-    prepare({ title, slug }) {
-      const uri = slug.current == '__home__' ? '/' : `/${slug.current}`
+    prepare({ title, uri }) {
       return {
         title,
-        subtitle: uri
+        subtitle: uri.current
       }
     }
   }

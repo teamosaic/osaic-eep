@@ -1,14 +1,14 @@
 import { client } from '~/sanity/lib/client'
 import DefaultLayout from '~/layouts/Default'
 import PagePreview from '~/sanity/components/PagePeview'
-import Tower, { getTowerBySlug } from '~/components/Pages/Tower'
+import Tower, { getTower } from '~/components/Pages/Tower'
 
 export default function TowerPage({ previewToken, page, settings }) {
   if (previewToken) {
     return <PagePreview {...{
       previewToken,
-      query: getTowerBySlug,
-      params: { slug: page.slug },
+      query: getTower,
+      params: { uri: page.uri },
       render,
     }} />
   } else {
@@ -31,8 +31,7 @@ export async function getStaticProps({ params, previewData}) {
   const previewToken = previewData?.token || null
 
   // Stringify slug arrays again
-  let { slug } = params
-  slug = (slug || ['__home__']).join('/')
+  const uri = '/' + (params.uri || ['']).join('/')
 
   // If previewing, update the config to use the preview token so we can fetch
   // draft entries when previewing
@@ -40,7 +39,7 @@ export async function getStaticProps({ params, previewData}) {
 
   // Fetch the request page by slug
   const [ page, settings ] = await Promise.all([
-    client.fetch(getTowerBySlug, { slug }),
+    client.fetch(getTower, { uri }),
     client.fetch(`*[_type == 'settings'][0]`)
   ])
 
@@ -59,19 +58,23 @@ export async function getStaticPaths() {
   // Get all Tower slugs
   const pages = await client.fetch(`
     *[_type == 'tower']{
-      'slug': slug.current
+      'uri': uri.current
     }`)
 
   // Make the slug an array of path segments, which is what Next requires when
-  // doing an optional catach all file like [[...slug]].  I went this route
+  // doing an optional catch all file like [[...slug]].  I went this route
   // so that pages could define their own subdirs but mostly so I could get
   // return an empty string slug for the homepage.
-  const paths = pages.map(page => ({ params: {
-      slug: (page.slug == '__home__' ? '' : page.slug).split('/')
-    }}))
+  const paths = pages.map(page => ({
+    params: {
+      uri: page.uri
+        .slice(1) // Ignore the opening slash
+        .split('/') // Split up remaining slashes
+    }
+  }))
 
   return {
     fallback: 'blocking',
     paths,
-  };
+  }
 }

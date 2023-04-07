@@ -8,7 +8,7 @@ export default function Article({ page }) {
   const settings = useContext(SettingsContext),
     metaDescription = page.metaDescription || settings.metaDescription
 
-  return (
+    return (
     <>
       <Head>
         <title>{ page.title }</title>
@@ -27,6 +27,6 @@ export default function Article({ page }) {
 export const getArticleBySlug = groq`
   *[_type == 'article' && slug.current == $slug]{
     ...,
-    'slug': slug.current
+    'slug': slug.current,
   }[0]
 `
