@@ -17,7 +17,7 @@ export default async function preview(
   const { query } = req
 
   const secret = typeof query.secret === 'string' ? query.secret : undefined
-  const slug = typeof query.slug === 'string' ? query.slug : undefined
+  const uri = typeof query.uri === 'string' ? query.uri : undefined
 
   if (!secret) {
     res.status(401)
@@ -42,14 +42,13 @@ export default async function preview(
     return res.status(401).send('Invalid secret')
   }
 
-  if (slug) {
-    const uri = slug == '__home__' ? '/' : `/${slug}`
+  if (uri) {
     res.setPreviewData({ token: readToken })
     res.writeHead(307, { Location: uri })
     res.end()
     return
   }
 
-  res.status(404).send('Slug query parameter is required')
+  res.status(404).send('uri query parameter is required')
   res.end()
 }
