@@ -26,16 +26,6 @@ export default {
       group: 'content',
       validation: Rule => Rule.required(),
     },
-    {
-      name: 'slug',
-      type: 'slug',
-      group: 'content',
-      hidden: true, // Mid deprecation
-      validation: Rule => Rule.required(),
-      options: {
-        source: 'title'
-      }
-    },
     uriField('articles'),
     {
       name: 'date',

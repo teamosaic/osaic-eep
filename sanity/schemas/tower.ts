@@ -25,17 +25,6 @@ export default {
       group: 'content',
       validation: Rule => Rule.required(),
     },
-    {
-      name: 'slug',
-      type: 'slug',
-      hidden: true, // Mid deprecation
-      group: 'content',
-      description: 'This can contain slashes to represent directories.',
-      validation: Rule => Rule.required(),
-      options: {
-        source: 'title'
-      }
-    },
     uriField(),
     {
       name: 'blocks',
