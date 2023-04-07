@@ -4,10 +4,10 @@ import dynamic from 'next/dynamic'
 // Load on demand so it's deps are not bundled when not previewing
 const PreviewLoader = dynamic(() => import('~/sanity/components/PreviewLoader'))
 
-export default function PagePreview({ previewToken, uri, render }) {
+export default function PagePreview({ previewToken, query, params, render }) {
   return (
     <PreviewSuspense fallback={ <Placeholder /> }>
-      <PreviewLoader {...{ previewToken, uri, render }} />
+      <PreviewLoader {...{ previewToken, query, params, render }} />
     </PreviewSuspense>
   )
 }

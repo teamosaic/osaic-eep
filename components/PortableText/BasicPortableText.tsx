@@ -6,7 +6,7 @@ import SmartLink from './SmartLink'
 // Renders a Sanity PortableText component with standard customizaionts
 export default function BasicPortableText({ value, className = '' }: {
   value: PortableTextBlock
-  className: string
+  className?: string
 }): React.ReactElement {
 
   // Require content

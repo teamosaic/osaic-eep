@@ -6,7 +6,9 @@ export default function DefaultLayout({ settings, children }) {
     <SettingsContext.Provider value={ settings } >
       <>
         <LayoutHeader/>
-        { children }
+        <main>
+          { children }
+        </main>
       </>
     </SettingsContext.Provider>
   )
