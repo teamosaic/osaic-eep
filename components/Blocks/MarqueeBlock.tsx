@@ -1,17 +1,18 @@
 import type { PortableTextBlock } from '@portabletext/types'
 import imageUrlBuilder from '@sanity/image-url'
-import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
+import type { Image as SanityImage } from 'sanity'
 import Image, { type ImageLoader } from 'next/image'
 
 import BasicPortableText from '~/components/PortableText/BasicPortableText'
 import { client } from '~/sanity/lib/client'
 import type { SanityObject } from '~/types/sanityTypes'
+import { urlForImage } from '~/sanity/lib/image'
 
 const imgBuilder = imageUrlBuilder(client)
 
 export interface MarqueeBlock extends SanityObject {
   body: PortableTextBlock
-  background: SanityImageObject & {
+  background: SanityImage & {
     title: string
   }
 }
@@ -30,7 +31,7 @@ export default function MarqueeBlock({ block }: {
 
       {/* Background image */}
       { background && <Image
-        src={ imgBuilder.image(background).url() }
+        src={ urlForImage(background).url() }
         loader={ makeImageLoader(background) }
         fill
         priority
@@ -45,8 +46,8 @@ export default function MarqueeBlock({ block }: {
   )
 }
 
-function makeImageLoader(source: SanityImageObject): ImageLoader {
+function makeImageLoader(source: SanityImage): ImageLoader {
   return ({ width, quality}) => {
-    return imgBuilder.image(source).width(width).quality(quality).url()
+    return urlForImage(source).width(width).quality(quality).url()
   }
 }
