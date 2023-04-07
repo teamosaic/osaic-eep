@@ -6,7 +6,7 @@ export default function LayoutHeader() {
       border-b border-rose-400'>
       <div className='
         max-w-screen-md mx-auto py-4
-        px-8 lg:px-0'>
+        px-8'>
         Header
       </div>
     </header>
