@@ -1,7 +1,7 @@
-import * as blocks from './schemas/blocks'
-import settings from './schemas/settings'
-import tower from './schemas/tower'
-import article from './schemas/article'
+import * as blocks from './schemas/blocksSchema'
+import settings from './schemas/settingsSchema'
+import tower from './schemas/towerSchema'
+import article from './schemas/articleSchema'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
 // Define the singleton document types

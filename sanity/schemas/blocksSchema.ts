@@ -25,7 +25,6 @@ export const marqueeBlock = {
       type: 'image',
       options: {
         hotspot: true,
-        metadata: [ 'blurhash', 'lqip', 'palette'],
       },
       fields: [
         {
