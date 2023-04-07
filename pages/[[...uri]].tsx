@@ -2,6 +2,7 @@ import { client } from '~/sanity/lib/client'
 import DefaultLayout from '~/layouts/Default'
 import dynamic from 'next/dynamic'
 import PagePreview from '~/sanity/components/PagePeview'
+import { PageType, PageDocument } from '~/types/schemaTypes'
 
 // Page components
 const Tower = dynamic(() => import("../components/Pages/Tower"))
@@ -25,7 +26,10 @@ export default function PageDelegator({ previewToken, page, settings }) {
 }
 
 // Render page components given required data
-function render({ page, settings }) {
+function render({ page, settings }: {
+  page: PageDocument
+  settings: object
+}): React.ReactElement {
   return (
     <DefaultLayout {...{ settings }} >
       <PageComponent {...{ page }} />
@@ -34,25 +38,27 @@ function render({ page, settings }) {
 }
 
 // Render the appropriate page component
-function PageComponent({ page }) {
+function PageComponent({ page }: {
+  page: PageDocument
+}): React.ReactElement {
   switch(page._type) {
-    case 'tower': return <Tower {...{ page }} />
-    case 'article': return <Article {...{ page }} />
+    case PageType.Tower: return <Tower {...{ page }} />
+    case PageType.Article: return <Article {...{ page }} />
   }
 }
 
 // Return the page query to use
-function pageQuery(type: string) {
+function pageQuery(type: PageType): string {
   switch(type) {
-    case 'tower': return getTower
-    case 'article': return getArticle
+    case PageType.Tower: return getTower
+    case PageType.Article: return getArticle
   }
 }
 
 // Parse a URI to figure out the type, falling back to Towers
-function determineTypeFromUri(uri: string) {
-  if (uri.startsWith('/articles/')) return 'article'
-  return 'tower'
+function determineTypeFromUri(uri: string): PageType {
+  if (uri.startsWith('/articles/')) return PageType.Article
+  return PageType.Tower
 }
 
 // Fetch the page data
