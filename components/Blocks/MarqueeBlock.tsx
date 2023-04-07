@@ -5,7 +5,7 @@ import Image, { type ImageLoader } from 'next/image'
 
 import BasicPortableText from '~/components/PortableText/BasicPortableText'
 import { client } from '~/sanity/lib/client'
-import type { SanityObject } from '~/types/sanity'
+import type { SanityObject } from '~/types/sanityTypes'
 
 const imgBuilder = imageUrlBuilder(client)
 
