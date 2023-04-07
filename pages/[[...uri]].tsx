@@ -1,13 +1,21 @@
 import { client } from '~/sanity/lib/client'
 import DefaultLayout from '~/layouts/Default'
+import dynamic from 'next/dynamic'
 import PagePreview from '~/sanity/components/PagePeview'
-import Tower, { getTower } from '~/components/Pages/Tower'
 
-export default function TowerPage({ previewToken, page, settings }) {
+// Page components
+const Tower = dynamic(() => import("../components/Pages/Tower"))
+const Article = dynamic(() => import("../components/Pages/Article"))
+
+// Page queries
+import { getTower, towerStaticPaths } from '~/queries/towerQueries'
+import { getArticle, articleStaticPaths } from '~/queries/articleQueries'
+
+export default function PageDelegator({ previewToken, page, settings }) {
   if (previewToken) {
     return <PagePreview {...{
       previewToken,
-      query: getTower,
+      query: pageQuery(page._type),
       params: { uri: page.uri },
       render,
     }} />
@@ -20,26 +28,50 @@ export default function TowerPage({ previewToken, page, settings }) {
 function render({ page, settings }) {
   return (
     <DefaultLayout {...{ settings }} >
-      <Tower {...{ page }} />
+      <PageComponent {...{ page }} />
     </DefaultLayout>
   )
 }
 
+// Render the appropriate page component
+function PageComponent({ page }) {
+  switch(page._type) {
+    case 'tower': return <Tower {...{ page }} />
+    case 'article': return <Article {...{ page }} />
+  }
+}
+
+// Return the page query to use
+function pageQuery(type: string) {
+  switch(type) {
+    case 'tower': return getTower
+    case 'article': return getArticle
+  }
+}
+
+// Parse a URI to figure out the type, falling back to Towers
+function determineTypeFromUri(uri: string) {
+  if (uri.startsWith('/articles/')) return 'article'
+  return 'tower'
+}
+
+// Fetch the page data
 export async function getStaticProps({ params, previewData}) {
 
-  // Get the preview token
-  const previewToken = previewData?.token || null
-
-  // Stringify slug arrays again
+  // Convert Next's uri array back into a string
   const uri = '/' + (params.uri || ['']).join('/')
+
+  // Figure out the type of the page by looking at the uri
+  const type = determineTypeFromUri(uri)
 
   // If previewing, update the config to use the preview token so we can fetch
   // draft entries when previewing
+  const previewToken = previewData?.token || null
   if (previewToken) client.config({ token: previewToken })
 
   // Fetch the request page by slug
   const [ page, settings ] = await Promise.all([
-    client.fetch(getTower, { uri }),
+    client.fetch(pageQuery(type), { uri }),
     client.fetch(`*[_type == 'settings'][0]`)
   ])
 
@@ -55,11 +87,11 @@ export async function getStaticProps({ params, previewData}) {
 
 export async function getStaticPaths() {
 
-  // Get all Tower slugs
-  const pages = await client.fetch(`
-    *[_type == 'tower']{
-      'uri': uri.current
-    }`)
+  // Get all page slugs
+  const pages = (await Promise.all([
+    client.fetch(towerStaticPaths),
+    client.fetch(articleStaticPaths),
+  ])).flat()
 
   // Make the slug an array of path segments, which is what Next requires when
   // doing an optional catch all file like [[...slug]].  I went this route
@@ -74,7 +106,7 @@ export async function getStaticPaths() {
   }))
 
   return {
-    fallback: 'blocking',
+    fallback: 'blocking', // Fetch data on demand if path not present
     paths,
   }
 }

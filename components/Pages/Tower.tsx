@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { groq } from 'next-sanity'
 import { useContext } from 'react'
 
 import { SettingsContext } from '~/lib/contexts'
@@ -23,9 +22,3 @@ export default function Tower({ page }) {
   </>)
 }
 
-export const getTower = groq`
-  *[_type == 'tower' && uri.current == $uri]{
-    ...,
-    'uri': uri.current
-  }[0]
-`

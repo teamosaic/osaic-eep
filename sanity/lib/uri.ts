@@ -28,7 +28,7 @@ export function uriField(prefix = ``, source = `title`) {
       Rule.required().custom((uri) => {
 
         const current = uri?.current
-        if (!current) return
+        if (!current) return true // Will be enforced by "required()"
 
         if (!current.startsWith(uriStart)) {
           return `URI must begin with "${uriStart}". Click "Generate" to reset.`

@@ -1,4 +1,3 @@
-import { groq } from 'next-sanity'
 import { SettingsContext } from '~/lib/contexts'
 import { useContext } from 'react'
 import BasicPortableText from '~/components/PortableText/BasicPortableText'
@@ -23,10 +22,3 @@ export default function Article({ page }) {
     </>
   )
 }
-
-export const getArticleBySlug = groq`
-  *[_type == 'article' && slug.current == $slug]{
-    ...,
-    'slug': slug.current,
-  }[0]
-`
