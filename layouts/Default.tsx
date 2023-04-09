@@ -1,5 +1,5 @@
 import { SettingsContext } from '~/lib/contexts'
-import LayoutHeader from '~/components/Layout/Header'
+import LayoutHeader from '~/components/layout/Header'
 
 export default function DefaultLayout({ settings, children }) {
   return (

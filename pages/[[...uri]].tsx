@@ -5,8 +5,8 @@ import PagePreview from '~/sanity/components/PagePeview'
 import { PageType, PageDocument } from '~/types/schemaTypes'
 
 // Page components
-const Tower = dynamic(() => import("../components/Pages/Tower"))
-const Article = dynamic(() => import("../components/Pages/Article"))
+const Tower = dynamic(() => import("../components/pages/Tower"))
+const Article = dynamic(() => import("../components/pages/Article"))
 
 // Page queries
 import { getTower, towerStaticPaths } from '~/queries/towerQueries'

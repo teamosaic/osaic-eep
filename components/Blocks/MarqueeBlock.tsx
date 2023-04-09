@@ -3,7 +3,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import type { Image as SanityImage } from 'sanity'
 import Image, { type ImageLoader } from 'next/image'
 
-import BasicPortableText from '~/components/PortableText/BasicPortableText'
+import BasicPortableText from '~/components/packages/portable-text/BasicPortableText'
 import { client } from '~/sanity/lib/client'
 import type { SanityObject } from '~/types/sanityTypes'
 import { urlForImage } from '~/sanity/lib/image'
