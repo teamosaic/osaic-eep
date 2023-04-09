@@ -1,5 +1,7 @@
 import 'styles/global.css'
 
+import '~/components/packages/sanity-image/sanity-image.css'
+
 import { AppProps } from 'next/app'
 // Example of using Google fonts via @next/font with a variable width font
 import { Inter } from 'next/font/google'

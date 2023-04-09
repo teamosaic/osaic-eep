@@ -8,6 +8,8 @@ import { client } from '~/sanity/lib/client'
 import type { SanityObject } from '~/types/sanityTypes'
 import { urlForImage } from '~/sanity/lib/image'
 
+import SanityNextImage from '~/components/packages/sanity-image/SanityImage'
+
 const imgBuilder = imageUrlBuilder(client)
 
 export interface MarqueeBlock extends SanityObject {
@@ -32,7 +34,7 @@ export default function MarqueeBlock({ block }: {
       relative'>
 
       {/* Background image */}
-      { background && <Image
+      {/* { background && <Image
         src={ urlForImage(background).url() }
         loader={ makeImageLoader(background) }
         fill
@@ -40,17 +42,16 @@ export default function MarqueeBlock({ block }: {
         placeholder='blur'
         blurDataURL={ background.asset.metadata.lqip }
         alt= { background.title || '' }
-        className='object-cover' /> }
+        className='object-cover' /> } */}
+
+      { background && <SanityNextImage
+        expand
+        priority
+        source={ background } /> }
 
       {/* Body text */}
       <BasicPortableText value={ body } className='relative' />
 
     </div>
   )
-}
-
-function makeImageLoader(source: SanityImage): ImageLoader {
-  return ({ width, quality}) => {
-    return urlForImage(source).width(width).quality(quality).url()
-  }
 }

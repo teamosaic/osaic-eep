@@ -8,13 +8,11 @@ const imageBuilder = createImageUrlBuilder({
   dataset: dataset || '',
 })
 
-type OptionallyDeReferencedImage = Image & {
-  asset?: (Reference | ImageAsset) & {
-    _id?: string // I thought this would inheirt from ImageAsset?
-  }
+interface OptionallyDereferencedImage extends Omit<SanityImage, 'asset'>{
+  asset?: Reference | ImageAsset
 }
 
-export const urlForImage = (source: OptionallyDeReferencedImage) => {
+export const urlForImage = (source: OptionallyDereferencedImage) => {
 
   // Ensure that source image contains a valid reference
   if (!(source?.asset?._ref || source?.asset?._id)) {
