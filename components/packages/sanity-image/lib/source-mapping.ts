@@ -12,8 +12,9 @@ export function objectPositionFromSource(
   source: OptionallyDereferencedImage
 ): string | null {
   if (!source.hotspot) return
-  const { x, y } = source.hotspot
-  return `${x * 100}% ${y * 100}%`
+  const left = source.hotspot.x - source.crop.left + source.crop.right,
+    top =  source.hotspot.y - source.crop.top + source.crop.bottom
+  return `${left * 100}% ${(top) * 100}%`
 }
 
 // Use lqip to make placeholder props
