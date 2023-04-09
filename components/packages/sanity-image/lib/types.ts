@@ -2,7 +2,6 @@ import type {
   Image as SanityImage,
   Reference,
   ImageAsset,
-  ImageUrlFitMode
 } from 'sanity'
 
 // Props for the main component
@@ -12,7 +11,7 @@ export interface SanityImageProps {
   width?: number,
   height?: number,
   priority?: boolean,
-  fit?: ObjectFit | ImageUrlFitMode,
+  fit?: ObjectFit,
   className?: string,
 }
 
@@ -34,14 +33,18 @@ export interface FixedSizeImageProps extends Pick<SanityImageProps,
 > {
   width: number
   height: number
-  blurDataUrl?: string
-  fit?: ImageUrlFitMode
+  fit?: ObjectFit
 }
 
 // Exapnding image props uses CSS object fit rules
 export interface ExpandingImageProps extends Pick<SanityImageProps,
   'source' | 'priority' | 'className'
 > {
-  blurDataUrl?: string
   fit?: ObjectFit
 }
+
+// Fixed image size uses Sanity image CDN fit rules
+// https://www.sanity.io/docs/image-urls#fit-45b29dc6f09f
+export interface AspectRespectingImageProps extends Pick<SanityImageProps,
+  'source' | 'priority' | 'className'
+> { }

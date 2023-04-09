@@ -34,16 +34,6 @@ export default function MarqueeBlock({ block }: {
       relative'>
 
       {/* Background image */}
-      {/* { background && <Image
-        src={ urlForImage(background).url() }
-        loader={ makeImageLoader(background) }
-        fill
-        priority
-        placeholder='blur'
-        blurDataURL={ background.asset.metadata.lqip }
-        alt= { background.title || '' }
-        className='object-cover' /> } */}
-
       { background && <SanityNextImage
         expand
         priority
