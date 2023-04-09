@@ -1,6 +1,6 @@
 import { SettingsContext } from '~/lib/contexts'
 import { useContext } from 'react'
-import BasicPortableText from '~/components/PortableText/BasicPortableText'
+import BasicPortableText from '~/components/packages/portable-text/BasicPortableText'
 import Head from 'next/head'
 
 export default function Article({ page }) {

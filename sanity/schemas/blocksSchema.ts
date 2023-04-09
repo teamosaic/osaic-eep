@@ -1,4 +1,4 @@
-import { SpacerHeights } from '~/components/Blocks/SpacerBlock'
+import { SpacerHeights } from '~/components/blocks/SpacerBlock'
 
 // https://www.sanity.io/docs/previewing-block-content
 function firstBlockText(blocks: any[]) {

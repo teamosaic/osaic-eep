@@ -1,7 +1,7 @@
 import { type PortableTextComponents,PortableText } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/types'
 
-import SmartLink from './SmartLink'
+import SmartLink from '../smart-link/SmartLink'
 
 // Renders a Sanity PortableText component with standard customizaionts
 export default function BasicPortableText({ value, className = '' }: {
