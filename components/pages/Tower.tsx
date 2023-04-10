@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 import { SettingsContext } from '~/lib/contexts'
 
-import BlocksList from '../blocks/BlocksList'
+import BlocksList from '~/components/blocks/BlocksList'
 
 export default function Tower({ page }) {
   const { blocks } = page,
