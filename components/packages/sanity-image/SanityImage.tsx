@@ -25,16 +25,16 @@ export default function SanityImage({
   // See if we have an aspect ratio
   const aspectRatio = aspectRatioFromSource(source)
 
-  // If the image was not de-reference and we're not expanding it, then
+  // If the image was not de-referenced and we're not expanding it, then
   // next/image requires a width and height, so throw an error
-  if (!expand && !!aspectRatio && (!width || !height)) {
+  if (!expand && !aspectRatio && (!width || !height)) {
     throw `If not using the \`expand\` prop, you need to either set an explicit
       width and height (next/image requires this) or dereference the asset with
       code like \`image { ..., asset-> }\` so we can read the aspect ratio from
       the metadata.`
   }
 
-  // Render fixed size image
+  // Render fixed size image because a width and height were supplied
   if (width && height) {
     return <FixedSizeImage {...{
       source, width, height, priority, fit, className
