@@ -10,19 +10,37 @@ function firstBlockText(blocks: any[]) {
     .join('')
 }
 
+const Heights = [
+  { title: 'Small', value: SpacerHeights.Small },
+  { title: 'Medium', value: SpacerHeights.Medium },
+  { title: 'Large', value: SpacerHeights.Large },
+]
+
+const Colors = [
+  { title: 'Transparent', value: 'none' },
+  { title: 'Dark', value: 'dark' },
+]
+
 export const marqueeBlock = {
   name: 'marqueeBlock',
   type: 'object',
   title: 'Marquee Block',
+  groups: [
+    { name: 'content', title: 'Content', default: true, },
+    { name: 'layout', title: 'Layout' },
+  ],
   fields: [
     {
       name: 'body',
       type: 'array',
-      of: [{type: 'block'}]
+      of: [{type: 'block'}],
+      group: 'content',
     },
     {
       name: 'background',
       type: 'image',
+      title: 'Background Image',
+      group: 'content',
       options: {
         hotspot: true,
       },
@@ -33,7 +51,47 @@ export const marqueeBlock = {
           description: 'This will be used as the image alt attribute.'
         }
       ]
-    }
+    },
+    {
+      name: 'backgroundColor',
+      type: 'string',
+      group: 'layout',
+      initialValue: 'none',
+      options: {
+        list: Colors,
+        layout: 'radio'
+      },
+    },
+    {
+      name: 'marginTop',
+      type: 'string',
+      group: 'layout',
+      initialValue: 'medium',
+      options: {
+        list: Heights,
+        layout: 'radio'
+      },
+    },
+    {
+      name: 'paddingTop',
+      type: 'string',
+      group: 'layout',
+      initialValue: 'medium',
+      options: {
+        list: Heights,
+        layout: 'radio'
+      },
+    },
+    {
+      name: 'paddingBottom',
+      type: 'string',
+      group: 'layout',
+      initialValue: 'medium',
+      options: {
+        list: Heights,
+        layout: 'radio'
+      },
+    },
   ],
   preview: {
     select: {
@@ -50,11 +108,6 @@ export const marqueeBlock = {
   }
 }
 
-const HEIGHTS = [
-  { title: 'Small', value: SpacerHeights.Small },
-  { title: 'Medium', value: SpacerHeights.Medium },
-  { title: 'Large', value: SpacerHeights.Large },
-]
 
 export const spacerBlock = {
   name: 'spacerBlock',
@@ -66,7 +119,7 @@ export const spacerBlock = {
       type: 'string',
       initialValue: 'medium',
       options: {
-        list: HEIGHTS,
+        list: Heights,
         layout: 'radio'
       }
 
@@ -78,7 +131,7 @@ export const spacerBlock = {
     },
     prepare({ height }) {
       return {
-        title: (HEIGHTS.find(opt => opt.value == height ))?.title || 'Unknown',
+        title: (Heights.find(opt => opt.value == height ))?.title || 'Unknown',
         subtitle: 'Spacer'
       }
     }
