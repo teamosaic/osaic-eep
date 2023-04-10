@@ -1,4 +1,5 @@
 import { SpacerHeights } from '~/components/blocks/SpacerBlock'
+import { blockLayoutFields } from './shared/blockLayout'
 
 // https://www.sanity.io/docs/previewing-block-content
 function firstBlockText(blocks: any[]) {
@@ -14,11 +15,6 @@ const Heights = [
   { title: 'Small', value: SpacerHeights.Small },
   { title: 'Medium', value: SpacerHeights.Medium },
   { title: 'Large', value: SpacerHeights.Large },
-]
-
-const Colors = [
-  { title: 'Transparent', value: 'none' },
-  { title: 'Dark', value: 'dark' },
 ]
 
 export const marqueeBlock = {
@@ -52,46 +48,8 @@ export const marqueeBlock = {
         }
       ]
     },
-    {
-      name: 'backgroundColor',
-      type: 'string',
-      group: 'layout',
-      initialValue: 'none',
-      options: {
-        list: Colors,
-        layout: 'radio'
-      },
-    },
-    {
-      name: 'marginTop',
-      type: 'string',
-      group: 'layout',
-      initialValue: 'medium',
-      options: {
-        list: Heights,
-        layout: 'radio'
-      },
-    },
-    {
-      name: 'paddingTop',
-      type: 'string',
-      group: 'layout',
-      initialValue: 'medium',
-      options: {
-        list: Heights,
-        layout: 'radio'
-      },
-    },
-    {
-      name: 'paddingBottom',
-      type: 'string',
-      group: 'layout',
-      initialValue: 'medium',
-      options: {
-        list: Heights,
-        layout: 'radio'
-      },
-    },
+    ...blockLayoutFields
+
   ],
   preview: {
     select: {
