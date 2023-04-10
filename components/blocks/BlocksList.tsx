@@ -1,16 +1,15 @@
-import MarqueeBlock from './MarqueeBlock'
 import type { Block } from '~/types/blocks'
 import BlockLayout from './BlockLayout'
 import { BlockOrderContext, type BlockOrder } from '~/providers/blockOrder'
+import dynamic from 'next/dynamic'
 
-interface BlocksListProps {
-  blocks: Block[]
-}
+// Import blocks on demand
+const MarqueeBlock = dynamic(() => import('./MarqueeBlock'))
 
 // Conditionally render blocks based on type, wrapped in BlockLayout
-export default function BlocksList({
-	blocks = []
-}: BlocksListProps): React.ReactElement {
+export default function BlocksList({ blocks = [] }: {
+  blocks: Block[]
+}): React.ReactElement {
 	return <>{ blocks.map(renderBlock)}</>
 }
 
