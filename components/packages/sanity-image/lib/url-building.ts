@@ -1,7 +1,7 @@
 import { OptionallyDereferencedImage, ObjectFit } from './types'
 import createImageUrlBuilder from '@sanity/image-url'
 import type { ImageLoader } from 'next/image'
-
+import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder'
 
 // Make an image builder instance from ENVs
 const imageBuilder = createImageUrlBuilder({
@@ -16,7 +16,7 @@ export function urlForImage(source: OptionallyDereferencedImage, {
   width?: number
   height?: number
   fit?: ObjectFit
-} = {}) {
+} = {}): ImageUrlBuilder {
 
   // Open up builder
   const builder = imageBuilder?.image(source).auto('format')

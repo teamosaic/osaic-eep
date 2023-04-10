@@ -33,6 +33,7 @@ export default function MarqueeBlock({ block }: {
       { background && <SanityNextImage
         expand
         priority
+        sizes='min(100vw, 768px)'
         source={ background } /> }
 
       {/* Body text */}
