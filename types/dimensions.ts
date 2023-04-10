@@ -7,7 +7,7 @@ export enum BlockMarginTop {
 }
 
 export enum BlockPadding {
-  Default = 'none',
+  Matching = 'matching',
   None = 'none',
   Small = 'small',
   Medium = 'medium',

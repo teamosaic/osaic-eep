@@ -10,14 +10,13 @@ export default function BlockLayout({ block, children }):React.ReactElement {
   const blockOrder = useContext(BlockOrderContext)
   return (
     <div className={clsx([
-      mapMarginTopToTailwindClass(block, blockOrder.index),
+      mapMarginTopToTailwindClass(block, blockOrder.previous),
       mapBackgroundColorToTailwindClass(block),
       mapPaddingTopToTailwindClass(block, blockOrder.previous),
       mapPaddingBottomToTailwindClass(block, blockOrder.next),
     ])}>
       { children }
     </div>
-
   )
 }
 
@@ -27,13 +26,26 @@ export default function BlockLayout({ block, children }):React.ReactElement {
 
 function mapMarginTopToTailwindClass(
   block: Block,
-  blockIndex: number,
+  previousBlock: Block,
 ):string {
-  if (blockIndex == 0) return ''
+
+  // Is the first block, so don't add margin
+  if (!previousBlock) return ''
+
+  // If the previous block has the same background, render using padding so
+  // the background is un-interupted between the blocks
   switch (block.marginTop) {
-    case BlockMarginTop.Small: return 'mt-2'
-    case BlockMarginTop.Medium: return 'mt-6'
-    case BlockMarginTop.Large: return 'mt-12'
+    case BlockMarginTop.Small:
+      return hasBackground(block) &&
+        sameBackground(block, previousBlock) ? 'pt-2' : 'mt-2'
+    case BlockMarginTop.Medium:
+      return hasBackground(block) &&
+        sameBackground(block, previousBlock) ? 'pt-6' : 'mt-6'
+    case BlockMarginTop.Large:
+      return hasBackground(block) &&
+        sameBackground(block, previousBlock) ? 'pt-12' : 'mt-12'
+
+    // No gap
     default: return ''
   }
 }
@@ -56,12 +68,11 @@ function mapPaddingTopToTailwindClass(
     case BlockPadding.Medium: return 'pt-6'
     case BlockPadding.Large: return 'pt-12'
 
-    // Match margin-top if a different background color compare to previous
-    case BlockPadding.Default:
-      if (!block.backgroundColor ||
-        block.backgroundColor == BackgroundColor.None ||
-        block.backgroundColor == previousBlock?.backgroundColor
-      ) return ''
+    // Add padding top if  this block has a non-empty background and
+    // has a different background than the previous block
+    case BlockPadding.Matching:
+      if (!hasBackground(block) ||
+        sameBackground(block, previousBlock)) return ''
       switch (block.marginTop) {
         case BlockMarginTop.Small: return 'pt-2'
         case BlockMarginTop.Medium: return 'pt-6'
@@ -69,6 +80,7 @@ function mapPaddingTopToTailwindClass(
         default: return ''
       }
 
+    // No padding
     default: return ''
   }
 }
@@ -84,12 +96,11 @@ function mapPaddingBottomToTailwindClass(
     case BlockPadding.Medium: return 'pb-6'
     case BlockPadding.Large: return 'pb-12'
 
-    // Match margin-top if a different background color compare to previous
-    case BlockPadding.Default:
-      if (!block.backgroundColor ||
-        block.backgroundColor == BackgroundColor.None ||
-        block.backgroundColor == nextBlock?.backgroundColor
-      ) return ''
+    // Add padding bottom if this block has a non-empty background and
+    // has a different background than the next block
+    case BlockPadding.Matching:
+      if (!hasBackground(block) ||
+        sameBackground(block, nextBlock)) return ''
       switch (block.marginTop) {
         case BlockMarginTop.Small: return 'pb-2'
         case BlockMarginTop.Medium: return 'pb-6'
@@ -97,6 +108,17 @@ function mapPaddingBottomToTailwindClass(
         default: return ''
       }
 
+    // No padding
     default: return ''
   }
+}
+
+function hasBackground(block: Block): Boolean {
+  return block?.backgroundColor &&
+    block.backgroundColor != BackgroundColor.None
+}
+
+function sameBackground(block1: Block, block2: Block): Boolean {
+  return (block1?.backgroundColor || BackgroundColor.None) ==
+    (block2?.backgroundColor || BackgroundColor.None)
 }

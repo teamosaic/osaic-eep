@@ -40,26 +40,26 @@ export const blockLayoutFields = [
     name: 'paddingTop',
     type: 'string',
     group: 'layout',
-    description: 'This applies space within the Block at it\'s top. The "Default" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the previous Block.',
-    initialValue: BlockPadding.Default,
+    description: 'This applies space within the Block at it\'s top. The "Matching" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the previous Block.',
+    initialValue: BlockPadding.Matching,
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {
       list: createOptionsFromEnum(BlockPadding),
-      layout: 'radio'
+      layout: 'dropdown' // Because it should typically be left as default
     },
   },
   {
     name: 'paddingBottom',
     type: 'string',
     group: 'layout',
-    description: 'This applies space within the Block at it\'s bottom. The "Default" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the following Block.',
-    initialValue: BlockPadding.Default,
+    description: 'This applies space within the Block at it\'s bottom. The "Matching" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the following Block.',
+    initialValue: BlockPadding.Matching,
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {
       list: createOptionsFromEnum(BlockPadding),
-      layout: 'radio'
+      layout: 'dropdown' // Because it should typically be left as default
     },
   },
 ]
