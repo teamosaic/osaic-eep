@@ -1,18 +1,30 @@
 import { BlockMarginTop, BlockPadding } from '~/types/dimensions'
+import { BackgroundColor } from '~/types/colors'
 
-const BlockMarginTopOptions = Object.entries(BlockMarginTop)
-  .map(([ title, value ]) => ({ title, value }))
+// Create a Sanity options array from an enum type, supporting passing in
+// custom title overrides
+function createOptionsFromEnum(
+  enumObj: object,
+  customTitles: object = {}
+):{ title: string, value: string }[] {
+  return Object.entries(enumObj).map(([ title, value ]) => ({
+    title: customTitles[value] || title,
+    value
+  }))
+}
 
-const BlockPaddingTopOptions = Object.entries(BlockPadding)
-  .map(([ title, value ]) => ({ title, value }))
+const BlockMarginTopOptions = createOptionsFromEnum(BlockMarginTop)
 
-const BlockPaddingBottomOptions = Object.entries(BlockPadding)
-  .map(([ title, value ]) => ({ title, value }))
+const BlockPaddingTopOptions = createOptionsFromEnum(BlockPadding, {
+  [BlockPadding.Default]: 'Equal to Margin Top if this Background Color is different than the previous Block'
+})
 
-const Colors = [
-  { title: 'Transparent', value: 'none' },
-  { title: 'Dark', value: 'dark' },
-]
+const BlockPaddingBottomOptions = createOptionsFromEnum(BlockPadding, {
+  [BlockPadding.Default]: 'Equal to Margin Top if this Background Color is different than the next Block'
+})
+
+const BackgroundColorOptions = createOptionsFromEnum(BackgroundColor)
+
 
 export const blockLayoutFields = [
   {
@@ -27,42 +39,40 @@ export const blockLayoutFields = [
     },
   },
   {
-    name: 'blockBackground',
-    title: 'Background',
-    description: 'Fields that work together to set a custom background for the Block.',
-    type: 'object',
+    name: 'backgroundColor',
+    type: 'string',
     group: 'layout',
-    fields: [
-      {
-        name: 'color',
-        type: 'string',
-        description: 'The background color of the whole Block.',
-        initialValue: 'none',
-        options: {
-          list: Colors,
-          layout: 'radio'
-        },
-      },
-      {
-        name: 'paddingTop',
-        type: 'string',
-        description: 'This applies space within the Block at it\'s top.',
-        initialValue: 'medium',
-        options: {
-          list: BlockPaddingTopOptions,
-          layout: 'radio'
-        },
-      },
-      {
-        name: 'paddingBottom',
-        type: 'string',
-        description: 'This applies space within the Block at it\'s bottom.',
-        initialValue: 'medium',
-        options: {
-          list: BlockPaddingBottomOptions,
-          layout: 'radio'
-        },
-      },
-    ]
+    description: 'The background color of the whole Block.',
+    initialValue: 'none',
+    options: {
+      list: BackgroundColorOptions,
+      layout: 'radio'
+    },
+  },
+  {
+    name: 'paddingTop',
+    type: 'string',
+    group: 'layout',
+    description: 'This applies space within the Block at it\'s top.',
+    initialValue: 'medium',
+    hidden: ({ parent }) => !parent?.backgroundColor
+      || parent.backgroundColor == BackgroundColor.None,
+    options: {
+      list: BlockPaddingTopOptions,
+      layout: 'radio'
+    },
+  },
+  {
+    name: 'paddingBottom',
+    type: 'string',
+    group: 'layout',
+    description: 'This applies space within the Block at it\'s bottom.',
+    initialValue: 'medium',
+    hidden: ({ parent }) => !parent?.backgroundColor
+      || parent.backgroundColor == BackgroundColor.None,
+    options: {
+      list: BlockPaddingBottomOptions,
+      layout: 'radio'
+    },
   },
 ]
