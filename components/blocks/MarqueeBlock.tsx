@@ -12,7 +12,6 @@ export default function MarqueeBlock({ block }: {
 
     // Container
     <div className={clsx([
-      'max-w-screen-md mx-auto px-8', // Add max-w stuff
       { 'relative': !!background }, // Align background image
       { 'py-8': !!background }, // Add padding if there is a background image
     ])}>
@@ -21,11 +20,13 @@ export default function MarqueeBlock({ block }: {
       { background && <SanityNextImage
         expand
         priority
-        sizes='min(100vw, 768px)'
+        sizes='100vw'
         source={ background } /> }
 
       {/* Body text */}
-      <BasicPortableText value={ body } className='relative' />
+      <BasicPortableText
+        value={ body }
+        className='max-w-screen-md mx-auto px-8 relative' />
 
     </div>
   )
