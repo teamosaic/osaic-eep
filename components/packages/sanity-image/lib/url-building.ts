@@ -1,4 +1,4 @@
-import { OptionallyDereferencedImage, ObjectFit } from './types'
+import { SanityImageSource, ObjectFit } from './types'
 import createImageUrlBuilder from '@sanity/image-url'
 import type { ImageLoader } from 'next/image'
 import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder'
@@ -10,7 +10,7 @@ const imageBuilder = createImageUrlBuilder({
 })
 
 // Add common conventions when building URLs to images
-export function urlForImage(source: OptionallyDereferencedImage, {
+export function urlForImage(source: SanityImageSource, {
   width, height, fit = ObjectFit.Contain
 }: {
   width?: number
@@ -35,9 +35,7 @@ export function urlForImage(source: OptionallyDereferencedImage, {
 }
 
 // Make a next/image url loader
-export function makeImageLoader(
-  source: OptionallyDereferencedImage
-): ImageLoader {
+export function makeImageLoader(source: SanityImageSource): ImageLoader {
   return ({ width, quality}) => {
     return urlForImage(source).width(width).quality(quality).url()
   }
