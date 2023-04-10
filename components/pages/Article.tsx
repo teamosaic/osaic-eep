@@ -1,4 +1,4 @@
-import { SettingsContext } from '~/lib/contexts'
+import { SettingsContext } from '~/providers/settings'
 import { useContext } from 'react'
 import BasicPortableText from '~/components/packages/portable-text/BasicPortableText'
 import Head from 'next/head'

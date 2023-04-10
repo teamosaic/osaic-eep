@@ -1,23 +1,42 @@
-import MarqueeBlockComponent, { type MarqueeBlock } from './MarqueeBlock'
-import SpacerBlockComponent, { type SpacerBlock } from './SpacerBlock'
+import MarqueeBlock from './MarqueeBlock'
+import type { Block } from '~/types/blocks'
 import BlockLayout from './BlockLayout'
+import { BlockOrderContext, type BlockOrder } from '~/providers/blockOrder'
 
 interface BlocksListProps {
-  blocks: Array<
-		MarqueeBlock |
-		SpacerBlock
-	>
+  blocks: Block[]
 }
 
 // Conditionally render blocks based on type, wrapped in BlockLayout
 export default function BlocksList({
 	blocks = []
 }: BlocksListProps): React.ReactElement {
-	return <>{ blocks.map((block:any) => (
-    <BlockLayout block={ block } key={ block._key} >
-      { makeBlockInstance(block) }
-    </BlockLayout>
-  )) }</>
+	return <>{ blocks.map(renderBlock)}</>
+}
+
+// Render a block with wrapping components/context
+export function renderBlock(
+  block: Block,
+  index: number,
+  blocks: Block[],
+): React.ReactElement {
+  return (
+    <BlockOrderContext.Provider
+      key={ block._key}
+      value={ makeBlockOrderValue(index, blocks) }
+    >
+      <BlockLayout block={ block } >
+        { makeBlockInstance(block) }
+      </BlockLayout>
+    </BlockOrderContext.Provider>
+  )
+}
+
+// Make the block order value
+function makeBlockOrderValue(index: number, blocks:Block[]): BlockOrder {
+  const previous = index == 0 ? null : blocks[index - 1],
+    next = index == blocks.length - 1 ? null : blocks[index + 1]
+  return { previous, next, index }
 }
 
 // Return a block depending on the _type
@@ -30,7 +49,6 @@ function makeBlockInstance(block: any): React.ReactElement {
 // Return the component class based on the type
 function getComponentFunction(type: string): Function {
 	switch(type) {
-		case 'marqueeBlock': return MarqueeBlockComponent
-		case 'spacerBlock': return SpacerBlockComponent
+		case 'marqueeBlock': return MarqueeBlock
 	}
 }

@@ -19,7 +19,7 @@ export const blockLayoutFields = [
     type: 'string',
     group: 'layout',
     description: 'The space between this Block and the preceeding Block. This is forced to "None" if this is the first Block in a list.',
-    initialValue: 'medium',
+    initialValue: BlockMarginTop.Medium,
     options: {
       list: createOptionsFromEnum(BlockMarginTop),
       layout: 'radio'
@@ -30,7 +30,7 @@ export const blockLayoutFields = [
     type: 'string',
     group: 'layout',
     description: 'The background color of the whole Block.',
-    initialValue: 'none',
+    initialValue: BackgroundColor.None,
     options: {
       list: createOptionsFromEnum(BackgroundColor),
       layout: 'radio'
@@ -41,7 +41,7 @@ export const blockLayoutFields = [
     type: 'string',
     group: 'layout',
     description: 'This applies space within the Block at it\'s top. The "Default" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the previous Block.',
-    initialValue: 'medium',
+    initialValue: BlockPadding.Default,
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {
@@ -54,7 +54,7 @@ export const blockLayoutFields = [
     type: 'string',
     group: 'layout',
     description: 'This applies space within the Block at it\'s bottom. The "Default" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the following Block.',
-    initialValue: 'medium',
+    initialValue: BlockPadding.Default,
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {

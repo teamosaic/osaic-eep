@@ -1,4 +1,4 @@
 export interface SanityObject {
-	_type: String
-	_key: String
+	_type: string
+	_key: string
 }

@@ -1,24 +1,10 @@
-import { client } from '~/sanity/lib/client'
 import BasicPortableText from '~/components/packages/portable-text/BasicPortableText'
-import imageUrlBuilder from '@sanity/image-url'
 import SanityNextImage from '~/components/packages/sanity-image/SanityImage'
-import type { Image as SanityImage, ImageAsset } from 'sanity'
-import type { PortableTextBlock } from '@portabletext/types'
-import type { SanityObject } from '~/types/sanityTypes'
 import clsx from 'clsx'
-
-const imgBuilder = imageUrlBuilder(client)
-
-export interface MarqueeBlock extends SanityObject {
-  body: PortableTextBlock
-  background?: SanityImage & {
-    title: string
-    asset: ImageAsset
-  }
-}
+import type { MarqueeBlock as BlockType } from '~/types/blocks'
 
 export default function MarqueeBlock({ block }: {
-  block: MarqueeBlock
+  block: BlockType
 }): React.ReactElement {
   const { body, background } = block
 
