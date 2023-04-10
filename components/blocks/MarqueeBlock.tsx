@@ -5,6 +5,7 @@ import SanityNextImage from '~/components/packages/sanity-image/SanityImage'
 import type { Image as SanityImage, ImageAsset } from 'sanity'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { SanityObject } from '~/types/sanityTypes'
+import clsx from 'clsx'
 
 const imgBuilder = imageUrlBuilder(client)
 
@@ -24,10 +25,11 @@ export default function MarqueeBlock({ block }: {
   return (
 
     // Container
-    <div className='
-      max-w-screen-md mx-auto px-8
-      py-8 bg-sky-800/10
-      relative'>
+    <div className={clsx([
+      'max-w-screen-md mx-auto px-8', // Add max-w stuff
+      { 'relative': !!background }, // Align background image
+      { 'py-8': !!background }, // Add padding if there is a background image
+    ])}>
 
       {/* Background image */}
       { background && <SanityNextImage
