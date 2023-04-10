@@ -32,7 +32,6 @@ export default {
       group: 'content',
       of: [
         { type: 'marqueeBlock' },
-        { type: 'spacerBlock' },
       ]
     },
     metaDescription,

@@ -1,4 +1,4 @@
-import { SpacerHeights } from '~/components/blocks/SpacerBlock'
+import { blockLayoutFields } from './shared/blockLayout'
 
 // https://www.sanity.io/docs/previewing-block-content
 function firstBlockText(blocks: any[]) {
@@ -14,15 +14,22 @@ export const marqueeBlock = {
   name: 'marqueeBlock',
   type: 'object',
   title: 'Marquee Block',
+  groups: [
+    { name: 'content', title: 'Content', default: true, },
+    { name: 'layout', title: 'Layout' },
+  ],
   fields: [
     {
       name: 'body',
       type: 'array',
-      of: [{type: 'block'}]
+      of: [{type: 'block'}],
+      group: 'content',
     },
     {
       name: 'background',
       type: 'image',
+      title: 'Background Image',
+      group: 'content',
       options: {
         hotspot: true,
       },
@@ -33,7 +40,9 @@ export const marqueeBlock = {
           description: 'This will be used as the image alt attribute.'
         }
       ]
-    }
+    },
+    ...blockLayoutFields
+
   ],
   preview: {
     select: {
@@ -45,41 +54,6 @@ export const marqueeBlock = {
         title: firstBlockText(body),
         subtitle: 'Marquee',
         media: background,
-      }
-    }
-  }
-}
-
-const HEIGHTS = [
-  { title: 'Small', value: SpacerHeights.Small },
-  { title: 'Medium', value: SpacerHeights.Medium },
-  { title: 'Large', value: SpacerHeights.Large },
-]
-
-export const spacerBlock = {
-  name: 'spacerBlock',
-  type: 'object',
-  title: 'Spacer Block',
-  fields: [
-    {
-      name: 'height',
-      type: 'string',
-      initialValue: 'medium',
-      options: {
-        list: HEIGHTS,
-        layout: 'radio'
-      }
-
-    }
-  ],
-  preview: {
-    select: {
-      height: 'height',
-    },
-    prepare({ height }) {
-      return {
-        title: (HEIGHTS.find(opt => opt.value == height ))?.title || 'Unknown',
-        subtitle: 'Spacer'
       }
     }
   }

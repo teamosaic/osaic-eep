@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import { useContext } from 'react'
-
-import { SettingsContext } from '~/lib/contexts'
-
+import { SettingsContext } from '~/providers/settings'
 import BlocksList from '~/components/blocks/BlocksList'
 
 export default function Tower({ page }) {
