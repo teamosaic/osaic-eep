@@ -14,10 +14,17 @@ module.exports = {
     },
 
     extend: {
-      typography: {
 
-        // Reset prose's setting of colors
-        // https://github.com/tailwindlabs/tailwindcss-typography/issues/102#issuecomment-952917210
+      // Add spacing values that are used by BlockLayout
+      spacing: {
+        sm: '8px',
+        md: '32px',
+        lg: '64px',
+      },
+
+      // Reset prose's setting of colors
+      // https://github.com/tailwindlabs/tailwindcss-typography/issues/102#issuecomment-952917210
+      typography: {
         DEFAULT: {
           css: {
             [

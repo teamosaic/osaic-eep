@@ -13,7 +13,7 @@ export default function MarqueeBlock({ block }: {
     // Container
     <div className={clsx([
       { 'relative': !!background }, // Align background image
-      { 'py-8': !!background }, // Add padding if there is a background image
+      { 'py-md': !!background }, // Add padding if there is a background image
     ])}>
 
       {/* Background image */}

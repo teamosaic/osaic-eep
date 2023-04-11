@@ -37,13 +37,13 @@ function mapMarginTopToTailwindClass(
   switch (block.marginTop) {
     case BlockMarginTop.Small:
       return hasBackground(block) &&
-        sameBackground(block, previousBlock) ? 'pt-2' : 'mt-2'
+        sameBackground(block, previousBlock) ? 'pt-sm' : 'mt-sm'
     case BlockMarginTop.Medium:
       return hasBackground(block) &&
-        sameBackground(block, previousBlock) ? 'pt-6' : 'mt-6'
+        sameBackground(block, previousBlock) ? 'pt-md' : 'mt-md'
     case BlockMarginTop.Large:
       return hasBackground(block) &&
-        sameBackground(block, previousBlock) ? 'pt-12' : 'mt-12'
+        sameBackground(block, previousBlock) ? 'pt-lg' : 'mt-lg'
 
     // No gap
     default: return ''
@@ -64,9 +64,9 @@ function mapPaddingTopToTailwindClass(
   switch (block.paddingTop) {
 
     // Explict sizes
-    case BlockPadding.Small: return 'pt-2'
-    case BlockPadding.Medium: return 'pt-6'
-    case BlockPadding.Large: return 'pt-12'
+    case BlockPadding.Small: return 'pt-sm'
+    case BlockPadding.Medium: return 'pt-md'
+    case BlockPadding.Large: return 'pt-lg'
 
     // Add padding top if  this block has a non-empty background and
     // has a different background than the previous block
@@ -74,9 +74,9 @@ function mapPaddingTopToTailwindClass(
       if (!hasBackground(block) ||
         sameBackground(block, previousBlock)) return ''
       switch (block.marginTop) {
-        case BlockMarginTop.Small: return 'pt-2'
-        case BlockMarginTop.Medium: return 'pt-6'
-        case BlockMarginTop.Large: return 'pt-12'
+        case BlockMarginTop.Small: return 'pt-sm'
+        case BlockMarginTop.Medium: return 'pt-md'
+        case BlockMarginTop.Large: return 'pt-lg'
         default: return ''
       }
 
@@ -92,9 +92,9 @@ function mapPaddingBottomToTailwindClass(
   switch (block.paddingBottom) {
 
     // Explict sizes
-    case BlockPadding.Small: return 'pb-2'
-    case BlockPadding.Medium: return 'pb-6'
-    case BlockPadding.Large: return 'pb-12'
+    case BlockPadding.Small: return 'pb-sm'
+    case BlockPadding.Medium: return 'pb-md'
+    case BlockPadding.Large: return 'pb-lg'
 
     // Add padding bottom if this block has a non-empty background and
     // has a different background than the next block
@@ -102,9 +102,9 @@ function mapPaddingBottomToTailwindClass(
       if (!hasBackground(block) ||
         sameBackground(block, nextBlock)) return ''
       switch (block.marginTop) {
-        case BlockMarginTop.Small: return 'pb-2'
-        case BlockMarginTop.Medium: return 'pb-6'
-        case BlockMarginTop.Large: return 'pb-12'
+        case BlockMarginTop.Small: return 'pb-sm'
+        case BlockMarginTop.Medium: return 'pb-md'
+        case BlockMarginTop.Large: return 'pb-lg'
         default: return ''
       }
 
