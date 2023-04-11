@@ -2,7 +2,7 @@ import { client } from '~/sanity/lib/client'
 import DefaultLayout from '~/layouts/Default'
 import dynamic from 'next/dynamic'
 import PagePreview from '~/sanity/components/PagePeview'
-import { PageType, PageDocument } from '~/types/schemaTypes'
+import { PageType, PageDocument } from '~/types/pages'
 
 // Page components
 const Tower = dynamic(() => import('../components/pages/Tower'))

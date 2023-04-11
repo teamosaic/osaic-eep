@@ -2,7 +2,7 @@ import { DefaultDocumentNodeResolver, ListItemBuilder, StructureResolver } from 
 import { IFramePreviewView } from './components/IFramePreviewView'
 import { singletonTypes } from './schema'
 import type { SchemaType } from 'sanity'
-import { pageTypeValues } from '~/types/schemaTypes'
+import { pageTypeValues } from '~/types/pages'
 
 // Example on how to add views for a schemaType
 // https://www.sanity.io/docs/create-custom-document-views-with-structure-builder

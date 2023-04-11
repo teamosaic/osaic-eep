@@ -1,4 +1,4 @@
-import type { SanityObject } from '~/types/sanityTypes'
+import type { SanityObject } from '~/types/sanity'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
 import type { BlockMarginTop, BlockPadding } from './dimensions'
