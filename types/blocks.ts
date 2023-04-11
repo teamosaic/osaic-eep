@@ -1,6 +1,6 @@
 import type { SanityObject } from '~/types/sanityTypes'
 import type { PortableTextBlock } from '@portabletext/types'
-import type { Image as SanityImage, ImageAsset } from 'sanity'
+import type { Image } from 'sanity'
 import type { BlockMarginTop, BlockPadding } from './dimensions'
 import type { BackgroundColor } from './colors'
 
@@ -15,8 +15,7 @@ export interface BlockWithLayout extends SanityObject {
 
 export interface MarqueeBlock extends BlockWithLayout {
   body: PortableTextBlock
-  background?: SanityImage & {
+  background?: Image & {
     title: string
-    asset: ImageAsset
   }
 }
