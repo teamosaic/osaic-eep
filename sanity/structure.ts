@@ -9,7 +9,7 @@ import { pageTypeValues } from '~/types/schemaTypes'
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, ctx) => {
   const schemaType = ctx.schema.get(ctx.schemaType)
 
-  // add preview based on schema name
+  // Enable preview based on pageTypeValues enum
   if (pageTypeValues.includes(schemaType.name)) {
     return S.document().views([
       S.view.form().title('Content'),
