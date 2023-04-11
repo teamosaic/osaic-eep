@@ -26,7 +26,7 @@ export default function MarqueeBlock({ block }: {
       {/* Body text */}
       <BasicPortableText
         value={ body }
-        className='max-w-screen-md mx-auto px-8 relative' />
+        className='max-w-screen-md mx-auto px-gutter relative' />
 
     </div>
   )

@@ -15,11 +15,15 @@ module.exports = {
 
     extend: {
 
-      // Add spacing values that are used by BlockLayout
       spacing: {
+
+        // Add spacing values that are used by BlockLayout
         sm: '8px',
         md: '32px',
         lg: '64px',
+
+        // Add gutter values
+        gutter: '16px'
       },
 
       // Reset prose's setting of colors
