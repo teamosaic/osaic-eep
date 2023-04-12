@@ -17,8 +17,7 @@ export default function BasicPortableText({ value, className = '' }: {
   // Also, make the weight of h1s lighter and bigger
   return (
     <div className={`
-      prose text-inherit ${className}
-      prose-h1:font-extralight prose-h1:text-5xl`}>
+      prose prose-basic ${className}`}>
       <PortableText {...{ value, components }} />
     </div>
   )

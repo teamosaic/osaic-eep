@@ -5,8 +5,8 @@ export default function LayoutHeader() {
       bg-rose-400/10
       border-b border-rose-400'>
       <div className='
-        max-w-screen-md mx-auto py-4
-        px-8'>
+        max-w-screen-lg mx-auto py-6f
+        px-gutter'>
         Header
       </div>
     </header>

@@ -1,9 +1,16 @@
+import {
+  fluid,
+  inheritProseColor,
+  makeFluidSpacingDefaults,
+} from './packages/style-utils'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './sanity/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './packages/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
 
@@ -14,49 +21,91 @@ module.exports = {
     },
 
     extend: {
+
+      // Make a custom theme for BasicPortableText
       typography: {
-
-        // Reset prose's setting of colors
-        // https://github.com/tailwindlabs/tailwindcss-typography/issues/102#issuecomment-952917210
-        DEFAULT: {
+        basic: {
           css: {
-            [
-              [
-                '[class~="lead"]',
-                'strong',
-                'ol > li::before',
-                'blockquote',
-                'h1',
-                'h2',
-                'h3',
-                'h4',
-                'figure figcaption',
-                'code',
-                'a',
-                'a code',
-                'thead'
-              ].join(', ')
-            ]: {
-              color: 'inherit'
+
+            // Stop prose from specifying it's own color values
+            ...inheritProseColor,
+
+            // Make fluid font sizes based on Cloak styleguide
+            h1: {
+              fontSize: fluid(100, 70),
+              letterSpacing: '-0.07em',
+              lineHeight: fluid(100, 70),
+              fontWeight: 400,
+              marginTop: '0.7em',
+              marginBottom: '0.7em',
+            },
+            h2: {
+              fontSize: fluid(70, 50),
+              letterSpacing: '-0.07em',
+              lineHeight: fluid(70, 50),
+              fontWeight: 400,
+              marginTop: '0.8em',
+              marginBottom: '0.8em',
+            },
+            h3: {
+              fontSize: fluid(50, 36),
+              letterSpacing: '-0.06em',
+              lineHeight: fluid(55, 40),
+              fontWeight: 400,
+              marginTop: '0.9em',
+              marginBottom: '0.9em',
+            },
+            h4: {
+              fontSize: fluid(36, 28),
+              letterSpacing: '-0.03em',
+              lineHeight: fluid(40, 32),
+              fontWeight: 400,
+              marginTop: '1em',
+              marginBottom: '1em',
+            },
+            h5: {
+              fontSize: fluid(28, 20),
+              letterSpacing: '-0.02em',
+              lineHeight: fluid(28, 20),
+              fontWeight: 400,
+              marginTop: '1.1em',
+              marginBottom: '1.1em',
+            },
+            h6: {
+              fontSize: fluid(28, 14),
+              lineHeight: fluid(28, 22),
+              fontWeight: 600,
+              marginTop: '1.3em',
+              marginBottom: '1.3em',
+            },
+            p: {
+              fontSize: fluid(16, 14),
+              lineHeight: fluid(24, 22),
+              marginTop: '1.5em',
+              marginBottom: '1.5em',
             },
 
-            'ul > li::before': {
-              backgroundColor: 'currentColor'
-            },
-
-            [
-              [
-                'hr',
-                'blockquote',
-                'thead',
-                'tbody tr'
-              ].join(', ')
-            ]: {
-              borderColor: 'currentColor'
-            },
+            // Re-apply the margin clearing on first/last
+            '> :first-child': { marginTop: 0 },
+            '> :last-child': { marginBottom: 0 },
           }
-        }
-      }
+        },
+      },
+
+      spacing: {
+
+        // Adds "f" suffixed space values for the default scale.  Use like:
+        // `py-8f`.
+        ...makeFluidSpacingDefaults(),
+
+        // Add spacing values that are used by BlockLayout
+        sm: fluid(16),
+        md: fluid(32),
+        lg: fluid(64),
+
+        // Add gutter values
+        gutter: fluid(40, 16),
+      },
     }
   },
   plugins: [require('@tailwindcss/typography')],

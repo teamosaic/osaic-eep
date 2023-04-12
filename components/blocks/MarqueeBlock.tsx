@@ -1,5 +1,5 @@
-import BasicPortableText from '~/components/packages/portable-text/BasicPortableText'
-import SanityNextImage from '~/components/packages/sanity-image/SanityImage'
+import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import SanityNextImage from '~/packages/sanity-image/SanityImage'
 import clsx from 'clsx'
 import type { MarqueeBlock as BlockType } from '~/types/blocks'
 
@@ -12,8 +12,8 @@ export default function MarqueeBlock({ block }: {
 
     // Container
     <div className={clsx([
-      { 'relative': !!background }, // Align background image
-      { 'py-8': !!background }, // Add padding if there is a background image
+      { 'relative': !!background }, // Constrain background image to this block
+      { 'py-lg': !!background }, // Add padding if there is a background image
     ])}>
 
       {/* Background image */}
@@ -26,7 +26,7 @@ export default function MarqueeBlock({ block }: {
       {/* Body text */}
       <BasicPortableText
         value={ body }
-        className='max-w-screen-md mx-auto px-8 relative' />
+        className='max-w-screen-lg mx-auto px-gutter relative' />
 
     </div>
   )
