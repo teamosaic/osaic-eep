@@ -32,9 +32,9 @@ module.exports = {
         ...makeFluidSpacingDefaults(),
 
         // Add spacing values that are used by BlockLayout
-        sm: '8px',
-        md: '32px',
-        lg: '64px',
+        sm: fluid(16),
+        md: fluid(32),
+        lg: fluid(64),
 
         // Add gutter values
         gutter: fluid(40, 16),

@@ -12,8 +12,8 @@ export default function MarqueeBlock({ block }: {
 
     // Container
     <div className={clsx([
-      { 'relative': !!background }, // Align background image
-      { 'py-md': !!background }, // Add padding if there is a background image
+      { 'relative': !!background }, // Constrain background image to this block
+      { 'py-lg': !!background }, // Add padding if there is a background image
     ])}>
 
       {/* Background image */}
