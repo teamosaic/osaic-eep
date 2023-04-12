@@ -1,9 +1,12 @@
+import { inheritProseColor } from './packages/style-utils/prose'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './sanity/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './packages/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
 
@@ -14,6 +17,7 @@ module.exports = {
     },
 
     extend: {
+      ...inheritProseColor,
 
       spacing: {
 
@@ -23,51 +27,8 @@ module.exports = {
         lg: '64px',
 
         // Add gutter values
-        gutter: '16px'
+        // gutter: 'clamp(8px, 32px)',
       },
-
-      // Reset prose's setting of colors
-      // https://github.com/tailwindlabs/tailwindcss-typography/issues/102#issuecomment-952917210
-      typography: {
-        DEFAULT: {
-          css: {
-            [
-              [
-                '[class~="lead"]',
-                'strong',
-                'ol > li::before',
-                'blockquote',
-                'h1',
-                'h2',
-                'h3',
-                'h4',
-                'figure figcaption',
-                'code',
-                'a',
-                'a code',
-                'thead'
-              ].join(', ')
-            ]: {
-              color: 'inherit'
-            },
-
-            'ul > li::before': {
-              backgroundColor: 'currentColor'
-            },
-
-            [
-              [
-                'hr',
-                'blockquote',
-                'thead',
-                'tbody tr'
-              ].join(', ')
-            ]: {
-              borderColor: 'currentColor'
-            },
-          }
-        }
-      }
     }
   },
   plugins: [require('@tailwindcss/typography')],
