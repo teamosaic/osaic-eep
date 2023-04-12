@@ -1,5 +1,5 @@
-import BasicPortableText from '~/components/packages/portable-text/BasicPortableText'
-import SanityNextImage from '~/components/packages/sanity-image/SanityImage'
+import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import SanityNextImage from '~/packages/sanity-image/SanityImage'
 import clsx from 'clsx'
 import type { MarqueeBlock as BlockType } from '~/types/blocks'
 
