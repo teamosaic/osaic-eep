@@ -1,4 +1,8 @@
-import { fluid, inheritProseColor } from './packages/style-utils'
+import {
+  fluid,
+  inheritProseColor,
+  makeFluidSpacingDefaults,
+} from './packages/style-utils'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -17,9 +21,15 @@ module.exports = {
     },
 
     extend: {
+
+      // Stop prose from specifying it's own color values
       ...inheritProseColor,
 
       spacing: {
+
+        // Adds "f" suffixed space values for the default scale.  Use like:
+        // `py-8f`.
+        ...makeFluidSpacingDefaults(),
 
         // Add spacing values that are used by BlockLayout
         sm: '8px',

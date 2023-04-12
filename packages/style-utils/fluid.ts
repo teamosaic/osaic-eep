@@ -36,7 +36,7 @@ function processArgs(args: fluidOption[]): fluidOptions {
   }, defaultOptions) as fluidOptions
 
   // Set defaults for empty values
-  if (!options.max) throw 'Max value is required'
+  if (options.max == null) throw 'Max value is required'
   if (!options.min) options.min = options.max * options.defaultMinFactor
   if (!options.maxBreak) options.maxBreak = options.defaultMaxBreak
   if (!options.minBreak) options.minBreak = options.defaultMinBreak
