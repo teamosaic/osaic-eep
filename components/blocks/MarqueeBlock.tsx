@@ -1,5 +1,5 @@
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
-import SanityNextImage from '~/packages/sanity-image/SanityImage'
+import SanityImage from '~/packages/sanity-image/SanityImage'
 import clsx from 'clsx'
 import type { MarqueeBlock as BlockType } from '~/types/blocks'
 
@@ -17,7 +17,7 @@ export default function MarqueeBlock({ block }: {
     ])}>
 
       {/* Background image */}
-      { background && <SanityNextImage
+      { background && <SanityImage
         expand
         priority
         sizes='100vw'
