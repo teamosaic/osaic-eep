@@ -1,4 +1,4 @@
-import { inheritProseColor } from './packages/style-utils/prose'
+import { fluid, inheritProseColor } from './packages/style-utils'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -27,7 +27,7 @@ module.exports = {
         lg: '64px',
 
         // Add gutter values
-        // gutter: 'clamp(8px, 32px)',
+        gutter: fluid(40, 16),
       },
     }
   },
