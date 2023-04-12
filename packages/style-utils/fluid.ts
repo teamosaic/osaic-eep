@@ -6,6 +6,11 @@ const defaultMinFactor = 0.7,
 // Make a CSS clamp with a calc value that fluidly scales a value between the
 // max px value and the min px value over the range specified by the maxBreak
 // and minBreak values.
+// Examples:
+// - fluid(40)
+// - fluid(40, 20, 1280)
+// - fluid(40, 20, { minBreak: 300 })
+// - fluid({ max: 40, minBreak: 300 })
 export function fluid(...args: fluidOption[]): string {
   const { max, min, maxBreak, minBreak } = processArgs(args),
     clampValue = makeCalc(max, min, maxBreak, minBreak)
