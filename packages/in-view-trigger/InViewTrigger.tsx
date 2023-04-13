@@ -1,5 +1,5 @@
 import { useInView, type IntersectionOptions } from 'react-intersection-observer'
-import { useState } from 'react'
+import { usePrevious } from './src/utils'
 
 export default function InViewTrigger({
   animations,
@@ -10,17 +10,16 @@ export default function InViewTrigger({
   className,
 }: InViewTriggerProps): React.ReactElement {
 
-  // Track whether we've done the initial reaction to being in-view
-  const [ initialState, setInitialState ] = useState(true)
-
   // Track viewport presence
   const { ref, inView, entry } = useInView({
     triggerOnce: once,
     onChange,
   })
 
-  // If no IntersectionObserver entry, treat this as the initial SSR render
-  // const initialState = !entry
+  // This is the initial observation the previous render hadn't receieved an
+  // IntersectionObserver entry yet. This approach is better than tracking this
+  // with useState because that was causing a secondary render.
+  const isInitialObservation = usePrevious(!entry)
 
   // Control animations
   if (animations && entry?.target) {
@@ -28,27 +27,23 @@ export default function InViewTrigger({
     // On the initial response, stop any animations that play in elements
     // not in the initial viewport. If they were already in the viewport,
     // allow them to continue.
-    if (initialState && !inView) resetAnimations(entry.target)
+    if (isInitialObservation && !inView) resetAnimations(entry.target)
 
     // If not the initial state, play animations that enter the viewport.
     // We don't run this on the intiial state so we don't touch animations
     // that started out playing, pre-JS.
-    else if (!initialState && inView) playAnimations(entry.target)
+    else if (!isInitialObservation && inView) playAnimations(entry.target)
 
     // Play animations in reverse when no longer visible, like as an outro.
     // If the animations start delayed, reverse them.  Otherwise, we can
     // just hard reset when they aren't visible
-    else if (!initialState && !inView) {
+    else if (!isInitialObservation && !inView) {
       // TODO: Finish
       // if (this.rootMarginBottom) this.reverseAnimations()
       // else this.resetAnimations()
       resetAnimations(entry.target)
     }
   }
-
-  // We've now processed the initial state
-  // TODO: Can this be implmented a different way to prevent re-render
-  if (entry?.target && initialState) setInitialState(false)
 
   // Render wrapping component
   return (
