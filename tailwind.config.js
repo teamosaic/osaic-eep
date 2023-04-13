@@ -106,6 +106,24 @@ module.exports = {
         // Add gutter values
         gutter: fluid(40, 16),
       },
+
+      animation: {
+
+        // Fade up with ease-out-quint
+        'fade-up': 'fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) both',
+      },
+
+      keyframes: {
+
+        // Fade in and slide up
+        'fade-up': {
+          'from': {
+            opacity: 0,
+            transform: 'translateY(0.5em)',
+          }
+        },
+      },
+
     }
   },
   plugins: [require('@tailwindcss/typography')],

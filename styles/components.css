@@ -1,0 +1,13 @@
+@layer components {
+  .prose-fade-up {
+    h1, h2, h3, h4, h5, h6, p {
+      @apply animate-fade-up;
+    }
+    h2 {
+      animation-delay: .1s;
+    }
+    h3, h4, h5, h6, p {
+      animation-delay: .2s;
+    }
+  }
+}
