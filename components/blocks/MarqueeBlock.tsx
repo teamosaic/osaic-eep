@@ -13,19 +13,21 @@ export default function MarqueeBlock({ block }: {
 
     // Container
     <div className={clsx([
-      { 'relative': !!background }, // Constrain background image to this block
-      { 'py-lg': !!background }, // Add padding if there is a background image
+      !!background && 'relative py-lg overflow-hidden'
     ])}>
 
       {/* Background image */}
-      { background && <SanityImage
-        expand
-        priority
-        sizes='100vw'
-        source={ background } /> }
+      { background &&
+        <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
+          <SanityImage
+            expand
+            priority
+            sizes='100vw'
+            source={ background } />
+        </AnimateInView> }
 
       {/* Body text */}
-      <AnimateInView className='prose-fade-up relative'>
+      <AnimateInView className='prose-slide-up-in relative'>
         <BasicPortableText
           value={ body }
           className='max-w-screen-lg mx-auto px-gutter' />

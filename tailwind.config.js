@@ -109,21 +109,34 @@ module.exports = {
 
       animation: {
 
-        // Fade up with ease-out-quint
-        'fade-up': 'fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) both',
+        // Slide up and fade in with ease-out-quint
+        'slide-up-in':
+          'slide-up-in 1s ease-out-quint both',
+
+        // Scale down slowly, like for backgrounds
+        'slow-scale-down-in':
+          'scale-down-in 3s ease-out-quint both',
       },
 
       keyframes: {
 
         // Fade in and slide up
-        'fade-up': {
+        'slide-up-in': {
           'from': {
             opacity: 0,
             transform: 'translateY(0.5em)',
           }
         },
-      },
 
+        // Fade in and scale down
+        'scale-down-in': {
+          'from': {
+            opacity: 0,
+            transform: 'scale(1.1)',
+          },
+        },
+
+      },
     }
   },
   plugins: [require('@tailwindcss/typography')],
