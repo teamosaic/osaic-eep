@@ -2,7 +2,7 @@ import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import SanityImage from '~/packages/sanity-image/SanityImage'
 import clsx from 'clsx'
 import type { MarqueeBlock as BlockType } from '~/types/blocks'
-import InViewTrigger from '~/packages/in-view-trigger/InViewTrigger'
+import AnimateInView from '~/packages/animate-in-view'
 
 export default function MarqueeBlock({ block }: {
   block: BlockType
@@ -12,7 +12,7 @@ export default function MarqueeBlock({ block }: {
   return (
 
     // Container
-    <InViewTrigger animations className={clsx([
+    <div className={clsx([
       { 'relative': !!background }, // Constrain background image to this block
       { 'py-lg': !!background }, // Add padding if there is a background image
     ])}>
@@ -25,13 +25,12 @@ export default function MarqueeBlock({ block }: {
         source={ background } /> }
 
       {/* Body text */}
-      <BasicPortableText
-        value={ body }
-        className='
-          max-w-screen-lg mx-auto px-gutter
-          prose-fade-up
-          relative' />
+      <AnimateInView className='prose-fade-up relative'>
+        <BasicPortableText
+          value={ body }
+          className='max-w-screen-lg mx-auto px-gutter' />
+      </AnimateInView>
 
-    </InViewTrigger>
+    </div>
   )
 }

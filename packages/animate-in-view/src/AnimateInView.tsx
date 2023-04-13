@@ -1,14 +1,14 @@
-import { useInView, type IntersectionOptions } from 'react-intersection-observer'
-import { usePrevious } from './src/utils'
+import { useInView } from 'react-intersection-observer'
+import { resetAnimations, playAnimations } from './animation-control'
+import { usePrevious } from './utils'
+import { AnimateInViewProps } from './types'
 
-export default function InViewTrigger({
-  animations,
-  classes,
+export default function AnimateInView({
   once,
   onChange,
   children,
   className,
-}: InViewTriggerProps): React.ReactElement {
+}: AnimateInViewProps): React.ReactElement {
 
   // Track viewport presence
   const { ref, inView, entry } = useInView({
@@ -22,7 +22,7 @@ export default function InViewTrigger({
   const isInitialObservation = usePrevious(!entry)
 
   // Control animations
-  if (animations && entry?.target) {
+  if (entry?.target) {
 
     // On the initial response, stop any animations that play in elements
     // not in the initial viewport. If they were already in the viewport,
@@ -51,32 +51,4 @@ export default function InViewTrigger({
       { children }
     </div>
   )
-}
-
-function resetAnimations(el) {
-  getAnimations(el).forEach(animation => {
-    animation.pause()
-    animation.currentTime = 0
-  })
-}
-
-function playAnimations(el) {
-  getAnimations(el).forEach(animation => {
-    animation.playbackRate = 1
-    animation.play()
-  })
-}
-
-function getAnimations(el) {
-  // TODO: Support target types
-  return el.getAnimations({ subtree: true })
-}
-
-interface InViewTriggerProps
-extends Pick< IntersectionOptions, 'onChange' > {
-  animations?: boolean
-  classes?: boolean
-  once?: boolean
-  children: React.ReactNode
-  className?: string
 }
