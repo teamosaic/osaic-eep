@@ -1,4 +1,4 @@
-import { blockLayoutFields } from './shared/blockLayout'
+import { blockLayoutFields } from './fragments/blockLayout'
 
 // https://www.sanity.io/docs/previewing-block-content
 function firstBlockText(blocks: any[]) {

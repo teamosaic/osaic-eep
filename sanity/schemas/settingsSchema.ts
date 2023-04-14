@@ -1,5 +1,5 @@
 import { CogIcon } from '@sanity/icons'
-import { metaDescription } from './shared/seo'
+import { metaDescription } from './fragments/seo'
 
 export default {
   name: 'settings',
