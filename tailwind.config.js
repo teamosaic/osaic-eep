@@ -124,7 +124,7 @@ module.exports = {
         'slide-up-in': {
           'from': {
             opacity: 0,
-            transform: 'translateY(0.5em)',
+            transform: 'translateY(min(30px, 1em))',
           }
         },
 
