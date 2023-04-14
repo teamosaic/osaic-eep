@@ -1,9 +1,11 @@
-/* Import tailwind libraries and custom files */
-/* https: //tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import './components.css';
 @import "tailwindcss/utilities";
+
+/* Import tailwind libraries and custom files 👆 */
+/* (comments couldn't come before the imports) */
+/* https: //tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
 
 html,
 body,
