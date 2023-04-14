@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { urlForImage, makeImageLoader } from './lib/url-building'
+import { urlForImage, makeImageLoader } from './lib/urlBuilding'
 import {
   AspectRespectingImageProps,
   ExpandingImageProps,
@@ -12,7 +12,7 @@ import {
   aspectRatioFromSource,
   objectPositionFromSource,
   placeholderFromSource,
-} from './lib/source-mapping'
+} from './lib/sourceMapping'
 
 // Render a Sanity image via Next/Image
 export default function SanityImage({

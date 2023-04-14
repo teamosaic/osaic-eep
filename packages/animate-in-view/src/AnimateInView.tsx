@@ -1,8 +1,8 @@
 import { useInView } from 'react-intersection-observer'
-import { reset, play, reverse } from './animation-control'
+import { reset, play, reverse } from './animationControl'
 import { usePrevious } from './utils'
 import { AnimateInViewProps } from './types'
-import { rootMarginFromWhen } from './root-margin'
+import { rootMarginFromWhen } from './rootMargin'
 import { createElement } from 'react'
 
 export default function AnimateInView({
