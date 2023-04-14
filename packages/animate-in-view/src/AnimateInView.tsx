@@ -52,8 +52,8 @@ export default function AnimateInView({
     else if (!isInitialObservation && inView) play(el, target)
 
     // Play animations in reverse when no longer visible, like as an outro.
-    // If the animations start delayed, reverse them.  Otherwise, we can
-    // just hard reset when they aren't visible
+    // If the animations start delayed by when, reverse them.  Otherwise, we
+    // can just hard reset when they aren't visible.
     else if (!isInitialObservation && !inView) {
       if (rootMargin) reverse(el, target)
       else reset(el, target)

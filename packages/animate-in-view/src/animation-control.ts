@@ -24,7 +24,6 @@ export function reverse(el: Element, target: AnimationTarget): void {
   })
 }
 
-
 // Fetch the animations that we'll be controlling
 function getAnimations(el: Element, target: AnimationTarget): Animation[] {
   switch(target) {

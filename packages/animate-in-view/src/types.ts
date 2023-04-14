@@ -8,7 +8,7 @@ export interface AnimateInViewProps extends SharedIntersectionOptions {
   target?: AnimationTarget
   when?: string | number,
   once?: boolean
-  children: React.ReactNode
+  children: React.ReactNode // Required, unlike react-intersection-observer
   className?: string
 }
 
