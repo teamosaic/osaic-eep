@@ -1,7 +1,7 @@
-import * as blocks from './schemas/blocksSchema'
 import settings from './schemas/settingsSchema'
 import tower from './schemas/towerSchema'
 import article from './schemas/articleSchema'
+import marqueBlockSchema from './schemas/blocks/marqueeBlockSchema'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
 // Define the singleton document types
@@ -18,7 +18,7 @@ export const schema: {
     tower,
     article,
     settings,
-    ...Object.values(blocks),
+    marqueBlockSchema,
   ],
 
   // Filter out singleton types from the global “New document” menu options
