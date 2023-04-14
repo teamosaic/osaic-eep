@@ -2,6 +2,9 @@
 // https://tailwindcss.com/docs/using-with-preprocessors
 module.exports = {
   plugins: {
+    'postcss-import': {},
+    'postcss-easings': {},
+    'tailwindcss/nesting': {},
     tailwindcss: {},
     autoprefixer: {},
   },

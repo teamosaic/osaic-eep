@@ -106,6 +106,37 @@ module.exports = {
         // Add gutter values
         gutter: fluid(40, 16),
       },
+
+      animation: {
+
+        // Slide up and fade in with ease-out-quint
+        'slide-up-in':
+          'slide-up-in 1s ease-out-quint both',
+
+        // Scale down slowly, like for backgrounds
+        'slow-scale-down-in':
+          'scale-down-in 3s ease-out-quint both',
+      },
+
+      keyframes: {
+
+        // Fade in and slide up
+        'slide-up-in': {
+          'from': {
+            opacity: 0,
+            transform: 'translateY(min(30px, 1em))',
+          }
+        },
+
+        // Fade in and scale down
+        'scale-down-in': {
+          'from': {
+            opacity: 0,
+            transform: 'scale(1.1)',
+          },
+        },
+
+      },
     }
   },
   plugins: [require('@tailwindcss/typography')],

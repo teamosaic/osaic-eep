@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import './components.css';
+@import "tailwindcss/utilities";
+
+/* Import tailwind libraries and custom files 👆 */
+/* (comments couldn't come before the imports) */
+/* https: //tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
 
 html,
 body,
@@ -12,3 +17,4 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
 }
+
