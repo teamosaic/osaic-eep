@@ -4,7 +4,7 @@ import type { Image } from 'sanity'
 import type { BlockMarginTop, BlockPadding } from './dimensions'
 import type { BackgroundColor } from './colors'
 
-export type Block = MarqueeBlock
+export type Block = MarqueeBlock | CopyBlock
 
 export interface BlockWithLayout extends SanityObject {
   marginTop: BlockMarginTop,
@@ -18,4 +18,8 @@ export interface MarqueeBlock extends BlockWithLayout {
   background?: Image & {
     title: string
   }
+}
+
+export interface CopyBlock extends BlockWithLayout {
+  body: PortableTextBlock
 }

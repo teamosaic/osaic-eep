@@ -29,7 +29,6 @@ export default function MarqueeBlock({ block }: {
       {/* Body text */}
       <AnimateInView
         target='descendants'
-        when='10%'
         className='prose-slide-up-in relative'>
         <BasicPortableText
           value={ body }

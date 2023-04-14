@@ -1,13 +1,15 @@
 import { blockLayoutFields } from '../fragments/blockLayout'
+import { blockBackgroundFields } from '../fragments/blockBackground'
 import { portableTextSummary } from '~/sanity/lib/blocks'
 
 export default {
-  name: 'marqueeBlock',
+  name: 'copyBlock',
   type: 'object',
-  title: 'Marquee Block',
+  title: 'Copy Block',
   groups: [
     { name: 'content', title: 'Content', default: true, },
     { name: 'layout', title: 'Layout' },
+    { name: 'background', title: 'Background' },
   ],
   fields: [
     {
@@ -16,35 +18,17 @@ export default {
       of: [{type: 'block'}],
       group: 'content',
     },
-    {
-      name: 'background',
-      type: 'image',
-      title: 'Background Image',
-      group: 'content',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'title',
-          type: 'string',
-          description: 'This will be used as the image alt attribute.'
-        }
-      ]
-    },
     ...blockLayoutFields,
-
+    ...blockBackgroundFields,
   ],
   preview: {
     select: {
       body: 'body',
-      background: 'background',
     },
-    prepare({ body, background }) {
+    prepare({ body }) {
       return {
         title: portableTextSummary(body),
-        subtitle: 'Marquee',
-        media: background,
+        subtitle: 'Copy',
       }
     }
   }
