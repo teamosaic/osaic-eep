@@ -32,6 +32,7 @@ export default {
       group: 'content',
       of: [
         { type: 'marqueeBlock' },
+        { type: 'copyBlock' },
       ]
     },
     metaDescription,

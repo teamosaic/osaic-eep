@@ -41,7 +41,7 @@ export const marqueeBlock = {
         }
       ]
     },
-    ...blockLayoutFields
+    ...blockLayoutFields,
 
   ],
   preview: {

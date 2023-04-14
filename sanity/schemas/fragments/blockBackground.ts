@@ -6,7 +6,7 @@ export const blockBackgroundFields = [
   {
     name: 'backgroundColor',
     type: 'string',
-    group: 'layout',
+    group: 'background',
     description: 'The background color of the whole Block.',
     initialValue: BackgroundColor.None,
     options: {
@@ -17,7 +17,7 @@ export const blockBackgroundFields = [
   {
     name: 'paddingTop',
     type: 'string',
-    group: 'layout',
+    group: 'background',
     description: 'This applies space within the Block at it\'s top. The "Matching" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the previous Block.',
     initialValue: BlockPadding.Matching,
     hidden: ({ parent }) => !parent?.backgroundColor
@@ -30,7 +30,7 @@ export const blockBackgroundFields = [
   {
     name: 'paddingBottom',
     type: 'string',
-    group: 'layout',
+    group: 'background',
     description: 'This applies space within the Block at it\'s bottom. The "Matching" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the following Block.',
     initialValue: BlockPadding.Matching,
     hidden: ({ parent }) => !parent?.backgroundColor
