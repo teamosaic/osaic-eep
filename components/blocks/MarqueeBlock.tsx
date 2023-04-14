@@ -27,7 +27,9 @@ export default function MarqueeBlock({ block }: {
         </AnimateInView> }
 
       {/* Body text */}
-      <AnimateInView className='prose-slide-up-in relative'>
+      <AnimateInView
+        target='descendants'
+        className='prose-slide-up-in relative'>
         <BasicPortableText
           value={ body }
           className='max-w-screen-lg mx-auto px-gutter' />

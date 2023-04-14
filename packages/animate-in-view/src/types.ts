@@ -5,7 +5,10 @@ type SharedIntersectionOptions = Pick< PlainChildrenProps,
 >
 
 export interface AnimateInViewProps extends SharedIntersectionOptions {
+  target?: AnimationTarget
   once?: boolean
   children: React.ReactNode
   className?: string
 }
+
+export type AnimationTarget = 'self' | 'children' | 'descendants'

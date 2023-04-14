@@ -6,6 +6,7 @@ import { createElement } from 'react'
 
 export default function AnimateInView({
   as = 'div',
+  target = 'self',
   once,
   onChange,
   children,
@@ -29,12 +30,16 @@ export default function AnimateInView({
     // On the initial response, stop any animations that play in elements
     // not in the initial viewport. If they were already in the viewport,
     // allow them to continue.
-    if (isInitialObservation && !inView) resetAnimations(entry.target)
+    if (isInitialObservation && !inView) {
+      resetAnimations(entry.target, target)
+    }
 
-    // If not the initial state, play animations that enter the viewport.
+    // If not the initial state, play animations upon entering the viewport.
     // We don't run this on the intiial state so we don't touch animations
     // that started out playing, pre-JS.
-    else if (!isInitialObservation && inView) playAnimations(entry.target)
+    else if (!isInitialObservation && inView) {
+      playAnimations(entry.target, target)
+    }
 
     // Play animations in reverse when no longer visible, like as an outro.
     // If the animations start delayed, reverse them.  Otherwise, we can
@@ -43,10 +48,11 @@ export default function AnimateInView({
       // TODO: Finish
       // if (this.rootMarginBottom) this.reverseAnimations()
       // else this.resetAnimations()
-      resetAnimations(entry.target)
+      resetAnimations(entry.target, target)
     }
   }
 
-  // Render wrapping component that defaults to a div
+  // Render wrapping component that defaults to a div and gets the ref that
+  // the IntersectionObserver cares about.
   return createElement(as, { className, ref }, children)
 }
