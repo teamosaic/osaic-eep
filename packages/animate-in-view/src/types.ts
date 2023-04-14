@@ -1,7 +1,10 @@
-import type { IntersectionOptions } from 'react-intersection-observer'
+import type { PlainChildrenProps } from 'react-intersection-observer'
 
-export interface AnimateInViewProps
-extends Pick< IntersectionOptions, 'onChange' > {
+type SharedIntersectionOptions = Pick< PlainChildrenProps,
+  'onChange' | 'as'
+>
+
+export interface AnimateInViewProps extends SharedIntersectionOptions {
   once?: boolean
   children: React.ReactNode
   className?: string

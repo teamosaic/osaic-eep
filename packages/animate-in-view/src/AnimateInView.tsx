@@ -2,8 +2,10 @@ import { useInView } from 'react-intersection-observer'
 import { resetAnimations, playAnimations } from './animation-control'
 import { usePrevious } from './utils'
 import { AnimateInViewProps } from './types'
+import { createElement } from 'react'
 
 export default function AnimateInView({
+  as = 'div',
   once,
   onChange,
   children,
@@ -45,10 +47,6 @@ export default function AnimateInView({
     }
   }
 
-  // Render wrapping component
-  return (
-    <div {...{ className, ref }}>
-      { children }
-    </div>
-  )
+  // Render wrapping component that defaults to a div
+  return createElement(as, { className, ref }, children)
 }
