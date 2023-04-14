@@ -19,13 +19,20 @@ export function renderBlock(
   index: number,
   blocks: Block[],
 ): React.ReactElement {
+
+  // Make the actual block instance. It may not exist if content has been
+  // created for a new schema whose related block component hasn't been
+  // deployed yet.
+  const blockInstance = makeBlockInstance(block)
+  if (!blockInstance) return
+
+  // Wrap the block in standard wrappers
   return (
     <BlockOrderContext.Provider
       key={ block._key}
-      value={ makeBlockOrderValue(index, blocks) }
-    >
+      value={ makeBlockOrderValue(index, blocks) } >
       <BlockLayout block={ block } >
-        { makeBlockInstance(block) }
+        { blockInstance }
       </BlockLayout>
     </BlockOrderContext.Provider>
   )
@@ -41,7 +48,7 @@ function makeBlockOrderValue(index: number, blocks:Block[]): BlockOrder {
 // Return a block depending on the _type
 function makeBlockInstance(block: any): React.ReactElement {
 	const ComponentFunction = getComponentFunction(block._type)
-	if (!ComponentFunction) return <div>Unknown block { block._type }</div>
+	if (!ComponentFunction) return
 	return <ComponentFunction block={ block } />
 }
 
