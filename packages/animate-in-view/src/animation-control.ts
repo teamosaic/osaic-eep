@@ -1,7 +1,7 @@
 import type { AnimationTarget } from './types'
 
 // Reset animations in target to start
-export function resetAnimations(el: Element, target: AnimationTarget): void {
+export function reset(el: Element, target: AnimationTarget): void {
   getAnimations(el, target).forEach(animation => {
     animation.pause()
     animation.currentTime = 0
@@ -9,12 +9,21 @@ export function resetAnimations(el: Element, target: AnimationTarget): void {
 }
 
 // Play animations in target
-export function playAnimations(el: Element, target: AnimationTarget): void {
+export function play(el: Element, target: AnimationTarget): void {
   getAnimations(el, target).forEach(animation => {
     animation.playbackRate = 1
     animation.play()
   })
 }
+
+// Play all css animation inside the container backwards
+export function reverse(el: Element, target: AnimationTarget): void {
+  getAnimations(el, target).forEach(animation => {
+    animation.playbackRate = -1
+    animation.play()
+  })
+}
+
 
 // Fetch the animations that we'll be controlling
 function getAnimations(el: Element, target: AnimationTarget): Animation[] {
