@@ -1,4 +1,4 @@
-import type { Block } from '~/types/blocks'
+import type { Block } from '~/types'
 import { createContext } from 'react'
 
 export interface BlockOrder {

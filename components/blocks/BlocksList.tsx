@@ -1,4 +1,4 @@
-import type { Block } from '~/types/blocks'
+import type { Block } from '~/types'
 import BlockLayout from './BlockLayout'
 import { BlockOrderContext, type BlockOrder } from '~/providers/blockOrder'
 import dynamic from 'next/dynamic'

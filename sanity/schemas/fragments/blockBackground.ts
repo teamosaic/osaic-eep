@@ -1,5 +1,5 @@
-import { BlockPadding } from '~/types/dimensions'
-import { BackgroundColor } from '~/types/colors'
+import { BlockPadding } from '~/types'
+import { BackgroundColor } from '~/types'
 import { createOptionsFromEnum } from '~/sanity/lib/options'
 
 export const blockBackgroundFields = [

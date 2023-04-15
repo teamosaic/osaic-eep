@@ -1,5 +1,5 @@
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
-import type { CopyBlock as BlockType } from '~/types/blocks'
+import type { CopyBlock as BlockType } from '~/types'
 import AnimateInView from '~/packages/animate-in-view'
 
 export default function CopyBlock({ block }: {

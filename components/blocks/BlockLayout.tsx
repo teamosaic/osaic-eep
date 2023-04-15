@@ -1,9 +1,9 @@
-import { BlockMarginTop, BlockPadding } from '~/types/dimensions'
-import { BackgroundColor } from '~/types/colors'
+import { BlockMarginTop, BlockPadding } from '~/types'
+import { BackgroundColor } from '~/types'
 import clsx from 'clsx'
 import { useContext } from 'react'
 import { BlockOrderContext } from '~/providers/blockOrder'
-import type { Block } from '~/types/blocks'
+import type { Block } from '~/types'
 
 // Apply common layout options to block
 export default function BlockLayout({ block, children }):React.ReactElement {
