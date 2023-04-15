@@ -34,7 +34,7 @@ function mapMarginTopToTailwindClass(
 ):string {
 
   // Is the first block, so don't add margin
-  if (!previousBlock) return ''
+  if (!previousBlock) return
 
   // If the previous block has the same background, render using padding so
   // the background is un-interupted between the blocks
@@ -48,17 +48,13 @@ function mapMarginTopToTailwindClass(
     case BlockMarginTop.Large:
       return hasBackground(block) &&
         sameBackground(block, previousBlock) ? 'pt-lg' : 'mt-lg'
-
-    // No gap
-    default: return ''
   }
 }
 
 function mapBackgroundColorToTailwindClass(block: Block): string {
-  if (!('backgroundColor' in block)) return ''
+  if (!('backgroundColor' in block)) return
   switch(block.backgroundColor) {
     case BackgroundColor.Dark: return 'bg-sky-800/10'
-    default: return ''
   }
 }
 
@@ -66,7 +62,7 @@ function mapPaddingTopToTailwindClass(
   block: Block,
   previousBlock: Block,
 ):string {
-  if (!('paddingTop' in block)) return ''
+  if (!('paddingTop' in block)) return
   switch (block.paddingTop) {
 
     // Explict sizes
@@ -78,16 +74,12 @@ function mapPaddingTopToTailwindClass(
     // has a different background than the previous block
     case BlockPadding.Matching:
       if (!hasBackground(block) ||
-        sameBackground(block, previousBlock)) return ''
+        sameBackground(block, previousBlock)) return
       switch (block.marginTop) {
         case BlockMarginTop.Small: return 'pt-sm'
         case BlockMarginTop.Medium: return 'pt-md'
         case BlockMarginTop.Large: return 'pt-lg'
-        default: return ''
       }
-
-    // No padding
-    default: return ''
   }
 }
 
@@ -95,7 +87,7 @@ function mapPaddingBottomToTailwindClass(
   block: Block,
   nextBlock: Block,
 ):string {
-  if (!('paddingBottom' in block)) return ''
+  if (!('paddingBottom' in block)) return
   switch (block.paddingBottom) {
 
     // Explict sizes
@@ -107,16 +99,12 @@ function mapPaddingBottomToTailwindClass(
     // has a different background than the next block
     case BlockPadding.Matching:
       if (!hasBackground(block) ||
-        sameBackground(block, nextBlock)) return ''
+        sameBackground(block, nextBlock)) return
       switch (block.marginTop) {
         case BlockMarginTop.Small: return 'pb-sm'
         case BlockMarginTop.Medium: return 'pb-md'
         case BlockMarginTop.Large: return 'pb-lg'
-        default: return ''
       }
-
-    // No padding
-    default: return ''
   }
 }
 
