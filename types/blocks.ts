@@ -30,5 +30,5 @@ export interface BlockWithBackground extends SanityObject {
 export interface BlockWithLayout extends SanityObject {
   marginTop: BlockMarginTop
   disabled: boolean
-  hideWhen: HideWhen
+  hideWhen: HideWhen[]
 }

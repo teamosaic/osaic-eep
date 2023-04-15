@@ -30,8 +30,8 @@ export const blockLayoutFields = [
     options: {
       list: createOptionsFromEnum(HideWhen, {
         mobile: 'Mobile ( <768px )',
-        tablet: 'Tablet ( >=768px and <=1366px )',
-        desktop: 'Desktop ( >1366px )',
+        tablet: 'Tablet ( >=768px and <=1024px )',
+        desktop: 'Desktop ( >1024px )',
       }),
     },
   },

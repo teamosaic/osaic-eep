@@ -2,7 +2,7 @@ import {
   BlockMarginTop,
   BlockPadding,
   BackgroundColor,
-  BlockWithBackground,
+  HideWhen,
   Block
 } from '~/types'
 import clsx from 'clsx'
@@ -11,9 +11,15 @@ import { BlockOrderContext } from '~/providers/blockOrder'
 
 // Apply common layout options to block
 export default function BlockLayout({ block, children }):React.ReactElement {
+
+  // If the block is disabled, don't render anything
+  if (block.disabled) return
+
+  // Else render wrapper block with clases for common functionality
   const blockOrder = useContext(BlockOrderContext)
   return (
     <div className={clsx([
+      mapHideWhenToTailwindClass(block),
       mapMarginTopToTailwindClass(block, blockOrder.previous),
       mapBackgroundColorToTailwindClass(block),
       mapPaddingTopToTailwindClass(block, blockOrder.previous),
@@ -27,6 +33,16 @@ export default function BlockLayout({ block, children }):React.ReactElement {
 // Map props to tailwind classes. This must return a full class name:
 // https://tailwindcss.com/docs/customizing-spacing
 // https://stackoverflow.com/a/74959709/59160
+
+function mapHideWhenToTailwindClass(block: Block): string[] {
+  return (block.hideWhen || []).map(hideWhen => {
+    switch (hideWhen) {
+      case HideWhen.Mobile: return 'when-mobile:hidden'
+      case HideWhen.Tablet: return 'when-tablet:hidden'
+      case HideWhen.Desktop: return 'when-desktop:hidden'
+    }
+  })
+}
 
 function mapMarginTopToTailwindClass(
   block: Block,

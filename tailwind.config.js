@@ -137,6 +137,14 @@ module.exports = {
         },
 
       },
+
+      screens: {
+
+        // Used with hideWhen layout option
+        'when-mobile': { max: '767px' },
+        'when-tablet': { min: '768px', max: '1024px' },
+        'when-desktop': { min: '1025px' },
+      }
     }
   },
   plugins: [require('@tailwindcss/typography')],
