@@ -1,9 +1,13 @@
-import { BlockMarginTop, BlockPadding } from '~/types'
-import { BackgroundColor } from '~/types'
+import {
+  BlockMarginTop,
+  BlockPadding,
+  BackgroundColor,
+  BlockWithBackground,
+  Block
+} from '~/types'
 import clsx from 'clsx'
 import { useContext } from 'react'
 import { BlockOrderContext } from '~/providers/blockOrder'
-import type { Block } from '~/types'
 
 // Apply common layout options to block
 export default function BlockLayout({ block, children }):React.ReactElement {
@@ -51,6 +55,7 @@ function mapMarginTopToTailwindClass(
 }
 
 function mapBackgroundColorToTailwindClass(block: Block): string {
+  if (!('backgroundColor' in block)) return ''
   switch(block.backgroundColor) {
     case BackgroundColor.Dark: return 'bg-sky-800/10'
     default: return ''
@@ -61,6 +66,7 @@ function mapPaddingTopToTailwindClass(
   block: Block,
   previousBlock: Block,
 ):string {
+  if (!('paddingTop' in block)) return ''
   switch (block.paddingTop) {
 
     // Explict sizes
@@ -89,6 +95,7 @@ function mapPaddingBottomToTailwindClass(
   block: Block,
   nextBlock: Block,
 ):string {
+  if (!('paddingBottom' in block)) return ''
   switch (block.paddingBottom) {
 
     // Explict sizes
@@ -114,11 +121,15 @@ function mapPaddingBottomToTailwindClass(
 }
 
 function hasBackground(block: Block): Boolean {
-  return block?.backgroundColor &&
+  return 'backgroundColor' in block &&
+    block.backgroundColor &&
     block.backgroundColor != BackgroundColor.None
 }
 
 function sameBackground(block1: Block, block2: Block): Boolean {
-  return (block1?.backgroundColor || BackgroundColor.None) ==
-    (block2?.backgroundColor || BackgroundColor.None)
+  const color1 = ('backgroundColor' in block1 && block1?.backgroundColor) ||
+    BackgroundColor.None
+  const color2 = ('backgroundColor' in block2 && block2?.backgroundColor) ||
+    BackgroundColor.None
+  return color1 == color2
 }
