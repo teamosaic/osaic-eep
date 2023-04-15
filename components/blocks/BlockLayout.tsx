@@ -34,6 +34,7 @@ export default function BlockLayout({ block, children }):React.ReactElement {
 // https://tailwindcss.com/docs/customizing-spacing
 // https://stackoverflow.com/a/74959709/59160
 
+// Adds classes that hide the block based on media query constaints
 function mapHideWhenToTailwindClass(block: Block): string[] {
   return (block.hideWhen || []).map(hideWhen => {
     switch (hideWhen) {
@@ -44,6 +45,7 @@ function mapHideWhenToTailwindClass(block: Block): string[] {
   })
 }
 
+// Adds spacing between previous block
 function mapMarginTopToTailwindClass(
   block: Block,
   previousBlock: Block,
@@ -67,6 +69,7 @@ function mapMarginTopToTailwindClass(
   }
 }
 
+// Adds a background color
 function mapBackgroundColorToTailwindClass(block: Block): string {
   if (!('backgroundColor' in block)) return
   switch(block.backgroundColor) {
@@ -74,6 +77,7 @@ function mapBackgroundColorToTailwindClass(block: Block): string {
   }
 }
 
+// Adds padding above a block, like when there is a background color
 function mapPaddingTopToTailwindClass(
   block: Block,
   previousBlock: Block,
@@ -99,6 +103,7 @@ function mapPaddingTopToTailwindClass(
   }
 }
 
+// Adds padding below a block, like when there is a background color
 function mapPaddingBottomToTailwindClass(
   block: Block,
   nextBlock: Block,
@@ -124,16 +129,18 @@ function mapPaddingBottomToTailwindClass(
   }
 }
 
+// Helper to determine if a background was set on a block
 function hasBackground(block: Block): Boolean {
   return 'backgroundColor' in block &&
     block.backgroundColor &&
     block.backgroundColor != BackgroundColor.None
 }
 
+// Compare to blocks to see if they have the same background settings
 function sameBackground(block1: Block, block2: Block): Boolean {
-  const color1 = ('backgroundColor' in block1 && block1?.backgroundColor) ||
+  const color1 = ('backgroundColor' in block1 && block1.backgroundColor) ||
     BackgroundColor.None
-  const color2 = ('backgroundColor' in block2 && block2?.backgroundColor) ||
+  const color2 = ('backgroundColor' in block2 && block2.backgroundColor) ||
     BackgroundColor.None
   return color1 == color2
 }
