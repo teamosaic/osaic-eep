@@ -1,6 +1,7 @@
 import { blockLayoutFields } from '../fragments/blockLayout'
 import { blockBackgroundFields } from '../fragments/blockBackground'
 import { portableTextSummary } from '~/sanity/lib/blocks'
+import { BsCardText } from 'react-icons/bs'
 
 export default {
   name: 'copyBlock',
@@ -24,11 +25,13 @@ export default {
   preview: {
     select: {
       body: 'body',
+      disabled: 'disabled',
     },
-    prepare({ body }) {
+    prepare({ body, disabled }) {
       return {
         title: portableTextSummary(body),
-        subtitle: 'Copy',
+        subtitle: 'Copy' + (disabled ? ' [Disabled]' : ''),
+        media: <BsCardText />
       }
     }
   }

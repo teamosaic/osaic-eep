@@ -33,17 +33,17 @@ export default {
       ]
     },
     ...blockLayoutFields,
-
   ],
   preview: {
     select: {
       body: 'body',
       background: 'background',
+      disabled: 'disabled',
     },
-    prepare({ body, background }) {
+    prepare({ body, background, disabled }) {
       return {
         title: portableTextSummary(body),
-        subtitle: 'Marquee',
+        subtitle: 'Marquee' + (disabled ? ' [Disabled]' : ''),
         media: background,
       }
     }
