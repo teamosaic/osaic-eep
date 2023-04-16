@@ -1,6 +1,7 @@
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
-import type { CopyBlock as BlockType } from '~/types'
+import { type CopyBlock as BlockType, TextAlignment } from '~/types'
 import AnimateInView from '~/packages/animate-in-view'
+import clsx from 'clsx'
 
 export default function CopyBlock({ block }: {
   block: BlockType
@@ -14,8 +15,21 @@ export default function CopyBlock({ block }: {
 
       <BasicPortableText
         value={ block.body }
-        className='max-w-screen-lg mx-auto px-gutter' />
+        className={clsx([
+          'max-w-screen-lg mx-auto px-gutter',
+          mapTextAlignmentToTailwindClass(block.textAlignment),
+        ])} />
 
     </AnimateInView>
   )
+}
+
+function mapTextAlignmentToTailwindClass(
+  textAlignment: TextAlignment
+): string {
+  switch(textAlignment) {
+    case TextAlignment.Left: return 'text-left'
+    case TextAlignment.Center: return 'text-center'
+    case TextAlignment.Right: return 'text-right'
+  }
 }
