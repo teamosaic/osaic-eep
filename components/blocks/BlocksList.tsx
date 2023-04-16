@@ -1,5 +1,5 @@
 import type { Block } from '~/types'
-import BlockLayout from './BlockLayout'
+import BlockParent from './BlockParent'
 import { BlockOrderContext, type BlockOrder } from '~/providers/blockOrder'
 import dynamic from 'next/dynamic'
 
@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 const MarqueeBlock = dynamic(() => import('./MarqueeBlock'))
 const CopyBlock = dynamic(() => import('./CopyBlock'))
 
-// Conditionally render blocks based on type, wrapped in BlockLayout
+// Conditionally render blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks = [] }: {
   blocks: Block[]
 }): React.ReactElement {
@@ -32,9 +32,9 @@ export function renderBlock(
     <BlockOrderContext.Provider
       key={ block._key}
       value={ makeBlockOrderValue(index, blocks) } >
-      <BlockLayout block={ block } >
+      <BlockParent block={ block } >
         { blockInstance }
-      </BlockLayout>
+      </BlockParent>
     </BlockOrderContext.Provider>
   )
 }

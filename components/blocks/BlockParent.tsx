@@ -10,7 +10,7 @@ import { useContext } from 'react'
 import { BlockOrderContext } from '~/providers/blockOrder'
 
 // Apply common layout options to block
-export default function BlockLayout({ block, children }):React.ReactElement {
+export default function BlockParent({ block, children }):React.ReactElement {
 
   // If the block is disabled, don't render anything
   if (block.disabled) return
