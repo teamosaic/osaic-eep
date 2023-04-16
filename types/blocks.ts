@@ -19,7 +19,15 @@ export interface MarqueeBlock extends BlockWithLayout {
 
 export interface CopyBlock extends BlockWithLayout, BlockWithBackground {
   body: PortableTextBlock
+  textAlignment: TextAlignment
 }
+
+export enum TextAlignment {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right',
+}
+
 
 export interface BlockWithBackground extends SanityObject {
   backgroundColor: BackgroundColor
