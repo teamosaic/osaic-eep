@@ -1,13 +1,14 @@
 import {
+  BackgroundColor,
+  Block,
   BlockMarginTop,
   BlockPadding,
-  BackgroundColor,
   HideWhen,
-  Block
 } from '~/types'
 import clsx from 'clsx'
 import { useContext } from 'react'
 import { BlockOrderContext } from '~/providers/blockOrder'
+import { mapOption, mapOptions } from '~/lib/helpers'
 
 // Apply common layout options to block
 export default function BlockParent({ block, children }):React.ReactElement {
@@ -19,11 +20,26 @@ export default function BlockParent({ block, children }):React.ReactElement {
   const blockOrder = useContext(BlockOrderContext)
   return (
     <div className={clsx([
-      mapHideWhenToTailwindClass(block),
+
+      // Hide at different viewports
+      mapOptions(block.hideWhen, {
+        [HideWhen.Mobile]: 'when-mobile:hidden',
+        [HideWhen.Tablet]: 'when-tablet:hidden',
+        [HideWhen.Desktop]: 'when-desktop:hidden',
+      }),
+
+      // Apply margin top between blocks
       mapMarginTopToTailwindClass(block, blockOrder.previous),
-      mapBackgroundColorToTailwindClass(block),
+
+      // Set a background color
+      mapOption(block.backgroundColor, {
+        [BackgroundColor.Dark]: 'bg-sky-800/10',
+      }),
+
+      // Set padding within block, like if there is a background
       mapPaddingTopToTailwindClass(block, blockOrder.previous),
       mapPaddingBottomToTailwindClass(block, blockOrder.next),
+
     ])}>
       { children }
     </div>
@@ -33,17 +49,6 @@ export default function BlockParent({ block, children }):React.ReactElement {
 // Map props to tailwind classes. This must return a full class name:
 // https://tailwindcss.com/docs/customizing-spacing
 // https://stackoverflow.com/a/74959709/59160
-
-// Adds classes that hide the block based on media query constaints
-function mapHideWhenToTailwindClass(block: Block): string[] {
-  return (block.hideWhen || []).map(hideWhen => {
-    switch (hideWhen) {
-      case HideWhen.Mobile: return 'when-mobile:hidden'
-      case HideWhen.Tablet: return 'when-tablet:hidden'
-      case HideWhen.Desktop: return 'when-desktop:hidden'
-    }
-  })
-}
 
 // Adds spacing between previous block
 function mapMarginTopToTailwindClass(
@@ -69,13 +74,6 @@ function mapMarginTopToTailwindClass(
   }
 }
 
-// Adds a background color
-function mapBackgroundColorToTailwindClass(block: Block): string {
-  if (!('backgroundColor' in block)) return
-  switch(block.backgroundColor) {
-    case BackgroundColor.Dark: return 'bg-sky-800/10'
-  }
-}
 
 // Adds padding above a block, like when there is a background color
 function mapPaddingTopToTailwindClass(

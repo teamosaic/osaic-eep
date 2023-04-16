@@ -2,6 +2,7 @@ import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import { type CopyBlock as BlockType, TextAlignment } from '~/types'
 import AnimateInView from '~/packages/animate-in-view'
 import clsx from 'clsx'
+import { mapOption } from '~/lib/helpers'
 
 export default function CopyBlock({ block }: {
   block: BlockType
@@ -17,19 +18,13 @@ export default function CopyBlock({ block }: {
         value={ block.body }
         className={clsx([
           'max-w-screen-lg mx-auto px-gutter',
-          mapTextAlignmentToTailwindClass(block.textAlignment),
+          mapOption(block.textAlignment, {
+            [TextAlignment.Left]: 'text-left',
+            [TextAlignment.Center]: 'text-center',
+            [TextAlignment.Right]: 'text-right',
+          })
         ])} />
 
     </AnimateInView>
   )
-}
-
-function mapTextAlignmentToTailwindClass(
-  textAlignment: TextAlignment
-): string {
-  switch(textAlignment) {
-    case TextAlignment.Left: return 'text-left'
-    case TextAlignment.Center: return 'text-center'
-    case TextAlignment.Right: return 'text-right'
-  }
 }
