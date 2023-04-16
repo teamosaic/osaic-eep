@@ -1,5 +1,5 @@
 import { BlockMarginTop } from '~/types'
-import { createOptionsFromEnum } from '~/sanity/lib/options'
+import { createListOptionsFromEnum } from '~/sanity/lib/options'
 import { HideWhen } from '~/types'
 
 export const blockLayoutFields = [
@@ -10,7 +10,7 @@ export const blockLayoutFields = [
     description: 'The space between this Block and the preceeding Block. This is forced to "None" if this is the first Block in a list.',
     initialValue: BlockMarginTop.Medium,
     options: {
-      list: createOptionsFromEnum(BlockMarginTop),
+      list: createListOptionsFromEnum(BlockMarginTop),
       layout: 'radio'
     },
   },
@@ -28,7 +28,7 @@ export const blockLayoutFields = [
     description: 'Hide the Block when the device viewport is...',
     of: [{ type: 'string' }],
     options: {
-      list: createOptionsFromEnum(HideWhen, {
+      list: createListOptionsFromEnum(HideWhen, {
         mobile: 'Mobile ( <768px )',
         tablet: 'Tablet ( >=768px and <=1024px )',
         desktop: 'Desktop ( >1024px )',

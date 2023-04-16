@@ -2,7 +2,7 @@ import { blockLayoutFields } from '../fragments/blockLayout'
 import { blockBackgroundFields } from '../fragments/blockBackground'
 import { portableTextSummary } from '~/sanity/lib/blocks'
 import { BsCardText } from 'react-icons/bs'
-import { createOptionsFromEnum } from '~/sanity/lib/options'
+import { createListOptionsFromEnum } from '~/sanity/lib/options'
 import { TextAlignment } from '~/types'
 
 export default {
@@ -28,7 +28,7 @@ export default {
       description: 'Applies text alignment to the whole Body text.',
       initialValue: TextAlignment.Center,
       options: {
-        list: createOptionsFromEnum(TextAlignment),
+        list: createListOptionsFromEnum(TextAlignment),
         layout: 'radio',
       },
     },

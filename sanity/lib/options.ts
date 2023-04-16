@@ -1,7 +1,7 @@
 
 // Create a Sanity options array from an enum type, supporting passing in
 // custom title overrides
-export function createOptionsFromEnum(
+export function createListOptionsFromEnum(
   enumObj: object,
   customTitles: object = {}
 ):{ title: string, value: string }[] {

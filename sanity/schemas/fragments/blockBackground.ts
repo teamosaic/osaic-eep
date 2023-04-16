@@ -1,6 +1,6 @@
 import { BlockPadding } from '~/types'
 import { BackgroundColor } from '~/types'
-import { createOptionsFromEnum } from '~/sanity/lib/options'
+import { createListOptionsFromEnum } from '~/sanity/lib/options'
 
 export const blockBackgroundFields = [
   {
@@ -10,7 +10,7 @@ export const blockBackgroundFields = [
     description: 'The background color of the whole Block.',
     initialValue: BackgroundColor.None,
     options: {
-      list: createOptionsFromEnum(BackgroundColor),
+      list: createListOptionsFromEnum(BackgroundColor),
       layout: 'radio'
     },
   },
@@ -23,7 +23,7 @@ export const blockBackgroundFields = [
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {
-      list: createOptionsFromEnum(BlockPadding),
+      list: createListOptionsFromEnum(BlockPadding),
       layout: 'dropdown' // Because it should typically be left as default
     },
   },
@@ -36,7 +36,7 @@ export const blockBackgroundFields = [
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {
-      list: createOptionsFromEnum(BlockPadding),
+      list: createListOptionsFromEnum(BlockPadding),
       layout: 'dropdown' // Because it should typically be left as default
     },
   },
