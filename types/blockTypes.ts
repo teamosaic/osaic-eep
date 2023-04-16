@@ -1,9 +1,10 @@
 import type {
-  SanityObject,
+  BackgroundColor,
   BlockMarginTop,
   BlockPadding,
-  BackgroundColor,
   HideWhen,
+  SanityObject,
+  TextAlignment,
 } from '~/types'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
@@ -21,13 +22,6 @@ export interface CopyBlock extends BlockWithLayout, BlockWithBackground {
   body: PortableTextBlock
   textAlignment: TextAlignment
 }
-
-export enum TextAlignment {
-  Left = 'left',
-  Center = 'center',
-  Right = 'right',
-}
-
 
 export interface BlockWithBackground extends SanityObject {
   backgroundColor: BackgroundColor
