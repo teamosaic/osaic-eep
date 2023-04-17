@@ -1,0 +1,22 @@
+/* Position the exit preview card */
+.previewControls {
+  position: fixed;
+  left: var(--gutter, 10px);
+  bottom: var(--gutter, 10px);
+  z-index: 9999;
+
+  /* Bring in late with a custom ease out back */
+  animation: reveal .7s 2s cubic-bezier(.32, 1.33, .64, 1) both;
+}
+
+/* Slide up from bottom */
+@keyframes reveal {
+  from {
+    transform: translateY(calc(100% + var(--gutter, 10px)))
+  }
+}
+
+/* Apply disabling animatinos rul */
+.disableAnimations :not(.previewControls) {
+  animation: none !important;
+}

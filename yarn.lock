@@ -6026,6 +6026,11 @@ use-hot-module-reload@^1.0.1:
   resolved "https://registry.yarnpkg.com/use-hot-module-reload/-/use-hot-module-reload-1.0.3.tgz#fb2fbc062a99fbc173cec35086048ee7578318dc"
   integrity sha512-Wk/sjFhOF+a6PkovJvDAT3c8yE1DluZsSB3L+gTS8pM4ht2yg/LqBj4YLwnYJSdPnFqGWvu93CMdso8bcKw36A==
 
+use-local-storage-state@^18.3.2:
+  version "18.3.2"
+  resolved "https://registry.yarnpkg.com/use-local-storage-state/-/use-local-storage-state-18.3.2.tgz#807dfca86a7364efde997892812b01fc53993dd2"
+  integrity sha512-JiTuQsJmmKvc0mH0hiSjaTkKFlwtwXTeOlJ+cdg7rRJzZWwv+s/Rr2S2r2NR68O0W5ogwwt1MX1y+P2wQ1lY4w==
+
 use-sidecar@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/use-sidecar/-/use-sidecar-1.1.2.tgz#2f43126ba2d7d7e117aa5855e5d8f0276dfe73c2"
