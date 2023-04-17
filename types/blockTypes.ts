@@ -1,6 +1,6 @@
 import type {
   BackgroundColor,
-  BlockMarginTop,
+  BlockSpacing,
   BlockPadding,
   HideWhen,
   SanityObject,
@@ -30,7 +30,7 @@ export interface BlockWithBackground extends SanityObject {
 }
 
 export interface BlockWithLayout extends SanityObject {
-  marginTop: BlockMarginTop
+  blockSpacing: BlockSpacing
   disabled: boolean
   hideWhen: HideWhen[]
 }

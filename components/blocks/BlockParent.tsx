@@ -1,7 +1,7 @@
 import {
   BackgroundColor,
   Block,
-  BlockMarginTop,
+  BlockSpacing,
   BlockPadding,
   HideWhen,
 } from '~/types'
@@ -29,7 +29,7 @@ export default function BlockParent({ block, children }):React.ReactElement {
       }),
 
       // Apply margin top between blocks
-      mapMarginTopToTailwindClass(block, blockOrder.previous),
+      mapBlockSpacingToTailwindClass(block, blockOrder.previous),
 
       // Set a background color
       mapOption(block.backgroundColor, {
@@ -51,7 +51,7 @@ export default function BlockParent({ block, children }):React.ReactElement {
 // https://stackoverflow.com/a/74959709/59160
 
 // Adds spacing between previous block
-function mapMarginTopToTailwindClass(
+function mapBlockSpacingToTailwindClass(
   block: Block,
   previousBlock: Block,
 ):string {
@@ -61,14 +61,14 @@ function mapMarginTopToTailwindClass(
 
   // If the previous block has the same background, render using padding so
   // the background is un-interupted between the blocks
-  switch (block.marginTop) {
-    case BlockMarginTop.Small:
+  switch (block.blockSpacing) {
+    case BlockSpacing.Small:
       return hasBackground(block) &&
         sameBackground(block, previousBlock) ? 'pt-sm' : 'mt-sm'
-    case BlockMarginTop.Medium:
+    case BlockSpacing.Medium:
       return hasBackground(block) &&
         sameBackground(block, previousBlock) ? 'pt-md' : 'mt-md'
-    case BlockMarginTop.Large:
+    case BlockSpacing.Large:
       return hasBackground(block) &&
         sameBackground(block, previousBlock) ? 'pt-lg' : 'mt-lg'
   }
@@ -93,10 +93,10 @@ function mapPaddingTopToTailwindClass(
     case BlockPadding.Matching:
       if (!hasBackground(block) ||
         sameBackground(block, previousBlock)) return
-      switch (block.marginTop) {
-        case BlockMarginTop.Small: return 'pt-sm'
-        case BlockMarginTop.Medium: return 'pt-md'
-        case BlockMarginTop.Large: return 'pt-lg'
+      switch (block.blockSpacing) {
+        case BlockSpacing.Small: return 'pt-sm'
+        case BlockSpacing.Medium: return 'pt-md'
+        case BlockSpacing.Large: return 'pt-lg'
       }
   }
 }
@@ -119,10 +119,10 @@ function mapPaddingBottomToTailwindClass(
     case BlockPadding.Matching:
       if (!hasBackground(block) ||
         sameBackground(block, nextBlock)) return
-      switch (block.marginTop) {
-        case BlockMarginTop.Small: return 'pb-sm'
-        case BlockMarginTop.Medium: return 'pb-md'
-        case BlockMarginTop.Large: return 'pb-lg'
+      switch (block.blockSpacing) {
+        case BlockSpacing.Small: return 'pb-sm'
+        case BlockSpacing.Medium: return 'pb-md'
+        case BlockSpacing.Large: return 'pb-lg'
       }
   }
 }

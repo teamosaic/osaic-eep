@@ -1,16 +1,17 @@
-import { BlockMarginTop } from '~/types'
+import { BlockSpacing } from '~/types'
 import { createListOptionsFromEnum } from '~/sanity/lib/options'
 import { HideWhen } from '~/types'
 
 export const blockLayoutFields = [
   {
-    name: 'marginTop',
+    name: 'blockSpacing',
+    title: 'Spacing',
     type: 'string',
     group: 'layout',
     description: 'The space between this Block and the preceeding Block. This is forced to "None" if this is the first Block in a list.',
-    initialValue: BlockMarginTop.Medium,
+    initialValue: BlockSpacing.Medium,
     options: {
-      list: createListOptionsFromEnum(BlockMarginTop),
+      list: createListOptionsFromEnum(BlockSpacing),
       layout: 'radio'
     },
   },

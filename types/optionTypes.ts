@@ -11,7 +11,7 @@ export enum TextAlignment {
   Right = 'right',
 }
 
-export enum BlockMarginTop {
+export enum BlockSpacing {
   None = 'none',
   Small = 'small',
   Medium = 'medium',
