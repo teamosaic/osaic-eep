@@ -12,12 +12,12 @@ import { mapOption, mapOptions } from '~/lib/helpers'
 
 // Apply common layout options to block
 export default function BlockParent({ block, children }):React.ReactElement {
+  const blockOrder = useContext(BlockOrderContext)
 
   // If the block is disabled, don't render anything
   if (block.disabled) return
 
   // Else render wrapper block with clases for common functionality
-  const blockOrder = useContext(BlockOrderContext)
   return (
     <div className={clsx([
 
