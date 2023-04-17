@@ -1,4 +1,4 @@
-import { Flex, Switch } from '@sanity/ui'
+import { Box, Flex, Switch } from '@sanity/ui'
 import styles from './previewControls.module.css'
 import useLocalStorageState from 'use-local-storage-state'
 import { useEffect } from 'react'
@@ -24,7 +24,7 @@ export default function DisableAnimations(): React.ReactElement {
 
   return (
     <Flex align='center' justify='space-between'>
-      Animations
+      <Box marginRight={ 2 }>Animations</Box>
       <Switch
         checked={ allowAnimations }
         onChange={ toggleAnimations } />
