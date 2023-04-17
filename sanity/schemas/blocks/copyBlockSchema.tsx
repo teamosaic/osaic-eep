@@ -1,6 +1,6 @@
 import { blockLayoutFields } from '../fragments/blockLayout'
 import { blockBackgroundFields } from '../fragments/blockBackground'
-import { makeBlockPreview } from '~/sanity/lib/blocks'
+import { makeBlockPreview, contentGroup } from '~/sanity/lib/blocks'
 import { BsCardText } from 'react-icons/bs'
 import { createListOptionsFromEnum } from '~/sanity/lib/options'
 import { TextAlignment } from '~/types'
@@ -15,23 +15,23 @@ export default {
     { name: 'background', title: 'Background' },
   ],
   fields: [
-    {
-      name: 'body',
-      type: 'array',
-      of: [{type: 'block'}],
-      group: 'content',
-    },
-    {
-      name: 'textAlignment',
-      type: 'string',
-      group: 'content',
-      description: 'Applies text alignment to the whole Body text.',
-      initialValue: TextAlignment.Center,
-      options: {
-        list: createListOptionsFromEnum(TextAlignment),
-        layout: 'radio',
+    ...contentGroup([
+      {
+        name: 'body',
+        type: 'array',
+        of: [{type: 'block'}],
       },
-    },
+      {
+        name: 'textAlignment',
+        type: 'string',
+        description: 'Applies text alignment to the whole Body text.',
+        initialValue: TextAlignment.Center,
+        options: {
+          list: createListOptionsFromEnum(TextAlignment),
+          layout: 'radio',
+        },
+      },
+    ]),
     ...blockLayoutFields,
     ...blockBackgroundFields,
   ],

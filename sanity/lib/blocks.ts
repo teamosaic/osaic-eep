@@ -1,4 +1,23 @@
 
+// Set all the fields to the "content" group
+export function contentGroup(fields: object[]): object[] {
+  return setGroup('content', fields)
+}
+
+// Set a common "group" value to all fields
+export function setGroup(groupName: string, fields: object[]): object[] {
+  return fields.map(field => {
+    let groupValue: string[] | string;
+    if ('group' in field) {
+      if (Array.isArray(field.group)) groupValue = [...field.group, groupName]
+      else groupValue = [field.group as string, groupName]
+    } else {
+      groupValue = groupName
+    }
+    return { group: groupValue, ...field }
+  })
+}
+
 // This gets the first block of text from a portableText array
 // https://www.sanity.io/docs/previewing-block-content
 export function portableTextSummary(blocks: any[]): string {

@@ -1,13 +1,13 @@
 import { BlockSpacing } from '~/types'
 import { createListOptionsFromEnum } from '~/sanity/lib/options'
 import { HideWhen } from '~/types'
+import { setGroup } from '~/sanity/lib/blocks'
 
-export const blockLayoutFields = [
+export const blockLayoutFields = setGroup('layout', [
   {
     name: 'blockSpacing',
     title: 'Spacing',
     type: 'string',
-    group: 'layout',
     description: 'The space between this Block and the preceeding Block. This is forced to "None" if this is the first Block in a list.',
     initialValue: BlockSpacing.Medium,
     options: {
@@ -18,14 +18,12 @@ export const blockLayoutFields = [
   {
     name: 'disabled',
     type: 'boolean',
-    group: 'layout',
     description: 'Disabing prevents this Block from rendering without your having to delete it.',
     initialValue: false,
   },
   {
     name: 'hideWhen',
     type: 'array',
-    group: 'layout',
     description: 'Hide the Block when the device viewport is...',
     of: [{ type: 'string' }],
     options: {
@@ -36,4 +34,4 @@ export const blockLayoutFields = [
       }),
     },
   },
-]
+])

@@ -1,5 +1,5 @@
 import { blockLayoutFields } from '../fragments/blockLayout'
-import { makeBlockPreview } from '~/sanity/lib/blocks'
+import { makeBlockPreview, contentGroup } from '~/sanity/lib/blocks'
 
 export default {
   name: 'marqueeBlock',
@@ -10,28 +10,28 @@ export default {
     { name: 'layout', title: 'Layout' },
   ],
   fields: [
-    {
-      name: 'body',
-      type: 'array',
-      of: [{type: 'block'}],
-      group: 'content',
-    },
-    {
-      name: 'background',
-      type: 'image',
-      title: 'Background Image',
-      group: 'content',
-      options: {
-        hotspot: true,
+    ...contentGroup([
+      {
+        name: 'body',
+        type: 'array',
+        of: [{type: 'block'}],
       },
-      fields: [
-        {
-          name: 'title',
-          type: 'string',
-          description: 'This will be used as the image alt attribute.'
-        }
-      ]
-    },
+      {
+        name: 'background',
+        type: 'image',
+        title: 'Background Image',
+        options: {
+          hotspot: true,
+        },
+        fields: [
+          {
+            name: 'title',
+            type: 'string',
+            description: 'This will be used as the image alt attribute.'
+          }
+        ]
+      },
+    ]),
     ...blockLayoutFields,
   ],
 
