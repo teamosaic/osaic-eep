@@ -22,7 +22,7 @@ export default function PreviewControls(): React.ReactElement {
         padding={ 2 }
         display='inline-block'
         scheme={ prefersDark ? 'dark' : 'light'}
-        className={ styles.exitPreview }>
+        className={ styles.previewControls }>
 
         <Stack space={ 2 }>
           <ExitPreview/>
