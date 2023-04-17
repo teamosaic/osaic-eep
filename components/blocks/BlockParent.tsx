@@ -66,6 +66,7 @@ function mapBlockSpacingToTailwindClass(
       return hasBackground(block) &&
         sameBackground(block, previousBlock) ? 'pt-sm' : 'mt-sm'
     case BlockSpacing.Medium:
+    case undefined:
       return hasBackground(block) &&
         sameBackground(block, previousBlock) ? 'pt-md' : 'mt-md'
     case BlockSpacing.Large:
@@ -95,7 +96,8 @@ function mapPaddingTopToTailwindClass(
         sameBackground(block, previousBlock)) return
       switch (block.blockSpacing) {
         case BlockSpacing.Small: return 'pt-sm'
-        case BlockSpacing.Medium: return 'pt-md'
+        case BlockSpacing.Medium:
+        case undefined: return 'pt-md'
         case BlockSpacing.Large: return 'pt-lg'
       }
   }
@@ -121,7 +123,8 @@ function mapPaddingBottomToTailwindClass(
         sameBackground(block, nextBlock)) return
       switch (block.blockSpacing) {
         case BlockSpacing.Small: return 'pb-sm'
-        case BlockSpacing.Medium: return 'pb-md'
+        case BlockSpacing.Medium:
+        case undefined: return 'pb-md'
         case BlockSpacing.Large: return 'pb-lg'
       }
   }
