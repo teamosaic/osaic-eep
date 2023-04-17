@@ -1,5 +1,5 @@
 import { blockLayoutFields } from '../fragments/blockLayout'
-import { portableTextSummary } from '~/sanity/lib/blocks'
+import { makeBlockPreview } from '~/sanity/lib/blocks'
 
 export default {
   name: 'marqueeBlock',
@@ -34,18 +34,11 @@ export default {
     },
     ...blockLayoutFields,
   ],
-  preview: {
-    select: {
-      body: 'body',
-      background: 'background',
-      disabled: 'disabled',
-    },
-    prepare({ body, background, disabled }) {
-      return {
-        title: portableTextSummary(body),
-        subtitle: 'Marquee' + (disabled ? ' [Disabled]' : ''),
-        media: background,
-      }
-    }
-  }
+
+  preview: makeBlockPreview({
+    blockName: 'Marquee',
+    titleField: 'body',
+    imageField: 'background',
+  }),
+
 }
