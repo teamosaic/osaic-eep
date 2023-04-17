@@ -30,3 +30,8 @@ export enum BackgroundColor {
   None = 'none',
   Dark = 'dark',
 }
+
+export enum CopyThemes {
+  Basic = 'basic',
+  Article = 'article',
+}
