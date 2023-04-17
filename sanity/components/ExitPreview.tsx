@@ -10,7 +10,7 @@ import {
 } from '@sanity/ui'
 import styles from './sanityComponents.module.css'
 import { LeaveIcon } from '@sanity/icons'
-import { useState } from 'react'
+import useLocalStorageState from 'use-local-storage-state'
 
 // Render the exit preview UI
 export default function ExitPreview() {
@@ -19,7 +19,11 @@ export default function ExitPreview() {
   const prefersDark = usePrefersDark()
 
   // Track the state of the animation toggle
-  const [allowAnimations, setAllowAnimations] = useState(true)
+  const [allowAnimations, setAllowAnimations] = useLocalStorageState(
+    'exit-preview:allow-animations', { defaultValue: true })
+
+  // Handle goggling the animation state
+  const toggleAnimations = () => setAllowAnimations(!allowAnimations)
 
   // Control global animations state
   if (allowAnimations) {
@@ -27,9 +31,6 @@ export default function ExitPreview() {
   } else {
     document.body.classList.add(styles.disableAnimations)
   }
-
-  // Handle goggling the animation state
-  const toggleAnimations = () => setAllowAnimations(!allowAnimations)
 
   return (
     <ThemeProvider theme={studioTheme}>
