@@ -7,6 +7,11 @@
 /* (comments couldn't come before the imports) */
 /* https: //tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
 
+/* Expose Tailwind config values */
+:root {
+  --gutter: theme(spacing.gutter);
+}
+
 html,
 body,
 #__next {

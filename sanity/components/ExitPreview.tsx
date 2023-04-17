@@ -2,22 +2,33 @@ import {
   Button,
   Card,
   Flex,
-  Inline,
   Stack,
   Switch,
   ThemeProvider,
   studioTheme,
   usePrefersDark,
 } from '@sanity/ui'
+import styles from './sanityComponents.module.css'
 import { LeaveIcon } from '@sanity/icons'
 import { useState } from 'react'
 
 // Render the exit preview UI
 export default function ExitPreview() {
+
+  // Read the user's dark settings
   const prefersDark = usePrefersDark()
 
+  // Track the state of the animation toggle
   const [allowAnimations, setAllowAnimations] = useState(true)
 
+  // Control global animations state
+  if (allowAnimations) {
+    document.body.classList.remove(styles.disableAnimations)
+  } else {
+    document.body.classList.add(styles.disableAnimations)
+  }
+
+  // Handle goggling the animation state
   const toggleAnimations = () => setAllowAnimations(!allowAnimations)
 
   return (
@@ -27,7 +38,7 @@ export default function ExitPreview() {
         padding={ 2 }
         display='inline-block'
         scheme={ prefersDark ? 'dark' : 'light'}
-        className='fixed bottom-gutter left-gutter'>
+        className={ styles.exitPreview }>
         <Stack space={ 2 }>
 
           <Button
@@ -39,7 +50,7 @@ export default function ExitPreview() {
             Animations
             <Switch
               checked={ allowAnimations }
-              onClick={ toggleAnimations } />
+              onChange={ toggleAnimations } />
           </Flex>
 
         </Stack>

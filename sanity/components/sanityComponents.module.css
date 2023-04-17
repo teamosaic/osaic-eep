@@ -1,0 +1,12 @@
+/* Position the exit preview card */
+.exitPreview {
+  position: fixed;
+  left: var(--gutter, 10px);
+  bottom: var(--gutter, 10px);
+  z-index: 9999;
+}
+
+/* Apply disabling animatinos rul */
+.disableAnimations * {
+  animation: none !important;
+}
