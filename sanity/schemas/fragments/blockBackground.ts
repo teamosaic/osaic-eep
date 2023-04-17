@@ -1,65 +1,41 @@
-import { BlockMarginTop, BlockPadding } from '~/types/dimensions'
-import { BackgroundColor } from '~/types/colors'
+import { BlockPadding } from '~/types'
+import { BackgroundColor } from '~/types'
+import { createListOptionsFromEnum } from '~/sanity/lib/options'
+import { setGroup } from '~/sanity/lib/blocks'
 
-// Create a Sanity options array from an enum type, supporting passing in
-// custom title overrides
-function createOptionsFromEnum(
-  enumObj: object,
-  customTitles: object = {}
-):{ title: string, value: string }[] {
-  return Object.entries(enumObj).map(([ title, value ]) => ({
-    title: customTitles[value] || title,
-    value
-  }))
-}
-
-export const blockLayoutFields = [
-  {
-    name: 'marginTop',
-    type: 'string',
-    group: 'layout',
-    description: 'The space between this Block and the preceeding Block. This is forced to "None" if this is the first Block in a list.',
-    initialValue: BlockMarginTop.Medium,
-    options: {
-      list: createOptionsFromEnum(BlockMarginTop),
-      layout: 'radio'
-    },
-  },
+export const blockBackgroundFields = setGroup('background', [
   {
     name: 'backgroundColor',
     type: 'string',
-    group: 'layout',
     description: 'The background color of the whole Block.',
     initialValue: BackgroundColor.None,
     options: {
-      list: createOptionsFromEnum(BackgroundColor),
+      list: createListOptionsFromEnum(BackgroundColor),
       layout: 'radio'
     },
   },
   {
     name: 'paddingTop',
     type: 'string',
-    group: 'layout',
     description: 'This applies space within the Block at it\'s top. The "Matching" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the previous Block.',
     initialValue: BlockPadding.Matching,
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {
-      list: createOptionsFromEnum(BlockPadding),
+      list: createListOptionsFromEnum(BlockPadding),
       layout: 'dropdown' // Because it should typically be left as default
     },
   },
   {
     name: 'paddingBottom',
     type: 'string',
-    group: 'layout',
     description: 'This applies space within the Block at it\'s bottom. The "Matching" option makes the padding equal to the value of the "Margin Top" when this "Background Color" is different than the following Block.',
     initialValue: BlockPadding.Matching,
     hidden: ({ parent }) => !parent?.backgroundColor
       || parent.backgroundColor == BackgroundColor.None,
     options: {
-      list: createOptionsFromEnum(BlockPadding),
+      list: createListOptionsFromEnum(BlockPadding),
       layout: 'dropdown' // Because it should typically be left as default
     },
   },
-]
+])

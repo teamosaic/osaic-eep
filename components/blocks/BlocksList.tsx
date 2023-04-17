@@ -1,16 +1,17 @@
-import type { Block } from '~/types/blocks'
-import BlockLayout from './BlockLayout'
+import type { Block } from '~/types'
+import BlockParent from './BlockParent'
 import { BlockOrderContext, type BlockOrder } from '~/providers/blockOrder'
 import dynamic from 'next/dynamic'
 
 // Import blocks on demand
 const MarqueeBlock = dynamic(() => import('./MarqueeBlock'))
+const CopyBlock = dynamic(() => import('./CopyBlock'))
 
-// Conditionally render blocks based on type, wrapped in BlockLayout
+// Conditionally render blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks = [] }: {
   blocks: Block[]
 }): React.ReactElement {
-	return <>{ blocks.map(renderBlock)}</>
+  return <>{ blocks.map(renderBlock)}</>
 }
 
 // Render a block with wrapping components/context
@@ -31,9 +32,9 @@ export function renderBlock(
     <BlockOrderContext.Provider
       key={ block._key}
       value={ makeBlockOrderValue(index, blocks) } >
-      <BlockLayout block={ block } >
+      <BlockParent block={ block } >
         { blockInstance }
-      </BlockLayout>
+      </BlockParent>
     </BlockOrderContext.Provider>
   )
 }
@@ -54,7 +55,8 @@ function makeBlockInstance(block: any): React.ReactElement {
 
 // Return the component class based on the type
 function getComponentFunction(type: string): Function {
-	switch(type) {
-		case 'marqueeBlock': return MarqueeBlock
-	}
+  switch(type) {
+    case 'marqueeBlock': return MarqueeBlock
+    case 'copyBlock': return CopyBlock
+  }
 }

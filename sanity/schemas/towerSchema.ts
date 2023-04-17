@@ -1,5 +1,5 @@
 import { BsBuilding } from 'react-icons/bs'
-import { metaDescription } from './shared/seo'
+import { metaDescription } from './fragments/seo'
 import { uriField } from '../lib/uri'
 
 export default {
@@ -32,6 +32,7 @@ export default {
       group: 'content',
       of: [
         { type: 'marqueeBlock' },
+        { type: 'copyBlock' },
       ]
     },
     metaDescription,

@@ -1,5 +1,5 @@
 import { BsNewspaper } from 'react-icons/bs'
-import { metaDescription } from './shared/seo'
+import { metaDescription } from './fragments/seo'
 import { uriField } from '../lib/uri'
 import moment from 'moment'
 

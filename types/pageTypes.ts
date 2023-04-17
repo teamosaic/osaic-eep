@@ -1,4 +1,4 @@
-import type { SanityObject } from './sanity'
+import type { SanityObject } from './sanityTypes'
 
 // The Sanity schema type names that generate pages
 export enum PageType {

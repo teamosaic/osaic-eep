@@ -1,7 +1,7 @@
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import SanityImage from '~/packages/sanity-image/SanityImage'
 import clsx from 'clsx'
-import type { MarqueeBlock as BlockType } from '~/types/blocks'
+import type { MarqueeBlock as BlockType } from '~/types'
 import AnimateInView from '~/packages/animate-in-view'
 
 export default function MarqueeBlock({ block }: {
@@ -29,7 +29,6 @@ export default function MarqueeBlock({ block }: {
       {/* Body text */}
       <AnimateInView
         target='descendants'
-        when='10%'
         className='prose-slide-up-in relative'>
         <BasicPortableText
           value={ body }
