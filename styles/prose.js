@@ -1,5 +1,4 @@
 import { fluid, inheritProseColor } from '../packages/style-utils'
-import merge from 'lodash/merge'
 
 // Base prose / typography styles
 export const base = {

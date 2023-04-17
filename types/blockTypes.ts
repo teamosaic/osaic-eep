@@ -5,6 +5,7 @@ import type {
   HideWhen,
   SanityObject,
   TextAlignment,
+  TypographyThemes,
 } from '~/types'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
@@ -21,6 +22,7 @@ export interface MarqueeBlock extends BlockWithLayout {
 export interface CopyBlock extends BlockWithLayout, BlockWithBackground {
   body: PortableTextBlock
   textAlignment: TextAlignment
+  typographyTheme: TypographyThemes
 }
 
 export interface BlockWithBackground extends SanityObject {

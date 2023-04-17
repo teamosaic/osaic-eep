@@ -31,7 +31,7 @@ export enum BackgroundColor {
   Dark = 'dark',
 }
 
-export enum CopyThemes {
-  Basic = 'basic',
+export enum TypographyThemes {
+  Default = 'default',
   Article = 'article',
 }

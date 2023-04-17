@@ -1,5 +1,9 @@
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
-import { type CopyBlock as BlockType, TextAlignment } from '~/types'
+import {
+  type CopyBlock as BlockType,
+  TextAlignment,
+  TypographyThemes,
+} from '~/types'
 import AnimateInView from '~/packages/animate-in-view'
 import clsx from 'clsx'
 import { mapOption } from '~/lib/helpers'
@@ -22,7 +26,10 @@ export default function CopyBlock({ block }: {
             [TextAlignment.Left]: 'text-left',
             [TextAlignment.Center]: 'text-center',
             [TextAlignment.Right]: 'text-right',
-          })
+          }),
+          mapOption(block.typographyTheme, {
+            [TypographyThemes.Article]: 'prose-article',
+          }),
         ])} />
 
     </AnimateInView>

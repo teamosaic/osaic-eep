@@ -21,7 +21,7 @@ module.exports = {
 
       // Make a custom themes for BasicPortableText
       typography: {
-        basic: { css: base, },
+        default: { css: base, },
         article: { css: article, },
       },
 
