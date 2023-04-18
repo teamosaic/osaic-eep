@@ -19,6 +19,13 @@ export default function DisableAnimations(): React.ReactElement {
       document.body.classList.remove(styles.disableAnimations)
     } else {
       document.body.classList.add(styles.disableAnimations)
+
+      // Stop any animations in flight and remove them. Without this,
+      // el.getAnimations() would continue to return animations, even if they
+      // were `animation: none !important`
+      document.getAnimations().forEach((animation: Animation) => {
+        animation.cancel()
+      })
     }
   }, [ allowAnimations ])
 
