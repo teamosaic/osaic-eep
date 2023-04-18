@@ -13,7 +13,7 @@ export default function ExitPreview(): React.ReactElement {
   // Detect if running in an iframe
   useEffect(() => {
     setIframed(window !== window.parent)
-  })
+  }, [])
 
   // Don't render if we don't know if iframed or if we are iframed. If running
   // in the preview iframe, there is no need to leave preview

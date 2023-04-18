@@ -10,7 +10,7 @@ export default function DisableAnimations(): React.ReactElement {
   const [allowAnimations, setAllowAnimations] = useLocalStorageState(
     'exit-preview:allow-animations', { defaultValue: true })
 
-  // Handle goggling the animation state
+  // Handle toggling the animation state
   const toggleAnimations = () => setAllowAnimations(!allowAnimations)
 
   // Control global animations state
@@ -20,7 +20,7 @@ export default function DisableAnimations(): React.ReactElement {
     } else {
       document.body.classList.add(styles.disableAnimations)
     }
-  })
+  }, [ allowAnimations ])
 
   return (
     <Flex align='center' justify='space-between'>
