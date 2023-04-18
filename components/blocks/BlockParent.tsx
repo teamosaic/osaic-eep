@@ -3,6 +3,7 @@ import {
   Block,
   BlockSpacing,
   BlockPadding,
+  BlockWithBackground,
   HideWhen,
 } from '~/types'
 import clsx from 'clsx'
@@ -132,16 +133,20 @@ function mapPaddingBottomToTailwindClass(
 
 // Helper to determine if a background was set on a block
 function hasBackground(block: Block): Boolean {
-  return 'backgroundColor' in block &&
+  return block &&
+    'backgroundColor' in block &&
     block.backgroundColor &&
     block.backgroundColor != BackgroundColor.None
 }
 
+// Get the background of a block in Typescript friendly way
+function getBackground(block: Block): BackgroundColor {
+  return hasBackground(block) ?
+    (block as BlockWithBackground).backgroundColor :
+    BackgroundColor.None
+}
+
 // Compare to blocks to see if they have the same background settings
 function sameBackground(block1: Block, block2: Block): Boolean {
-  const color1 = ('backgroundColor' in block1 && block1.backgroundColor) ||
-    BackgroundColor.None
-  const color2 = ('backgroundColor' in block2 && block2.backgroundColor) ||
-    BackgroundColor.None
-  return color1 == color2
+  return getBackground(block1) == getBackground(block2)
 }
