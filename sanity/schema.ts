@@ -4,6 +4,7 @@ import article from './schemas/articleSchema'
 import marqueeBlock from './schemas/blocks/marqueeBlockSchema'
 import copyBlock from './schemas/blocks/copyBlockSchema'
 import simpleCenteredWithBackgroundImageHeroBlock from './schemas/blocks/heroes/simpleCenteredWithBackgroundImageSchema'
+import buttons from './schemas/fragments/buttonsFragment'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
 // Define the singleton document types
@@ -17,14 +18,21 @@ export const schema: {
 
   // The array of all types
   types: [
+
+    // Documents
     tower,
     article,
     settings,
+
+    // Legacy blocks
     marqueeBlock,
     copyBlock,
 
     // Heroes
     simpleCenteredWithBackgroundImageHeroBlock,
+
+    // Misc Objects
+    ...buttons,
   ],
 
   // Filter out singleton types from the global “New document” menu options

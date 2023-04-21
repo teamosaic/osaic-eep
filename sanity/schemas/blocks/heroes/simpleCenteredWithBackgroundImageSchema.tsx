@@ -14,7 +14,10 @@ export default {
       {
         name: 'body',
         type: 'array',
-        of: [{type: 'block'}],
+        of: [
+          { type: 'block' },
+          { type: 'buttonsList' },
+        ],
       },
       {
         name: 'background',
