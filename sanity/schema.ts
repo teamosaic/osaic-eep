@@ -3,7 +3,7 @@ import tower from './schemas/towerSchema'
 import article from './schemas/articleSchema'
 import marqueeBlock from './schemas/blocks/marqueeBlockSchema'
 import copyBlock from './schemas/blocks/copyBlockSchema'
-import simpleCenteredWithBackgroundImageHeroBlock from './schemas/blocks/heroes/simpleCenteredWithBackgroundImageSchema'
+import heroBlock from './schemas/blocks/heroBlockSchema'
 import buttons from './schemas/fragments/buttonsFragment'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
@@ -29,7 +29,7 @@ export const schema: {
     copyBlock,
 
     // Heroes
-    simpleCenteredWithBackgroundImageHeroBlock,
+    heroBlock,
 
     // Misc Objects
     ...buttons,

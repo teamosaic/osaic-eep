@@ -33,7 +33,7 @@ export default {
       of: [
         { type: 'marqueeBlock' },
         { type: 'copyBlock' },
-        { type: 'simpleCenteredWithBackgroundImageHeroBlock' },
+        { type: 'heroBlock' },
       ]
     },
     metaDescription,
@@ -46,7 +46,7 @@ export default {
     prepare({ title, uri }) {
       return {
         title,
-        subtitle: uri.current
+        subtitle: uri.current,
       }
     }
   }

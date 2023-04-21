@@ -1,10 +1,10 @@
-import { blockLayoutFields } from '../../fragments/blockLayout'
-import { makeBlockPreview, contentGroup } from '~/sanity/lib/blocks'
+import { blockLayoutFields } from '../fragments/blockLayout'
+import { makeBlockPreview, contentGroup } from '~/sanity/lib/schemaUtils'
 
 export default {
-  name: 'simpleCenteredWithBackgroundImageHeroBlock',
+  name: 'heroBlock',
   type: 'object',
-  title: 'Hero Block - Simple Centered With Background Image',
+  title: 'Hero Block',
   groups: [
     { name: 'content', title: 'Content', default: true, },
     { name: 'layout', title: 'Layout' },
@@ -39,7 +39,7 @@ export default {
   ],
 
   preview: makeBlockPreview({
-    blockName: 'Hero Block - Simple Centered With Background Image',
+    blockName: 'Hero Block',
     titleField: 'body',
     imageField: 'background',
   }),

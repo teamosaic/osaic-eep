@@ -4,7 +4,7 @@ import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 
 // Based on
 // https://tailwindui.com/components/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b
-export default function SimpleCenteredWithBackgroundImageHeroBlock({ block }: {
+export default function HeroBlock({ block }: {
   block: any
 }): React.ReactElement {
   return (
@@ -21,6 +21,7 @@ export default function SimpleCenteredWithBackgroundImageHeroBlock({ block }: {
         </AnimateInView> }
 
       <UpperLeftDodgeEffect />
+      <BottomRightDodgeEffect />
 
 
       <div className="
@@ -65,7 +66,7 @@ export default function SimpleCenteredWithBackgroundImageHeroBlock({ block }: {
 
       </div>
 
-      <BottomRightDodgeEffect />
+
 
     </div>
   )

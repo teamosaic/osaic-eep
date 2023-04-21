@@ -35,3 +35,7 @@ export enum TypographyThemes {
   Default = 'default',
   Article = 'article',
 }
+
+export enum ButtonIcons {
+  RightArrow = 'right-arrow',
+}

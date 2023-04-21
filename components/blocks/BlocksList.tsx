@@ -6,14 +6,13 @@ import dynamic from 'next/dynamic'
 // Import blocks on demand
 const MarqueeBlock = dynamic(() => import('./MarqueeBlock'))
 const CopyBlock = dynamic(() => import('./CopyBlock'))
-const SimpleCenteredWithBackgroundImageHeroBlock = dynamic(() =>
-  import('./heroes/SimpleCenteredWithBackgroundImageHeroBlock'))
+const HeroBlock = dynamic(() => import('./HeroBlock'))
 
 // Conditionally render blocks based on type, wrapped in BlockParent
-export default function BlocksList({ blocks = [] }: {
+export default function BlocksList({ blocks }: {
   blocks: Block[]
 }): React.ReactElement {
-  return <>{ blocks.map(renderBlock)}</>
+  return <>{ (blocks || []).map(renderBlock)}</>
 }
 
 // Render a block with wrapping components/context
@@ -60,7 +59,6 @@ function getComponentFunction(type: string): Function {
   switch(type) {
     case 'marqueeBlock': return MarqueeBlock
     case 'copyBlock': return CopyBlock
-    case 'simpleCenteredWithBackgroundImageHeroBlock':
-      return SimpleCenteredWithBackgroundImageHeroBlock
+    case 'heroBlock': return HeroBlock
   }
 }
