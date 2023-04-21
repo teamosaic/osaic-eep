@@ -20,13 +20,13 @@ export const base = {
   h1: {
     fontSize: fluid(100, 70),
     letterSpacing: '-0.07em',
-    lineHeight: fluid(100, 70),
+    lineHeight: 1,
     fontWeight: 400,
   },
   h2: {
     fontSize: fluid(70, 50),
     letterSpacing: '-0.07em',
-    lineHeight: fluid(70, 50),
+    lineHeight: 1,
     fontWeight: 400,
   },
   h3: {
@@ -44,7 +44,7 @@ export const base = {
   h5: {
     fontSize: fluid(28, 20),
     letterSpacing: '-0.02em',
-    lineHeight: fluid(28, 20),
+    lineHeight: 1,
     fontWeight: 400,
   },
   h6: {
@@ -57,6 +57,48 @@ export const base = {
     lineHeight: fluid(24, 22),
   },
 }
+
+// Adds font-size relative margins to the elements for marquee use cases as
+// well as a larger default text size
+export const marquee = {
+
+  h1: {
+    marginTop: '0.4em',
+    marginBottom: '0.4em',
+  },
+  h2: {
+    marginTop: '0.45em',
+    marginBottom: '0.45em',
+  },
+  h3: {
+    marginTop: '0.5em',
+    marginBottom: '0.5em',
+  },
+  h4: {
+    marginTop: '0.6em',
+    marginBottom: '0.6em',
+  },
+  h5: {
+    marginTop: '0.7em',
+    marginBottom: '0.7em',
+  },
+  h6: {
+    marginTop: '0.8em',
+    marginBottom: '0.8em',
+  },
+  p: {
+    fontSize: fluid(20, 16),
+    lineHeight: 1.6,
+    marginTop: '0.9em',
+    marginBottom: '0.9em',
+  },
+
+  // Re-apply the margin clearing on first/last
+  '> :first-child': { marginTop: 0 },
+  '> :last-child': { marginBottom: 0 },
+
+}
+
 
 // Adds font-size relative margins to the elements for article-style cases
 export const article = {

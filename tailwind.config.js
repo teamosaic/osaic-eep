@@ -1,5 +1,5 @@
 import { fluid, makeFluidSpacingDefaults } from './packages/style-utils'
-import { base, article } from './styles/prose'
+import * as proseStyles from './styles/prose'
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -21,8 +21,9 @@ module.exports = {
 
       // Make a custom themes for BasicPortableText
       typography: {
-        default: { css: base, },
-        article: { css: article, },
+        default: { css: proseStyles.base, },
+        marquee: { css: proseStyles.marquee, },
+        article: { css: proseStyles.article, },
       },
 
       spacing: {

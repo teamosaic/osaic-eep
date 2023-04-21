@@ -1,5 +1,6 @@
 import SanityImage from '~/packages/sanity-image/SanityImage'
 import AnimateInView from '~/packages/animate-in-view'
+import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 
 // Based on
 // https://tailwindui.com/components/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b
@@ -7,7 +8,7 @@ export default function SimpleCenteredWithBackgroundImageHeroBlock({ block }: {
   block: any
 }): React.ReactElement {
   return (
-    <div className="relative isolate overflow-hidden pt-14">
+    <div className="relative isolate overflow-hidden">
 
       {/* Background image */}
       { block.background &&
@@ -22,7 +23,11 @@ export default function SimpleCenteredWithBackgroundImageHeroBlock({ block }: {
       <UpperLeftDodgeEffect />
 
 
-      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 relative">
+      <div className="
+        relative
+        max-w-screen-md mx-auto px-gutter
+        py-32f md:py-56f">
+
         <div className="hidden sm:mb-8 sm:flex sm:justify-center">
           <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
             Announcing our next round of funding.{' '}
@@ -32,14 +37,18 @@ export default function SimpleCenteredWithBackgroundImageHeroBlock({ block }: {
             </a>
           </div>
         </div>
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Data to enrich your online business
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-            fugiat veniam occaecat fugiat aliqua.
-          </p>
+
+        <div className="text-center text-white">
+
+          {/* The main WYSIWYG text of the hero */}
+          <AnimateInView
+            target='descendants'
+            className='prose-slide-up-in relative'>
+            <BasicPortableText
+              value={ block.body }
+              className='prose-marquee' />
+          </AnimateInView>
+
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
               href="#"
@@ -52,6 +61,8 @@ export default function SimpleCenteredWithBackgroundImageHeroBlock({ block }: {
             </a>
           </div>
         </div>
+
+
       </div>
 
       <BottomRightDodgeEffect />
