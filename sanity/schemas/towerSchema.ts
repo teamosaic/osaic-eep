@@ -33,6 +33,7 @@ export default {
       of: [
         { type: 'marqueeBlock' },
         { type: 'copyBlock' },
+        { type: 'simpleCenteredWithBackgroundImageHeroBlock' },
       ]
     },
     metaDescription,

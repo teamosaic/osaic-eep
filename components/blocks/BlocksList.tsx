@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic'
 // Import blocks on demand
 const MarqueeBlock = dynamic(() => import('./MarqueeBlock'))
 const CopyBlock = dynamic(() => import('./CopyBlock'))
+const SimpleCenteredWithBackgroundImageHeroBlock = dynamic(() =>
+  import('./heroes/SimpleCenteredWithBackgroundImageHeroBlock'))
 
 // Conditionally render blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks = [] }: {
@@ -58,5 +60,7 @@ function getComponentFunction(type: string): Function {
   switch(type) {
     case 'marqueeBlock': return MarqueeBlock
     case 'copyBlock': return CopyBlock
+    case 'simpleCenteredWithBackgroundImageHeroBlock':
+      return SimpleCenteredWithBackgroundImageHeroBlock
   }
 }
