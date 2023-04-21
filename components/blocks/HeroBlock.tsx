@@ -50,6 +50,7 @@ export default function HeroBlock({ block }: {
               className='prose-marquee' />
           </AnimateInView>
 
+{/*
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
               href="#"
@@ -61,13 +62,10 @@ export default function HeroBlock({ block }: {
               Learn more <span aria-hidden="true">→</span>
             </a>
           </div>
+ */}
+
         </div>
-
-
       </div>
-
-
-
     </div>
   )
 }

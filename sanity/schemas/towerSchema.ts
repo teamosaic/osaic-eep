@@ -31,9 +31,11 @@ export default {
       type: 'array',
       group: 'content',
       of: [
+        { type: 'heroBlock' },
+
+        // Deprecated
         { type: 'marqueeBlock' },
         { type: 'copyBlock' },
-        { type: 'heroBlock' },
       ]
     },
     metaDescription,

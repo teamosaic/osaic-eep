@@ -11,6 +11,9 @@ export const getTower = groq`
       _type == 'marqueeBlock' => {
         background { ..., asset-> }
       },
+      _type == 'heroBlock' => {
+        background { ..., asset-> }
+      },
 
     }
   }[0]
