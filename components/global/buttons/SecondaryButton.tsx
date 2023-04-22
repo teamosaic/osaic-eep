@@ -1,11 +1,11 @@
-import BaseButton, { BaseButtonProps } from './BaseButton'
+import UnstyledButton, { UnstyledButtonProps } from './UnstyledButton'
 
 // Renders a background with a white background color
 export default function SecondaryButton(
-  props: BaseButtonProps
+  props: UnstyledButtonProps
 ): React.ReactElement {
   return (
-    <BaseButton {...props} className={`
+    <UnstyledButton {...props} className={`
       px-3.5 py-2.5
 
       text-sm

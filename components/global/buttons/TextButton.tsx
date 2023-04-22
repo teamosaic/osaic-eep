@@ -1,11 +1,11 @@
-import BaseButton, { BaseButtonProps } from './BaseButton'
+import UnstyledButton, { UnstyledButtonProps } from './UnstyledButton'
 
 // Renders a basic link
 export default function TextButton(
-  props: BaseButtonProps
+  props: UnstyledButtonProps
 ): React.ReactElement {
   return (
-    <BaseButton {...props} className={`
+    <UnstyledButton {...props} className={`
         text-sm font-semibold leading-6 text-white no-underline
         ${props.className || ''}
     `} />
