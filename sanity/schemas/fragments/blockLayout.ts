@@ -1,5 +1,5 @@
 import { BlockSpacing } from '~/types'
-import { createListOptionsFromEnum } from '~/sanity/lib/options'
+import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
 import { HideWhen } from '~/types'
 import { setGroup } from '~/sanity/lib/schemaUtils'
 

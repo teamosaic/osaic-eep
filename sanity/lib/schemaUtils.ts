@@ -1,3 +1,16 @@
+import startCase from 'lodash/startCase'
+
+// Create a Sanity options array from an enum type, supporting passing in
+// custom title overrides
+export function createListOptionsFromEnum(
+  enumObj: object,
+  customTitles: object = {}
+):{ title: string, value: string }[] {
+  return Object.entries(enumObj).map(([ title, value ]) => ({
+    title: customTitles[value] || startCase(title),
+    value
+  }))
+}
 
 // Set all the fields to the "content" group
 export function contentGroup(fields: object[]): object[] {

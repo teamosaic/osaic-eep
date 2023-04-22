@@ -2,7 +2,7 @@ import { blockLayoutFields } from '../fragments/blockLayout'
 import { blockBackgroundFields } from '../fragments/blockBackground'
 import { makeBlockPreview, contentGroup } from '~/sanity/lib/schemaUtils'
 import { BsCardText } from 'react-icons/bs'
-import { createListOptionsFromEnum } from '~/sanity/lib/options'
+import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
 import { TextAlignment, TypographyThemes } from '~/types'
 
 export default {

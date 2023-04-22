@@ -1,18 +1,24 @@
 import SmartLink from '~/packages/smart-link/SmartLink'
+import { ButtonIcon } from '~/types'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
 // Render differnet root elements depending on passed in props
 export default function BaseButton({
   text,
   url,
+  icon,
   children,
-  className
+  className = '',
 }: BaseButtonProps): React.ReactElement {
 
   // Support the text content on either text or children props
-  const contents = text || children
+  let contents = text || children
 
   // If no contents, render nothing
   if (!contents) return
+
+  // Add the icon after the text contentts
+  if (icon) contents = <>{ contents }<Icon type={ icon } /></>
 
   // If a url was provided, render a smart link
   if (url) {
@@ -29,10 +35,20 @@ export default function BaseButton({
   return <span {...{ className }}>{ contents }</span>
 }
 
+// Render button icons
+function Icon({ type }: { type: ButtonIcon}): React.ReactElement {
+  const standardClasses = 'h-5f w-5f inline-block ml-[0.5em]'
+  switch(type) {
+    case ButtonIcon.RightArrow:
+      return <ArrowRightIcon className={ standardClasses } />
+  }
+}
+
 // Types for the component props
 export type BaseButtonProps = {
   text?: string,
   url?: string
+  icon?: ButtonIcon,
   children?: React.ReactNode,
   className?: string,
 }

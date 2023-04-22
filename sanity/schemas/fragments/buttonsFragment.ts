@@ -1,7 +1,7 @@
 import { RxButton } from 'react-icons/rx'
 import { objectMixin } from '~/sanity/lib/schemaUtils'
-import { createListOptionsFromEnum } from '~/sanity/lib/options'
-import { ButtonIcons } from '~/types'
+import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
+import { ButtonIcon } from '~/types'
 
 const commonButtonFields = [
   {
@@ -22,7 +22,7 @@ const commonButtonFields = [
     description: 'Show to the right of the text.',
     type: 'string',
     options: {
-      list: createListOptionsFromEnum(ButtonIcons),
+      list: createListOptionsFromEnum(ButtonIcon),
     }
   },
 ]
