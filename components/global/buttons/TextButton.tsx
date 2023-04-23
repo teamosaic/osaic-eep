@@ -1,5 +1,5 @@
 import UnstyledButton from './UnstyledButton'
-import { Button, ButtonComponent } from '~/types'
+import { ButtonComponent } from '~/types'
 
 // Renders a basic link
 export default function TextButton(
