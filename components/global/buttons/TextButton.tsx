@@ -1,8 +1,9 @@
-import UnstyledButton, { UnstyledButtonProps } from './UnstyledButton'
+import UnstyledButton from './UnstyledButton'
+import { Button, ButtonComponent } from '~/types'
 
 // Renders a basic link
 export default function TextButton(
-  props: UnstyledButtonProps
+  props: ButtonComponent
 ): React.ReactElement {
   return (
     <UnstyledButton {...props} className={`

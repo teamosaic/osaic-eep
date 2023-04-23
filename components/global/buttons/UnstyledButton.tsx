@@ -1,5 +1,5 @@
 import SmartLink from '~/packages/smart-link/SmartLink'
-import { ButtonIcon } from '~/types'
+import { ButtonComponent, ButtonIcon } from '~/types'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
 // Render differnet root elements depending on passed in props
@@ -9,7 +9,7 @@ export default function UnstyledButton({
   icon,
   children,
   className = '',
-}: UnstyledButtonProps): React.ReactElement {
+}: ButtonComponent): React.ReactElement {
 
   // Support the text content on either text or children props
   let contents = text || children
@@ -42,13 +42,4 @@ function Icon({ type }: { type: ButtonIcon}): React.ReactElement {
     case ButtonIcon.RightArrow:
       return <ArrowRightIcon className={ standardClasses } />
   }
-}
-
-// Types for the component props
-export type UnstyledButtonProps = {
-  text?: string,
-  url?: string
-  icon?: ButtonIcon,
-  children?: React.ReactNode,
-  className?: string,
 }

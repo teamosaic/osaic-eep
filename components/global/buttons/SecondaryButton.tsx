@@ -1,8 +1,9 @@
-import UnstyledButton, { UnstyledButtonProps } from './UnstyledButton'
+import UnstyledButton from './UnstyledButton'
+import { ButtonComponent } from '~/types'
 
 // Renders a background with a white background color
 export default function SecondaryButton(
-  props: UnstyledButtonProps
+  props: ButtonComponent
 ): React.ReactElement {
   return (
     <UnstyledButton {...props} className={`
