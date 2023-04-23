@@ -16,7 +16,7 @@ export default {
         type: 'array',
         of: [
           { type: 'block' },
-          { type: 'buttonsList' },
+          { type: 'buttonList' },
         ],
       },
       {

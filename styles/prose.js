@@ -7,7 +7,7 @@ export const base = {
   ...inheritProseColor,
 
   // Make all margins the same, for use in marquees and other places.
-  '*': {
+  '> *': {
     marginTop: '1rem',
     marginBottom: '1rem',
   },

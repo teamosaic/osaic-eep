@@ -29,7 +29,7 @@ const components: PortableTextComponents = {
   types: {
 
     // Render a row of buttons, adding some extra margins to it
-    buttonsList: ({ value }) => <ButtonList {...value} className='mt-10f'/>,
+    buttonList: ({ value }) => <ButtonList {...value} className='mt-10f'/>,
 
   },
 
