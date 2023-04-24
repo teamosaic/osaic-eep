@@ -1,6 +1,10 @@
 import { fluid, makeFluidSpacingDefaults } from './packages/style-utils'
 import * as proseStyles from './styles/prose'
 
+// Use CSS min to make a value that is affected by the size of the text but
+// never gets too big
+const smTranslate = 'min(30px, 1em)'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -46,13 +50,17 @@ module.exports = {
 
       animation: {
 
-        // Slide up and fade in with ease-out-quint
-        'slide-up-in':
-          'slide-up-in 1s ease-out-quint both',
+        // Slide in a direction direction and fade in with ease-out-quint
+        'slide-up-in': 'slide-up-in 1s ease-out-quint both',
+        'slide-down-in': 'slide-down-in 1s ease-out-quint both',
+        'slide-left-in': 'slide-left-in 1s ease-out-quint both',
+        'slide-right-in': 'slide-right-in 1s ease-out-quint both',
+
+        // Scale down, like for CTAs
+        'scale-down-in': 'scale-down-in 1s ease-out-quint both',
 
         // Scale down slowly, like for backgrounds
-        'slow-scale-down-in':
-          'scale-down-in 3s ease-out-quint both',
+        'slow-scale-down-in': 'scale-down-in 3s ease-out-quint both',
       },
 
       keyframes: {
@@ -61,8 +69,32 @@ module.exports = {
         'slide-up-in': {
           'from': {
             opacity: 0,
-            transform: 'translateY(min(30px, 1em))',
+            transform: `translateY(${smTranslate})`,
           }
+        },
+
+        // Fade in and slide down
+        'slide-down-in': {
+          'from': {
+            opacity: 0,
+            transform: `translateY(calc(-1 * ${smTranslate}))`,
+          }
+        },
+
+        // Fade in and slide right
+        'slide-right-in': {
+          'from': {
+            opacity: 0,
+            transform: `translateX(calc(-1 * ${smTranslate}))`,
+          },
+        },
+
+        // Fade in and slide left
+        'slide-left-in': {
+          'from': {
+            opacity: 0,
+            transform: `translateX(${smTranslate})`,
+          },
         },
 
         // Fade in and scale down

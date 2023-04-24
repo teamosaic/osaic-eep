@@ -37,12 +37,21 @@ export default function HeroBlock({
         text-center text-white">
 
         {/* Call to action button */}
-        <CTA {...announcementButton } />
+        { announcementButton.text &&
+          <AnimateInView
+            target='descendants'
+            className='animate-slide-right-in [animation-delay:1s]'>
+            <CTA {...announcementButton } />
+          </AnimateInView>
+        }
 
         {/* The main WYSIWYG text of the hero */}
         <AnimateInView
           target='descendants'
-          className='prose-slide-up-in relative'>
+          className='
+            prose-text-slide-up-in
+            prose-late-child-div-slide-down-in
+            relative'>
           <BasicPortableText
             value={ body }
             className='prose-marquee' />
@@ -57,10 +66,17 @@ export default function HeroBlock({
 function CTA(
   { text, cta, url }: BlockType["announcementButton"]
 ): React.ReactElement {
+  if (!text) return
   return (
+
+    // Make a pill button shape
     <div className="hidden sm:mb-8 sm:flex sm:justify-center">
       <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
+
+        {/* The text */}
         { text }.{' '}
+
+        {/* The CTA text and link */}
         <SmartLink href={ url } className="font-semibold text-white">
           <span className="absolute inset-0" aria-hidden="true" />
           { cta }
