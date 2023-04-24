@@ -26,17 +26,26 @@ export default {
         type: 'object',
         description: 'A button shown above the body text used for an announcement that links to a separate page with more information.',
         fields: [
-          button.fields.find(({ name }) => name == 'text'),
+          {
+            ...button.fields.find(({ name }) => name == 'text'),
+            validation: null ,
+          },
           {
             name: 'cta',
             title: 'CTA',
             description: 'Short text displayed to the right of the announcement text.',
             type: 'string',
             initialValue: 'Read more',
-            validation: Rule => Rule.required(),
           },
-          button.fields.find(({ name }) => name == 'url'),
-        ]
+          {
+            ...button.fields.find(({ name }) => name == 'url'),
+            validation: Rule => Rule.uri({ allowRelative: true }),
+          },
+        ],
+        options: {
+          collapsible: true,
+          collapsed: true,
+        }
       },
       imageWithAlt({
         name: 'background',

@@ -51,7 +51,7 @@ function makeBlockOrderValue(index: number, blocks:Block[]): BlockOrder {
 function makeBlockInstance(block: any): React.ReactElement {
 	const ComponentFunction = getComponentFunction(block._type)
 	if (!ComponentFunction) return
-	return <ComponentFunction block={ block } />
+	return <ComponentFunction {...block} />
 }
 
 // Return the component class based on the type

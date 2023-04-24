@@ -4,11 +4,10 @@ import clsx from 'clsx'
 import type { MarqueeBlock as BlockType } from '~/types'
 import AnimateInView from '~/packages/animate-in-view'
 
-export default function MarqueeBlock({ block }: {
-  block: BlockType
-}): React.ReactElement {
-  const { body, background } = block
-
+export default function MarqueeBlock({
+  body,
+  background,
+}: BlockType): React.ReactElement {
   return (
 
     // Container

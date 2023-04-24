@@ -5,7 +5,7 @@ import ButtonList from '~/components/global/buttons/ButtonList'
 
 // Renders a Sanity PortableText component with standard customizaionts
 export default function BasicPortableText({ value, className = '' }: {
-  value: PortableTextBlock
+  value: PortableTextBlock[]
   className?: string
 }): React.ReactElement {
 

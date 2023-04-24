@@ -3,24 +3,26 @@ import AnimateInView from '~/packages/animate-in-view'
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { Icon } from '~/components/global/buttons/UnstyledButton'
-import { ButtonIcon } from '~/types'
+import { ButtonIcon, HeroBlock as BlockType } from '~/types'
 
 // Based on
 // https://tailwindui.com/components/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b
-export default function HeroBlock({ block }: {
-  block: any
-}): React.ReactElement {
+export default function HeroBlock({
+  body,
+  announcementButton,
+  background,
+}: BlockType): React.ReactElement {
   return (
     <div className="relative isolate overflow-hidden pt-header">
 
       {/* Background image */}
-      { block.background &&
+      { background &&
         <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
           <SanityImage
             expand
             priority
             sizes='100vw'
-            source={ block.background } />
+            source={ background } />
         </AnimateInView> }
 
       {/* Lightens part of the image */}
@@ -35,14 +37,14 @@ export default function HeroBlock({ block }: {
         text-center text-white">
 
         {/* Call to action button */}
-        <CTA {...block.announcementButton } />
+        <CTA {...announcementButton } />
 
         {/* The main WYSIWYG text of the hero */}
         <AnimateInView
           target='descendants'
           className='prose-slide-up-in relative'>
           <BasicPortableText
-            value={ block.body }
+            value={ body }
             className='prose-marquee' />
         </AnimateInView>
 
@@ -52,11 +54,9 @@ export default function HeroBlock({ block }: {
 }
 
 // Renders a button with a link
-function CTA({ text, cta, url }: {
-  text: string
-  cta: string
-  url: string
-}): React.ReactElement {
+function CTA(
+  { text, cta, url }: BlockType["announcementButton"]
+): React.ReactElement {
   return (
     <div className="hidden sm:mb-8 sm:flex sm:justify-center">
       <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
