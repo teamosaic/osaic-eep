@@ -36,10 +36,10 @@ export default function UnstyledButton({
 }
 
 // Render button icons
-function Icon({ type }: { type: ButtonIcon}): React.ReactElement {
+export function Icon({ type }: { type: ButtonIcon}): React.ReactElement {
   const standardClasses = 'h-5f w-5f inline-block ml-[0.5em]'
   switch(type) {
     case ButtonIcon.RightArrow:
-      return <ArrowRightIcon className={ standardClasses } />
+      return <ArrowRightIcon className={ standardClasses } aria-hidden='true' />
   }
 }

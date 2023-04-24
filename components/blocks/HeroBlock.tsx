@@ -1,6 +1,9 @@
 import SanityImage from '~/packages/sanity-image/SanityImage'
 import AnimateInView from '~/packages/animate-in-view'
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import SmartLink from '~/packages/smart-link/SmartLink'
+import { Icon } from '~/components/global/buttons/UnstyledButton'
+import { ButtonIcon } from '~/types'
 
 // Based on
 // https://tailwindui.com/components/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b
@@ -8,7 +11,7 @@ export default function HeroBlock({ block }: {
   block: any
 }): React.ReactElement {
   return (
-    <div className="relative isolate overflow-hidden">
+    <div className="relative isolate overflow-hidden pt-header">
 
       {/* Background image */}
       { block.background &&
@@ -20,51 +23,49 @@ export default function HeroBlock({ block }: {
             source={ block.background } />
         </AnimateInView> }
 
+      {/* Lightens part of the image */}
       <UpperLeftDodgeEffect />
       <BottomRightDodgeEffect />
 
-
+      {/* Container around the content */}
       <div className="
         relative
         max-w-screen-md mx-auto px-gutter
-        py-32f md:py-56f">
+        py-32f md:py-56f
+        text-center text-white">
 
-        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-          <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
-            Announcing our next round of funding.{' '}
-            <a href="#" className="font-semibold text-white">
-              <span className="absolute inset-0" aria-hidden="true" />
-              Read more <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
-        </div>
+        {/* Call to action button */}
+        <CTA {...block.announcementButton } />
 
-        <div className="text-center text-white">
+        {/* The main WYSIWYG text of the hero */}
+        <AnimateInView
+          target='descendants'
+          className='prose-slide-up-in relative'>
+          <BasicPortableText
+            value={ block.body }
+            className='prose-marquee' />
+        </AnimateInView>
 
-          {/* The main WYSIWYG text of the hero */}
-          <AnimateInView
-            target='descendants'
-            className='prose-slide-up-in relative'>
-            <BasicPortableText
-              value={ block.body }
-              className='prose-marquee' />
-          </AnimateInView>
+      </div>
+    </div>
+  )
+}
 
-{/*
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a
-              href="#"
-              className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-            >
-              Get started
-            </a>
-            <a href="#" className="text-sm font-semibold leading-6 text-white">
-              Learn more <span aria-hidden="true">→</span>
-            </a>
-          </div>
- */}
-
-        </div>
+// Renders a button with a link
+function CTA({ text, cta, url }: {
+  text: string
+  cta: string
+  url: string
+}): React.ReactElement {
+  return (
+    <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+      <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
+        { text }.{' '}
+        <SmartLink href={ url } className="font-semibold text-white">
+          <span className="absolute inset-0" aria-hidden="true" />
+          { cta }
+          <Icon type={ ButtonIcon.RightArrow } />
+        </SmartLink>
       </div>
     </div>
   )

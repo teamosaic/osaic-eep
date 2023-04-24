@@ -39,6 +39,9 @@ module.exports = {
 
         // Add gutter values
         gutter: fluid(40, 16),
+
+        // The header height
+        header: fluid(80, 60),
       },
 
       animation: {

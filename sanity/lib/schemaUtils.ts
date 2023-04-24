@@ -119,3 +119,29 @@ export function portableTextSummary(blocks: any[]): string {
     .map(span => span.text)
     .join('')
 }
+
+// Helper to render an image field with a "title" field for the image
+export function imageWithAlt({ name, title, description, hotspot = true}: {
+  name: string,
+  title?: string,
+  description?: string,
+  hotspot?: boolean
+}): object {
+  return {
+    name,
+    type: 'image',
+    title,
+    description,
+    options: {
+      hotspot,
+    },
+    fields: [
+      {
+        name: 'alt',
+        title: 'Image Description',
+        type: 'string',
+        description: 'This will be used as the <img> alt attribute.'
+      }
+    ]
+  }
+}
