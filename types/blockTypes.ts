@@ -2,6 +2,7 @@ import type {
   BackgroundColor,
   BlockPadding,
   BlockSpacing,
+  Button,
   HideWhen,
   SanityObject,
   TextAlignment,
@@ -15,17 +16,18 @@ export type Block = HeroBlock | CtaBlock | MarqueeBlock | CopyBlock
 
 export interface HeroBlock extends BlockWithLayout {
   body: PortableTextBlock[] // I couldn't figure out how to add Button here
-  background?: SanityImageSource
-  announcementButton?: {
-    text?: string
-    cta?: string
-    url?: string
+  background: SanityImageSource
+  announcementButton: {
+    text: string
+    cta: string
+    url: string
   }
 }
 
 export interface CtaBlock extends BlockWithLayout, BlockWithBackground {
   type: CtaBlockType
   body: PortableTextBlock[]
+  buttons: Button[]
 }
 
 export enum CtaBlockType {
@@ -35,7 +37,7 @@ export enum CtaBlockType {
 
 export interface MarqueeBlock extends BlockWithLayout {
   body: PortableTextBlock[]
-  background?: Image & {
+  background: Image & {
     title: string
   }
 }

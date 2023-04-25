@@ -4,7 +4,6 @@ import { makeBlockPreview, contentGroup } from '~/sanity/lib/schemaUtils'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
 import { CtaBlockType } from '~/types'
-import { buttonList } from '../fragments/buttonsFragment'
 
 export default {
   name: 'ctaBlock',
