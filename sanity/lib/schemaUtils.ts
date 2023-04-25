@@ -80,11 +80,18 @@ export function makeObjectPreview({ objectTitle, titleField, imageField }: {
 }
 
 // Helper to DRY up making previews of blocks
-export function makeBlockPreview({ blockName, titleField, imageField, icon }: {
+export function makeBlockPreview({
+  blockName,
+  titleField,
+  imageField,
+  icon,
+  hasTypes
+}: {
   blockName: string
   titleField: string
   imageField?: string
   icon?: React.ReactNode
+  hasTypes?: boolean, // Like if they block has a `types` field
 }): Object {
   return {
 
@@ -92,18 +99,24 @@ export function makeBlockPreview({ blockName, titleField, imageField, icon }: {
       title: titleField,
       disabled: 'disabled',
       ...(imageField ? { image: imageField } : {}), // Optional
+      ...(hasTypes ? { type: 'type' } : {}), // Optional
     },
 
-    prepare({ title, image, disabled }) {
+    prepare({ title, disabled, image, type }) {
 
-      // Auto stingify wysiwygs / blocks
+      // Auto stringify wysiwygs / blocks
       if (Array.isArray(title)) title = portableTextSummary(title)
+
+      // Auto add the block type and disabled state
+      const subtitle = blockName +
+        (type ? ` - ${startCase(type)}` : '') +
+        (disabled ? ' [Disabled]' : '')
+
+      // Make the preview object
       return {
         title,
         media: image || icon,
-
-        // Auto append the disabled state to the subtitle
-        subtitle: blockName + (disabled ? ' [Disabled]' : ''),
+        subtitle,
       }
     }
   }

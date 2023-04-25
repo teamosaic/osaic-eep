@@ -4,6 +4,7 @@ import article from './schemas/articleSchema'
 import marqueeBlock from './schemas/blocks/marqueeBlockSchema'
 import copyBlock from './schemas/blocks/copyBlockSchema'
 import heroBlock from './schemas/blocks/heroBlockSchema'
+import ctaBlock from './schemas/blocks/ctaBlockSchema'
 import { button, buttonList } from './schemas/fragments/buttonsFragment'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
@@ -28,8 +29,9 @@ export const schema: {
     marqueeBlock,
     copyBlock,
 
-    // Heroes
+    // Blocks
     heroBlock,
+    ctaBlock,
 
     // Misc Objects
     button,

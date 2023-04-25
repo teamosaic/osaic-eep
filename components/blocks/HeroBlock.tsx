@@ -38,9 +38,8 @@ export default function HeroBlock({
 
         {/* Call to action button */}
         { announcementButton.text &&
-          <AnimateInView
-            target='descendants'
-            className='animate-slide-right-in [animation-delay:1s]'>
+          <AnimateInView className='
+            animate-slide-right-in [animation-delay:1s]'>
             <CTA {...announcementButton } />
           </AnimateInView>
         }

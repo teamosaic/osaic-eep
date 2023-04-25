@@ -19,25 +19,30 @@ export default {
     },
   ],
   fields: [
+
     {
       name: 'title',
       type: 'string',
       group: 'content',
       validation: Rule => Rule.required(),
     },
+
     uriField(),
+
     {
       name: 'blocks',
       type: 'array',
       group: 'content',
       of: [
         { type: 'heroBlock' },
+        { type: 'ctaBlock' },
 
         // Deprecated
         { type: 'marqueeBlock' },
         { type: 'copyBlock' },
       ]
     },
+
     metaDescription,
   ],
   preview: {

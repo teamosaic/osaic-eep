@@ -5,6 +5,7 @@ import * as proseStyles from './styles/prose'
 // never gets too big
 const smTranslate = 'min(30px, 1em)'
 
+// The main Tailwind config
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -37,9 +38,10 @@ module.exports = {
         ...makeFluidSpacingDefaults(),
 
         // Add spacing values that are used by BlockLayout
-        sm: fluid(16),
-        md: fluid(32),
-        lg: fluid(64),
+        xs: fluid(24),
+        sm: fluid(48),
+        md: fluid(64),
+        lg: fluid(128),
 
         // Add gutter values
         gutter: fluid(40, 16),
