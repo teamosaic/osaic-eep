@@ -1,7 +1,7 @@
 import type {
   BackgroundColor,
-  BlockSpacing,
   BlockPadding,
+  BlockSpacing,
   HideWhen,
   SanityObject,
   TextAlignment,
@@ -11,7 +11,7 @@ import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
 import { SanityImageSource} from '~/packages/sanity-image/lib/types'
 
-export type Block = HeroBlock | MarqueeBlock | CopyBlock
+export type Block = HeroBlock | CtaBlock | MarqueeBlock | CopyBlock
 
 export interface HeroBlock extends BlockWithLayout {
   body: PortableTextBlock[] // I couldn't figure out how to add Button here
@@ -21,6 +21,16 @@ export interface HeroBlock extends BlockWithLayout {
     cta?: string
     url?: string
   }
+}
+
+export interface CtaBlock extends BlockWithLayout, BlockWithBackground {
+  type: CtaBlockType
+  body: PortableTextBlock[]
+}
+
+export enum CtaBlockType {
+  SimpleCentered = 'simpleCentered',
+  SimpleJustified = 'simpleJustified',
 }
 
 export interface MarqueeBlock extends BlockWithLayout {

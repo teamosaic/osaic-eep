@@ -5,6 +5,7 @@ import * as proseStyles from './styles/prose'
 // never gets too big
 const smTranslate = 'min(30px, 1em)'
 
+// The main Tailwind config
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [

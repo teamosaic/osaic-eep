@@ -56,7 +56,7 @@ export default {
   ],
 
   preview: makeBlockPreview({
-    blockName: 'Hero Block',
+    blockName: 'Hero',
     titleField: 'body',
     imageField: 'background',
   }),
