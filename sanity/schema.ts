@@ -3,7 +3,7 @@ import tower from './schemas/towerSchema'
 import article from './schemas/articleSchema'
 import heroBlock from './schemas/blocks/heroBlockSchema'
 import ctaBlock from './schemas/blocks/ctaBlockSchema'
-import { button, buttonList } from './schemas/fragments/buttonsFragment'
+import { button, buttonList } from './schemas/objects/buttonSchema'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
 // Define the singleton document types

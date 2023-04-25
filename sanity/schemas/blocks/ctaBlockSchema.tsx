@@ -1,5 +1,5 @@
-import { blockLayoutFields } from '../fragments/blockLayout'
-import { blockBackgroundFields } from '../fragments/blockBackground'
+import { blockLayoutFields } from '../fieldGroups/blockLayoutSchema'
+import { blockBackgroundFields } from '../fieldGroups/blockBackgroundSchema'
 import { makeBlockPreview, contentGroup } from '~/sanity/lib/schemaUtils'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'

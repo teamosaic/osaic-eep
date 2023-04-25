@@ -1,6 +1,6 @@
-import { blockLayoutFields } from '../fragments/blockLayout'
+import { blockLayoutFields } from '../fieldGroups/blockLayoutSchema'
 import { makeBlockPreview, contentGroup, imageWithAlt } from '~/sanity/lib/schemaUtils'
-import { button } from '../fragments/buttonsFragment'
+import { button } from '../objects/buttonSchema'
 
 export default {
   name: 'heroBlock',
