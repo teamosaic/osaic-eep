@@ -3,18 +3,22 @@ import type { Image } from 'sanity'
 import { PageSeo } from '~/types'
 import { useContext } from 'react'
 import { SettingsContext } from '~/providers/settings'
-import { urlForImage } from '~/sanity/lib/image'
+import { urlForImage } from '~/packages/sanity-image/lib/urlBuilding'
+
+interface PageHeadProps extends PageSeo {
+  title?: string
+  image?: Image
+}
 
 // Helper for generating standardized head tags from page data
 export default function PageHead({
-  title,
+  title, // Use the title of the page as fallback
+  image, // Use an image from the page as fallback
   metaTitle,
   metaDescription,
   metaImage,
   robots,
-}: PageSeo & {
-  title: string
-}): React.ReactElement {
+}: PageHeadProps): React.ReactElement {
 
   // Get global defaults
   const settings = useContext(SettingsContext)
@@ -24,7 +28,7 @@ export default function PageHead({
     title,
     metaTitle: metaTitle || title,
     metaDescription: metaDescription || settings.metaDescription,
-    metaImage: metaImage || settings.metaImage,
+    metaImage: metaImage || image || settings.metaImage,
     robots,
   }
 
@@ -38,7 +42,7 @@ function HeadTags({
   metaDescription,
   metaImage,
   robots,
-}): React.ReactElement {
+}: PageHeadProps): React.ReactElement {
   return (
     <Head>
 
