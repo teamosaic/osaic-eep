@@ -136,10 +136,7 @@ function mapPaddingBottomToTailwindClass(
 
 // Helper to determine if a background was set on a block
 function hasBackground(block: Block): Boolean {
-  return block &&
-    'backgroundColor' in block &&
-    block.backgroundColor &&
-    block.backgroundColor != BackgroundColor.None
+  return block && 'backgroundColor' in block && !!block.backgroundColor
 }
 
 // Get the background of a block in Typescript friendly way
