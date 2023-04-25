@@ -1,5 +1,5 @@
 import { type PortableTextComponents,PortableText } from '@portabletext/react'
-import type { PortableTextBlock } from '@portabletext/types'
+import { PortableTextBlock } from '@portabletext/types'
 import SmartLink from '../smart-link/SmartLink'
 import ButtonList from '~/components/global/buttons/ButtonList'
 

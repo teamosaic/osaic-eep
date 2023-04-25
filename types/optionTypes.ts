@@ -37,6 +37,3 @@ export enum BackgroundColor {
   None = '',
   Dark = 'dark',
 }
-
-
-

@@ -1,5 +1,6 @@
 import { CogIcon } from '@sanity/icons'
-import { metaDescription } from './fieldGroups/pageSeoSchema'
+import { metaDescription, metaImage } from './fieldGroups/pageSeoSchema'
+import { setGroup } from '~/sanity/lib/schemaUtils'
 
 export default {
   name: 'settings',
@@ -13,7 +14,10 @@ export default {
     },
   ],
   fields: [
-    metaDescription,
+    ...setGroup('seo', [
+      metaDescription,
+      metaImage,
+    ]),
   ],
   preview: {
     prepare() {

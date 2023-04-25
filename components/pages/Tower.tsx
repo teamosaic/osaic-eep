@@ -1,22 +1,15 @@
-import Head from 'next/head'
-import { useContext } from 'react'
-import { SettingsContext } from '~/providers/settings'
 import BlocksList from '~/components/blocks/BlocksList'
+import PageHead from '~/components/layout/PageHead'
+import { Tower } from '~/types'
 
-export default function Tower({ page }) {
-  const { blocks } = page,
-    settings = useContext(SettingsContext)
-
-  const metaDescription = page.metaDescription || settings.metaDescription
-
-  return (<>
-    <Head>
-      <title>{ page.title }</title>
-      { metaDescription && <meta
-        name='description'
-        content={ metaDescription } /> }
-    </Head>
-    <BlocksList {...{ blocks }} />
-  </>)
+export default function Tower({ page }: {
+  page: Tower
+}): React.ReactElement {
+  return (
+    <>
+      <PageHead { ...page } />
+      <BlocksList blocks={ page.blocks } />
+    </>
+  )
 }
 
