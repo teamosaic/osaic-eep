@@ -13,6 +13,7 @@ export enum TextAlignment {
 
 export enum BlockSpacing {
   None = 'none',
+  ExtraSmall = 'extraSmall',
   Small = 'small',
   Medium = 'medium',
   Large = 'large',
@@ -21,6 +22,7 @@ export enum BlockSpacing {
 export enum BlockPadding {
   Matching = 'matching',
   None = 'none',
+  ExtraSmall = 'extraSmall',
   Small = 'small',
   Medium = 'medium',
   Large = 'large',
