@@ -6,18 +6,10 @@ export function createListOptionsFromEnum(
   enumObj: object,
   customTitles: object = {}
 ):{ title: string, value: string }[] {
-  return Object.entries(enumObj)
-
-    // For some reason, Object.entries converts enum pairs like `None = null`
-    // into 2 entries.  One that is `['None', null]` (like expected) and the
-    // other that is `['null', 'None]`.  This removes the latter
-    .filter(([ title ]) => title != 'null')
-
-    // Make objects in the style of Sanity opptions
-    .map(([ title, value ]) => ({
-      title: customTitles[value] || startCase(title),
-      value
-    }))
+  return Object.entries(enumObj).map(([ title, value ]) => ({
+    title: customTitles[value] || startCase(title),
+    value
+  }))
 }
 
 // Set all the fields to the "content" group
