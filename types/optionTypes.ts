@@ -35,3 +35,4 @@ export enum TypographyThemes {
   Default = 'default',
   Article = 'article',
 }
+

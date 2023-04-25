@@ -1,5 +1,5 @@
 import { blockLayoutFields } from '../fragments/blockLayout'
-import { makeBlockPreview, contentGroup } from '~/sanity/lib/blocks'
+import { makeBlockPreview, contentGroup } from '~/sanity/lib/schemaUtils'
 
 export default {
   name: 'marqueeBlock',

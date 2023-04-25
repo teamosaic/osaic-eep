@@ -31,6 +31,9 @@ export default {
       type: 'array',
       group: 'content',
       of: [
+        { type: 'heroBlock' },
+
+        // Deprecated
         { type: 'marqueeBlock' },
         { type: 'copyBlock' },
       ]
@@ -45,7 +48,7 @@ export default {
     prepare({ title, uri }) {
       return {
         title,
-        subtitle: uri.current
+        subtitle: uri.current,
       }
     }
   }

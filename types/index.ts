@@ -1,4 +1,6 @@
 export * from './blockTypes'
+export * from './buttonTypes'
+export * from './componentTypes'
 export * from './optionTypes'
 export * from './pageTypes'
 export * from './sanityTypes'

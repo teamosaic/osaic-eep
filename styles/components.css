@@ -1,5 +1,7 @@
 @layer components {
-  .prose-slide-up-in {
+
+  /* Alide up text elements */
+  .prose-text-slide-up-in {
     h1, h2, h3, h4, h5, h6, p {
       @apply animate-slide-up-in;
     }
@@ -8,6 +10,14 @@
     }
     h3, h4, h5, h6, p {
       animation-delay: .2s;
+    }
+  }
+
+  /* Child div elements should scale down and in */
+  .prose-late-child-div-slide-down-in {
+    .prose > div {
+      @apply animate-scale-down-in;
+      animation-delay: .75s;
     }
   }
 }

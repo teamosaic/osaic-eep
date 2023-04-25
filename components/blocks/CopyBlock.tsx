@@ -8,9 +8,11 @@ import AnimateInView from '~/packages/animate-in-view'
 import clsx from 'clsx'
 import { mapOption } from '~/lib/helpers'
 
-export default function CopyBlock({ block }: {
-  block: BlockType
-}): React.ReactElement {
+export default function CopyBlock({
+  body,
+  textAlignment,
+  typographyTheme,
+}: BlockType): React.ReactElement {
 
   return (
     <AnimateInView
@@ -19,15 +21,15 @@ export default function CopyBlock({ block }: {
       className='prose-slide-up-in'>
 
       <BasicPortableText
-        value={ block.body }
+        value={ body }
         className={clsx([
           'max-w-screen-lg mx-auto px-gutter',
-          mapOption(block.textAlignment, {
+          mapOption(textAlignment, {
             [TextAlignment.Left]: 'text-left',
             [TextAlignment.Center]: 'text-center',
             [TextAlignment.Right]: 'text-right',
           }),
-          mapOption(block.typographyTheme, {
+          mapOption(typographyTheme, {
             [TypographyThemes.Article]: 'prose-article',
           }),
         ])} />

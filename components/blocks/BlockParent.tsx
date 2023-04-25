@@ -12,7 +12,10 @@ import { BlockOrderContext } from '~/providers/blockOrder'
 import { mapOption, mapOptions } from '~/lib/helpers'
 
 // Apply common layout options to block
-export default function BlockParent({ block, children }):React.ReactElement {
+export default function BlockParent({ block, children }: {
+  block: Block
+  children: React.ReactNode
+}):React.ReactElement {
   const blockOrder = useContext(BlockOrderContext)
 
   // If the block is disabled, don't render anything
@@ -33,7 +36,7 @@ export default function BlockParent({ block, children }):React.ReactElement {
       mapBlockSpacingToTailwindClass(block, blockOrder.previous),
 
       // Set a background color
-      mapOption(block.backgroundColor, {
+      'backgroundColor' in block && mapOption(block.backgroundColor, {
         [BackgroundColor.Dark]: 'bg-sky-800/10',
       }),
 

@@ -1,7 +1,6 @@
-import { BlockPadding } from '~/types'
-import { BackgroundColor } from '~/types'
-import { createListOptionsFromEnum } from '~/sanity/lib/options'
-import { setGroup } from '~/sanity/lib/blocks'
+import { BlockPadding, BackgroundColor } from '~/types'
+import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
+import { setGroup } from '~/sanity/lib/schemaUtils'
 
 export const blockBackgroundFields = setGroup('background', [
   {
