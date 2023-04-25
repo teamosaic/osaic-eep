@@ -4,6 +4,7 @@ import { PageSeo } from '~/types'
 import { useContext } from 'react'
 import { SettingsContext } from '~/providers/settings'
 import { urlForImage } from '~/packages/sanity-image/lib/urlBuilding'
+import { useRouter } from 'next/router'
 
 interface PageHeadProps extends PageSeo {
   title?: string
@@ -27,45 +28,59 @@ export default function PageHead({
 
 }: PageHeadProps): React.ReactElement {
 
-  // Get global defaults
+  // Setup state
   const settings = useContext(SettingsContext)
+  const router = useRouter()
 
   // Assemble the final values
   const values = {
-    metaTitle: metaTitle || (settings.metaTitleSuffix ?
+    title: metaTitle || (settings.metaTitleSuffix ?
         `${title} | ${settings.metaTitleSuffix}` :
         title ),
-    metaDescription: metaDescription || description || settings.metaDescription,
-    metaImage: metaImage || image || settings.metaImage,
+    description: metaDescription || description || settings.metaDescription,
+    image: metaImage || image || settings.metaImage,
     robots,
+    canonicalUrl: process.env.URL ?
+      `${process.env.URL}${router.asPath}` : null
   }
 
   return <HeadTags {...values} />
 }
 
+type HeadTagsProps = Pick<PageHeadProps,
+  'title' | 'description' | 'image' | 'robots'
+> & {
+  canonicalUrl?: string
+}
+
 // Do the actual rendering of the Next head and it's tags
 function HeadTags({
-  metaTitle,
-  metaDescription,
-  metaImage,
+  title,
+  description,
+  image,
   robots,
-}: PageHeadProps): React.ReactElement {
+  canonicalUrl,
+}: HeadTagsProps): React.ReactElement {
   return (
     <Head>
 
-      <title>{ metaTitle }</title>
+      <title>{ title }</title>
 
-      { metaDescription && <meta
+      { description && <meta
           name='description'
-          content={ metaDescription } /> }
+          content={ description } /> }
 
-      { metaImage && <meta
+      { image && <meta
           property='og:image'
-          content={ urlForImage(metaImage).width(1200).url() } /> }
+          content={ urlForImage(image).width(1200).url() } /> }
 
       { robots?.length && <meta
           name='robots'
           content={ robots.join(', ') } /> }
+
+      { canonicalUrl && <link
+          rel='canonical'
+          href={ canonicalUrl } /> }
 
     </Head>
   )
