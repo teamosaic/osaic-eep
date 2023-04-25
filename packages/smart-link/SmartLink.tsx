@@ -4,7 +4,7 @@ import type { URL } from 'url'
 type Href = string | Partial<URL>
 
 // Conditionally render internal Next/Link instances or external anchor links
-export default function SmartLink({ href, children, className }: {
+export default function SmartLink({ href, children, className = '' }: {
 	href?: Href
 	children: React.ReactNode
 	className?: string

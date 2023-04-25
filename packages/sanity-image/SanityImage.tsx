@@ -16,7 +16,7 @@ import {
 
 // Render a Sanity image via Next/Image
 export default function SanityImage({
-  source, expand, width, height, priority, sizes, fit, className,
+  source, expand, width, height, priority, sizes, fit, className = '',
 }: SanityImageProps): React.ReactElement | null {
 
   // Return without error if no source
@@ -56,7 +56,7 @@ export default function SanityImage({
 
 // Make an image at a specific size, using the Sanity CDN to generate sizes
 function FixedSizeImage({
-  source, width, height, priority, fit, className
+  source, width, height, priority, fit, className = ''
 }: FixedSizeImageProps): React.ReactElement {
   return (
     <Image
@@ -73,7 +73,7 @@ function FixedSizeImage({
 
 // Render an image that expands to fill it's container
 function ExpandingImage({
-  source, priority, sizes, fit = ObjectFit.Cover, className
+  source, priority, sizes, fit = ObjectFit.Cover, className = ''
 }: ExpandingImageProps): React.ReactElement {
   return (
     <Image
@@ -96,7 +96,7 @@ function ExpandingImage({
 // Render wrapper element who is used to set the aspect ratio, when
 // not expanding.
 function AspectRespectingImage({
-  source, aspectRatio, priority, sizes, className
+  source, aspectRatio, priority, sizes, className = ''
 }: AspectRespectingImageProps): React.ReactElement {
   return (
     <div

@@ -16,7 +16,7 @@ export default function AnimateInView({
   initialInView,
   onChange,
   children,
-  className,
+  className = '',
 }: AnimateInViewProps): React.ReactElement {
 
   // If when is supplied, use it for the rootMargin
