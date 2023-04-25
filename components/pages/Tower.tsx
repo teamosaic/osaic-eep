@@ -3,9 +3,7 @@ import PageHead from '~/components/layout/PageHead'
 import { Tower, HeroBlock } from '~/types'
 import type { Image } from 'sanity'
 
-export default function Tower({ page }: {
-  page: Tower
-}): React.ReactElement {
+export default function Tower({ page }: { page: Tower }) {
   return (
     <>
       <PageHead { ...page } image={ getFirstHeroImage(page) } />

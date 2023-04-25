@@ -2,9 +2,7 @@ import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import PageHead from '~/components/layout/PageHead'
 import { Article } from '~/types'
 
-export default function Article({ page }: {
-  page: Article
-}): React.ReactElement {
+export default function Article({ page }: { page: Article }) {
   return (
     <>
       <PageHead {...page} />
