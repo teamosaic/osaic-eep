@@ -61,6 +61,7 @@ export default {
     blockName: 'CTA',
     titleField: 'body',
     icon: <TfiLayoutCtaCenter />,
+    hasTypes: true,
   }),
 
 }
