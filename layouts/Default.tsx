@@ -1,5 +1,6 @@
 import { SettingsContext } from '~/providers/settings'
 import LayoutHeader from '~/components/layout/Header'
+import LayoutFooter from '~/components/layout/Footer'
 
 export default function DefaultLayout({ settings, children }) {
   return (
@@ -9,6 +10,7 @@ export default function DefaultLayout({ settings, children }) {
         <main>
           { children }
         </main>
+        <LayoutFooter/>
       </>
     </SettingsContext.Provider>
   )
