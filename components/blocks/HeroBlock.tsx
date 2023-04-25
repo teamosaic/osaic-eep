@@ -13,7 +13,7 @@ export default function HeroBlock({
   background,
 }: BlockType): React.ReactElement {
   return (
-    <div className="relative isolate overflow-hidden pt-header">
+    <div className="relative isolate overflow-hidden pt-header bg-slate-900">
 
       {/* Background image */}
       { background &&
