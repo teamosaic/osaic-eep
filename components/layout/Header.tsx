@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -11,12 +12,16 @@ const navigation = [
 
 // Based on
 // https://tailwindui.com/components/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b
-export default function LayoutHeader() {
+export default function LayoutHeader({ overlap = false }:{
+  overlap?: boolean // Does the header overlap the page content
+}):React.ReactElement {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className={clsx({
+      'absolute inset-x-0 top-0 z-50 text-white': overlap
+    })}>
 
       <nav className="
         flex items-center justify-between
@@ -45,13 +50,13 @@ export default function LayoutHeader() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
+            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6">
               {item.name}
             </a>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
+          <a href="#" className="text-sm font-semibold leading-6">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>

@@ -17,7 +17,7 @@ export enum TypographyThemes {
 }
 
 export enum BlockSpacing {
-  None = 'none',
+  None = null,
   ExtraSmall = 'extraSmall',
   Small = 'small',
   Medium = 'medium',
@@ -26,7 +26,7 @@ export enum BlockSpacing {
 
 export enum BlockPadding {
   Matching = 'matching',
-  None = 'none',
+  None = null,
   ExtraSmall = 'extraSmall',
   Small = 'small',
   Medium = 'medium',
@@ -34,7 +34,7 @@ export enum BlockPadding {
 }
 
 export enum BackgroundColor {
-  None = 'none',
+  None = null,
   Dark = 'dark',
 }
 

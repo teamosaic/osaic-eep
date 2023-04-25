@@ -12,6 +12,7 @@ module.exports = {
     './sanity/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './layouts/**/*.{js,ts,jsx,tsx}',
     './packages/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
@@ -39,9 +40,9 @@ module.exports = {
 
         // Add spacing values that are used by BlockLayout
         xs: fluid(24),
-        sm: fluid(48),
-        md: fluid(64),
-        lg: fluid(128),
+        sm: fluid(48, 32),
+        md: fluid(64, 48),
+        lg: fluid(128, 64),
 
         // Add gutter values
         gutter: fluid(40, 16),

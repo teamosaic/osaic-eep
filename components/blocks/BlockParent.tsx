@@ -100,9 +100,9 @@ function mapPaddingTopToTailwindClass(
         sameBackground(block, previousBlock)) return
       switch (block.blockSpacing) {
         case BlockSpacing.Small: return 'pt-sm'
-        case BlockSpacing.Medium:
-        case undefined: return 'pt-md'
-        case BlockSpacing.Large: return 'pt-lg'
+        case BlockSpacing.Medium: return 'pt-md'
+        case BlockSpacing.Large:
+        case undefined: return 'pt-lg'
       }
   }
 }
@@ -127,19 +127,16 @@ function mapPaddingBottomToTailwindClass(
         sameBackground(block, nextBlock)) return
       switch (block.blockSpacing) {
         case BlockSpacing.Small: return 'pb-sm'
-        case BlockSpacing.Medium:
-        case undefined: return 'pb-md'
-        case BlockSpacing.Large: return 'pb-lg'
+        case BlockSpacing.Medium: return 'pb-md'
+        case BlockSpacing.Large:
+        case undefined: return 'pb-lg'
       }
   }
 }
 
 // Helper to determine if a background was set on a block
 function hasBackground(block: Block): Boolean {
-  return block &&
-    'backgroundColor' in block &&
-    block.backgroundColor &&
-    block.backgroundColor != BackgroundColor.None
+  return block && 'backgroundColor' in block && !!block.backgroundColor
 }
 
 // Get the background of a block in Typescript friendly way

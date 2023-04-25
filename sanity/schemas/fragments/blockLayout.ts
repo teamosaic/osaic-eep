@@ -9,7 +9,7 @@ export const blockLayoutFields = setGroup('layout', [
     title: 'Spacing',
     type: 'string',
     description: 'The space between this Block and the preceeding Block. This is forced to "None" if this is the first Block in a list.',
-    initialValue: BlockSpacing.Medium,
+    initialValue: BlockSpacing.Large,
     options: {
       list: createListOptionsFromEnum(BlockSpacing),
       layout: 'radio'

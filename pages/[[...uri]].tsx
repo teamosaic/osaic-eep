@@ -1,5 +1,5 @@
 import { client } from '~/sanity/lib/client'
-import DefaultLayout from '~/layouts/Default'
+import DefaultLayout from '~/layouts/DefaultLayout'
 import dynamic from 'next/dynamic'
 import PagePreview from '~/sanity/components/PagePeview'
 import { PageType, PageDocument } from '~/types'
@@ -31,7 +31,7 @@ function render({ page, settings }: {
   settings: object
 }): React.ReactElement {
   return (
-    <DefaultLayout {...{ settings }} >
+    <DefaultLayout {...{ settings, page }} >
       <PageComponent {...{ page }} />
     </DefaultLayout>
   )
