@@ -7,10 +7,15 @@ export default function DefaultLayout({ settings, children }) {
     <SettingsContext.Provider value={ settings } >
       <>
         <LayoutHeader/>
-        <main>
+        <main className='
+          w-full min-h-full
+          flex flex-col'>
+
+          {/* Page content injected here */}
           { children }
+
+          <LayoutFooter className='mt-auto'/>
         </main>
-        <LayoutFooter/>
       </>
     </SettingsContext.Provider>
   )
