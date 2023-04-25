@@ -1,8 +1,6 @@
 import settings from './schemas/settingsSchema'
 import tower from './schemas/towerSchema'
 import article from './schemas/articleSchema'
-import marqueeBlock from './schemas/blocks/marqueeBlockSchema'
-import copyBlock from './schemas/blocks/copyBlockSchema'
 import heroBlock from './schemas/blocks/heroBlockSchema'
 import ctaBlock from './schemas/blocks/ctaBlockSchema'
 import { button, buttonList } from './schemas/fragments/buttonsFragment'
@@ -24,10 +22,6 @@ export const schema: {
     tower,
     article,
     settings,
-
-    // Legacy blocks
-    marqueeBlock,
-    copyBlock,
 
     // Blocks
     heroBlock,

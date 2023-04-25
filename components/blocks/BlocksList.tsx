@@ -4,8 +4,6 @@ import { BlockOrderContext, type BlockOrder } from '~/providers/blockOrder'
 import dynamic from 'next/dynamic'
 
 // Import blocks on demand
-const MarqueeBlock = dynamic(() => import('./MarqueeBlock'))
-const CopyBlock = dynamic(() => import('./CopyBlock'))
 const HeroBlock = dynamic(() => import('./HeroBlock'))
 const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
 
@@ -58,8 +56,6 @@ function makeBlockInstance(block: any): React.ReactElement {
 // Return the component class based on the type
 function getComponentFunction(type: string): Function {
   switch(type) {
-    case 'marqueeBlock': return MarqueeBlock
-    case 'copyBlock': return CopyBlock
     case 'heroBlock': return HeroBlock
     case 'ctaBlock': return CtaBlock
   }

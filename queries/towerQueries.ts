@@ -8,9 +8,6 @@ export const getTower = groq`
       ...,
 
       // De-reference image fields for acccessing image metadata
-      _type == 'marqueeBlock' => {
-        background { ..., asset-> }
-      },
       _type == 'heroBlock' => {
         background { ..., asset-> }
       },
