@@ -8,16 +8,23 @@ import { urlForImage } from '~/packages/sanity-image/lib/urlBuilding'
 interface PageHeadProps extends PageSeo {
   title?: string
   image?: Image
+  description?: string
 }
 
 // Helper for generating standardized head tags from page data
 export default function PageHead({
-  title, // Use the title of the page as fallback
-  image, // Use an image from the page as fallback
+
+  // Page specific values to use as fallback
+  title,
+  image,
+  description,
+
+  // Explicit meta choices from seoSchema
   metaTitle,
   metaDescription,
   metaImage,
   robots,
+
 }: PageHeadProps): React.ReactElement {
 
   // Get global defaults
@@ -25,9 +32,10 @@ export default function PageHead({
 
   // Assemble the final values
   const values = {
-    title,
-    metaTitle: metaTitle || title,
-    metaDescription: metaDescription || settings.metaDescription,
+    metaTitle: metaTitle || (settings.metaTitleSuffix ?
+        `${title} | ${settings.metaTitleSuffix}` :
+        title ),
+    metaDescription: metaDescription || description || settings.metaDescription,
     metaImage: metaImage || image || settings.metaImage,
     robots,
   }
@@ -37,7 +45,6 @@ export default function PageHead({
 
 // Do the actual rendering of the Next head and it's tags
 function HeadTags({
-  title,
   metaTitle,
   metaDescription,
   metaImage,
@@ -46,11 +53,7 @@ function HeadTags({
   return (
     <Head>
 
-      <title>{ title }</title>
-
-      { metaTitle && <meta
-          property='og:title'
-          content={ metaTitle } /> }
+      <title>{ metaTitle }</title>
 
       { metaDescription && <meta
           name='description'

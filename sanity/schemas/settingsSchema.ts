@@ -15,6 +15,13 @@ export default {
   ],
   fields: [
     ...setGroup('seo', [
+
+      {
+        name: 'metaTitleSuffix',
+        type: 'string',
+        description: `When a Page doesn't have an explicit Meta Title, this value is appended to the Page title.  For example, "Homepage | Company Name" where "Company Name" is the Title Suffix value.`
+      },
+
       metaDescription,
       metaImage,
     ]),
