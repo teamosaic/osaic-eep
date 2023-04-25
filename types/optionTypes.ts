@@ -11,6 +11,11 @@ export enum TextAlignment {
   Right = 'right',
 }
 
+export enum TypographyThemes {
+  Default = 'default',
+  Article = 'article',
+}
+
 export enum BlockSpacing {
   None = 'none',
   ExtraSmall = 'extraSmall',
@@ -31,11 +36,6 @@ export enum BlockPadding {
 export enum BackgroundColor {
   None = 'none',
   Dark = 'dark',
-}
-
-export enum TypographyThemes {
-  Default = 'default',
-  Article = 'article',
 }
 
 

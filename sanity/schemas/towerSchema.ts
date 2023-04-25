@@ -36,10 +36,6 @@ export default {
       of: [
         { type: 'heroBlock' },
         { type: 'ctaBlock' },
-
-        // Deprecated
-        { type: 'marqueeBlock' },
-        { type: 'copyBlock' },
       ]
     },
 
