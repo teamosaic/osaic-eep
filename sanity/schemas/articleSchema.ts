@@ -1,5 +1,5 @@
 import { BsNewspaper } from 'react-icons/bs'
-import { metaDescription } from './fieldGroups/pageSeoSchema'
+import { seoFields } from './fieldGroups/pageSeoSchema'
 import { uriField } from '../lib/uri'
 import moment from 'moment'
 
@@ -45,7 +45,8 @@ export default {
       group: 'content',
       of: [{ type: 'block' }]
     },
-    metaDescription,
+
+    ...seoFields,
   ],
   orderings: [
     {

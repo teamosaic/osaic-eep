@@ -1,22 +1,25 @@
-import Head from 'next/head'
-import { useContext } from 'react'
-import { SettingsContext } from '~/providers/settings'
 import BlocksList from '~/components/blocks/BlocksList'
+import PageHead from '~/components/layout/PageHead'
+import { Tower, HeroBlock } from '~/types'
+import type { Image } from 'sanity'
 
-export default function Tower({ page }) {
-  const { blocks } = page,
-    settings = useContext(SettingsContext)
+export default function Tower({ page }: { page: Tower }) {
+  return (
+    <>
+      <PageHead { ...page } image={ getFirstHeroImage(page) } />
+      <BlocksList blocks={ page.blocks } />
+    </>
+  )
+}
 
-  const metaDescription = page.metaDescription || settings.metaDescription
+// Get the first hero image to use as the default meta image
+function getFirstHeroImage(page: Tower): Image {
+  if (!page.blocks?.length) return
 
-  return (<>
-    <Head>
-      <title>{ page.title }</title>
-      { metaDescription && <meta
-        name='description'
-        content={ metaDescription } /> }
-    </Head>
-    <BlocksList {...{ blocks }} />
-  </>)
+  const firstHeroBlock = page.blocks
+    .find(block => block._type == 'heroBlock') as HeroBlock
+  if (!firstHeroBlock) return
+
+  return firstHeroBlock.background
 }
 

@@ -2,7 +2,12 @@ import { client } from '~/sanity/lib/client'
 import DefaultLayout from '~/layouts/DefaultLayout'
 import dynamic from 'next/dynamic'
 import PagePreview from '~/sanity/components/PagePeview'
-import { PageType, PageDocument } from '~/types'
+import {
+  PageType,
+  PageDocument,
+  Tower as TowerPage,
+  Article as ArticlePage,
+} from '~/types'
 
 // Page components
 const Tower = dynamic(() => import('../components/pages/Tower'))
@@ -42,8 +47,10 @@ function PageComponent({ page }: {
   page: PageDocument
 }): React.ReactElement {
   switch(page._type) {
-    case PageType.Tower: return <Tower {...{ page }} />
-    case PageType.Article: return <Article {...{ page }} />
+    case PageType.Tower:
+      return <Tower page={ page as TowerPage } />
+    case PageType.Article:
+      return <Article page={ page as ArticlePage } />
   }
 }
 

@@ -1,5 +1,5 @@
 import { BsBuilding } from 'react-icons/bs'
-import { metaDescription } from './fieldGroups/pageSeoSchema'
+import { seoFields } from './fieldGroups/pageSeoSchema'
 import { uriField } from '../lib/uri'
 
 export default {
@@ -39,7 +39,7 @@ export default {
       ]
     },
 
-    metaDescription,
+    ...seoFields,
   ],
   preview: {
     select: {

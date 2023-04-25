@@ -1,5 +1,6 @@
 import { CogIcon } from '@sanity/icons'
-import { metaDescription } from './fieldGroups/pageSeoSchema'
+import { metaDescription, metaImage } from './fieldGroups/pageSeoSchema'
+import { setGroup } from '~/sanity/lib/schemaUtils'
 
 export default {
   name: 'settings',
@@ -13,7 +14,17 @@ export default {
     },
   ],
   fields: [
-    metaDescription,
+    ...setGroup('seo', [
+
+      {
+        name: 'metaTitleSuffix',
+        type: 'string',
+        description: `When a Page doesn't have an explicit Meta Title, this value is appended to the Page title.  For example, "Homepage | Company Name" where "Company Name" is the Title Suffix value.`
+      },
+
+      metaDescription,
+      metaImage,
+    ]),
   ],
   preview: {
     prepare() {
