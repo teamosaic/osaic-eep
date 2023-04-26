@@ -5,6 +5,7 @@ import { button } from '../objects/buttonSchema'
 export default {
   name: 'heroBlock',
   type: 'object',
+  title: 'Hero Block',
   groups: [
     { name: 'content', title: 'Content', default: true, },
     { name: 'layout', title: 'Layout' },

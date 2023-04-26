@@ -5,6 +5,7 @@ import { BsNewspaper } from 'react-icons/bs'
 export default {
   name: 'articlesBlock',
   type: 'object',
+  title: 'Articles Block',
   groups: [
     { name: 'content', title: 'Content', default: true, },
     { name: 'layout', title: 'Layout' },
