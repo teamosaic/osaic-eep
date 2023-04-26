@@ -59,7 +59,7 @@ export default {
   preview: makeBlockPreview({
     blockName: 'CTA',
     titleField: 'body',
-    icon: <TfiLayoutCtaCenter />,
+    icon: TfiLayoutCtaCenter,
     hasTypes: true,
   }),
 

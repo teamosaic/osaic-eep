@@ -39,4 +39,3 @@ export const schema: {
     templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
 
 }
-

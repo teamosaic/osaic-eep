@@ -1,4 +1,102 @@
 import startCase from 'lodash/startCase'
+import pluralize from 'pluralize-esm'
+import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchema'
+import { blockBackgroundFields } from '~/sanity/schemas/fieldGroups/blockBackgroundSchema'
+import { seoFields } from '~/sanity/schemas/fieldGroups/pageSeoSchema'
+import { uriField } from './uri'
+
+// Helper for making standard block schemas
+export function makeBlockSchema({
+  name,
+  titleField = 'body',
+  icon,
+  hasBackground = false,
+  contentFields = [],
+}: {
+  name: string // The block name
+  titleField?: string // The field the preview title is pulled from
+  icon?: React.ReactNode | Function // Icon for listing views
+  hasBackground?: boolean // Whether to add blockBackgroundSchem
+  contentFields?: any[], // Sanity fields to add to content fields
+}) {
+  return {
+    name,
+    type: 'object',
+    title: startCase(name),
+
+    groups: [
+      { name: 'content', title: 'Content', default: true, },
+      { name: 'layout', title: 'Layout' },
+      ...( hasBackground ? [{ name: 'background', title: 'Background' }] : []),
+    ],
+
+    fields: [
+      ...contentGroup(contentFields),
+      ...blockLayoutFields,
+      ...( hasBackground ? blockBackgroundFields : []),
+    ],
+
+    preview: makeBlockPreview({
+      titleField: titleField,
+      blockName: startCase(name.replace('Block', '')),
+      icon,
+    }),
+  }
+}
+
+// Helper for making standard page type schemas
+export function makePageSchema({
+  name,
+  icon,
+  contentFields = [],
+}: {
+  name: string // The singular page name
+  icon?: React.ReactNode | Function // Icon for listing views
+  contentFields?: any[], // Sanity fields to add to content fields
+}) {
+  return {
+    name,
+    type: 'document',
+    title: pluralize(startCase(name)),
+    icon: icon,
+
+    groups: [
+      { name: 'content', title: 'Content', default: true, },
+      { name: 'seo', title: 'SEO' },
+    ],
+
+    fields: [
+
+      // Title and uri are standard for pages
+      {
+        name: 'title',
+        type: 'string',
+        group: 'content',
+        validation: Rule => Rule.required(),
+      },
+      uriField(),
+
+      ...contentGroup(contentFields),
+
+      // SEO fields are also standard
+      ...seoFields,
+    ],
+
+    preview: {
+      select: {
+        title: 'title',
+        uri: 'uri',
+      },
+      prepare({ title, uri }) {
+        return {
+          title,
+          subtitle: uri.current,
+        }
+      }
+    }
+  }
+}
+
 
 // Create a Sanity options array from an enum type, supporting passing in
 // custom title overrides
@@ -90,7 +188,7 @@ export function makeBlockPreview({
   blockName: string
   titleField: string
   imageField?: string
-  icon?: React.ReactNode
+  icon?: React.ReactNode | Function
   hasTypes?: boolean, // Like if they block has a `types` field
 }): Object {
   return {
