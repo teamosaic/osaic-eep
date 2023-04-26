@@ -36,6 +36,7 @@ export default {
       of: [
         { type: 'heroBlock' },
         { type: 'ctaBlock' },
+        { type: 'articlesBlock' },
       ]
     },
 
