@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 // Import blocks on demand
 const HeroBlock = dynamic(() => import('./HeroBlock'))
 const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
+const ArticlesBlock = dynamic(() => import('./ArticlesBlock'))
 
 // Conditionally render blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks }: {
@@ -58,5 +59,6 @@ function getComponentFunction(type: string): Function {
   switch(type) {
     case 'heroBlock': return HeroBlock
     case 'ctaBlock': return CtaBlock
+    case 'articlesBlock': return ArticlesBlock
   }
 }

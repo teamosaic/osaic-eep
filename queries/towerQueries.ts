@@ -12,6 +12,19 @@ export const getTower = groq`
         background { ..., asset-> }
       },
 
+      // Fetch recent articles
+      _type == 'articlesBlock' => {
+        'recentArticles': *[_type == 'article'] [0...3] | order(date desc) {
+          ...,
+          'uri': uri.current,
+          'date': dateTime(date),
+          'body': undefined, // Don't fetch the whole body
+          'excerpt':
+            array::join(string::split((pt::text(body)), '')[0...256], ''),
+
+        }
+      },
+
     }
   }[0]
 `
