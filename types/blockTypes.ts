@@ -38,7 +38,7 @@ export interface ArticlesBlock extends BlockLayout {
 export interface ArticleCard {
   _id: string
   title: string
-  date: { date: Date }
+  date: string
   excerpt: string
   uri: string
 }

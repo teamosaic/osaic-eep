@@ -24,8 +24,8 @@ export default function ArticlesBlockComponent({
 
       {/* Render cards vis CSS grid */}
       <div className='
-        max-w-screen-sm mx-auto px-gutter
         mt-sm
+        max-w-screen-sm mx-auto px-gutter
         grid grid-cols-1 gap-x-8 gap-y-20
         lg:max-w-screen-xl lg:grid-cols-3'>
         { recentArticles.map(ArticleCard) }
@@ -39,23 +39,24 @@ export default function ArticlesBlockComponent({
 function ArticleCard({
   _id, uri, title, date, excerpt,
 }: ArticleCardType): React.ReactElement {
+
+  const dateObj = new Date(date)
+
   return (
     <article key={ _id } className="flex flex-col items-start justify-between">
 
       {/* Image */}
-      <div className="relative w-full">
-        <div
-          className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2] opacity-10"
-        />
+      <SmartLink href={ uri } className="relative w-full">
+        <div className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2] opacity-10" />
         <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-      </div>
+      </SmartLink>
 
       <div className="max-w-md">
 
         {/* Time & Category */}
         <div className="mt-8 flex items-center gap-x-4 text-xs">
-          <time dateTime={ date.date.toISOString() } className="opacity-70">
-            { date.date.toLocaleDateString('en-US', { dateStyle: 'medium' }) }
+          <time dateTime={ dateObj.toISOString() } className="opacity-70">
+            { dateObj.toLocaleDateString('en-US', { dateStyle: 'medium' }) }
           </time>
           <a
             href='#'
@@ -70,7 +71,6 @@ function ArticleCard({
         <div className="group relative">
           <h4 className="mt-3 text-lg font-semibold leading-6">
             <SmartLink href={ uri } className='group-hover:opacity-70'>
-              <span className="absolute inset-0" />
               {title}
             </SmartLink>
           </h4>

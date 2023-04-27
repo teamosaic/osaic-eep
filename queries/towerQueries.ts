@@ -17,7 +17,7 @@ export const getTower = groq`
         'recentArticles': *[_type == 'article'] [0...3] | order(date desc) {
           ...,
           'uri': uri.current,
-          'date': dateTime(date),
+          'date': coalesce(date, _createdAt),
           'body': undefined, // Don't fetch the whole body
           'excerpt':
             array::join(string::split((pt::text(body)), '')[0...256], ''),
