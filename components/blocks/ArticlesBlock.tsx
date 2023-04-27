@@ -68,9 +68,9 @@ function ArticleCard({
         </div>
 
         {/* Title & description */}
-        <div className="group relative">
+        <div className="relative">
           <h4 className="mt-3 text-lg font-semibold leading-6">
-            <SmartLink href={ uri } className='group-hover:opacity-70'>
+            <SmartLink href={ uri } className='hover:opacity-70'>
               {title}
             </SmartLink>
           </h4>
