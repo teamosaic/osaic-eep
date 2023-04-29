@@ -85,7 +85,7 @@ function ArticleCard({
 
         {/* Time & Category */}
         <div className="mt-8 flex items-center gap-x-4 text-xs">
-          <time dateTime={ dateObj.toISOString() } className="opacity-60">
+          <time dateTime={ dateObj.toISOString() } className="opacity-70">
             { dateObj.toLocaleDateString('en-US', { dateStyle: 'medium' }) }
           </time>
           <a
@@ -93,18 +93,18 @@ function ArticleCard({
             className="
             rounded-full px-3 py-1.5
             bg-white/80 hover:bg-white">
-            <span className='opacity-60 font-medium'>Example Category</span>
+            <span className='opacity-70 font-medium'>Example Category</span>
           </a>
         </div>
 
         {/* Title & description */}
         <div className="relative">
           <h4 className="mt-3 text-lg font-semibold leading-6">
-            <SmartLink href={ uri } className='hover:opacity-60'>
+            <SmartLink href={ uri } className='hover:opacity-70'>
               {title}
             </SmartLink>
           </h4>
-          <p className="mt-5f line-clamp-3 text-sm leading-6 opacity-60">
+          <p className="mt-5f line-clamp-3 text-sm leading-6 opacity-70">
             { excerpt }
           </p>
         </div>

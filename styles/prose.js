@@ -91,6 +91,7 @@ export const marketing = {
     lineHeight: 1.6,
     marginTop: '0.9em',
     marginBottom: '0.9em',
+    opacity: 0.7,
   },
 
   // Re-apply the margin clearing on first/last
