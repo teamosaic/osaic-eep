@@ -52,6 +52,7 @@ function ArticleCard({
   return (
     <AnimateInView
       as='article'
+      when='10%'
       key={ _id }
       className='
         flex flex-col items-start
@@ -66,9 +67,11 @@ function ArticleCard({
           rounded-2xl ring-1 ring-inset ring-gray-900/10">
 
         {/* Render image, scaling in when in viewport */}
-        <AnimateInView className={`
-          absolute inset-0
-          animate-slow-scale-down-in`}>
+        <AnimateInView
+          when='10%'
+          className={`
+            absolute inset-0
+            animate-slow-scale-down-in`}>
           <SanityImage
             expand
             source={ image }
