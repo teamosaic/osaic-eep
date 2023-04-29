@@ -2,14 +2,15 @@ import type { Image, ImageAsset } from 'sanity'
 
 // Props for the main component
 export interface SanityImageProps {
-  source: SanityImageSource,
-  expand?: boolean,
-  width?: number,
-  height?: number,
-  priority?: boolean,  // Forwarded to next/image
-  sizes: string, // Forwarded to next/image
-  fit?: ObjectFit,
-  className?: string,
+  source: SanityImageSource
+  expand?: boolean
+  aspect?: number //  An explict aspect ratio
+  width?: number
+  height?: number
+  priority?: boolean  // Forwarded to next/image
+  sizes: string // Forwarded to next/image
+  fit?: ObjectFit
+  className?: string
 }
 
 // Should accept normal Sanity images or already dereferenced instances
@@ -59,5 +60,5 @@ export interface ExpandingImageProps extends Pick<SanityImageProps,
 export interface AspectRespectingImageProps extends Pick<SanityImageProps,
   'source' | 'priority' | 'sizes' | 'className'
 > {
-  aspectRatio: number,
+  aspect: number,
 }

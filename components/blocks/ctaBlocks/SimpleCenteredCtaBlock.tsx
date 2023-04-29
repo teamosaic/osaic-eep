@@ -13,12 +13,10 @@ export default function SimpleCenteredCtaBlock(
       {/* The main WYSIWYG text */}
       <AnimateInView
         target='descendants'
-        className='
-          prose-text-slide-up-in
-          prose-late-child-div-slide-down-in'>
+        className='prose-animate-in'>
         <BasicPortableText
           value={ body }
-          className='prose-marquee' />
+          className='prose-marketing' />
       </AnimateInView>
 
     </div>

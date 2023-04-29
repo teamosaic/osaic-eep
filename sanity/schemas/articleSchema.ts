@@ -1,32 +1,13 @@
 import { BsNewspaper } from 'react-icons/bs'
-import { seoFields } from './fieldGroups/pageSeoSchema'
-import { uriField } from '../lib/uri'
-import moment from 'moment'
+import { imageWithAlt, makePageSchema } from '~/sanity/lib/schema'
 
-export default {
+export default makePageSchema({
   name: 'article',
-  type: 'document',
-  title: 'Articles',
+  uriPrefix: 'articles',
   icon: BsNewspaper,
-  groups: [
-    {
-      name: 'content',
-      title: 'Content',
-      default: true,
-    },
-    {
-      name: 'seo',
-      title: 'SEO',
-    },
-  ],
-  fields: [
-    {
-      name: 'title',
-      type: 'string',
-      group: 'content',
-      validation: Rule => Rule.required(),
-    },
-    uriField('articles'),
+  subtitleField: 'date',
+  contentFields: [
+
     {
       name: 'date',
       type: 'datetime',
@@ -39,38 +20,28 @@ export default {
         timeFormat: 'LT'
       },
     },
+
+    imageWithAlt({
+      name: 'image',
+      description: `A 16:9 image that's displayed in listing cards and on the Article detail page.`,
+      required: true,
+    }),
+
     {
       name: 'body',
       type: 'array',
+      description: 'The main article text',
       group: 'content',
       of: [{ type: 'block' }]
     },
-
-    ...seoFields,
   ],
+
   orderings: [
     {
-      title: 'Date',
-      name: 'date',
+      title: 'Date Field', name: 'date',
       by: [
-        {
-          field: 'date',
-          direction: 'desc',
-        }
+        { field: 'date', direction: 'desc', }
       ]
     }
   ],
-  preview: {
-    select: {
-      title: 'title',
-      date: 'date',
-    },
-    prepare({ title, date }) {
-      // const uri = slug.current == '__home__' ? '/' : `/${slug.current}`
-      return {
-        title,
-        subtitle: moment(date).format('LLL').toString(),
-      }
-    }
-  }
-}
+})

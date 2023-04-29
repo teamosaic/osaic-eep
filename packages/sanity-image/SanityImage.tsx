@@ -16,18 +16,18 @@ import {
 
 // Render a Sanity image via Next/Image
 export default function SanityImage({
-  source, expand, width, height, priority, sizes, fit, className = '',
+  source, expand, aspect, width, height, priority, sizes, fit, className = '',
 }: SanityImageProps): React.ReactElement | null {
 
   // Return without error if no source
   if (!source?.asset) return null
 
-  // See if we have an aspect ratio
-  const aspectRatio = aspectRatioFromSource(source)
+  // If no aspect ratio was defined, look for it in the source
+  if (!aspect) aspect = aspectRatioFromSource(source)
 
   // If the image was not de-referenced and we're not expanding it, then
   // next/image requires a width and height, so throw an error
-  if (!expand && !aspectRatio && (!width || !height)) {
+  if (!expand && !aspect && (!width || !height)) {
     throw `If not using the \`expand\` prop, you need to either set an explicit
       width and height (next/image requires this) or dereference the asset with
       code like \`image { ..., asset-> }\` so we can read the aspect ratio from
@@ -47,9 +47,9 @@ export default function SanityImage({
   }
 
   // Return an image that preserves the expact ratio
-  if (aspectRatio) {
+  if (aspect) {
     return <AspectRespectingImage {...{
-      source, aspectRatio, priority, sizes, className
+      source, aspect, priority, sizes, className
     }} />
   }
 }
@@ -96,14 +96,14 @@ function ExpandingImage({
 // Render wrapper element who is used to set the aspect ratio, when
 // not expanding.
 function AspectRespectingImage({
-  source, aspectRatio, priority, sizes, className = ''
+  source, aspect, priority, sizes, className = ''
 }: AspectRespectingImageProps): React.ReactElement {
   return (
     <div
       className={ className }
       style={{
         position: 'relative',
-        aspectRatio,
+        aspectRatio: aspect,
       }}>
       <ExpandingImage {...{ source, priority, sizes, className }} />
     </div>

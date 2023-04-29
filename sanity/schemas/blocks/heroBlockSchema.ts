@@ -1,5 +1,5 @@
 import { blockLayoutFields } from '../fieldGroups/blockLayoutSchema'
-import { makeBlockPreview, contentGroup, imageWithAlt } from '~/sanity/lib/schemaUtils'
+import { makeBlockPreview, contentGroup, imageWithAlt } from '~/sanity/lib/schema'
 import { button } from '../objects/buttonSchema'
 
 export default {

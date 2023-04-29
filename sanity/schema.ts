@@ -3,6 +3,7 @@ import tower from './schemas/towerSchema'
 import article from './schemas/articleSchema'
 import heroBlock from './schemas/blocks/heroBlockSchema'
 import ctaBlock from './schemas/blocks/ctaBlockSchema'
+import articlesBlock from './schemas/blocks/articlesBlockSchema'
 import { button, buttonList } from './schemas/objects/buttonSchema'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
@@ -26,6 +27,7 @@ export const schema: {
     // Blocks
     heroBlock,
     ctaBlock,
+    articlesBlock,
 
     // Misc Objects
     button,
@@ -37,4 +39,3 @@ export const schema: {
     templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
 
 }
-

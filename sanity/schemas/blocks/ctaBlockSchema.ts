@@ -1,8 +1,8 @@
 import { blockLayoutFields } from '../fieldGroups/blockLayoutSchema'
 import { blockBackgroundFields } from '../fieldGroups/blockBackgroundSchema'
-import { makeBlockPreview, contentGroup } from '~/sanity/lib/schemaUtils'
+import { makeBlockPreview, contentGroup } from '~/sanity/lib/schema'
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
+import { createListOptionsFromEnum } from '~/sanity/lib/schema'
 import { CtaBlockType } from '~/types'
 
 export default {
@@ -59,7 +59,7 @@ export default {
   preview: makeBlockPreview({
     blockName: 'CTA',
     titleField: 'body',
-    icon: <TfiLayoutCtaCenter />,
+    icon: TfiLayoutCtaCenter,
     hasTypes: true,
   }),
 

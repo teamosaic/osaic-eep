@@ -3,7 +3,7 @@ import {
   Block,
   BlockSpacing,
   BlockPadding,
-  BlockWithBackground,
+  BlockBackground,
   HideWhen,
 } from '~/types'
 import clsx from 'clsx'
@@ -142,7 +142,7 @@ function hasBackground(block: Block): Boolean {
 // Get the background of a block in Typescript friendly way
 function getBackground(block: Block): BackgroundColor {
   return hasBackground(block) ?
-    (block as BlockWithBackground).backgroundColor :
+    (block as BlockBackground).backgroundColor :
     BackgroundColor.None
 }
 

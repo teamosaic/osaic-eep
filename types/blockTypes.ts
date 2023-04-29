@@ -1,17 +1,14 @@
 import type {
-  BackgroundColor,
-  BlockPadding,
-  BlockSpacing,
+  BlockBackground,
+  BlockLayout,
   Button,
-  HideWhen,
-  SanityObject,
 } from '~/types'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
 
-export type Block = HeroBlock | CtaBlock
+export type Block = HeroBlock | CtaBlock | ArticlesBlock
 
-export interface HeroBlock extends BlockWithLayout {
+export interface HeroBlock extends BlockLayout {
   body: PortableTextBlock[] // I couldn't figure out how to add Button here
   background: Image
   announcementButton: {
@@ -21,7 +18,7 @@ export interface HeroBlock extends BlockWithLayout {
   }
 }
 
-export interface CtaBlock extends BlockWithLayout, BlockWithBackground {
+export interface CtaBlock extends BlockLayout, BlockBackground {
   type: CtaBlockType
   body: PortableTextBlock[]
   buttons: Button[]
@@ -32,14 +29,16 @@ export enum CtaBlockType {
   SimpleJustified = 'simpleJustified',
 }
 
-export interface BlockWithBackground extends SanityObject {
-  backgroundColor: BackgroundColor
-  paddingTop: BlockPadding
-  paddingBottom: BlockPadding
+export interface ArticlesBlock extends BlockLayout {
+  headline: PortableTextBlock[]
+  recentArticles: ArticleCard[]
 }
 
-export interface BlockWithLayout extends SanityObject {
-  blockSpacing: BlockSpacing
-  disabled: boolean
-  hideWhen: HideWhen[]
+export interface ArticleCard {
+  _id: string
+  title: string
+  date: string
+  excerpt: string
+  image: Image
+  uri: string
 }

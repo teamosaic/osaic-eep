@@ -14,12 +14,10 @@ export default function SimpleJustifiedCtaBlock(
       {/* The main WYSIWYG text */}
       <AnimateInView
         target='descendants'
-        className='
-          prose-text-slide-up-in
-          prose-late-child-div-slide-down-in'>
+        className='prose-animate-in'>
         <BasicPortableText
           value={ body }
-          className='prose-marquee' />
+          className='prose-marketing' />
       </AnimateInView>
 
       {/* List the buttons on the right edge */}

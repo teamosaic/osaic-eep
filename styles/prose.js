@@ -6,7 +6,7 @@ export const base = {
   // Stop prose from specifying it's own color values
   ...inheritProseColor,
 
-  // Make all margins the same, for use in marquees and other places.
+  // Make all margins the same, for use in marketing type text.
   '> *': {
     marginTop: '1rem',
     marginBottom: '1rem',
@@ -58,9 +58,9 @@ export const base = {
   },
 }
 
-// Adds font-size relative margins to the elements for marquee use cases as
+// Adds font-size relative margins to the elements for marketing use cases as
 // well as a larger default text size
-export const marquee = {
+export const marketing = {
 
   h1: {
     marginTop: '0.4em',
@@ -91,6 +91,7 @@ export const marquee = {
     lineHeight: 1.6,
     marginTop: '0.9em',
     marginBottom: '0.9em',
+    opacity: 0.7,
   },
 
   // Re-apply the margin clearing on first/last
