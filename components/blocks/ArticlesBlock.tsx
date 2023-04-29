@@ -4,6 +4,7 @@ import {
 } from '~/types'
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import SmartLink from '~/packages/smart-link/SmartLink'
+import AnimateInView from '~/packages/animate-in-view'
 
 export default function ArticlesBlockComponent({
   headline, recentArticles,
@@ -16,11 +17,15 @@ export default function ArticlesBlockComponent({
     <>
 
       {/* Render headline text */}
-      <BasicPortableText
-        value={ headline }
-        className='
-          max-w-screen-md mx-auto px-gutter
-          prose-marquee text-center' />
+      <AnimateInView
+        target='descendants'
+        className='prose-animate-in'>
+        <BasicPortableText
+          value={ headline }
+          className='
+            max-w-screen-md mx-auto px-gutter
+            prose-marquee text-center' />
+      </AnimateInView>
 
       {/* Render cards vis CSS grid */}
       <div className='

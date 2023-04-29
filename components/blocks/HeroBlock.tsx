@@ -47,10 +47,7 @@ export default function HeroBlock({
         {/* The main WYSIWYG text of the hero */}
         <AnimateInView
           target='descendants'
-          className='
-            prose-text-slide-up-in
-            prose-late-child-div-slide-down-in
-            relative'>
+          className='prose-animate-in relative'>
           <BasicPortableText
             value={ body }
             className='prose-marquee' />
