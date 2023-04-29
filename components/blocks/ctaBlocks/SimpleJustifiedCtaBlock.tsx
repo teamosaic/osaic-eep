@@ -17,7 +17,7 @@ export default function SimpleJustifiedCtaBlock(
         className='prose-animate-in'>
         <BasicPortableText
           value={ body }
-          className='prose-marquee' />
+          className='prose-marketing' />
       </AnimateInView>
 
       {/* List the buttons on the right edge */}

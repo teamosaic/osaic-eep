@@ -50,7 +50,7 @@ export default function HeroBlock({
           className='prose-animate-in relative'>
           <BasicPortableText
             value={ body }
-            className='prose-marquee' />
+            className='prose-marketing' />
         </AnimateInView>
 
       </div>

@@ -16,7 +16,7 @@ export default function SimpleCenteredCtaBlock(
         className='prose-animate-in'>
         <BasicPortableText
           value={ body }
-          className='prose-marquee' />
+          className='prose-marketing' />
       </AnimateInView>
 
     </div>
