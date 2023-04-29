@@ -14,7 +14,7 @@ export const getTower = groq`
 
       // Fetch recent articles
       _type == 'articlesBlock' => {
-        'recentArticles': *[_type == 'article'] [0...3] | order(date desc) {
+        'recentArticles': *[_type == 'article'] | order(date desc) [0...3]  {
           ...,
           'uri': uri.current,
           'date': coalesce(date, _createdAt),

@@ -4,6 +4,14 @@ import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchem
 import { blockBackgroundFields } from '~/sanity/schemas/fieldGroups/blockBackgroundSchema'
 import { seoFields } from '~/sanity/schemas/fieldGroups/pageSeoSchema'
 import { uriField } from './uri'
+import moment from 'moment'
+import type {
+  DocumentDefinition,
+  FieldDefinition,
+  ObjectDefinition,
+  SortOrdering,
+} from 'sanity' // node_modules/@sanity/types/lib/dts/src/index.d.ts
+import { ComponentType, ReactNode } from 'react'
 
 // Helper for making standard block schemas
 export function makeBlockSchema({
@@ -15,10 +23,10 @@ export function makeBlockSchema({
 }: {
   name: string // The block name
   titleField?: string // The field the preview title is pulled from
-  icon?: React.ReactNode | Function // Icon for listing views
+  icon?: ReactNode | ComponentType // Icon for listing views
   hasBackground?: boolean // Whether to add blockBackgroundSchem
   contentFields?: any[], // Sanity fields to add to content fields
-}) {
+}): ObjectDefinition {
   return {
     name,
     type: 'object',
@@ -47,13 +55,19 @@ export function makeBlockSchema({
 // Helper for making standard page type schemas
 export function makePageSchema({
   name,
-  icon,
+  icon = null,
+  subtitleField = 'uri',
+  uriPrefix = null,
   contentFields = [],
+  orderings = [],
 }: {
   name: string // The singular page name
-  icon?: React.ReactNode | Function // Icon for listing views
-  contentFields?: any[], // Sanity fields to add to content fields
-}) {
+  icon?: ReactNode | ComponentType // Icon for listing views
+  subtitleField?: string // The field to pull the subtitle from
+  uriPrefix?: string // Used to build the uri
+  contentFields?: any[] // Sanity fields to add to content fields
+  orderings?: SortOrdering[]
+}): DocumentDefinition {
   return {
     name,
     type: 'document',
@@ -67,33 +81,43 @@ export function makePageSchema({
 
     fields: [
 
-      // Title and uri are standard for pages
-      {
+      { // Title and uri are standard for pages
         name: 'title',
         type: 'string',
         group: 'content',
         validation: Rule => Rule.required(),
       },
-      uriField(),
+
+      uriField(uriPrefix),
 
       ...contentGroup(contentFields),
 
-      // SEO fields are also standard
-      ...seoFields,
+
+      ...seoFields, // SEO fields are also standard
     ],
 
     preview: {
       select: {
         title: 'title',
-        uri: 'uri',
+        subtitle: subtitleField,
       },
-      prepare({ title, uri }) {
-        return {
-          title,
-          subtitle: uri.current,
+      prepare({ title, subtitle }) {
+
+        // Format subtitle's for the URI
+        if (subtitleField == 'uri') {
+          subtitle = subtitle.current
+
+          // Format subtitles that appear to be dates
+        } else if (subtitleField.match(/date/i)
+          || subtitleField.endsWith('At')) {
+          subtitle = moment(subtitle).format('LLL').toString()
         }
+
+        return { title, subtitle }
       }
-    }
+    },
+
+    orderings,
   }
 }
 
@@ -111,12 +135,16 @@ export function createListOptionsFromEnum(
 }
 
 // Set all the fields to the "content" group
-export function contentGroup(fields: object[]): object[] {
+export function contentGroup(
+  fields: FieldDefinition[]
+): FieldDefinition[] {
   return setGroup('content', fields)
 }
 
 // Set a common "group" value to all fields
-export function setGroup(groupName: string, fields: object[]): object[] {
+export function setGroup(
+  groupName: string, fields: FieldDefinition[]
+): FieldDefinition[] {
   return fields.map(field => {
     let groupValue: string[] | string;
     if ('group' in field) {
@@ -188,9 +216,9 @@ export function makeBlockPreview({
   blockName: string
   titleField: string
   imageField?: string
-  icon?: React.ReactNode | Function
+  icon?: ReactNode | ComponentType
   hasTypes?: boolean, // Like if they block has a `types` field
-}): Object {
+}): ObjectDefinition["preview"] {
   return {
 
     select: {
@@ -232,12 +260,15 @@ export function portableTextSummary(blocks: any[]): string {
 }
 
 // Helper to render an image field with a "title" field for the image
-export function imageWithAlt({ name, title, description, hotspot = true}: {
+export function imageWithAlt({
+  name, title, description, hotspot = true, required
+}: {
   name: string,
   title?: string,
   description?: string,
-  hotspot?: boolean
-}): object {
+  hotspot?: boolean,
+  required?: boolean,
+}): FieldDefinition {
   return {
     name,
     type: 'image',
@@ -246,6 +277,7 @@ export function imageWithAlt({ name, title, description, hotspot = true}: {
     options: {
       hotspot,
     },
+    ...( required ? { validation: Rule => Rule.required() } : {}),
     fields: [
       {
         name: 'alt',
