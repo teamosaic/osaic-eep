@@ -19,6 +19,7 @@ export const getTower = groq`
           'uri': uri.current,
           'date': coalesce(date, _createdAt),
           'body': undefined, // Don't fetch the whole body
+          image { ..., asset-> },
           'excerpt':
             array::join(string::split((pt::text(body)), '')[0...256], ''),
 

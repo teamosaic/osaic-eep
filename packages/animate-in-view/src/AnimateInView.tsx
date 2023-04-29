@@ -16,6 +16,7 @@ export default function AnimateInView({
   initialInView,
   onChange,
   children,
+  style,
   className = '',
 }: AnimateInViewProps): React.ReactElement {
 
@@ -62,5 +63,5 @@ export default function AnimateInView({
 
   // Render wrapping component that defaults to a div and gets the ref that
   // the IntersectionObserver cares about.
-  return createElement(as, { className, ref }, children)
+  return createElement(as, { className, style, ref }, children)
 }

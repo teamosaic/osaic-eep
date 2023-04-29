@@ -2,7 +2,6 @@ import type {
   BlockBackground,
   BlockLayout,
   Button,
-  SanityObject,
 } from '~/types'
 import type { PortableTextBlock } from '@portabletext/types'
 import type { Image } from 'sanity'
@@ -40,5 +39,6 @@ export interface ArticleCard {
   title: string
   date: string
   excerpt: string
+  image: Image
   uri: string
 }

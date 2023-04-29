@@ -5,6 +5,7 @@ import {
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import AnimateInView from '~/packages/animate-in-view'
+import SanityImage from '~/packages/sanity-image/SanityImage'
 
 export default function ArticlesBlockComponent({
   headline, recentArticles,
@@ -42,18 +43,42 @@ export default function ArticlesBlockComponent({
 
 // A card in the article listing
 function ArticleCard({
-  _id, uri, title, date, excerpt,
-}: ArticleCardType): React.ReactElement {
+  _id, uri, title, date, excerpt, image,
+}: ArticleCardType, index: number): React.ReactElement {
 
   const dateObj = new Date(date)
 
+  // Stagger animat in
   return (
-    <article key={ _id } className="flex flex-col items-start">
+    <AnimateInView
+      as='article'
+      key={ _id }
+      className='
+        flex flex-col items-start
+        animate-slide-up-in'
+      style={{ animationDelay: `${index * 0.2}s` }}>
 
-      {/* Image */}
-      <SmartLink href={ uri } className="relative w-full">
-        <div className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover  opacity-10" />
-        <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+      {/* Make rounded container */}
+      <SmartLink href={ uri }
+        className="
+          relative overflow-hidden
+          aspect-[16/9] w-full
+          rounded-2xl ring-1 ring-inset ring-gray-900/10">
+
+        {/* Render image, scaling in when in viewport */}
+        <AnimateInView className={`
+          absolute inset-0
+          animate-slow-scale-down-in`}>
+          <SanityImage
+            expand
+            source={ image }
+            sizes='(min-width: 1024px) 33vw, 100vw'
+            className='
+              hover:scale-110
+              transition-transform
+              ease-out-quint
+              hover:duration-300 duration-700' />
+        </AnimateInView>
       </SmartLink>
 
       <div className="max-w-md">
@@ -85,6 +110,6 @@ function ArticleCard({
         </div>
 
       </div>
-    </article>
+    </AnimateInView>
   )
 }
