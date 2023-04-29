@@ -1,6 +1,6 @@
 import { CogIcon } from '@sanity/icons'
 import { metaDescription, metaImage } from './fieldGroups/pageSeoSchema'
-import { setGroup } from '~/sanity/lib/schemaUtils'
+import { setGroup } from '~/sanity/lib/schema'
 
 export default {
   name: 'settings',

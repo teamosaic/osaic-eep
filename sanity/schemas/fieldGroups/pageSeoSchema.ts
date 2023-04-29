@@ -1,4 +1,4 @@
-import { setGroup, createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
+import { setGroup, createListOptionsFromEnum } from '~/sanity/lib/schema'
 import { RobotsRule } from '~/types'
 
 export const metaTitle = {

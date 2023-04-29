@@ -1,4 +1,4 @@
-import { makeBlockSchema } from '~/sanity/lib/schemaUtils'
+import { makeBlockSchema } from '~/sanity/lib/schema'
 import { BsNewspaper } from 'react-icons/bs'
 
 export default makeBlockSchema({

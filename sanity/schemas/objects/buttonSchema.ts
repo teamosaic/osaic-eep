@@ -1,5 +1,5 @@
 import { RxButton } from 'react-icons/rx'
-import { createListOptionsFromEnum } from '~/sanity/lib/schemaUtils'
+import { createListOptionsFromEnum } from '~/sanity/lib/schema'
 import { ButtonType, ButtonIcon } from '~/types'
 import startCase from 'lodash/startCase'
 

@@ -1,5 +1,5 @@
 import { BsBuilding } from 'react-icons/bs'
-import { makePageSchema } from '~/sanity/lib/schemaUtils'
+import { makePageSchema } from '~/sanity/lib/schema'
 
 export default makePageSchema({
   name: 'tower',

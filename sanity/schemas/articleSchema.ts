@@ -1,6 +1,5 @@
 import { BsNewspaper } from 'react-icons/bs'
-import { imageWithAlt } from '~/sanity/lib/schemaUtils'
-import { makePageSchema } from '~/sanity/lib/schemaUtils'
+import { imageWithAlt, makePageSchema } from '~/sanity/lib/schema'
 
 export default makePageSchema({
   name: 'article',
@@ -8,6 +7,7 @@ export default makePageSchema({
   icon: BsNewspaper,
   subtitleField: 'date',
   contentFields: [
+
     {
       name: 'date',
       type: 'datetime',
@@ -38,13 +38,9 @@ export default makePageSchema({
 
   orderings: [
     {
-      title: 'Date',
-      name: 'date',
+      title: 'Date Field', name: 'date',
       by: [
-        {
-          field: 'date',
-          direction: 'desc',
-        }
+        { field: 'date', direction: 'desc', }
       ]
     }
   ],
