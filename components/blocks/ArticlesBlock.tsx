@@ -29,13 +29,13 @@ export default function ArticlesBlockComponent({
       </AnimateInView>
 
       {/* Render cards vis CSS grid */}
-      <div className='
+      {/* <div className='
         mt-sm
         max-w-screen-sm mx-auto px-gutter
         grid grid-cols-1 gap-x-8 gap-y-20
         lg:max-w-screen-xl lg:grid-cols-3'>
         { recentArticles.map(ArticleCard) }
-      </div>
+      </div> */}
 
     </>
   )
