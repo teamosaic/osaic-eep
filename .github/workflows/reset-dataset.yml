@@ -1,4 +1,4 @@
-name: Reset Dataset
+name: Reset Production
 
 on:
   # Run at 2AM every night
@@ -11,14 +11,14 @@ on:
 jobs:
 
   reset:
-    name: Reset
+    name: Reset Production
     runs-on: ubuntu-latest
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Install
+        uses: bkwld/cloak-actions/install@v1
 
-      - name: Reset
+      - name: Reset Dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
         run:
