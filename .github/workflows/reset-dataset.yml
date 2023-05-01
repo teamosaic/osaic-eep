@@ -1,5 +1,4 @@
 name: Reset Dataset
-description: Reset the production dataset nightly from a backup so no cleanup is required after content experiments.
 
 on:
   # Run at 2AM every night
