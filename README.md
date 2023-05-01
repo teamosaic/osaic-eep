@@ -16,6 +16,10 @@ yarn dev
 
 ## Notes
 
+### Nightly production content reset
+
+The `production` dataset gets reset from the contents of `backups/production.gz` every night by the [`.github/workflows/reset-dataset.yml`](.github/workflows/reset-dataset.yml) workflow.  This was done so that the demo always has a clean state for client-facing demos.  You can also manually trigger a reset from the Actions tab in GitHub.
+
 ### Important files and folders
 
 | File(s)                                 | Description                                                                           |
