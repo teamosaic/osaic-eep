@@ -21,5 +21,6 @@ jobs:
       - name: Reset Dataset
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
         run:
           yarn sanity dataset import backups/production.gz production --replace
