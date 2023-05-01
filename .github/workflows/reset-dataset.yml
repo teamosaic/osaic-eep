@@ -1,0 +1,27 @@
+name: Reset Dataset
+description: Reset the production dataset nightly from a backup so no cleanup is required after content experiments.
+
+on:
+  # Run at 2AM every night
+  schedule:
+    - cron: '0 10 * * *'
+
+  # Also support manual
+  workflow_dispatch:
+
+jobs:
+
+  reset:
+    name: Reset
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Reset
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
+        run:
+          npx -y sanity@latest
+          dataset import backups/production.gz production --replace
