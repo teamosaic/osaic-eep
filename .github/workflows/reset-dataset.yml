@@ -8,10 +8,6 @@ on:
   # Also support manual
   workflow_dispatch:
 
-env:
-  SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
-  NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
-
 jobs:
 
   reset:
@@ -30,6 +26,9 @@ jobs:
       # https://github.com/sanity-io/sanity/issues/2935#issuecomment-1161251898
       # https://www.sanity.io/guides/bulk-deletion-using-sanity-cli
       - name: Delete current documents
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
         run: >
           sanity documents query "*[
             !(_type match 'sanity.*') &&
@@ -40,4 +39,7 @@ jobs:
           | xargs sanity documents delete --dataset production
 
       - name: Import backup
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
         run: sanity dataset import backups/production.gz production --replace
