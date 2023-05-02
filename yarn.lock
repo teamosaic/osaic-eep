@@ -978,11 +978,6 @@
   resolved "https://registry.yarnpkg.com/@sanity/color/-/color-2.2.5.tgz#6b28578573859495ed1ffd5491322cb8e90b3e07"
   integrity sha512-tTi22KoKuER3sldXYl4c1Dq2zU7tMLDkljFiaUKVkBbu4PBvRGCFw75kXZnD2b4Bsp6vin+7sI+AKdCKRhfRuw==
 
-"@sanity/demo@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@sanity/demo/-/demo-1.0.2.tgz#2d88dcbcfbe24f8791c3a52ba1a3edd9342ef36d"
-  integrity sha512-GJoW1WuE6sAZmgpVLeZ06FHPTOJesrpzrKky6etJV3HvqFJa7xvjJRdjazYQTcXGHCFftjXVNNGNfCXA+h5wWA==
-
 "@sanity/diff@3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@sanity/diff/-/diff-3.9.1.tgz#736a5128238bc808f005723efaff5d2235c9a68c"
