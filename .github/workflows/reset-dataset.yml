@@ -8,21 +8,35 @@ on:
   # Also support manual
   workflow_dispatch:
 
+env:
+  SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
+  NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+
 jobs:
 
   reset:
-    name: Reset
+    name: Reset dataset
     runs-on: ubuntu-latest
     steps:
 
-      - name: Install
+      - name: Install repo
         uses: bkwld/cloak-actions/install@v1
 
-      - name: Reset Dataset
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.RESET_DATASET_SANITY_API_TOKEN }}
-          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
-        run: |
-          yarn sanity dataset delete production --force
-          yarn sanity dataset create production --visibility public
-          yarn sanity dataset import backups/production.gz production --replace
+      - name: Install CLI tools
+        run: yarn global add @sanity/cli groq-cli
+
+      # https://www.sanity.io/guides/bulk-deletion-using-sanity-cli
+      - name: Delete old documents
+        run: >
+          sanity documents query "*[
+              !(_type match 'sanity.*') &&
+              !(_type match 'system.*') &&
+              !(_type match 'preview.*')
+            ]._id"
+            --dataset production
+            --apiVersion 2023-05-01
+          | groq "*" -o ndjson
+          | xargs sanity documents delete --dataset production
+
+      - name: Import backup
+        run: sanity dataset import backups/production.gz production --replace
