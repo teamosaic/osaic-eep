@@ -46,7 +46,13 @@ function ArticleCard({
   _id, uri, title, date, excerpt, image,
 }: ArticleCardType, index: number): React.ReactElement {
 
+  // Use an explicit timezone so we don't get hydration issues when server's
+  // timezone is different than users
   const dateObj = new Date(date)
+  const displayDate = dateObj.toLocaleDateString('en-US', {
+    dateStyle: 'medium',
+    timeZone: 'America/Los_Angeles',
+  })
 
   // Stagger animat in
   return (
@@ -86,6 +92,19 @@ function ArticleCard({
 
       <div className="max-w-md">
 
+        {/* Time & Category */}
+        <div className="mt-8 flex items-center gap-x-4 text-xs">
+          <time dateTime={ dateObj.toISOString() } className="opacity-70">
+            { displayDate }
+          </time>
+          <a
+            href='#'
+            className="
+            rounded-full px-3 py-1.5
+            bg-white/80 hover:bg-white">
+            <span className='opacity-70 font-medium'>Example Category</span>
+          </a>
+        </div>
 
         {/* Title & description */}
         <div className="relative">
