@@ -15,6 +15,7 @@ yarn dev
 
 ## Docs
 
+- [Start a new Project](https://bukwild.slab.com/posts/start-a-new-project-3tyijzrj)
 - [Create a new Block](https://bukwild.slab.com/posts/create-a-new-block-a029b2vh)
 
 ## Notes
