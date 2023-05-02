@@ -29,7 +29,7 @@ jobs:
       # user created documents before re-importing them
       # https://github.com/sanity-io/sanity/issues/2935#issuecomment-1161251898
       # https://www.sanity.io/guides/bulk-deletion-using-sanity-cli
-      - name: Delete old documents
+      - name: Delete current documents
         run: >
           sanity documents query "*[
             !(_type match 'sanity.*') &&
