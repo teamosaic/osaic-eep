@@ -28,14 +28,11 @@ jobs:
       # https://www.sanity.io/guides/bulk-deletion-using-sanity-cli
       - name: Delete old documents
         run: >
-          sanity documents query
-            --dataset production
-            --apiVersion 2023-05-01
-            "*[
-              !(_type match 'sanity.*') &&
-              !(_type match 'system.*') &&
-              !(_type match 'preview.*')
-            ]._id"
+          sanity documents query "*[
+            !(_type match 'sanity.*') &&
+            !(_type match 'system.*') &&
+            !(_type match 'preview.*')
+          ]._id" --dataset production --apiVersion 2023-05-01
           | groq "*" -o ndjson
           | xargs sanity documents delete --dataset production
 
