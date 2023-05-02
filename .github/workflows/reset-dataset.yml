@@ -22,9 +22,12 @@ jobs:
       - name: Install repo
         uses: bkwld/cloak-actions/install@v1
 
-      - name: Install CLI tools
+      - name: Install Sanity CLI tools
         run: yarn global add @sanity/cli groq-cli
 
+      # Deleting of the whole dataset was not allowed, so deleting all the
+      # user created documents before re-importing them
+      # https://github.com/sanity-io/sanity/issues/2935#issuecomment-1161251898
       # https://www.sanity.io/guides/bulk-deletion-using-sanity-cli
       - name: Delete old documents
         run: >
