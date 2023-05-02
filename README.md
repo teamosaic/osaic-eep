@@ -13,6 +13,9 @@ yarn dev
 - [http://localhost:3000](http://localhost:3000) - The project
 - [http://localhost:3000/studio](http://localhost:3000/studio) - The CMS
 
+## Docs
+
+- [Create a new Block](https://bukwild.slab.com/posts/create-a-new-block-a029b2vh)
 
 ## Notes
 
