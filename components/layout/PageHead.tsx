@@ -34,11 +34,11 @@ export default function PageHead({
 
   // Assemble the final values
   const values = {
-    title: metaTitle || (settings.metaTitleSuffix ?
-        `${title} | ${settings.metaTitleSuffix}` :
+    title: metaTitle || (settings?.metaTitleSuffix ?
+        `${title} | ${settings?.metaTitleSuffix}` :
         title ),
-    description: metaDescription || description || settings.metaDescription,
-    image: metaImage || image || settings.metaImage,
+    description: metaDescription || description || settings?.metaDescription,
+    image: metaImage || image || settings?.metaImage,
     robots,
     canonicalUrl: process.env.URL ?
       `${process.env.URL}${router.asPath}` : null

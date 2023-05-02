@@ -30,12 +30,12 @@ export default function DefaultLayout({ settings, page, children }) {
 
 // The header overlaps the page if it has blocks and the first block is a hero
 function doesHeaderOverlap(page): boolean {
-  return 'blocks' in page && page.blocks[0]?._type == 'heroBlock'
+  return 'blocks' in page && page.blocks?.[0]?._type == 'heroBlock'
 }
 
 // Add space above the footer unless the last block has a background
 function needsSpaceAboveFooter(page): boolean {
-  if (!('blocks' in page)) return true
+  if (!('blocks' in page && page.blocks)) return true
   const lastBlock = page.blocks[page.blocks.length - 1]
   return !lastBlock.backgroundColor
 }
