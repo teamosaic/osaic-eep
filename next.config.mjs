@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
 const config = {
 
+  async redirects() {
+    return [
+      {
+        source: '/studio/:path*',
+        destination: '/admin/:path*',
+        permanent: true,
+      }
+    ]
+  },
+
   // Get warnings on deprecations, etc
   // https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
   reactStrictMode: true,
