@@ -33,7 +33,7 @@ To rebuild the backup, run `yarn sanity dataset export production backups/produc
 | `sanity.config.ts`                      | Config file for Sanity Studio                                                         |
 | `sanity.cli.ts`                         | Config file for Sanity CLI                                                            |
 | `/pages/index.tsx`                      | Landing page for `/`.                                                                 |
-| `/pages/studio/[[...index]].tsx`        | Where Sanity Studio is mounted                                                        |
+| `/pages/admin/[[...index]].tsx`         | Where Sanity Studio is mounted                                                        |
 | `/pages/api/preview.ts`                 | Serverless route for triggering Preview mode                                          |
 | `/sanity/schemas.ts`                    | Where Sanity Studio gets its content types from                                       |
 | `/sanity/env.ts`                        | Configuration for the Sanity project and dataset                                      |
