@@ -9,7 +9,6 @@ import { deskTool } from 'sanity/desk'
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { schema, singletonTypes } from './sanity/schema'
-
 // Preview
 import { defaultDocumentNode, structure } from './sanity/structure'
 
@@ -17,7 +16,7 @@ import { defaultDocumentNode, structure } from './sanity/structure'
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
 export default defineConfig({
-  basePath: '/studio',
+  basePath: '/admin',
   projectId,
   dataset,
   title: 'Next Sanity Demo',
