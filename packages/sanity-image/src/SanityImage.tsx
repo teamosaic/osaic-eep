@@ -1,18 +1,19 @@
 import Image from 'next/image'
-import { urlForImage, makeImageLoader } from './lib/urlBuilding'
+
+import {
+  altTextFromSource,
+  aspectRatioFromSource,
+  objectPositionFromSource,
+  placeholderFromSource,
+} from './sourceMapping'
 import {
   AspectRespectingImageProps,
   ExpandingImageProps,
   FixedSizeImageProps,
   ObjectFit,
   SanityImageProps,
-} from './lib/types'
-import {
-  altTextFromSource,
-  aspectRatioFromSource,
-  objectPositionFromSource,
-  placeholderFromSource,
-} from './lib/sourceMapping'
+} from './types'
+import { makeImageLoader,urlForImage } from './urlBuilding'
 
 // Render a Sanity image via Next/Image
 export default function SanityImage({
