@@ -1,7 +1,5 @@
-import { DefaultDocumentNodeResolver, ListItemBuilder, StructureResolver } from 'sanity/desk'
+import type { DefaultDocumentNodeResolver, StructureResolver } from 'sanity/desk'
 import { IFramePreviewView } from './components/IFramePreviewView'
-import { singletonTypes } from './schema'
-import type { SchemaType } from 'sanity'
 import { pageTypeValues } from '~/types'
 
 // Example on how to add views for a schemaType
@@ -21,47 +19,30 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, ctx) => {
 }
 
 export const structure: StructureResolver = (S, context) => {
-  return S.list()
-    .title('Content')
-    .items([
+  return S.list().title('Content').items([
 
-      // List all other content types except singletons
-      ...S.documentTypeListItems()
-        .filter((item: ListItemBuilder) => {
-            const schemaType = getSchemaTypeName(item.getSchemaType())
-            return !singletonTypes.has(schemaType)
-          }),
+    // Towers
+    S.documentTypeListItem('tower').title('Towers'),
 
-      // List all singletons
-      ...S.documentTypeListItems()
-        .filter((item: ListItemBuilder) => {
-          const schemaType = getSchemaTypeName(item.getSchemaType())
-          return singletonTypes.has(schemaType)
-        })
+    // Articles
+    S.listItem().title('Articles').child(
+      S.list().title('Articles').items([
 
-        // Instead of rendering a list of documents, we render a single
-        // document, specifying the `documentId` manually to ensure
-        // that we're editing the single instance of the document
-        // https://www.sanity.io/guides/singleton-document
-        .map((item: ListItemBuilder) => {
-          const schemaType = getSchemaTypeName(item.getSchemaType())
-          return item.child(S.document()
-            .schemaType(schemaType)
-            .documentId(schemaType))
-        })
+        // Articles index
+        S.listItem().title('Articles Index').child(
+          S.document().schemaType('articlesIndex').documentId('articlesIndex')
+        ),
 
-      // Example of explicitly adding a non-singleton
-      // S.documentTypeListItem("blogPost").title("Blog Posts"),
+        // All articles
+        S.documentTypeListItem('article').title('Articles'),
+      ])
+    ),
 
-      // Example of explicitly adding a singleton
-      // S.listItem()
-      //  .title('Settings')
-      //  .id('settings')
-      //  .child(S.document().schemaType('settings').documentId('settings'))
+    // Settings
+    S.divider(),
+    S.listItem().title('Settings').child(
+      S.document().schemaType('settings').documentId('settings')
+    ),
 
-    ])
-}
-
-function getSchemaTypeName(schemaType: string | SchemaType):string {
-  return typeof schemaType == 'string' ? schemaType : schemaType.name
+  ])
 }

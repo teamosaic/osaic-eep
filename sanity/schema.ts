@@ -1,6 +1,7 @@
-import settings from './schemas/settingsSchema'
-import tower from './schemas/towerSchema'
-import article from './schemas/articleSchema'
+import settings from './schemas/documents/settingsSchema'
+import tower from './schemas/documents/towerSchema'
+import article from './schemas/documents/articleSchema'
+import articlesIndex from './schemas/documents/articlesIndexSchema'
 import heroBlock from './schemas/blocks/heroBlockSchema'
 import ctaBlock from './schemas/blocks/ctaBlockSchema'
 import articlesBlock from './schemas/blocks/articlesBlockSchema'
@@ -8,7 +9,7 @@ import { button, buttonList } from './schemas/objects/buttonSchema'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
 // Define the singleton document types
-export const singletonTypes = new Set(["settings"])
+export const singletonTypes = new Set(['settings', 'articlesIndex'])
 
 // The Sanity schema object
 export const schema: {
@@ -22,6 +23,7 @@ export const schema: {
     // Documents
     tower,
     article,
+    articlesIndex,
     settings,
 
     // Blocks

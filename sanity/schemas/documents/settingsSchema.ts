@@ -1,5 +1,5 @@
 import { CogIcon } from '@sanity/icons'
-import { metaDescription, metaImage } from './fieldGroups/pageSeoSchema'
+import { metaDescription, metaImage } from '../fieldGroups/pageSeoSchema'
 import { setGroup } from '~/sanity/lib/schema'
 
 export default {
