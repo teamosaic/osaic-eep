@@ -1,11 +1,11 @@
-import {
-  ArticlesBlock as ArticlesBlockType,
-  ArticleCard as ArticleCardType,
-} from '~/types'
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
-import SmartLink from '~/packages/smart-link/SmartLink'
 import AnimateInView from '~/packages/animate-in-view'
-import SanityImage from '~/packages/sanity-image/SanityImage'
+import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import SanityImage from '~/packages/sanity-image'
+import SmartLink from '~/packages/smart-link/SmartLink'
+import {
+  ArticleCard as ArticleCardType,
+  ArticlesBlock as ArticlesBlockType,
+} from '~/types'
 
 export default function ArticlesBlockComponent({
   headline, recentArticles,
