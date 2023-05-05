@@ -7,10 +7,7 @@ const config = {
 
   // Serve images from Sanity's image CDN
   images: {
-    domains: [
-      'cdn.sanity.io',
-      'tailwindui.com'
-    ]
+    domains: ['cdn.sanity.io']
   }
 }
 

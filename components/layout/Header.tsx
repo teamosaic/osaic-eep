@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import { useState } from 'react'
 
+import logo from '~/assets/images/logo.svg'
 import SmartLink from '~/packages/smart-link/SmartLink'
 
 const navigation = [
@@ -20,9 +21,6 @@ export default function LayoutHeader({ overlap = false }:{
 }):React.ReactElement {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const myLoader = ({ src }) => {
-    return `https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500`
-  }
 
   return (
     <header className={clsx({
@@ -38,11 +36,8 @@ export default function LayoutHeader({ overlap = false }:{
           <SmartLink href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Image
-              loader={myLoader}
-              width={100}
-              height={100}
               className="h-8 w-auto"
-              src="/img/logos/mark.svg?color=indigo&shade=500"
+              src={logo}
               alt=""
             />
           </SmartLink>
@@ -80,11 +75,8 @@ export default function LayoutHeader({ overlap = false }:{
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <Image
-                loader={myLoader}
                 className="h-8 w-auto"
-                width={100}
-                height={100}
-                src="/img/logos/mark.svg?color=indigo&shade=500"
+                src={logo}
                 alt=""
               />
             </a>
