@@ -2,9 +2,8 @@ import type { DefaultDocumentNodeResolver, StructureResolver } from 'sanity/desk
 import { IFramePreviewView } from './components/IFramePreviewView'
 import { pageTypeValues } from '~/types'
 
-import articlesIndexSchema from './schemas/documents/articlesIndexSchema'
-import settingsSchema from './schemas/documents/settingsSchema'
-
+import { BsBuilding } from 'react-icons/bs'
+import { CogIcon } from '@sanity/icons'
 
 // Example on how to add views for a schemaType
 // https://www.sanity.io/docs/create-custom-document-views-with-structure-builder
@@ -28,12 +27,14 @@ export const structure: StructureResolver = (S, context) => {
     // Towers
     S.documentTypeListItem('tower').title('Towers'),
 
-    // Articles
+    // Articles Category
     S.listItem().title('Articles').child(
       S.list().title('Articles').items([
 
         // Articles index
-        makeSingletonListItem(S, articlesIndexSchema),
+        S.listItem().title('Articles Index').icon(BsBuilding).child(
+          S.document().schemaType('articlesIndex')
+        ),
 
         // All articles
         S.documentTypeListItem('article').title('Article Entries'),
@@ -42,20 +43,9 @@ export const structure: StructureResolver = (S, context) => {
 
     // Settings
     S.divider(),
-    makeSingletonListItem(S, settingsSchema),
+    S.listItem().title('Settings').icon(CogIcon).child(
+      S.document().schemaType('settings')
+    ),
 
   ])
-}
-
-
-
-function makeSingletonListItem(S, schema) {
-  return S.listItem()
-    .title(schema.title)
-    .icon(schema.icon)
-    .child(
-      S.document()
-        .schemaType(schema.name)
-        .documentId(schema.name)
-    )
 }

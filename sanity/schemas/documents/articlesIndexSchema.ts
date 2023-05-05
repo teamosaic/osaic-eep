@@ -1,11 +1,9 @@
-import { BsBuilding } from 'react-icons/bs'
 import { makeSingletonPageSchema } from '~/sanity/lib/schema'
 
 export default makeSingletonPageSchema({
   name: 'articlesIndex',
   uri: '/articles',
   title: 'Articles Index',
-  icon: BsBuilding,
   contentFields: [
 
     {
