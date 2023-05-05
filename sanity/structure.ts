@@ -2,6 +2,10 @@ import type { DefaultDocumentNodeResolver, StructureResolver } from 'sanity/desk
 import { IFramePreviewView } from './components/IFramePreviewView'
 import { pageTypeValues } from '~/types'
 
+import articlesIndexSchema from './schemas/documents/articlesIndexSchema'
+import settingsSchema from './schemas/documents/settingsSchema'
+
+
 // Example on how to add views for a schemaType
 // https://www.sanity.io/docs/create-custom-document-views-with-structure-builder
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, ctx) => {
@@ -29,20 +33,29 @@ export const structure: StructureResolver = (S, context) => {
       S.list().title('Articles').items([
 
         // Articles index
-        S.listItem().title('Articles Index').child(
-          S.document().schemaType('articlesIndex').documentId('articlesIndex')
-        ),
+        makeSingletonListItem(S, articlesIndexSchema),
 
         // All articles
-        S.documentTypeListItem('article').title('Articles'),
+        S.documentTypeListItem('article').title('Article Entries'),
       ])
     ),
 
     // Settings
     S.divider(),
-    S.listItem().title('Settings').child(
-      S.document().schemaType('settings').documentId('settings')
-    ),
+    makeSingletonListItem(S, settingsSchema),
 
   ])
+}
+
+
+
+function makeSingletonListItem(S, schema) {
+  return S.listItem()
+    .title(schema.title)
+    .icon(schema.icon)
+    .child(
+      S.document()
+        .schemaType(schema.name)
+        .documentId(schema.name)
+    )
 }

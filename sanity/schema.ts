@@ -9,7 +9,7 @@ import { button, buttonList } from './schemas/objects/buttonSchema'
 import type { SchemaTypeDefinition, TemplateResolver } from 'sanity'
 
 // Define the singleton document types
-export const singletonTypes = new Set(['settings', 'articlesIndex'])
+export const singletonTypes = new Set(['settings'])
 
 // The Sanity schema object
 export const schema: {
