@@ -8,21 +8,26 @@ import { contentGroup, portableTextSummary } from '.'
 // Helper for making standard block schemas
 export function makeBlockSchema({
   name,
+  title,
   titleField = 'body',
   icon,
   hasBackground = false,
+  hasTypes = false,
   contentFields = [],
 }: {
   name: string // The block name
+  title?: string // Explicit block title
   titleField?: string // The field the preview title is pulled from
   icon?: ReactNode | ComponentType // Icon for listing views
-  hasBackground?: boolean // Whether to add blockBackgroundSchem
+  hasBackground?: boolean // Whether to add blockBackgroundSchema
+  hasTypes?: boolean // Whether to show the type in the preview
   contentFields?: any[], // Sanity fields to add to content fields
 }): ObjectDefinition {
+  const blockTitle = title || startCase(name)
   return {
     name,
     type: 'object',
-    title: startCase(name),
+    title: blockTitle,
 
     groups: [
       { name: 'content', title: 'Content', default: true, },
@@ -38,8 +43,9 @@ export function makeBlockSchema({
 
     preview: makeBlockPreview({
       titleField: titleField,
-      blockName: startCase(name.replace('Block', '')),
+      blockName: blockTitle.replace('Block', ''),
       icon,
+      hasTypes,
     }),
   }
 }
