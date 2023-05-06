@@ -2,7 +2,7 @@ import { blockLayoutFields } from '../fieldGroups/blockLayoutSchema'
 import { makeBlockPreview, contentGroup, imageWithAlt } from '~/sanity/lib/schema'
 import { button } from '../objects/buttonSchema'
 
-export default {
+export const heroBlockSchema = {
   name: 'heroBlock',
   type: 'object',
   title: 'Hero Block',

@@ -1,6 +1,6 @@
 import { makeSingletonPageSchema } from '~/sanity/lib/schema'
 
-export default makeSingletonPageSchema({
+export const articlesIndexSchema = makeSingletonPageSchema({
   name: 'articlesIndex',
   uri: '/articles',
   title: 'Articles Index',
