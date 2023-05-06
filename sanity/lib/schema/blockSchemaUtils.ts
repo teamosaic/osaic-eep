@@ -1,9 +1,10 @@
-import startCase from 'lodash/startCase'
-import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchema'
 import { blockBackgroundFields } from '~/sanity/schemas/fieldGroups/blockBackgroundSchema'
-import type { ObjectDefinition } from 'sanity'
+import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchema'
 import { ComponentType, ReactNode } from 'react'
-import { contentGroup, portableTextSummary } from '.'
+import { contentGroup } from './fieldGroupSchemaUtils'
+import { portableTextSummary } from './fieldSchemaUtils'
+import startCase from 'lodash/startCase'
+import type { ObjectDefinition, FieldDefinition } from 'sanity'
 
 // Helper for making standard block schemas
 export function makeBlockSchema({
@@ -11,8 +12,7 @@ export function makeBlockSchema({
   title,
   titleField = 'body',
   icon,
-  hasBackground = false,
-  hasTypes = false,
+  hasBackground,
   contentFields = [],
 }: {
   name: string // The block name
@@ -20,10 +20,15 @@ export function makeBlockSchema({
   titleField?: string // The field the preview title is pulled from
   icon?: ReactNode | ComponentType // Icon for listing views
   hasBackground?: boolean // Whether to add blockBackgroundSchema
-  hasTypes?: boolean // Whether to show the type in the preview
-  contentFields?: any[], // Sanity fields to add to content fields
+  contentFields?: FieldDefinition[], // Sanity fields to add to content group
 }): ObjectDefinition {
+
+  // Use explicit title if provided
   const blockTitle = title || startCase(name)
+
+  // Check if there is a type field for use in the preview
+  const hasTypes = contentFields.some(field => field.name == 'type')
+
   return {
     name,
     type: 'object',

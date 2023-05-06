@@ -7,7 +7,6 @@ export const ctaBlockSchema = makeBlockSchema({
   title: 'CTA Block',
   icon: TfiLayoutCtaCenter,
   hasBackground: true,
-  hasTypes: true,
   contentFields: [
 
     {
