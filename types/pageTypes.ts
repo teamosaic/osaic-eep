@@ -4,8 +4,8 @@ import { PortableTextBlock } from '@portabletext/types'
 // The Sanity schema type names that generate pages
 export enum PageType {
   Tower = 'tower',
-  Articles = 'articles',
   Article = 'article',
+  ArticlesIndex = 'articlesIndex',
 }
 
 // Simplify getting an array of all page type values
@@ -23,14 +23,14 @@ export interface Tower extends PageDocument, PageSeo {
   blocks: Block[]
 }
 
-// Article listing page type
-export interface Articles extends PageDocument, PageSeo {
-  headerBlocks: Block[]
-  footerBlocks: Block[]
-}
-
 // Article detail page type
 export interface Article extends PageDocument, PageSeo {
   date: string
   body: PortableTextBlock[]
+}
+
+// Article listing page type
+export interface ArticlesIndex extends PageDocument, PageSeo {
+  headerBlocks: Block[]
+  footerBlocks: Block[]
 }
