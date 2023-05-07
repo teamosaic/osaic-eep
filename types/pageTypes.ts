@@ -1,4 +1,4 @@
-import { Block, SanityObject, PageSeo } from './index'
+import { Block, SanityObject, PageSeo, ArticleCard } from './index'
 import { PortableTextBlock } from '@portabletext/types'
 
 // The Sanity schema type names that generate pages
@@ -32,5 +32,6 @@ export interface Article extends PageDocument, PageSeo {
 // Article listing page type
 export interface ArticlesIndex extends PageDocument, PageSeo {
   headerBlocks: Block[]
+  articles: ArticleCard[]
   footerBlocks: Block[]
 }

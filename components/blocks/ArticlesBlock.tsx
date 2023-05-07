@@ -1,7 +1,7 @@
 import type { ArticlesBlock } from '~/types'
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import AnimateInView from '~/packages/animate-in-view'
-import ArticleCard from '../global/cards/ArticleCard'
+import ArticleCard from '~/components/global/cards/ArticleCard'
 
 export default function ArticlesBlockComponent({
   headline, recentArticles,
