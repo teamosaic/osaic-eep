@@ -8,7 +8,8 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { schema, singletonTypes } from './sanity/schema'
-import { defaultDocumentNode, structure } from './sanity/structure'
+import { structure } from './sanity/structure'
+import { addPreviewPane } from './sanity/lib/preview/previewPane'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -22,7 +23,10 @@ export default defineConfig({
   plugins: [
 
     // The main area where content is managed
-    deskTool({ defaultDocumentNode, structure }),
+    deskTool({
+      defaultDocumentNode: addPreviewPane,
+      structure,
+    }),
 
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
