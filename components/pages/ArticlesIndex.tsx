@@ -8,16 +8,19 @@ export default function ArticlesIndex({ page }: { page: ArticlesIndex }) {
     <>
       <PageHead {...page} />
       <BlocksList blocks={ page.headerBlocks } />
-      <ArticlesListing articles={ page.articles } />
+      <ArticlesListing initialArticles={ page.initialArticles } />
       <BlocksList blocks={ page.footerBlocks } />
     </>
   )
 }
 
 // Render the list of articles
-function ArticlesListing({ articles = [] }: {
-  articles: ArticlesIndex["articles"]
+function ArticlesListing({ initialArticles = [] }: {
+  initialArticles: ArticlesIndex["initialArticles"]
 }): React.ReactElement {
+
+  const articles = [...initialArticles]
+
   return (
     <div className='
       my-lg

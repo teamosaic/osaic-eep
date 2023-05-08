@@ -29,6 +29,6 @@ export interface Article extends PageDocument, PageSeo {
 // Article listing page type
 export interface ArticlesIndex extends PageDocument, PageSeo {
   headerBlocks: Block[]
-  articles: ArticleCard[]
+  initialArticles: ArticleCard[]
   footerBlocks: Block[]
 }
