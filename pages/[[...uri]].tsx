@@ -1,4 +1,4 @@
-import { client } from '~/sanity/lib/client'
+import { client } from '~/sanity/client'
 import DefaultLayout from '~/layouts/DefaultLayout'
 import dynamic from 'next/dynamic'
 import PagePreview from '~/sanity/components/PagePeview'
@@ -13,7 +13,7 @@ import {
 // Page components
 const Tower = dynamic(() => import('../components/pages/Tower'))
 const Article = dynamic(() => import('../components/pages/Article'))
-const ArticlesIndex = dynamic(() => import('../components/pages/ArticlesIndex'))
+const ArticlesIndex = dynamic(() => import('../components/pages/articlesIndex/ArticlesIndex'))
 
 // Page queries
 import { getTower, towerStaticPaths } from '~/queries/towerQueries'

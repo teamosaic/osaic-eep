@@ -8,6 +8,7 @@ export default function UnstyledButton({
   url,
   icon,
   children,
+  onClick,
   className = '',
 }: ButtonComponent): React.ReactElement {
 
@@ -29,6 +30,11 @@ export default function UnstyledButton({
       >
         { contents }
       </SmartLink>)
+  }
+
+  // If an onClick was provided, render as a button element
+  if (onClick) {
+    return <button {...{ onClick, className }}>{ contents }</button>
   }
 
   // Fallback to a span

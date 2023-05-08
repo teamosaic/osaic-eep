@@ -30,5 +30,6 @@ export interface Article extends PageDocument, PageSeo {
 export interface ArticlesIndex extends PageDocument, PageSeo {
   headerBlocks: Block[]
   initialArticles: ArticleCard[]
+  totalArticles: number
   footerBlocks: Block[]
 }

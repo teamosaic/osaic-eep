@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { previewSecretDocumentId, readToken } from '~/sanity/env'
-import { client } from '~/sanity/lib/client'
+import { client } from '~/sanity/client'
 import { getPreviewSecret } from '~/sanity/lib/preview/previewSecret'
 
 export default async function preview(
