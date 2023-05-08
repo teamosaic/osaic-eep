@@ -3,7 +3,7 @@ import type { Image } from 'sanity'
 import { PageSeo } from '~/types'
 import { useContext } from 'react'
 import { SettingsContext } from '~/providers/settings'
-import { urlForImage } from '~/packages/sanity-image/src/urlBuilding'
+import { urlForImage } from '~/packages/sanity-image'
 import { useRouter } from 'next/router'
 
 interface PageHeadProps extends PageSeo {
