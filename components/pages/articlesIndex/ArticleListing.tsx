@@ -1,9 +1,13 @@
 import ArticleCard from '~/components/global/cards/ArticleCard'
 import { ArticleCard as IArticleCard, Button } from '~/types'
 import PrimaryButton from '~/components/global/buttons/PrimaryButton'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { client } from '~/sanity/client'
 import { getMoreArticles } from '~/queries/articlesIndexQueries'
+
+// Make a memoized card so the card animations don't replay (and the card
+// doesn't render) when adding more cards via loadMore
+const MemoizedArticleCard = memo(ArticleCard)
 
 // Render the list of articles
 export default function ArticleListing({
@@ -51,7 +55,9 @@ export default function ArticleListing({
         max-w-screen-sm mx-auto px-gutter
         grid grid-cols-1 gap-x-xs gap-y-md w-full
         lg:max-w-screen-xl lg:grid-cols-3'>
-        { articles.map(ArticleCard) }
+        { articles.map(article => (
+          <MemoizedArticleCard key={ article._id} {...article } />
+        ))}
       </div>
 
       {/* Load more button */}
