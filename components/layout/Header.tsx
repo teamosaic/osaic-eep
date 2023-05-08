@@ -1,8 +1,11 @@
-import SmartLink from '~/packages/smart-link/SmartLink'
-import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
+import Image from 'next/image'
+import { useState } from 'react'
+
+import logo from '~/assets/images/logo.svg'
+import SmartLink from '~/packages/smart-link/SmartLink'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -32,9 +35,9 @@ export default function LayoutHeader({ overlap = false }:{
         <div className="flex lg:flex-1">
           <SmartLink href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img
+            <Image
               className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              src={logo}
               alt=""
             />
           </SmartLink>
@@ -71,9 +74,9 @@ export default function LayoutHeader({ overlap = false }:{
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
+              <Image
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                src={logo}
                 alt=""
               />
             </a>
