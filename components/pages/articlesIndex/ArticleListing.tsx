@@ -5,11 +5,11 @@ import { memo, useState } from 'react'
 import { client } from '~/sanity/client'
 import { getMoreArticles } from '~/queries/articlesIndexQueries'
 
-// Make a memoized card so the card animations don't replay (and the card
-// doesn't render) when adding more cards via loadMore
+// Make a memoized card so the card animations don't replay  when adding more
+// cards via loadMore
 const MemoizedArticleCard = memo(ArticleCard)
 
-// Render the list of articles
+// Render a grid of article cards
 export default function ArticleListing({
   initialArticles,
   totalArticles,
@@ -81,6 +81,8 @@ export default function ArticleListing({
   )
 }
 
+// Render a primary button that handles loading state and remaining to load
+// count
 function LoadMoreButton({ remainingCount, loading, onClick}: {
   remainingCount: number
   loading: boolean
