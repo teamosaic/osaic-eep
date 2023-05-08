@@ -14,5 +14,6 @@ export const blocksFragment = groq`
     'recentArticles': *[_type == 'article'] | order(date desc) [0...3]  {
       ${ articleCardFragment },
     },
+    'totalArticles': count(*[_type == "article"]),
   }
 `

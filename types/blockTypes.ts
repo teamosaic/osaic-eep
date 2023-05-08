@@ -32,6 +32,7 @@ export enum CtaBlockType {
 export interface ArticlesBlock extends BlockLayout {
   headline: PortableTextBlock[]
   recentArticles: ArticleCard[]
+  totalArticles: number
 }
 
 export interface ArticleCard {

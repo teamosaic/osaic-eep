@@ -1,10 +1,11 @@
-import type { ArticlesBlock } from '~/types'
+import { ArticlesBlock, ButtonIcon } from '~/types'
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import AnimateInView from '~/packages/animate-in-view'
 import ArticleCard from '~/components/global/cards/ArticleCard'
+import PrimaryButton from '~/components/global/buttons/PrimaryButton'
 
-export default function ArticlesBlockComponent({
-  headline, recentArticles,
+export default function ArticlesBlock({
+  headline, recentArticles, totalArticles
 }: ArticlesBlock): React.ReactElement {
 
   // Require articles
@@ -37,6 +38,15 @@ export default function ArticlesBlockComponent({
             {...article } />
         )) }
       </div>
+
+      {/* Show view all link */}
+      { totalArticles > recentArticles.length && (
+        <div className='flex place-content-center my-md'>
+          <PrimaryButton url='/articles' icon={ ButtonIcon.RightArrow }>
+            View all
+          </PrimaryButton>
+        </div>
+      ) }
 
     </>
   )
