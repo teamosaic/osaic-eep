@@ -39,7 +39,7 @@ module.exports = {
         ...makeFluidSpacingDefaults(),
 
         // Add spacing values that are used by BlockLayout
-        xs: fluid(24),
+        xs: fluid(32),
         sm: fluid(48, 32),
         md: fluid(64, 48),
         lg: fluid(128, 64),

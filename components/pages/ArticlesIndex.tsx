@@ -20,8 +20,9 @@ function ArticlesListing({ articles = [] }: {
 }): React.ReactElement {
   return (
     <div className='
+      my-lg
       max-w-screen-sm mx-auto px-gutter
-      grid grid-cols-1 gap-x-8 gap-y-20
+      grid grid-cols-1 gap-x-xs gap-y-md
       lg:max-w-screen-xl lg:grid-cols-3'>
       { articles.map(ArticleCard) }
     </div>
