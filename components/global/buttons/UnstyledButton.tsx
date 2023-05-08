@@ -1,11 +1,13 @@
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { ButtonComponent, ButtonIcon } from '~/types'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { ArrowPathIcon } from '@heroicons/react/24/outline'
 
 // Render differnet root elements depending on passed in props
 export default function UnstyledButton({
   text,
   url,
+  loading,
   icon,
   children,
   onClick,
@@ -18,7 +20,8 @@ export default function UnstyledButton({
   // If no contents, render nothing
   if (!contents) return
 
-  // Add the icon after the text contentts
+  // Add the icon after the text content
+  if (loading) icon = ButtonIcon.Loading
   if (icon) contents = <>{ contents }<Icon type={ icon } /></>
 
   // If a url was provided, render a smart link
@@ -45,7 +48,15 @@ export default function UnstyledButton({
 export function Icon({ type }: { type: ButtonIcon}): React.ReactElement {
   const standardClasses = 'h-5f w-5f inline-block ml-[0.5em]'
   switch(type) {
+
     case ButtonIcon.RightArrow:
-      return <ArrowRightIcon className={ standardClasses } aria-hidden='true' />
+      return <ArrowRightIcon
+        className={ standardClasses }
+        aria-hidden />
+
+    case ButtonIcon.Loading:
+      return <ArrowPathIcon
+        className={ `${standardClasses } animate-spin`}
+        aria-hidden />
   }
 }

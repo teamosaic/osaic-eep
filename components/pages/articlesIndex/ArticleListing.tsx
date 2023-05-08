@@ -22,6 +22,11 @@ export default function ArticleListing({
   const [ articles, setArticles ] = useState<IArticleCard[]>(initialArticles)
   const [ loading, setLoading ] = useState<boolean>(false)
 
+  // Show no results message
+  if (!articles.length) {
+    return <div className='my-lg text-center'>No results found</div>
+  }
+
   // Figure out how many more articles need loading
   const remainingCount = totalArticles - articles.length
 
@@ -61,13 +66,13 @@ export default function ArticleListing({
       </div>
 
       {/* Load more button */}
-      { remainingCount > 0 &&
+      { remainingCount > 0 && (
         <div className='flex place-content-center my-md'>
           <LoadMoreButton
             {...{ remainingCount, loading }}
             onClick={loadMore} />
         </div>
-      }
+      )}
     </div>
   )
 }
@@ -78,16 +83,19 @@ function LoadMoreButton({ remainingCount, loading, onClick}: {
   onClick: Button["onClick"]
 }): React.ReactElement {
   return (
-    <PrimaryButton onClick={ onClick }>
+    <PrimaryButton {...{ loading, onClick }}>
       Load More
 
       {/* Remaining count */}
-      <span className='
-        ml-2
-        inline-block aspect-square h-[1lh]
-        bg-white/25 rounded-full'>{ remainingCount }</span>
-
-      {/* Loading */}
+      {!loading && (
+        <span className='
+          ml-2
+          text-[.8em] font-bold
+          inline-flex h-5f w-5f place-content-center
+          bg-white/25 rounded-full'>
+          { remainingCount }
+        </span>
+      )}
 
     </PrimaryButton>
   )
