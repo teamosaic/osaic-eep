@@ -1,8 +1,8 @@
-import SanityImage from '~/packages/sanity-image/SanityImage'
+import { Icon } from '~/components/global/buttons/UnstyledButton'
 import AnimateInView from '~/packages/animate-in-view'
 import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import SanityImage from '~/packages/sanity-image'
 import SmartLink from '~/packages/smart-link/SmartLink'
-import { Icon } from '~/components/global/buttons/UnstyledButton'
 import { ButtonIcon, HeroBlock as BlockType } from '~/types'
 
 // Based on

@@ -1,4 +1,4 @@
-import { SanityImageSource, DereferencedImage } from './types'
+import { DereferencedImage,SanityImageSource } from './types'
 
 // Return a dereferenced image type or null
 export function getDereferencedImage(
