@@ -3,7 +3,7 @@ import { blocksFragment } from './fragments/blocksFragment'
 import { articleCardFragment } from './fragments/articleCardFragment'
 
 // Settings
-const perPage = 3
+const perPage = 6
 
 export const getArticlesIndex = groq`
   *[_type == 'articlesIndex'] {

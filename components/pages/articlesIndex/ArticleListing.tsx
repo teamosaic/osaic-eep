@@ -60,8 +60,12 @@ export default function ArticleListing({
         max-w-screen-sm mx-auto px-gutter
         grid grid-cols-1 gap-x-xs gap-y-md w-full
         lg:max-w-screen-xl lg:grid-cols-3'>
-        { articles.map(article => (
-          <MemoizedArticleCard key={ article._id} {...article } />
+        { articles.map((article, index) => (
+          <MemoizedArticleCard
+            key={ article._id}
+            revealOnce
+            revealDelay={ (index % 3) * 0.2 }
+            {...article } />
         ))}
       </div>
 

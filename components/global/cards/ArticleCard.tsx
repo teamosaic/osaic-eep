@@ -5,8 +5,13 @@ import SanityImage from '~/packages/sanity-image/SanityImage'
 
 // A card in the article listing
 export default function ArticleCard({
-  _id, uri, title, date, excerpt, image,
-}: ArticleCard, index: number): React.ReactElement {
+  uri, title, date, excerpt, image,
+  revealDelay, revealOnce, revealWhen = '10%',
+}: ArticleCard & {
+  revealDelay?: number
+  revealOnce?: boolean
+  revealWhen?: string
+}): React.ReactElement {
 
   // Use an explicit timezone so we don't get hydration issues when server's
   // timezone is different than users
@@ -16,16 +21,20 @@ export default function ArticleCard({
     timeZone: 'America/Los_Angeles',
   })
 
+  // Create reveal stagger
+  const revealStaggerStyle = revealDelay ?
+    { animationDelay: `${revealDelay}s` } : null
+
   // Stagger animate in
   return (
     <AnimateInView
       as='article'
-      when='10%'
-      key={ _id }
+      when={ revealWhen }
+      once={ revealOnce }
       className='
         flex flex-col items-start
         animate-slide-up-in'
-      style={{ animationDelay: `${index * 0.2}s` }}>
+      style={ revealStaggerStyle }>
 
       {/* Make rounded container */}
       <SmartLink href={ uri }
@@ -36,7 +45,8 @@ export default function ArticleCard({
 
         {/* Render image, scaling in when in viewport */}
         <AnimateInView
-          when='10%'
+          when={ revealWhen }
+          once={ revealOnce }
           className={`
             absolute inset-0
             animate-slow-scale-down-in`}>

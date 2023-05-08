@@ -30,7 +30,12 @@ export default function ArticlesBlockComponent({
         max-w-screen-sm mx-auto px-gutter
         grid grid-cols-1 gap-x-xs gap-y-md
         lg:max-w-screen-xl lg:grid-cols-3'>
-        { recentArticles.map(ArticleCard) }
+        { recentArticles.map((article, index) => (
+          <ArticleCard
+            key={article._id}
+            revealDelay={ index * 0.2 }
+            {...article } />
+        )) }
       </div>
 
     </>
