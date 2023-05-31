@@ -13,6 +13,7 @@ export default function PrimaryButton(
       font-semibold
       text-white
       no-underline
+      whitespace-nowrap
 
       rounded-md
       shadow-sm
