@@ -19,6 +19,9 @@ export const base = {
   // Clear default max-width
   maxWidth: 'none',
 
+  // Break words if necessary
+  overflowWrap: 'anywhere',
+
   // Make fluid font sizes based on Cloak styleguide
   h1: {
     fontSize: fluid(100, 70),
