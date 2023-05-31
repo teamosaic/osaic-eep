@@ -19,18 +19,20 @@ export default function Article({ page }: { page: Article }) {
         lg:grid grid-flow-col gap-24f'>
 
         {/* Meta column */}
-        <div className='w-fit text-xs text-right lg:mt-16f'>
+        <div className='w-fit text-xs
+          flex w-full items-center mb-4f
+          lg:block lg:text-right lg:mt-16f lg:mb-0'>
 
           {/* Published date */}
           <DateLabel date={page.date} />
 
           {/* List of categories */}
-          <div className='mt-5f'>
+          <div className='mt-5f hidden lg:block'>
             <CategoryBadge name='Example Category'/>
           </div>
 
           {/* Back to all articles */}
-          <div className={`lg:mt-16f`}>
+          <div className='ml-auto lg:mt-16f'>
             <TextButton url='/articles'>
               <ArrowLeftIcon className='
                 h-5f w-5f inline-block mr-[0.5em]
