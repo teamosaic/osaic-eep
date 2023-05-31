@@ -1,5 +1,6 @@
 import { Block, SanityObject, PageSeo, ArticleCard } from './index'
 import { PortableTextBlock } from '@portabletext/types'
+import type { Image } from 'sanity'
 
 // The Sanity schema type names that generate pages
 export enum PageType {
@@ -23,6 +24,7 @@ export interface Tower extends PageDocument, PageSeo {
 // Article detail page type
 export interface Article extends PageDocument, PageSeo {
   date: string
+  image: Image
   body: PortableTextBlock[]
 }
 

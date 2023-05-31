@@ -4,6 +4,8 @@ export const getArticle = groq`
   *[_type == 'article' && uri.current == $uri]{
     ...,
     'uri': uri.current,
+    'date': coalesce(date, _createdAt),
+    image { ..., asset-> },
   }[0]
 `
 
