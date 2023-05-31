@@ -16,6 +16,9 @@ export const base = {
   '> :first-child': { marginTop: 0 },
   '> :last-child': { marginBottom: 0 },
 
+  // Clear default max-width
+  maxWidth: 'none',
+
   // Make fluid font sizes based on Cloak styleguide
   h1: {
     fontSize: fluid(100, 70),
