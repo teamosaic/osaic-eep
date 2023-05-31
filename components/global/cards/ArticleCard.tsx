@@ -2,6 +2,8 @@ import type { ArticleCard } from '~/types'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import AnimateInView from '~/packages/animate-in-view'
 import SanityImage from '~/packages/sanity-image'
+import CategoryBadge from '../CategoryBadge'
+import DateLabel from '../DateLabel'
 
 // A card in the article listing
 export default function ArticleCard({
@@ -12,14 +14,6 @@ export default function ArticleCard({
   revealOnce?: boolean
   revealWhen?: string
 }): React.ReactElement {
-
-  // Use an explicit timezone so we don't get hydration issues when server's
-  // timezone is different than users
-  const dateObj = new Date(date)
-  const displayDate = dateObj.toLocaleDateString('en-US', {
-    dateStyle: 'medium',
-    timeZone: 'America/Los_Angeles',
-  })
 
   // Create reveal stagger
   const revealStaggerStyle = revealDelay ?
@@ -66,16 +60,8 @@ export default function ArticleCard({
 
         {/* Time & Category */}
         <div className="mt-8 flex items-center gap-x-4 text-xs">
-          <time dateTime={ dateObj.toISOString() } className="opacity-70">
-            { displayDate }
-          </time>
-          <a
-            href='#'
-            className="
-            rounded-full px-3 py-1.5
-            bg-white/80 hover:bg-white">
-            <span className='opacity-70 font-medium'>Example Category</span>
-          </a>
+          <DateLabel date={ date } className='opacity-70' />
+          <CategoryBadge name='Example Category'/>
         </div>
 
         {/* Title & description */}
