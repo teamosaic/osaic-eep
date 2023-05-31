@@ -1,8 +1,8 @@
-import { ArticlesBlock, ButtonIcon } from '~/types'
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import AnimateInView from '~/packages/animate-in-view'
 import ArticleCard from '~/components/global/cards/ArticleCard'
+import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import PrimaryButton from '~/components/global/buttons/PrimaryButton'
+import { ArticlesBlock, ButtonIcon } from '~/types'
 
 export default function ArticlesBlock({
   headline, recentArticles, totalArticles

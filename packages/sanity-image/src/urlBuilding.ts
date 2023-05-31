@@ -1,7 +1,8 @@
-import { SanityImageSource, ObjectFit } from './types'
 import createImageUrlBuilder from '@sanity/image-url'
-import type { ImageLoader } from 'next/image'
 import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder'
+import type { ImageLoader } from 'next/image'
+
+import { ObjectFit,SanityImageSource } from './types'
 
 // Make an image builder instance from ENVs
 const imageBuilder = createImageUrlBuilder({

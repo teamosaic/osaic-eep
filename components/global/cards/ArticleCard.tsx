@@ -1,7 +1,7 @@
 import type { ArticleCard } from '~/types'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import AnimateInView from '~/packages/animate-in-view'
-import SanityImage from '~/packages/sanity-image/SanityImage'
+import SanityImage from '~/packages/sanity-image'
 
 // A card in the article listing
 export default function ArticleCard({
