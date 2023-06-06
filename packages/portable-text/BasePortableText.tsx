@@ -1,16 +1,23 @@
-import { type PortableTextComponents,PortableText } from '@portabletext/react'
+import { type PortableTextComponents, PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import SmartLink from '../smart-link/SmartLink'
 import ButtonList from '~/components/global/buttons/ButtonList'
+import merge from 'lodash/merge'
 
-// Renders a Sanity PortableText component with standard customizaionts
-export default function BasePortableText({ value, className = '' }: {
+// Renders a Sanity PortableText component with standard customizations
+export default function BasePortableText({
+  value, components, className = ''
+}: {
   value: PortableTextBlock[]
+  components?: PortableTextComponents
   className?: string
 }): React.ReactElement {
 
   // Require content
   if (!value) return
+
+  // Merge passed in components configuration
+  components = merge({}, baseComponents, components)
 
   // Render Tailwind prose wrapper but clear the default prose styles
   // with `text-inherit` and the configuration in tailwind.config.js.
@@ -24,7 +31,7 @@ export default function BasePortableText({ value, className = '' }: {
 }
 
 // Override some PortableText default components
-const components: PortableTextComponents = {
+const baseComponents: PortableTextComponents = {
 
   types: {
 
