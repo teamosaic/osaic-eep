@@ -1,4 +1,3 @@
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import PageHead from '~/components/layout/PageHead'
 import { Article } from '~/types'
 import DateLabel from '../global/DateLabel'
@@ -6,6 +5,8 @@ import CategoryBadge from '../global/CategoryBadge'
 import SanityImage from '~/packages/sanity-image'
 import TextButton from '../global/buttons/TextButton'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import ArticlePortableText from '~/components/global/portableText/MarketingPortableText'
+
 
 export default function Article({ page }: { page: Article }) {
 
@@ -59,16 +60,16 @@ export default function Article({ page }: { page: Article }) {
               className='opacity-70'/>
 
             {/* The title */}
-            <div className='prose prose-default relative'>
+            <div className='prose prose-base relative'>
               <h1>{ page.title }</h1>
             </div>
 
           </div>
 
           {/* The article text */}
-          <BasicPortableText
+          <ArticlePortableText
             value={ page.body }
-            className='prose-article my-16f' />
+            className='my-16f' />
         </div>
 
       </article>
