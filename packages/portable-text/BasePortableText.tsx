@@ -1,7 +1,6 @@
 import { type PortableTextComponents, PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import SmartLink from '../smart-link/SmartLink'
-import ButtonList from '~/components/global/buttons/ButtonList'
 import merge from 'lodash/merge'
 
 // Renders a Sanity PortableText component with standard customizations
@@ -32,13 +31,6 @@ export default function BasePortableText({
 
 // Override some PortableText default components
 const baseComponents: PortableTextComponents = {
-
-  types: {
-
-    // Render a row of buttons, adding some extra margins to it
-    buttonList: ({ value }) => <ButtonList {...value} className='mt-sm'/>,
-
-  },
 
   marks: {
 
