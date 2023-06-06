@@ -59,7 +59,7 @@ export default function Article({ page }: { page: Article }) {
               className='opacity-70'/>
 
             {/* The title */}
-            <div className='prose prose-default relative'>
+            <div className='prose prose-base relative'>
               <h1>{ page.title }</h1>
             </div>
 

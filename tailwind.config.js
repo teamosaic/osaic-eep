@@ -27,7 +27,7 @@ module.exports = {
 
       // Make a custom themes for BasicPortableText
       typography: {
-        default: { css: proseStyles.base, },
+        base: { css: proseStyles.base, },
         marketing: { css: proseStyles.marketing, },
         article: { css: proseStyles.article, },
       },
