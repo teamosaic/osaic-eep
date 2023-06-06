@@ -1,6 +1,6 @@
 import { Icon } from '~/components/global/buttons/UnstyledButton'
 import AnimateInView from '~/packages/animate-in-view'
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import BasePortableText from '~/packages/portable-text/BasePortableText'
 import SanityImage from '~/packages/sanity-image'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { ButtonIcon, HeroBlock as BlockType } from '~/types'
@@ -48,7 +48,7 @@ export default function HeroBlock({
         <AnimateInView
           target='descendants'
           className='prose-animate-in relative'>
-          <BasicPortableText
+          <BasePortableText
             value={ body }
             className='prose-marketing' />
         </AnimateInView>

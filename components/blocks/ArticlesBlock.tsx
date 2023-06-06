@@ -1,6 +1,6 @@
 import AnimateInView from '~/packages/animate-in-view'
 import ArticleCard from '~/components/global/cards/ArticleCard'
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import BasePortableText from '~/packages/portable-text/BasePortableText'
 import PrimaryButton from '~/components/global/buttons/PrimaryButton'
 import { ArticlesBlock, ButtonIcon } from '~/types'
 
@@ -18,7 +18,7 @@ export default function ArticlesBlock({
       <AnimateInView
         target='descendants'
         className='prose-animate-in'>
-        <BasicPortableText
+        <BasePortableText
           value={ headline }
           className='
             max-w-screen-md mx-auto px-gutter

@@ -1,4 +1,4 @@
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import BasePortableText from '~/packages/portable-text/BasePortableText'
 import PageHead from '~/components/layout/PageHead'
 import { Article } from '~/types'
 import DateLabel from '../global/DateLabel'
@@ -66,7 +66,7 @@ export default function Article({ page }: { page: Article }) {
           </div>
 
           {/* The article text */}
-          <BasicPortableText
+          <BasePortableText
             value={ page.body }
             className='prose-article my-16f' />
         </div>
