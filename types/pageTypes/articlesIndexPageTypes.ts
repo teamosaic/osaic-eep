@@ -1,4 +1,4 @@
-import { PageDocument } from './pageType'
+import { PageDocument } from './pageTypes'
 import { ArticleCard, Block } from '../blockTypes'
 
 // Article listing page type

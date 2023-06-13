@@ -1,5 +1,5 @@
 import type { Image } from 'sanity'
-import { PageDocument } from './pageType'
+import { PageDocument } from './pageTypes'
 import { PortableTextBlock } from '@portabletext/types'
 
 // Article detail page type

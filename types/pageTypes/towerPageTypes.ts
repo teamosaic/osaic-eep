@@ -1,4 +1,4 @@
-import { PageDocument } from './pageType'
+import { PageDocument } from './pageTypes'
 import { Block } from '../blockTypes'
 
 // Tower page type
