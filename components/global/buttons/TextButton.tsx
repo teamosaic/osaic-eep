@@ -7,7 +7,7 @@ export default function TextButton(
 ): React.ReactElement {
   return (
     <UnstyledButton {...props} className={`
-        text-sm font-semibold leading-6 text-white no-underline
+        text-sm font-semibold leading-6 no-underline whitespace-nowrap
         ${props.className || ''}
     `} />
   )

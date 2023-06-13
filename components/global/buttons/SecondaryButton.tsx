@@ -13,6 +13,7 @@ export default function SecondaryButton(
       font-semibold
       text-gray-900
       no-underline
+      whitespace-nowrap
 
       rounded-md
       shadow-sm

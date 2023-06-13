@@ -2,6 +2,10 @@ import { SettingsContext } from '~/providers/settings'
 import LayoutHeader from '~/components/layout/Header'
 import LayoutFooter from '~/components/layout/Footer'
 import clsx from 'clsx'
+import {
+  spacingToPaddingTop,
+  hasBackground
+} from '~/components/blocks/BlockParent'
 
 export default function DefaultLayout({ settings, page, children }) {
   return (
@@ -16,9 +20,9 @@ export default function DefaultLayout({ settings, page, children }) {
           { children }
 
           {/* Position footer at the bottom of short pages */}
-          <div className={clsx('mt-auto', {
-            'pt-large': needsSpaceAboveFooter(page)
-          })}>
+          <div className={clsx('mt-auto',
+            addSpaceAboveFooter(page)
+          )}>
             <LayoutFooter/>
           </div>
 
@@ -34,8 +38,18 @@ function doesHeaderOverlap(page): boolean {
 }
 
 // Add space above the footer unless the last block has a background
-function needsSpaceAboveFooter(page): boolean {
-  if (!('blocks' in page && page.blocks)) return true
-  const lastBlock = page.blocks[page.blocks.length - 1]
-  return !lastBlock.backgroundColor
+function addSpaceAboveFooter(page): string {
+
+  // If no blocks, do nothing
+  const blocks = (('footerBlocks' in page && page.footerBlocks) ||
+    ('blocks' in page && page.blocks) || []
+  ).filter(block => !block?.disabled) // Remove disabled blocks
+  if (!blocks?.length) return
+
+  // If it has a background, assume it has padding inside already
+  const lastBlock = blocks[blocks.length - 1]
+  if (hasBackground(lastBlock)) return
+
+  // Use the block spacing value as the padding above the footer
+  return spacingToPaddingTop(lastBlock.blockSpacing)
 }

@@ -1,8 +1,8 @@
 import AnimateInView from '~/packages/animate-in-view'
 import ArticleCard from '~/components/global/cards/ArticleCard'
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import PrimaryButton from '~/components/global/buttons/PrimaryButton'
 import { ArticlesBlock, ButtonIcon } from '~/types'
+import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 
 export default function ArticlesBlock({
   headline, recentArticles, totalArticles
@@ -18,11 +18,9 @@ export default function ArticlesBlock({
       <AnimateInView
         target='descendants'
         className='prose-animate-in'>
-        <BasicPortableText
+        <MarketingPortableText
           value={ headline }
-          className='
-            max-w-screen-md mx-auto px-gutter
-            prose-marketing text-center' />
+          className='max-w-screen-md mx-auto px-gutter text-center' />
       </AnimateInView>
 
       {/* Render cards vis CSS grid */}

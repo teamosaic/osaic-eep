@@ -11,9 +11,6 @@ import { schema, singletonTypes } from './sanity/schema'
 import { structure } from './sanity/structure'
 import { addPreviewPane } from './sanity/lib/preview/previewPane'
 
-// Define the actions that should be available for singleton documents
-const singletonActions = new Set(["publish", "discardChanges", "restore"])
-
 export default defineConfig({
   basePath: '/admin',
   projectId,
@@ -40,10 +37,15 @@ export default defineConfig({
     },
 
     // For singleton types, filter out actions that are not explicitly included
-    // in the `singletonActions` list defined above
-    actions: (input, context) =>
-      singletonTypes.has(context.schemaType)
+    // in the `singletonActions` list defined above. We treat any document
+    // whose id is the same as the schemaType name as a singleton, since that's
+    // the convention we're following when defining the schema.
+    actions: (input, context) => {
+      const isSingleton = context.schemaType == context.documentId,
+        singletonActions = new Set(["publish", "discardChanges", "restore"])
+      return isSingleton
         ? input.filter(({ action }) => action && singletonActions.has(action))
-        : input,
+        : input
+    }
   },
 })

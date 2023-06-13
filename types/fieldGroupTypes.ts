@@ -44,18 +44,3 @@ export enum BlockPadding {
   Medium = 'medium',
   Large = 'large',
 }
-
-// Page SEO
-
-export interface PageSeo {
-  metaTitle: string
-  metaDescription: string
-  metaImage: Image
-  robots: RobotsRule[]
-}
-
-export enum RobotsRule {
-  noindex = 'noindex',
-  nofollow = 'nofollow',
-  noarchive = 'noarchive',
-}
