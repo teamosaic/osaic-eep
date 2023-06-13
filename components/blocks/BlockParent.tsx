@@ -90,7 +90,7 @@ function mapPaddingTopToTailwindClass(
     case BlockPadding.Medium: return 'pt-md'
     case BlockPadding.Large: return 'pt-lg'
 
-    // Add padding top if this block has a non-empty background and
+    // Add padding top if  this block has a non-empty background and
     // has a different background than the previous block
     case BlockPadding.Matching:
       if (!hasBackground(block) ||
@@ -109,19 +109,6 @@ function mapPaddingBottomToTailwindClass(
   block: Block,
   nextBlock: Block,
 ):string {
-
-  // If this is the last block and it has no background, add padding to
-  // match the spacing value.  This is specifically for the case of the last
-  // block above the footer, so it's content has some space before the footer.
-  if (!nextBlock && !hasBackground(block)) {
-    switch (block.blockSpacing) {
-      case BlockSpacing.Small: return 'pb-sm'
-      case BlockSpacing.Medium:
-      case undefined: return 'pb-md'
-      case BlockSpacing.Large: return 'pb-lg'    }
-  }
-
-  // Otherwise, require an explicit paddingBottom
   if (!('paddingBottom' in block)) return
   switch (block.paddingBottom) {
 
