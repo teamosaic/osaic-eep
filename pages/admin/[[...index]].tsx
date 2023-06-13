@@ -7,6 +7,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle(({ theme }) => ({
   html: { backgroundColor: theme.sanity.color.base.bg },
+  '[aria-label="Create new document"]': { display: 'none' },
 }))
 
 export default function StudioPage() {
