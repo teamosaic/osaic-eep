@@ -18,9 +18,6 @@ export default function BlockParent({ block, children }: {
 }):React.ReactElement {
   const blockOrder = useContext(BlockOrderContext)
 
-  // If the block is disabled, don't render anything
-  if (block.disabled) return
-
   // Else render wrapper block with clases for common functionality
   return (
     <div className={clsx([
