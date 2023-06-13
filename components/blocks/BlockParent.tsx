@@ -82,10 +82,10 @@ export function spacingToPaddingTop(blockSpacing: BlockSpacing):string {
 // Convert spacing to padding bottom classes
 function spacingToPaddingBottom(blockSpacing: BlockSpacing):string {
   switch (blockSpacing) {
-    case BlockSpacing.Small: return 'pt-sm'
+    case BlockSpacing.Small: return 'pb-sm'
     case BlockSpacing.Medium:
-    case undefined: return 'pt-md'
-    case BlockSpacing.Large: return 'pt-lg'
+    case undefined: return 'pb-md'
+    case BlockSpacing.Large: return 'pb-lg'
   }
 }
 
@@ -112,12 +112,11 @@ function mapPaddingTopToTailwindClass(
     case BlockPadding.Medium: return 'pt-md'
     case BlockPadding.Large: return 'pt-lg'
 
-    // Add padding top if  this block has a non-empty background and
+    // Add padding top if this block has a non-empty background and
     // has a different background than the previous block
     case BlockPadding.Matching:
-      if (!hasBackground(block) ||
-        sameBackground(block, previousBlock)) return
-      else return spacingToPaddingTop(block.blockSpacing)
+      return hasBackground(block) && !sameBackground(block, previousBlock) ?
+        spacingToPaddingTop(block.blockSpacing) : null
   }
 }
 
@@ -137,9 +136,8 @@ function mapPaddingBottomToTailwindClass(
     // Add padding bottom if this block has a non-empty background and
     // has a different background than the next block
     case BlockPadding.Matching:
-      if (!hasBackground(block) ||
-        sameBackground(block, nextBlock)) return
-      else return spacingToPaddingBottom(block.blockSpacing)
+      return hasBackground(block) && !sameBackground(block, nextBlock) ?
+        spacingToPaddingBottom(block.blockSpacing) : null
   }
 }
 
