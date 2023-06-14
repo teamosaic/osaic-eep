@@ -20,7 +20,6 @@ export default function HeroBlock({
         <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
           <SanityImage
             expand
-            priority
             sizes='100vw'
             source={ background } />
         </AnimateInView> }

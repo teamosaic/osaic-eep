@@ -14,11 +14,18 @@ import {
   SanityImageProps,
 } from './types'
 import { makeImageLoader,urlForImage } from './urlBuilding'
+import { useContext } from 'react'
+import { BlockOrderContext } from '~/providers/blockOrder'
 
 // Render a Sanity image via Next/Image
 export default function SanityImage({
   source, expand, aspect, width, height, priority, sizes, fit, className = '',
 }: SanityImageProps): React.ReactElement | null {
+
+  // Force image priority if the block's index is <= 1 (the first and 2nd blocks)
+  if (priority == undefined && useContext(BlockOrderContext).index <= 1) {
+    priority = true;
+  }
 
   // Return without error if no source
   if (!source?.asset) return null
