@@ -1,5 +1,6 @@
 import { type PortableTextComponents } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
+
 import ButtonList from '~/components/global/buttons/ButtonList'
 import BasePortableText from '~/packages/portable-text/BasePortableText'
 

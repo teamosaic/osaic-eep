@@ -1,7 +1,7 @@
-import { CtaBlock } from '~/types'
-import AnimateInView from '~/packages/animate-in-view'
 import ButtonList from '~/components/global/buttons/ButtonList'
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
+import AnimateInView from '~/packages/animate-in-view'
+import { CtaBlock } from '~/types'
 
 export default function SimpleJustifiedCtaBlock(
   { body, buttons }: CtaBlock

@@ -1,5 +1,6 @@
-import Button from './Button'
 import { twMerge } from 'tailwind-merge'
+
+import Button from './Button'
 
 // Renders a list of buttons as a row (by default). This is primarily intended
 // to be used by PortableText.

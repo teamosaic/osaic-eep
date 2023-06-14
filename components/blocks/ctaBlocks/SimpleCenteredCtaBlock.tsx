@@ -1,6 +1,6 @@
-import { CtaBlock } from '~/types'
-import AnimateInView from '~/packages/animate-in-view'
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
+import AnimateInView from '~/packages/animate-in-view'
+import { CtaBlock } from '~/types'
 
 export default function SimpleCenteredCtaBlock(
   { body }: CtaBlock

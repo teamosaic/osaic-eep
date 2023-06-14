@@ -1,4 +1,5 @@
-import { CtaBlockType, CtaBlock as BlockType } from '~/types'
+import { CtaBlock as BlockType,CtaBlockType } from '~/types'
+
 import SimpleCenteredCtaBlock from './SimpleCenteredCtaBlock'
 import SimpleJustifiedCtaBlock from './SimpleJustifiedCtaBlock'
 

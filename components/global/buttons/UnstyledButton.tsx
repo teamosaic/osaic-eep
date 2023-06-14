@@ -1,7 +1,8 @@
-import SmartLink from '~/packages/smart-link/SmartLink'
-import { ButtonComponent, ButtonIcon } from '~/types'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { ArrowPathIcon } from '@heroicons/react/24/outline'
+
+import SmartLink from '~/packages/smart-link/SmartLink'
+import { ButtonComponent, ButtonIcon } from '~/types'
 
 // Render differnet root elements depending on passed in props
 export default function UnstyledButton({

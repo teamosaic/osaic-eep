@@ -1,13 +1,14 @@
-import { client } from '~/sanity/client'
-import DefaultLayout from '~/layouts/DefaultLayout'
 import dynamic from 'next/dynamic'
+
+import DefaultLayout from '~/layouts/DefaultLayout'
+import { client } from '~/sanity/client'
 import PagePreview from '~/sanity/components/PagePeview'
 import {
-  PageType,
-  PageDocument,
-  Tower as TowerPage,
   Article as ArticlePage,
   ArticlesIndex as ArticlesIndexPage,
+  PageDocument,
+  PageType,
+  Tower as TowerPage,
 } from '~/types'
 
 // Page components
@@ -16,9 +17,9 @@ const Article = dynamic(() => import('../components/pages/Article'))
 const ArticlesIndex = dynamic(() => import('../components/pages/articlesIndex/ArticlesIndex'))
 
 // Page queries
+import { articleStaticPaths,getArticle } from '~/queries/articleQueries'
+import { articlesIndexStaticPaths,getArticlesIndex } from '~/queries/articlesIndexQueries'
 import { getTower, towerStaticPaths } from '~/queries/towerQueries'
-import { getArticle, articleStaticPaths } from '~/queries/articleQueries'
-import { getArticlesIndex, articlesIndexStaticPaths } from '~/queries/articlesIndexQueries'
 
 export default function PageDelegator({ previewToken, page, settings }) {
   if (previewToken) {

@@ -1,11 +1,13 @@
-import PageHead from '~/components/layout/PageHead'
-import { Article } from '~/types'
-import DateLabel from '../global/DateLabel'
-import CategoryBadge from '../global/CategoryBadge'
-import SanityImage from '~/packages/sanity-image'
-import TextButton from '../global/buttons/TextButton'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+
 import ArticlePortableText from '~/components/global/portableText/MarketingPortableText'
+import PageHead from '~/components/layout/PageHead'
+import SanityImage from '~/packages/sanity-image'
+import { Article } from '~/types'
+
+import TextButton from '../global/buttons/TextButton'
+import CategoryBadge from '../global/CategoryBadge'
+import DateLabel from '../global/DateLabel'
 
 
 export default function Article({ page }: { page: Article }) {

@@ -1,7 +1,8 @@
-import type { ArticleCard } from '~/types'
-import SmartLink from '~/packages/smart-link/SmartLink'
 import AnimateInView from '~/packages/animate-in-view'
 import SanityImage from '~/packages/sanity-image'
+import SmartLink from '~/packages/smart-link/SmartLink'
+import type { ArticleCard } from '~/types'
+
 import CategoryBadge from '../CategoryBadge'
 import DateLabel from '../DateLabel'
 

@@ -1,9 +1,10 @@
-import { useInView } from 'react-intersection-observer'
-import { reset, play, reverse } from './animationControl'
-import { usePrevious } from './utils'
-import { AnimateInViewProps } from './types'
-import { rootMarginFromWhen } from './rootMargin'
 import { createElement } from 'react'
+import { useInView } from 'react-intersection-observer'
+
+import { play, reset, reverse } from './animationControl'
+import { useRootMarginFromWhen } from './rootMargin'
+import { AnimateInViewProps } from './types'
+import { usePrevious } from './utils'
 
 export default function AnimateInView({
   as = 'div',
@@ -21,7 +22,7 @@ export default function AnimateInView({
 }: AnimateInViewProps): React.ReactElement {
 
   // If when is supplied, use it for the rootMargin
-  rootMargin = rootMarginFromWhen(when) || rootMargin
+  rootMargin = useRootMarginFromWhen(when) || rootMargin
 
   // Track viewport presence
   const { ref, inView, entry } = useInView({

@@ -1,10 +1,11 @@
 import Head from 'next/head'
-import type { Image } from 'sanity'
-import { PageSeo } from '~/types'
-import { useContext } from 'react'
-import { SettingsContext } from '~/providers/settings'
-import { urlForImage } from '~/packages/sanity-image'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import type { Image } from 'sanity'
+
+import { urlForImage } from '~/packages/sanity-image'
+import { SettingsContext } from '~/providers/settings'
+import { PageSeo } from '~/types'
 
 interface PageHeadProps extends PageSeo {
   title?: string
