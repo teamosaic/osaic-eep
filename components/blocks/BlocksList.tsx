@@ -8,11 +8,15 @@ const HeroBlock = dynamic(() => import('./HeroBlock'))
 const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
 const ArticlesBlock = dynamic(() => import('./ArticlesBlock'))
 
-// Conditionally render blocks based on type, wrapped in BlockParent
+// Render non-disabled blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks }: {
   blocks: Block[]
 }): React.ReactElement {
-  return <>{ (blocks || []).map(renderBlock)}</>
+  return (<>{
+    (blocks || [])
+    .filter(block => !block?.disabled)
+    .map(renderBlock)
+  }</>)
 }
 
 // Render a block with wrapping components/context

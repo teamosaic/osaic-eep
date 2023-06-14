@@ -1,4 +1,3 @@
-import { SanityObject } from './sanityTypes'
 import { Slottable, Styleable } from './componentTypes'
 
 export enum ButtonType {
@@ -9,13 +8,16 @@ export enum ButtonType {
 
 export enum ButtonIcon {
   RightArrow = 'right-arrow',
+  Loading = 'loading'
 }
 
 // Props needed to render a button, generically
-export interface Button extends SanityObject {
+export interface Button {
   text?: string
   url?: string
+  loading?: boolean
   icon?: ButtonIcon
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 // Props needed to render a Button *component*

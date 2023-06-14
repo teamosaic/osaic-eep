@@ -6,6 +6,7 @@ import type { BlockLayout } from '~/types'
 export interface ArticlesBlock extends BlockLayout {
   headline: PortableTextBlock[]
   recentArticles: ArticleCard[]
+  totalArticles: number
 }
 
 export interface ArticleCard {

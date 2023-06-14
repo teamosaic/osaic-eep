@@ -1,7 +1,8 @@
 import { BsBuilding } from 'react-icons/bs'
 import { makePageSchema } from '~/sanity/lib/schema'
+import * as blocksSchemas from '../blocks'
 
-export default makePageSchema({
+export const towerSchema = makePageSchema({
   name: 'tower',
   icon: BsBuilding,
   contentFields: [
@@ -9,11 +10,7 @@ export default makePageSchema({
       name: 'blocks',
       type: 'array',
       group: 'content',
-      of: [
-        { type: 'heroBlock' },
-        { type: 'ctaBlock' },
-        { type: 'articlesBlock' },
-      ]
+      of: Object.values(blocksSchemas).map(({ name }) => ({ type: name }))
     }
   ]
 })
