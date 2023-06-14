@@ -1,28 +1,38 @@
-import startCase from 'lodash/startCase'
-import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchema'
 import { blockBackgroundFields } from '~/sanity/schemas/fieldGroups/blockBackgroundSchema'
-import type { ObjectDefinition } from 'sanity'
+import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchema'
 import { ComponentType, ReactNode } from 'react'
-import { contentGroup, portableTextSummary } from '.'
+import { contentGroup } from './fieldGroupSchemaUtils'
+import { portableTextSummary } from './fieldSchemaUtils'
+import startCase from 'lodash/startCase'
+import type { ObjectDefinition, FieldDefinition } from 'sanity'
 
 // Helper for making standard block schemas
 export function makeBlockSchema({
   name,
+  title,
   titleField = 'body',
   icon,
-  hasBackground = false,
+  hasBackground,
   contentFields = [],
 }: {
   name: string // The block name
+  title?: string // Explicit block title
   titleField?: string // The field the preview title is pulled from
   icon?: ReactNode | ComponentType // Icon for listing views
-  hasBackground?: boolean // Whether to add blockBackgroundSchem
-  contentFields?: any[], // Sanity fields to add to content fields
+  hasBackground?: boolean // Whether to add blockBackgroundSchema
+  contentFields?: FieldDefinition[], // Sanity fields to add to content group
 }): ObjectDefinition {
+
+  // Use explicit title if provided
+  const blockTitle = title || startCase(name)
+
+  // Check if there is a type field for use in the preview
+  const hasTypes = contentFields.some(field => field.name == 'type')
+
   return {
     name,
     type: 'object',
-    title: startCase(name),
+    title: blockTitle,
 
     groups: [
       { name: 'content', title: 'Content', default: true, },
@@ -38,8 +48,9 @@ export function makeBlockSchema({
 
     preview: makeBlockPreview({
       titleField: titleField,
-      blockName: startCase(name.replace('Block', '')),
+      blockName: blockTitle.replace('Block', ''),
       icon,
+      hasTypes,
     }),
   }
 }

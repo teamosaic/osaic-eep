@@ -18,9 +18,6 @@ export default function BlockParent({ block, children }: {
 }):React.ReactElement {
   const blockOrder = useContext(BlockOrderContext)
 
-  // If the block is disabled, don't render anything
-  if (block.disabled) return
-
   // Else render wrapper block with clases for common functionality
   return (
     <div className={clsx([
@@ -55,7 +52,7 @@ export default function BlockParent({ block, children }: {
 // https://stackoverflow.com/a/74959709/59160
 
 // Adds spacing between previous block
-function mapBlockSpacingToTailwindClass(
+export function mapBlockSpacingToTailwindClass(
   block: Block,
   previousBlock: Block,
 ):string {
@@ -65,20 +62,42 @@ function mapBlockSpacingToTailwindClass(
 
   // If the previous block has the same background, render using padding so
   // the background is un-interupted between the blocks
-  switch (block.blockSpacing) {
-    case BlockSpacing.Small:
-      return hasBackground(block) &&
-        sameBackground(block, previousBlock) ? 'pt-sm' : 'mt-sm'
-    case BlockSpacing.Medium:
-    case undefined:
-      return hasBackground(block) &&
-        sameBackground(block, previousBlock) ? 'pt-md' : 'mt-md'
-    case BlockSpacing.Large:
-      return hasBackground(block) &&
-        sameBackground(block, previousBlock) ? 'pt-lg' : 'mt-lg'
+  if (hasBackground(block) && sameBackground(block, previousBlock)) {
+    return spacingToPaddingTop(block.blockSpacing)
+  } else {
+    return spacingToMarginTop(block.blockSpacing)
   }
 }
 
+// Convert spacing to padding top classes
+export function spacingToPaddingTop(blockSpacing: BlockSpacing):string {
+  switch (blockSpacing) {
+    case BlockSpacing.Small: return 'pt-sm'
+    case BlockSpacing.Medium:
+    case undefined: return 'pt-md'
+    case BlockSpacing.Large: return 'pt-lg'
+  }
+}
+
+// Convert spacing to padding bottom classes
+function spacingToPaddingBottom(blockSpacing: BlockSpacing):string {
+  switch (blockSpacing) {
+    case BlockSpacing.Small: return 'pb-sm'
+    case BlockSpacing.Medium:
+    case undefined: return 'pb-md'
+    case BlockSpacing.Large: return 'pb-lg'
+  }
+}
+
+// Convert spacing to margin top classes
+function spacingToMarginTop(blockSpacing: BlockSpacing):string {
+  switch (blockSpacing) {
+    case BlockSpacing.Small: return 'mt-sm'
+    case BlockSpacing.Medium:
+    case undefined: return 'mt-md'
+    case BlockSpacing.Large: return 'mt-lg'
+  }
+}
 
 // Adds padding above a block, like when there is a background color
 function mapPaddingTopToTailwindClass(
@@ -93,17 +112,11 @@ function mapPaddingTopToTailwindClass(
     case BlockPadding.Medium: return 'pt-md'
     case BlockPadding.Large: return 'pt-lg'
 
-    // Add padding top if  this block has a non-empty background and
+    // Add padding top if this block has a non-empty background and
     // has a different background than the previous block
     case BlockPadding.Matching:
-      if (!hasBackground(block) ||
-        sameBackground(block, previousBlock)) return
-      switch (block.blockSpacing) {
-        case BlockSpacing.Small: return 'pt-sm'
-        case BlockSpacing.Medium: return 'pt-md'
-        case BlockSpacing.Large:
-        case undefined: return 'pt-lg'
-      }
+      return hasBackground(block) && !sameBackground(block, previousBlock) ?
+        spacingToPaddingTop(block.blockSpacing) : null
   }
 }
 
@@ -123,19 +136,13 @@ function mapPaddingBottomToTailwindClass(
     // Add padding bottom if this block has a non-empty background and
     // has a different background than the next block
     case BlockPadding.Matching:
-      if (!hasBackground(block) ||
-        sameBackground(block, nextBlock)) return
-      switch (block.blockSpacing) {
-        case BlockSpacing.Small: return 'pb-sm'
-        case BlockSpacing.Medium: return 'pb-md'
-        case BlockSpacing.Large:
-        case undefined: return 'pb-lg'
-      }
+      return hasBackground(block) && !sameBackground(block, nextBlock) ?
+        spacingToPaddingBottom(block.blockSpacing) : null
   }
 }
 
 // Helper to determine if a background was set on a block
-function hasBackground(block: Block): Boolean {
+export function hasBackground(block: Block): Boolean {
   return block && 'backgroundColor' in block && !!block.backgroundColor
 }
 

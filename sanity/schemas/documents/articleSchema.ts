@@ -1,7 +1,7 @@
 import { BsNewspaper } from 'react-icons/bs'
 import { imageWithAlt, makePageSchema } from '~/sanity/lib/schema'
 
-export default makePageSchema({
+export const articleSchema = makePageSchema({
   name: 'article',
   uriPrefix: 'articles',
   icon: BsNewspaper,

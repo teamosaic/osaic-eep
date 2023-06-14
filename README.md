@@ -16,6 +16,7 @@ yarn dev
 ## Docs
 
 - [Start a new Project](https://bukwild.slab.com/posts/start-a-new-project-3tyijzrj)
+- [Create a new Page](https://bukwild.slab.com/posts/create-a-new-page-qd6vzrsb)
 - [Create a new Block](https://bukwild.slab.com/posts/create-a-new-block-a029b2vh)
 
 ## Notes
@@ -25,21 +26,3 @@ yarn dev
 The `production` dataset gets reset from the contents of `backups/production.gz` every night by the [`.github/workflows/reset-dataset.yml`](.github/workflows/reset-dataset.yml) workflow.  This was done so that the demo always has a clean state for client-facing demos.  You can also manually trigger a reset from the Actions tab in GitHub.
 
 To rebuild the backup, run `yarn sanity dataset export production backups/production.gz`
-
-### Important files and folders
-
-| File(s)                                 | Description                                                                           |
-| --------------------------------------- | ------------------------------------------------------------------------------------- |
-| `sanity.config.ts`                      | Config file for Sanity Studio                                                         |
-| `sanity.cli.ts`                         | Config file for Sanity CLI                                                            |
-| `/pages/index.tsx`                      | Landing page for `/`.                                                                 |
-| `/pages/admin/[[...index]].tsx`         | Where Sanity Studio is mounted                                                        |
-| `/pages/api/preview.ts`                 | Serverless route for triggering Preview mode                                          |
-| `/sanity/schemas.ts`                    | Where Sanity Studio gets its content types from                                       |
-| `/sanity/env.ts`                        | Configuration for the Sanity project and dataset                                      |
-| `/sanity/schemas.ts`                    | Where Sanity Studio gets its content types from                                       |
-| `/sanity/lib/client.ts`                 | Sanity client configured based on `env.ts`                                            |
-| `/sanity/lib/image.ts`                  | Sanity image builder - unused in this template, but is needed to render Sanity images |
-| `/sanity/plugins/IFramePreviewView.tsx` | See [adding studio preview](docs/studio-preview.md)                                   |
-| `tailwind.config.js`                    | Tailwind config. |
-

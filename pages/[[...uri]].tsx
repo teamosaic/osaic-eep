@@ -1,4 +1,4 @@
-import { client } from '~/sanity/lib/client'
+import { client } from '~/sanity/client'
 import DefaultLayout from '~/layouts/DefaultLayout'
 import dynamic from 'next/dynamic'
 import PagePreview from '~/sanity/components/PagePeview'
@@ -7,15 +7,18 @@ import {
   PageDocument,
   Tower as TowerPage,
   Article as ArticlePage,
+  ArticlesIndex as ArticlesIndexPage,
 } from '~/types'
 
 // Page components
 const Tower = dynamic(() => import('../components/pages/Tower'))
 const Article = dynamic(() => import('../components/pages/Article'))
+const ArticlesIndex = dynamic(() => import('../components/pages/articlesIndex/ArticlesIndex'))
 
 // Page queries
 import { getTower, towerStaticPaths } from '~/queries/towerQueries'
 import { getArticle, articleStaticPaths } from '~/queries/articleQueries'
+import { getArticlesIndex, articlesIndexStaticPaths } from '~/queries/articlesIndexQueries'
 
 export default function PageDelegator({ previewToken, page, settings }) {
   if (previewToken) {
@@ -51,6 +54,8 @@ function PageComponent({ page }: {
       return <Tower page={ page as TowerPage } />
     case PageType.Article:
       return <Article page={ page as ArticlePage } />
+    case PageType.ArticlesIndex:
+      return <ArticlesIndex page={ page as ArticlesIndexPage } />
   }
 }
 
@@ -59,11 +64,13 @@ function pageQuery(type: PageType): string {
   switch(type) {
     case PageType.Tower: return getTower
     case PageType.Article: return getArticle
+    case PageType.ArticlesIndex: return getArticlesIndex
   }
 }
 
 // Parse a URI to figure out the type, falling back to Towers
 function determineTypeFromUri(uri: string): PageType {
+  if (uri == '/articles') return PageType.ArticlesIndex
   if (uri.startsWith('/articles/')) return PageType.Article
   return PageType.Tower
 }
@@ -104,6 +111,7 @@ export async function getStaticPaths() {
   const pages = (await Promise.all([
     client.fetch(towerStaticPaths),
     client.fetch(articleStaticPaths),
+    client.fetch(articlesIndexStaticPaths),
   ])).flat()
 
   // Make the slug an array of path segments, which is what Next requires when

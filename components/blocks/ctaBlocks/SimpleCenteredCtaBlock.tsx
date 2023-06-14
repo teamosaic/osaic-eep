@@ -1,6 +1,6 @@
 import { CtaBlock } from '~/types'
 import AnimateInView from '~/packages/animate-in-view'
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
+import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 
 export default function SimpleCenteredCtaBlock(
   { body }: CtaBlock
@@ -14,9 +14,7 @@ export default function SimpleCenteredCtaBlock(
       <AnimateInView
         target='descendants'
         className='prose-animate-in'>
-        <BasicPortableText
-          value={ body }
-          className='prose-marketing' />
+        <MarketingPortableText value={ body }/>
       </AnimateInView>
 
     </div>

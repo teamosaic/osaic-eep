@@ -1,9 +1,9 @@
 import { Icon } from '~/components/global/buttons/UnstyledButton'
 import AnimateInView from '~/packages/animate-in-view'
-import BasicPortableText from '~/packages/portable-text/BasicPortableText'
 import SanityImage from '~/packages/sanity-image'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { ButtonIcon, HeroBlock as BlockType } from '~/types'
+import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 
 // Based on
 // https://tailwindui.com/components/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b
@@ -47,9 +47,7 @@ export default function HeroBlock({
         <AnimateInView
           target='descendants'
           className='prose-animate-in relative'>
-          <BasicPortableText
-            value={ body }
-            className='prose-marketing' />
+          <MarketingPortableText value={ body } />
         </AnimateInView>
 
       </div>

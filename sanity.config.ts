@@ -1,19 +1,15 @@
 /**
- * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
+ * This config is used to set up Sanity Studio that's mounted on the
+ * `/pages/studio/[[...index]].tsx` route
  */
 
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
-
-// see https://www.sanity.io/docs/api-versioning for how versioning works
 import { apiVersion, dataset, projectId } from './sanity/env'
-import { schema, singletonTypes } from './sanity/schema'
-// Preview
-import { defaultDocumentNode, structure } from './sanity/structure'
-
-// Define the actions that should be available for singleton documents
-const singletonActions = new Set(["publish", "discardChanges", "restore"])
+import { schema } from './sanity/schema'
+import { structure } from './sanity/structure'
+import { addPreviewPane } from './sanity/lib/preview/previewPane'
 
 export default defineConfig({
   basePath: '/admin',
@@ -22,7 +18,13 @@ export default defineConfig({
   title: 'Next Sanity Demo',
   schema,
   plugins: [
-    deskTool({ defaultDocumentNode, structure }),
+
+    // The main area where content is managed
+    deskTool({
+      defaultDocumentNode: addPreviewPane,
+      structure,
+    }),
+
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
@@ -35,10 +37,15 @@ export default defineConfig({
     },
 
     // For singleton types, filter out actions that are not explicitly included
-    // in the `singletonActions` list defined above
-    actions: (input, context) =>
-      singletonTypes.has(context.schemaType)
+    // in the `singletonActions` list defined above. We treat any document
+    // whose id is the same as the schemaType name as a singleton, since that's
+    // the convention we're following when defining the schema.
+    actions: (input, context) => {
+      const isSingleton = context.schemaType == context.documentId,
+        singletonActions = new Set(["publish", "discardChanges", "restore"])
+      return isSingleton
         ? input.filter(({ action }) => action && singletonActions.has(action))
-        : input,
+        : input
+    }
   },
 })

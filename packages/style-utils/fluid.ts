@@ -11,7 +11,7 @@ const defaultMinFactor = 0.7,
 // - fluid(40, 20, 1280)
 // - fluid(40, 20, { minBreak: 300 })
 // - fluid({ max: 40, minBreak: 300 })
-export function fluid(...args: fluidOption[]): string {
+export function fluid(...args: FluidOption[]): string {
   const { max, min, maxBreak, minBreak } = processArgs(args),
     clampValue = makeCalc(max, min, maxBreak, minBreak)
   return `clamp(${min}px, ${clampValue}, ${max}px)`
@@ -19,10 +19,10 @@ export function fluid(...args: fluidOption[]): string {
 
 // Process the args, which works like the old Stylus function where any arg
 // can be a value or the remaining options
-function processArgs(args: fluidOption[]): fluidOptions {
+function processArgs(args: FluidOption[]): CalcArgs {
 
   // Default options
-  const defaultOptions: fluidOptions = {
+  const defaultOptions: any = {
     max: null,
     min: null,
     maxBreak: null,
@@ -34,11 +34,11 @@ function processArgs(args: fluidOption[]): fluidOptions {
 
   // Reduce the arry of arg numbers and objects to an object
   const options = args.reduce((
-    options: object, arg: fluidOption, index: number
+    options: object, arg: FluidOption, index: number
   ) => {
     if (typeof arg == 'object') return { ...options, ...arg }
     else return { ...options, [optionKeyFromIndex(index)]: arg}
-  }, defaultOptions) as fluidOptions
+  }, defaultOptions) as any
 
   // Set defaults for empty values
   if (options.max == null) throw 'Max value is required'
@@ -47,7 +47,7 @@ function processArgs(args: fluidOption[]): fluidOptions {
   if (!options.minBreak) options.minBreak = options.defaultMinBreak
 
   // Return options
-  return options
+  return options as CalcArgs
 }
 
 // Figure out which option an arg index represents
@@ -75,10 +75,10 @@ function makeCalc(
 }
 
 // A given option may be a number or an options object
-type fluidOption = number | fluidOptions
+type FluidOption = number | FluidOptions
 
 // The actual options object
-interface fluidOptions {
+interface FluidOptions {
   max: number,
   min?: number,
   maxBreak?: number,
@@ -89,3 +89,9 @@ interface fluidOptions {
   defaultMaxBreak?: number,
   defaultMinBreak?: number,
 }
+
+// After processing the args to fluid, we have explicit valus for the following
+// properties
+type CalcArgs = Required<Pick<FluidOptions,
+  'max' | 'min' | 'maxBreak' | 'minBreak'
+>>

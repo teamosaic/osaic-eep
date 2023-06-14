@@ -25,9 +25,9 @@ module.exports = {
 
     extend: {
 
-      // Make a custom themes for BasicPortableText
+      // Make a custom themes for BasePortableText
       typography: {
-        default: { css: proseStyles.base, },
+        base: { css: proseStyles.base, },
         marketing: { css: proseStyles.marketing, },
         article: { css: proseStyles.article, },
       },
@@ -39,7 +39,7 @@ module.exports = {
         ...makeFluidSpacingDefaults(),
 
         // Add spacing values that are used by BlockLayout
-        xs: fluid(24),
+        xs: fluid(32),
         sm: fluid(48, 32),
         md: fluid(64, 48),
         lg: fluid(128, 64),
