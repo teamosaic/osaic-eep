@@ -1,8 +1,8 @@
-import AnimateInView from '~/packages/animate-in-view'
-import ArticleCard from '~/components/global/cards/ArticleCard'
 import PrimaryButton from '~/components/global/buttons/PrimaryButton'
-import { ArticlesBlock, ButtonIcon } from '~/types'
+import ArticleCard from '~/components/global/cards/ArticleCard'
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
+import AnimateInView from '~/packages/animate-in-view'
+import { ArticlesBlock, ButtonIcon } from '~/types'
 
 export default function ArticlesBlock({
   headline, recentArticles, totalArticles

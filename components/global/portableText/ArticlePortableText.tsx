@@ -1,5 +1,6 @@
 import { type PortableTextComponents } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
+
 import BasePortableText from '~/packages/portable-text/BasePortableText'
 
 // A PortableText instance for use in large article views

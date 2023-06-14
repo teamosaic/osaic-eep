@@ -1,9 +1,10 @@
-import ArticleCard from '~/components/global/cards/ArticleCard'
-import { ArticleCard as IArticleCard, Button } from '~/types'
-import PrimaryButton from '~/components/global/buttons/PrimaryButton'
 import { memo, useState } from 'react'
-import { client } from '~/sanity/client'
+
+import PrimaryButton from '~/components/global/buttons/PrimaryButton'
+import ArticleCard from '~/components/global/cards/ArticleCard'
 import { getMoreArticles } from '~/queries/articlesIndexQueries'
+import { client } from '~/sanity/client'
+import { ArticleCard as IArticleCard, Button } from '~/types'
 
 // Make a memoized card so the card animations don't replay  when adding more
 // cards via loadMore

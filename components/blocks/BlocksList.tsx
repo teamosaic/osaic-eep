@@ -1,7 +1,9 @@
-import type { Block } from '~/types'
-import BlockParent from './BlockParent'
-import { BlockOrderContext, type BlockOrder } from '~/providers/blockOrder'
 import dynamic from 'next/dynamic'
+
+import { type BlockOrder,BlockOrderContext } from '~/providers/blockOrder'
+import type { Block } from '~/types'
+
+import BlockParent from './BlockParent'
 
 // Import blocks on demand
 const HeroBlock = dynamic(() => import('./HeroBlock'))

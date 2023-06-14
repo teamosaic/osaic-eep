@@ -1,15 +1,16 @@
+import clsx from 'clsx'
+import { useContext } from 'react'
+
+import { mapOption, mapOptions } from '~/lib/helpers'
+import { BlockOrderContext } from '~/providers/blockOrder'
 import {
   BackgroundColor,
   Block,
-  BlockSpacing,
-  BlockPadding,
   BlockBackground,
+  BlockPadding,
+  BlockSpacing,
   HideWhen,
 } from '~/types'
-import clsx from 'clsx'
-import { useContext } from 'react'
-import { BlockOrderContext } from '~/providers/blockOrder'
-import { mapOption, mapOptions } from '~/lib/helpers'
 
 // Apply common layout options to block
 export default function BlockParent({ block, children }: {

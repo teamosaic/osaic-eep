@@ -1,4 +1,5 @@
-import { ButtonType, Button } from '~/types'
+import { Button,ButtonType } from '~/types'
+
 import PrimaryButton from './PrimaryButton'
 import SecondaryButton from './SecondaryButton'
 import TextButton from './TextButton'

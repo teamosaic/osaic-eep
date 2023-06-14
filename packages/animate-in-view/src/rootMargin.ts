@@ -1,8 +1,9 @@
 import { useMemo } from 'react'
+
 import type { AnimateInViewProps } from './types'
 
 // Make root margin value from more convenient "when" prop
-export function rootMarginFromWhen(
+export function useRootMarginFromWhen(
   when: AnimateInViewProps['when']
 ): string | void {
   return useMemo(() => {
