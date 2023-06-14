@@ -7,7 +7,7 @@ import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { apiVersion, dataset, projectId } from './sanity/env'
-import { schema, singletonTypes } from './sanity/schema'
+import { schema } from './sanity/schema'
 import { structure } from './sanity/structure'
 import { addPreviewPane } from './sanity/lib/preview/previewPane'
 
