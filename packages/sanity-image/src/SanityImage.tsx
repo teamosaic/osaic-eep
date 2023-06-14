@@ -22,8 +22,8 @@ export default function SanityImage({
   source, expand, aspect, width, height, priority, sizes, fit, className = '',
 }: SanityImageProps): React.ReactElement | null {
 
-  // force image priority if the block's index is <= 1 (the first and 2nd blocks)
-  if(useContext(BlockOrderContext).index <= 1) {
+  // Force image priority if the block's index is <= 1 (the first and 2nd blocks)
+  if (priority == undefined && useContext(BlockOrderContext).index <= 1) {
     priority = true;
   }
 
