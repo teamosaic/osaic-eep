@@ -1,4 +1,5 @@
 import { BsNewspaper } from 'react-icons/bs'
+
 import { imageWithAlt, makePageSchema } from '~/sanity/lib/schema'
 
 export const articleSchema = makePageSchema({

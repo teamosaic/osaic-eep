@@ -1,13 +1,14 @@
 import {
   Card,
   Stack,
-  ThemeProvider,
   studioTheme,
+  ThemeProvider,
   usePrefersDark,
 } from '@sanity/ui'
-import styles from './previewControls.module.css'
-import ExitPreview from './ExitPreview'
+
 import DisableAnimations from './DisableAnimations'
+import ExitPreview from './ExitPreview'
+import styles from './previewControls.module.css'
 
 // Container of preview controls
 export default function PreviewControls(): React.ReactElement {

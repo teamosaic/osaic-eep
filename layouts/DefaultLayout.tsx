@@ -1,11 +1,11 @@
-import { SettingsContext } from '~/providers/settings'
-import LayoutHeader from '~/components/layout/Header'
-import LayoutFooter from '~/components/layout/Footer'
 import clsx from 'clsx'
+
 import {
-  spacingToPaddingTop,
-  hasBackground
-} from '~/components/blocks/BlockParent'
+  hasBackground,
+  spacingToPaddingTop} from '~/components/blocks/BlockParent'
+import LayoutFooter from '~/components/layout/Footer'
+import LayoutHeader from '~/components/layout/Header'
+import { SettingsContext } from '~/providers/settings'
 
 export default function DefaultLayout({ settings, page, children }) {
   return (

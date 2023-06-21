@@ -1,4 +1,5 @@
 import { makeSingletonPageSchema } from '~/sanity/lib/schema'
+
 import * as blocksSchemas from '../blocks'
 
 export const articlesIndexSchema = makeSingletonPageSchema({

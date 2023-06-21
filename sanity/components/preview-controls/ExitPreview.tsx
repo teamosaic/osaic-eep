@@ -1,7 +1,7 @@
-import { Button, } from '@sanity/ui'
 import { LeaveIcon } from '@sanity/icons'
-import { useEffect, useState } from 'react'
+import { Button, } from '@sanity/ui'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 // Render the exit preview link
 export default function ExitPreview(): React.ReactElement {

@@ -1,6 +1,7 @@
 import { groq } from 'next-sanity'
-import { blocksFragment } from './fragments/blocksFragment'
+
 import { articleCardFragment } from './fragments/articleCardFragment'
+import { blocksFragment } from './fragments/blocksFragment'
 
 // Settings
 const perPage = 6

@@ -1,5 +1,6 @@
-import { metaDescription, metaImage } from '../fieldGroups/pageSeoSchema'
 import { setGroup } from '~/sanity/lib/schema'
+
+import { metaDescription, metaImage } from '../fieldGroups/pageSeoSchema'
 
 export const settingsSchema = {
   name: 'settings',

@@ -1,5 +1,5 @@
-import { PreviewSuspense } from 'next-sanity/preview'
 import dynamic from 'next/dynamic'
+import { PreviewSuspense } from 'next-sanity/preview'
 
 // Load on demand so it's deps are not bundled when not previewing
 const PreviewLoader = dynamic(() => import('~/sanity/components/PreviewLoader'))

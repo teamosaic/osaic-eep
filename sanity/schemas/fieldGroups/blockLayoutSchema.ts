@@ -1,6 +1,6 @@
-import { BlockSpacing, HideWhen } from '~/types'
-import { createListOptionsFromEnum } from '~/sanity/lib/schema/fieldSchemaUtils'
 import { setGroup } from '~/sanity/lib/schema/fieldGroupSchemaUtils'
+import { createListOptionsFromEnum } from '~/sanity/lib/schema/fieldSchemaUtils'
+import { BlockSpacing, HideWhen } from '~/types'
 
 export const blockLayoutFields = setGroup('layout', [
   {

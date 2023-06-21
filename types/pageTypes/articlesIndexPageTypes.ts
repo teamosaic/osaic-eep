@@ -1,5 +1,5 @@
-import { PageDocument } from './pageTypes'
 import { ArticleCard, Block } from '../blockTypes'
+import { PageDocument } from './pageTypes'
 
 // Article listing page type
 export interface ArticlesIndex extends PageDocument {

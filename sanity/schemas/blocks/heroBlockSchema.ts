@@ -1,5 +1,7 @@
 import { TfiLayoutMediaCenterAlt } from 'react-icons/tfi'
-import { makeBlockSchema, imageWithAlt } from '~/sanity/lib/schema'
+
+import { imageWithAlt,makeBlockSchema } from '~/sanity/lib/schema'
+
 import { button } from '../objects/buttonSchema'
 
 export const heroBlockSchema = makeBlockSchema({

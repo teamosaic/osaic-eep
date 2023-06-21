@@ -1,5 +1,7 @@
 import { BsBuilding } from 'react-icons/bs'
+
 import { makePageSchema } from '~/sanity/lib/schema'
+
 import * as blocksSchemas from '../blocks'
 
 export const towerSchema = makePageSchema({
