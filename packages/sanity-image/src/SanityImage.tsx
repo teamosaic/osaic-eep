@@ -1,4 +1,7 @@
 import Image from 'next/image'
+import { useContext } from 'react'
+
+import { BlockOrderContext } from '~/providers/blockOrder'
 
 import {
   altTextFromSource,
@@ -14,8 +17,6 @@ import {
   SanityImageProps,
 } from './types'
 import { makeImageLoader,urlForImage } from './urlBuilding'
-import { useContext } from 'react'
-import { BlockOrderContext } from '~/providers/blockOrder'
 
 // Render a Sanity image via Next/Image
 export default function SanityImage({

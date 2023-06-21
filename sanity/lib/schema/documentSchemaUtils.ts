@@ -1,10 +1,12 @@
 import startCase from 'lodash/startCase'
-import pluralize from 'pluralize-esm'
-import { seoFields } from '~/sanity/schemas/fieldGroups/pageSeoSchema'
-import { uriField } from '~/sanity/lib/uri'
 import moment from 'moment'
-import type { DocumentDefinition, SortOrdering } from 'sanity'
+import pluralize from 'pluralize-esm'
 import { ComponentType, ReactNode } from 'react'
+import type { DocumentDefinition, SortOrdering } from 'sanity'
+
+import { uriField } from '~/sanity/lib/uri'
+import { seoFields } from '~/sanity/schemas/fieldGroups/pageSeoSchema'
+
 import { contentGroup } from '.'
 
 // Helper for making standard page type schemas

@@ -1,7 +1,8 @@
 import { Box, Flex, Switch } from '@sanity/ui'
-import styles from './previewControls.module.css'
-import useLocalStorageState from 'use-local-storage-state'
 import { useEffect } from 'react'
+import useLocalStorageState from 'use-local-storage-state'
+
+import styles from './previewControls.module.css'
 
 // Toggle animations on and off
 export default function DisableAnimations(): React.ReactElement {

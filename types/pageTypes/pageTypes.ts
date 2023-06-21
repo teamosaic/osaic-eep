@@ -1,5 +1,6 @@
-import { SanityObject } from '../sanityTypes'
 import type { Image } from 'sanity'
+
+import { SanityObject } from '../sanityTypes'
 
 // The Sanity schema type names that generate pages
 export enum PageType {

@@ -1,6 +1,7 @@
-import type { Image } from 'sanity'
-import { PageDocument } from './pageTypes'
 import { PortableTextBlock } from '@portabletext/types'
+import type { Image } from 'sanity'
+
+import { PageDocument } from './pageTypes'
 
 // Article detail page type
 export interface Article extends PageDocument {

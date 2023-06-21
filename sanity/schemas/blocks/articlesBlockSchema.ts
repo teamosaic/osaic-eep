@@ -1,5 +1,6 @@
-import { makeBlockSchema } from '~/sanity/lib/schema'
 import { BsNewspaper } from 'react-icons/bs'
+
+import { makeBlockSchema } from '~/sanity/lib/schema'
 
 export const articlesBlockSchema = makeBlockSchema({
   name: 'articlesBlock',

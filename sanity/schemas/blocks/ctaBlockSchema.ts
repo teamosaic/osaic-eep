@@ -1,6 +1,7 @@
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { CtaBlockType } from '~/types'
+
 import { createListOptionsFromEnum, makeBlockSchema } from '~/sanity/lib/schema'
+import { CtaBlockType } from '~/types'
 
 export const ctaBlockSchema = makeBlockSchema({
   name: 'ctaBlock',

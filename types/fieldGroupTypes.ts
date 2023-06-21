@@ -1,5 +1,6 @@
-import type { SanityObject } from '~/types'
 import type { Image } from 'sanity'
+
+import type { SanityObject } from '~/types'
 
 // Block Layout
 

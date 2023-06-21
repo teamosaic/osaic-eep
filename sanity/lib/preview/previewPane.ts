@@ -1,4 +1,5 @@
 import type { DefaultDocumentNodeResolver } from 'sanity/desk'
+
 import { IFramePreviewView } from '~/sanity/components/IFramePreviewView'
 
 // For related docs, see

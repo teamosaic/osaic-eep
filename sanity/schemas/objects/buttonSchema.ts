@@ -1,7 +1,8 @@
-import { RxButton } from 'react-icons/rx'
-import { createListOptionsFromEnum } from '~/sanity/lib/schema'
-import { ButtonType, ButtonIcon } from '~/types'
 import startCase from 'lodash/startCase'
+import { RxButton } from 'react-icons/rx'
+
+import { createListOptionsFromEnum } from '~/sanity/lib/schema'
+import { ButtonIcon,ButtonType } from '~/types'
 
 export const button = {
   name: 'button',

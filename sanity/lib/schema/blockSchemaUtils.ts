@@ -1,10 +1,12 @@
+import startCase from 'lodash/startCase'
+import { ComponentType, ReactNode } from 'react'
+import type { FieldDefinition,ObjectDefinition } from 'sanity'
+
 import { blockBackgroundFields } from '~/sanity/schemas/fieldGroups/blockBackgroundSchema'
 import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchema'
-import { ComponentType, ReactNode } from 'react'
+
 import { contentGroup } from './fieldGroupSchemaUtils'
 import { portableTextSummary } from './fieldSchemaUtils'
-import startCase from 'lodash/startCase'
-import type { ObjectDefinition, FieldDefinition } from 'sanity'
 
 // Helper for making standard block schemas
 export function makeBlockSchema({

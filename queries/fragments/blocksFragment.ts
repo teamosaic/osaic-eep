@@ -1,4 +1,5 @@
 import { groq } from 'next-sanity'
+
 import { articleCardFragment } from './articleCardFragment'
 
 export const blocksFragment = groq`

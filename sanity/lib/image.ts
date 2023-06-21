@@ -1,6 +1,6 @@
 import createImageUrlBuilder from '@sanity/image-url'
-import type { Image } from 'sanity'
 import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder'
+import type { Image } from 'sanity'
 
 import { dataset, projectId } from '~/sanity/env'
 
