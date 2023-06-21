@@ -11,7 +11,7 @@ yarn dev
 ```
 
 - [http://localhost:3000](http://localhost:3000) - The project
-- [http://localhost:3000/studio](http://localhost:3000/studio) - The CMS
+- [http://localhost:3000/admin](http://localhost:3000/admin) - The CMS
 
 ### IDE
 
