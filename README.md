@@ -13,6 +13,12 @@ yarn dev
 - [http://localhost:3000](http://localhost:3000) - The project
 - [http://localhost:3000/studio](http://localhost:3000/studio) - The CMS
 
+### IDE
+
+#### VSCode
+
+- Install [the ESLint VSCode extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) to autofix fixable ESLint issues (like sorting of imports) on file save.  (Note this is enabled in the project automatically via the `.vscode/settings.json` file.)
+
 ## Docs
 
 - [Start a new Project](https://bukwild.slab.com/posts/start-a-new-project-3tyijzrj)
