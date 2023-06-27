@@ -12,7 +12,7 @@ import { portableTextSummary } from './fieldSchemaUtils'
 export function makeBlockSchema({
   name,
   title,
-  titleField = 'body',
+  titleField = 'blockLabel',
   icon,
   hasBackground,
   contentFields = [],
@@ -43,6 +43,13 @@ export function makeBlockSchema({
     ],
 
     fields: [
+      {
+        title: 'Block Label',
+        name: 'blockLabel',
+        type: 'string',
+        description: 'This will only be displayed in the CMS.',
+        group: 'content'
+      },
       ...contentGroup(contentFields),
       ...blockLayoutFields,
       ...( hasBackground ? blockBackgroundFields : []),
