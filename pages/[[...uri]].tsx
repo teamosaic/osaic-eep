@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic'
 
 import DefaultLayout from '~/layouts/DefaultLayout'
-import { client } from '~/sanity/client'
 import { getSettings } from '~/queries/settingsQueries'
+import { makeClient, makePreviewClient } from '~/sanity/client'
 import PagePreview from '~/sanity/components/PagePeview'
 import {
   Article as ArticlePage,
@@ -86,10 +86,11 @@ export async function getStaticProps({ params, previewData}) {
   // Figure out the type of the page by looking at the uri
   const type = determineTypeFromUri(uri)
 
-  // If previewing, update the config to use the preview token so we can fetch
-  // draft entries when previewing
-  const previewToken = previewData?.token || null
-  if (previewToken) client.config({ token: previewToken })
+  // If previewing, use preview client so we can fetch draft entries
+  const previewToken = previewData?.token || null,
+    client = previewToken ?
+      makePreviewClient(previewToken) :
+      makeClient()
 
   // Fetch the request page by slug
   const [ page, settings ] = await Promise.all([
@@ -108,6 +109,7 @@ export async function getStaticProps({ params, previewData}) {
 }
 
 export async function getStaticPaths() {
+  const client = makeClient()
 
   // Get all page slugs
   const pages = (await Promise.all([
