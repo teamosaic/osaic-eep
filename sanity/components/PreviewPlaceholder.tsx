@@ -4,18 +4,19 @@ import { getSettings } from '~/queries/settingsQueries'
 
 import PreviewControls from './preview-controls/PreviewControls'
 
-// Fetch preview data from Sanity and then pass it to child components
-export default function PreviewLoader({ initialData, query, params, render }) {
+// Fetch preview data from Sanity and then pass it to child components. This
+// uses `null` for the initialData for useLiveQuery so that buildins don't play
+// twice when the preview data loads.  This means that admins must wait a
+// little longer for their page to render, but I think that's better than being
+// concerned about the flicerking from double build in animations.
+export default function PreviewPlaceholder({ query, params, render }) {
 
   // Load draft data
-  const [ page, pageLoading ] = useLiveQuery(initialData.page, query, params)
-  const [ settings, settingsLoading ] = useLiveQuery(initialData.settings,
-    getSettings)
+  const [ page ] = useLiveQuery(null, query, params)
+  const [ settings ] = useLiveQuery(null, getSettings)
 
-  // Render placeholder if loading
-  if (pageLoading || settingsLoading) {
-    return <Placeholder />
-  }
+  // Render placeholder until we have data
+  if (!page || !settings) return <Placeholder />
 
   // Pass draft data to children components
   return (

@@ -25,7 +25,6 @@ import { getTower, towerStaticPaths } from '~/queries/towerQueries'
 export default function PageDelegator({ previewToken, page, settings }) {
   if (previewToken) {
     return <PagePreview {...{
-      initialData: { page, settings },
       previewToken,
       query: pageQuery(page._type),
       params: { uri: page.uri },
