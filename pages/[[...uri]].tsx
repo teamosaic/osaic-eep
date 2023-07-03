@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 
 import DefaultLayout from '~/layouts/DefaultLayout'
 import { client } from '~/sanity/client'
+import { getSettings } from '~/queries/settingsQueries'
 import PagePreview from '~/sanity/components/PagePeview'
 import {
   Article as ArticlePage,
@@ -93,7 +94,7 @@ export async function getStaticProps({ params, previewData}) {
   // Fetch the request page by slug
   const [ page, settings ] = await Promise.all([
     client.fetch(pageQuery(type), { uri }),
-    client.fetch(`*[_type == 'settings'][0]`)
+    client.fetch(getSettings),
   ])
 
   // Return 404
