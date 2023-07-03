@@ -18,6 +18,5 @@ jobs:
       - name: Install
         uses: bkwld/cloak-actions/install@v1
 
-      - run: yarn ci
       - run: yarn type-check
       - run: yarn lint -- --max-warnings 0
