@@ -4,6 +4,7 @@ import type { FieldDefinition,ObjectDefinition } from 'sanity'
 
 import { blockBackgroundFields } from '~/sanity/schemas/fieldGroups/blockBackgroundSchema'
 import { blockLayoutFields } from '~/sanity/schemas/fieldGroups/blockLayoutSchema'
+import { internalTitle } from '~/sanity/schemas/fields/internalTitleSchema'
 
 import { contentGroup } from './fieldGroupSchemaUtils'
 import { portableTextSummary } from './fieldSchemaUtils'
@@ -12,7 +13,7 @@ import { portableTextSummary } from './fieldSchemaUtils'
 export function makeBlockSchema({
   name,
   title,
-  titleField = 'internalLabel',
+  titleField = 'internalTitle',
   icon,
   hasBackground,
   contentFields = [],
@@ -43,14 +44,10 @@ export function makeBlockSchema({
     ],
 
     fields: [
-      {
-        title: 'Internal Title',
-        name: 'internalTitle',
-        type: 'string',
-        description: 'This will only be used within the CMS and is used as the title when this entry is listed.',
-        group: 'content'
-      },
-      ...contentGroup(contentFields),
+      ...contentGroup([
+        internalTitle,
+        ...contentFields
+      ]),
       ...blockLayoutFields,
       ...( hasBackground ? blockBackgroundFields : []),
     ],
