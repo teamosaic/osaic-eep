@@ -29,9 +29,6 @@ export function makeBlockSchema({
   // Use explicit title if provided
   const blockTitle = title || startCase(name)
 
-  // Check if there is a type field for use in the preview
-  const hasTypes = contentFields.some(field => field.name == 'type')
-
   return {
     name,
     type: 'object',
@@ -53,40 +50,56 @@ export function makeBlockSchema({
     ],
 
     preview: makeBlockPreview({
-      titleField: titleField,
-      blockName: blockTitle.replace('Block', ''),
+      titleField,
+      blockTitle,
       icon,
-      hasTypes,
+      contentFields,
     }),
   }
 }
 
 // Helper to DRY up making previews of blocks
 export function makeBlockPreview({
-  blockName,
   titleField,
-  imageField,
+  blockTitle,
   icon,
-  hasTypes
+  contentFields,
 }: {
-  blockName: string
   titleField: string
-  imageField?: string
+  blockTitle: string
   icon?: ReactNode | ComponentType
-  hasTypes?: boolean, // Like if they block has a `types` field
+  contentFields?: FieldDefinition[]
 }): ObjectDefinition["preview"] {
+
+  // Get just the name of the block
+  const blockName = blockTitle.replace('Block', '')
+
+  // Look for the first image field and get it's name
+  const imageField = contentFields.find(field => field.type == 'image')?.name
+
+  // Check if there is a type field for use in the preview
+  const hasTypes = contentFields.some(field => field.name == 'type')
+
+  // Check if there is a body field to fallback to
+  const hasBody = contentFields.some(field => field.name == 'body')
+
+  // Return the object structure for previews
   return {
 
     select: {
       title: titleField,
       disabled: 'disabled',
-      ...(imageField ? { image: imageField } : {}), // Optional
-      ...(hasTypes ? { type: 'type' } : {}), // Optional
+      ...(imageField ? { image: imageField } : {}),
+      ...(hasTypes ? { type: 'type' } : {}),
+      ...(hasBody ? { body: 'body' } : {}),
     },
 
-    prepare({ title, disabled, image, type }) {
+    prepare({ title, disabled, image, type, body }) {
 
-      // Auto stringify wysiwygs / blocks
+      // Make fallback title if one not specified
+      if (!title && body) title = portableTextSummary(body)
+
+      // If the title is portableText, turn it into a string
       if (Array.isArray(title)) title = portableTextSummary(title)
 
       // Auto add the block type and disabled state
