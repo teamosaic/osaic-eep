@@ -10,7 +10,7 @@ export default function SplitBlock({
   image,
 }: BlockType): React.ReactElement {
   return (
-    <div className="relative bg-gray-900">
+    <div className="relative bg-gray-900 max-w-7xl mx-auto rounded-none lg:rounded-md lg:overflow-hidden">
       <div className="relative h-80 overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
 
         {/* Image Column */}
