@@ -29,12 +29,6 @@ function makeComponents(parentClassName: string): PortableTextComponents {
       // Render a row of buttons, adding some extra margins to it
       buttonList: ({ value }) => {
         const buttonClassName = ['mt-sm']
-
-        // Justify center the if the button is centered
-        if (parentClassName.includes('text-center')) {
-          buttonClassName.push('justify-center')
-        }
-
         return <ButtonList {...value} className={clsx(buttonClassName)} />
       }
 
