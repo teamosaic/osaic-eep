@@ -23,8 +23,8 @@ export default function SimpleJustifiedCtaBlock(
         <AnimateInView
           className='animate-slide-left-in [animation-delay:0.5s]'>
           <ButtonList {...{ buttons }} className='
-            pt-sm md:pt-0
-            md:pl-gutter flex-shrink-0' />
+            pt-sm justify-start
+            md:pt-0 md:pl-gutter md:justify-center flex-shrink-0' />
         </AnimateInView>
       }
 
