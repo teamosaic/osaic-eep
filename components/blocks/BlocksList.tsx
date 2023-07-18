@@ -9,7 +9,7 @@ import BlockParent from './BlockParent'
 const HeroBlock = dynamic(() => import('./HeroBlock'))
 const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
 const ArticlesBlock = dynamic(() => import('./ArticlesBlock'))
-const SplitBlock = dynamic(() => import('./SplitBlock'))
+const SplitBlock = dynamic(() => import('./splitBlocks/SplitBlock'))
 
 // Render non-disabled blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks }: {

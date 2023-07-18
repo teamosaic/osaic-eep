@@ -1,3 +1,4 @@
+
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 import AnimateInView from '~/packages/animate-in-view'
 import SanityImage from '~/packages/sanity-image'
@@ -11,9 +12,10 @@ export default function SplitBlock({
 }: BlockType): React.ReactElement {
   return (
     <div className="relative bg-gray-900 max-w-7xl mx-auto rounded-none lg:rounded-md lg:overflow-hidden">
+
+      {/* Image Column */}
       <div className="relative h-80 overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
 
-        {/* Image Column */}
         { image &&
           <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
             <SanityImage
@@ -25,11 +27,10 @@ export default function SplitBlock({
 
       </div>
 
-      {/* Container around the content */}
+      {/* Wysiwyg Column */}
       <div className="relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40">
-        <div className="pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-0 xl:pl-32">
+        <div className="pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-12 xl:pl-32">
 
-          {/* The main WYSIWYG text of the hero */}
           <AnimateInView
             target='descendants'
             className='prose-animate-in relative'>
