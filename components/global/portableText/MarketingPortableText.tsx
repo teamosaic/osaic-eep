@@ -1,14 +1,17 @@
+import clsx from 'clsx'
 import { type PortableTextComponents } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 
 import ButtonList from '~/components/global/buttons/ButtonList'
 import BasePortableText from '~/packages/portable-text/BasePortableText'
 
+
 // A PortableText instance for use in marketing blocks like a hero Block
 export default function MarketingPortableText({ value, className = '' }: {
   value: PortableTextBlock[]
   className?: string
 }): React.ReactElement {
+  const components = makeComponents(className)
   return (
     <BasePortableText
       className={`prose-marketing ${className}`}
@@ -18,12 +21,22 @@ export default function MarketingPortableText({ value, className = '' }: {
 }
 
 // Define components that can be rendered in this block
-const components: PortableTextComponents = {
+function makeComponents(parentClassName: string): PortableTextComponents {
+  return {
+    types: {
 
-  types: {
+      // Render a row of buttons, adding some extra margins to it
+      buttonList: ({ value }) => {
+        const buttonClassName = ['mt-sm']
 
-    // Render a row of buttons, adding some extra margins to it
-    buttonList: ({ value }) => <ButtonList {...value} className='mt-sm'/>,
+        // Justify center the if the button is centered
+        if (parentClassName.includes('text-center')) {
+          buttonClassName.push('justify-center')
+        }
 
-  },
+        return <ButtonList {...value} className={clsx(buttonClassName)} />
+      }
+
+    },
+  }
 }
