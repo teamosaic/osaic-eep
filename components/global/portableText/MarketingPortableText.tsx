@@ -23,11 +23,7 @@ const components: PortableTextComponents = {
   types: {
 
     // Render a row of buttons, adding some extra margins to it
-    buttonList: ({ value }) => (
-      <div className='mt-sm'>
-        <ButtonList {...value} />
-      </div>
-    ),
+    buttonList: ({ value }) => <ButtonList {...value} className='mt-sm'/>,
 
   },
 }
