@@ -12,7 +12,7 @@ export default function ButtonList({ buttons, className = '' }: {
 
     // List container. Using twMerge so these can be overridden
     <div className={twMerge(`
-      flex items-center justify-center gap-x-6
+      flex items-center gap-x-6
       ${className}
     `)}>
 

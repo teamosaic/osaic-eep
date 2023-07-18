@@ -6,15 +6,13 @@ export default function SimpleCenteredCtaBlock(
   { body }: CtaBlock
 ): React.ReactElement {
   return (
-    <div className="
-      max-w-screen-md mx-auto px-gutter
-      text-center">
+    <div className="max-w-screen-md mx-auto px-gutter">
 
       {/* The main WYSIWYG text */}
       <AnimateInView
         target='descendants'
         className='prose-animate-in'>
-        <MarketingPortableText value={ body }/>
+        <MarketingPortableText value={ body } className='text-center'/>
       </AnimateInView>
 
     </div>
