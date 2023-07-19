@@ -1,6 +1,7 @@
 export * from './articlesBlockTypes'
 export * from './ctaBlockTypes'
 export * from './faqBlockTypes'
+export * from './heroBlockTypes'
 
 import { ArticlesBlock } from './articlesBlockTypes'
 import { CtaBlock } from './ctaBlockTypes'
