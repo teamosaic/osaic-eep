@@ -5,7 +5,7 @@ import type {
 } from '~/types'
 
 
-export interface Faq {
+interface Faq {
   question?: string
   answer?: PortableTextBlock[]
 }

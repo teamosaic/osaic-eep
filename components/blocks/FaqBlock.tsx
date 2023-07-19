@@ -1,7 +1,15 @@
 import { Disclosure } from '@headlessui/react'
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/outline'
 
-export default function Example() {
+import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
+import AnimateInView from '~/packages/animate-in-view'
+import { FaqBlock as BlockType } from '~/types'
+
+
+export default function FaqBlock({
+  title,
+  faqs,
+}: BlockType): React.ReactElement {
   return (
     <div className="bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
@@ -25,7 +33,11 @@ export default function Example() {
                       </Disclosure.Button>
                     </dt>
                     <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="text-base leading-7 text-gray-300">{faq.answer}</p>
+                      <AnimateInView
+                        target='descendants'
+                        className='prose-animate-in text-white'>
+                        <MarketingPortableText value={ faq.answer }/>
+                      </AnimateInView>
                     </Disclosure.Panel>
                   </>
                 )}
