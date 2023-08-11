@@ -895,26 +895,26 @@
   resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-2.0.2.tgz#f283a2a0db68abff0c7b8f04f6fafc266d01e0c4"
   integrity sha512-3xTbSa80G1nODyACY0ilrmPo1PmU1xuoPvfcpzpqSEL0kX01fSW+21PKgS9BcG+GqdG9HK/VxciKWa+nFA7mqg==
 
-"@react-visual/next@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@react-visual/next/-/next-0.3.0.tgz#9fd90187500a62b4370b8d64ac05b2850927007b"
-  integrity sha512-j129Qs3Jy3Ud8gvClCwp6rJL/DvTPhZgWmGU5QvRU7Z96+3rv3fi5xgCdUjmW800wDY2wuYyic/caCmhsNcM+w==
+"@react-visual/next@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@react-visual/next/-/next-0.3.1.tgz#0ed2d4f44fe594dfffc167b2d2608dad4519f865"
+  integrity sha512-LeSXtAURb5V3gXS2h2Ak2Sn4tFa/cFYj4HlLuljz/fxxpkIU+4ik7AAYCSPZgK1y5qydwDXFHwdKvGwnM/0OHA==
   dependencies:
-    "@react-visual/react" "^0.3.0"
+    "@react-visual/react" "^0.3.1"
 
-"@react-visual/react@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@react-visual/react/-/react-0.3.0.tgz#1dd82583e89f2f01ca090b85becc753300c23d9c"
-  integrity sha512-rj7lJSzYksSaWHVZPKwrzuyh7/oTJAMUn8XL2Lx/c6CvFhAA0V8hUD8hEgVowUjNMzdoGh8FJqhTXiz7oKl8FA==
+"@react-visual/react@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@react-visual/react/-/react-0.3.1.tgz#e45c526318d3677a5dd19f364d40dfa798a7277b"
+  integrity sha512-9G3gtl6QsQrwKONJKViDa+tS91CXe0O1/ADpAtcsAB0aMhynFzOJFXRL2VmoC5wR+omSPcVK0WRefsb+Ns1XZw==
   dependencies:
     react-intersection-observer "^9"
 
-"@react-visual/sanity-next@^0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@react-visual/sanity-next/-/sanity-next-0.3.0.tgz#87f288022d67da2b0b29fe7693dbbf08597a5671"
-  integrity sha512-i3SbVzB+V3uBJH4H6aJluSxbKkwIzAd86C/w+FNta066euJ00ABdXF+Zn1rEccqtNu3xMKss2IZixJQ55Gr9iw==
+"@react-visual/sanity-next@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@react-visual/sanity-next/-/sanity-next-0.3.1.tgz#2cddd963a7f7ab05f85ba5f00230a74a7994fcef"
+  integrity sha512-zpwRddu+4AEFGTjteRLm9vNGHxsCTjb10WbniMjp0FXDIXtCeyOogZA3/5da69+ND+EISRLCqK8n14vHWFB41Q==
   dependencies:
-    "@react-visual/next" "^0.3.0"
+    "@react-visual/next" "^0.3.1"
     "@sanity/asset-utils" "^1"
     "@sanity/image-url" "^1"
 

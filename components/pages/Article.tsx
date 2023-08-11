@@ -1,8 +1,8 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
+import Visual from '@react-visual/sanity-next'
 
 import ArticlePortableText from '~/components/global/portableText/MarketingPortableText'
 import PageHead from '~/components/layout/PageHead'
-import SanityImage from '~/packages/sanity-image'
 import { Article } from '~/types'
 
 import TextButton from '../global/buttons/TextButton'
@@ -55,9 +55,9 @@ export default function Article({ page }: { page: Article }) {
             px-gutter py-24f min-h-80f'>
 
             {/* Make image fade into background */}
-            <SanityImage
+            <Visual
               expand
-              source={ page.image }
+              image={ page.image }
               sizes='100vw'
               className='opacity-70'/>
 
