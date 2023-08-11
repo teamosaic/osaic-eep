@@ -1,5 +1,6 @@
 import { groq } from 'next-sanity'
 
+import { visualField } from '../fields/assetFields'
 import { articleCardFragment } from './articleCardFragment'
 
 export const blocksFragment = groq`
@@ -7,7 +8,7 @@ export const blocksFragment = groq`
 
   // De-reference image fields for acccessing image metadata
   _type == 'heroBlock' => {
-    background { ..., asset-> }
+    ${ visualField('background') },
   },
 
   // Fetch recent articles

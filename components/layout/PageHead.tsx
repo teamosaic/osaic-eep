@@ -1,9 +1,9 @@
+import { makeImageUrl } from '@react-visual/sanity-next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import type { Image } from 'sanity'
 
-import { urlForImage } from '~/packages/sanity-image'
 import { SettingsContext } from '~/providers/settings'
 import { PageSeo } from '~/types'
 
@@ -73,7 +73,7 @@ function HeadTags({
 
       { image && <meta
           property='og:image'
-          content={ urlForImage(image).width(1200).url() } /> }
+          content={ makeImageUrl(image, { width: 1200 }) } /> }
 
       { robots?.length && <meta
           name='robots'

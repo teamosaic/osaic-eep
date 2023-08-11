@@ -1,6 +1,6 @@
 import { TfiLayoutMediaCenterAlt } from 'react-icons/tfi'
 
-import { imageWithAlt,makeBlockSchema } from '~/sanity/lib/schema'
+import { imageWithAlt,makeBlockSchema, videoWithAlt, visual } from '~/sanity/lib/schema'
 
 import { button } from '../objects/buttonSchema'
 
@@ -46,7 +46,7 @@ export const heroBlockSchema = makeBlockSchema({
       }
     },
 
-    imageWithAlt({
+    visual({
       name: 'background',
       description: 'Displayed behind the body copy.',
     }),
