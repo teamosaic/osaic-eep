@@ -52,3 +52,67 @@ export function imageWithAlt({
     ]
   }
 }
+
+export function videoWithAlt({
+  name, title, description, required
+}: {
+  name: string,
+  title?: string,
+  description?: string,
+  required?: boolean,
+}): FieldDefinition {
+  return {
+    name,
+    type: 'file',
+    title,
+    description,
+    ...( required ? { validation: Rule => Rule.required() } : {}),
+    fields: [
+      {
+        name: 'alt',
+        title: 'Video Description',
+        type: 'string',
+        description: 'This will be used as an `aria-label` attribute.',
+        options: { accept: 'video/*' },
+      }
+    ]
+  }
+}
+
+export function visual({
+  name, title, description, hotspot = true, required
+}: {
+  name: string,
+  title?: string,
+  description?: string,
+  hotspot?: boolean,
+  required?: boolean,
+}): FieldDefinition {
+  return {
+    name,
+    type: 'object',
+    title,
+    description,
+    fields: [
+      {
+        name: 'image',
+        type: 'image',
+        options: { hotspot },
+        ...( required ? { validation: Rule => Rule.required() } : {}),
+      },
+      {
+        name: 'video',
+        type: 'file',
+        options: { accept: 'video/*' },
+        ...( required ? { validation: Rule => Rule.required() } : {}),
+      },
+      {
+        name: 'alt',
+        title: 'Description',
+        type: 'string',
+        description: 'This will be used as the img `alt` or video `aria-label` attribute.'
+      }
+    ]
+  }
+}
+
