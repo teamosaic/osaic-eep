@@ -36,7 +36,7 @@ export default function HeroBlock({
         text-center text-white">
 
         {/* Call to action button */}
-        { announcementButton.text &&
+        { announcementButton?.text &&
           <AnimateInView className='
             animate-slide-right-in [animation-delay:1s]'>
             <CTA {...announcementButton } />
