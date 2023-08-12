@@ -26,7 +26,7 @@ export interface Button {
 export type ButtonComponent = Button & Slottable & Styleable
 
 export interface Visual {
-  image: Image
-  video: Asset
-  alt: string
+  image?: Image
+  video?: Asset
+  alt?: string
 }
