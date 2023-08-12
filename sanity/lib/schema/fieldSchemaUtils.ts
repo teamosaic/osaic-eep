@@ -97,12 +97,14 @@ export function visual({
       {
         name: 'image',
         type: 'image',
+        description: 'If a video is also specified, this will be used as the poster image.',
         options: { hotspot },
         ...( required ? { validation: Rule => Rule.required() } : {}),
       },
       {
         name: 'video',
         type: 'file',
+        description: 'An MP4 compressed with a bitrate of around 4Mbps is recommended.',
         options: { accept: 'video/*' },
         ...( required ? { validation: Rule => Rule.required() } : {}),
       },
