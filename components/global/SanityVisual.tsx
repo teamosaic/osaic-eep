@@ -12,7 +12,7 @@ export default function SanityVisual(
 
   // Auto-set priority if the block's index is <= 1 (the first and 2nd blocks)
   const blockOrder = useContext(BlockOrderContext)
-  const priority = props.priority || blockOrder.index <= 1
+  const priority = props.priority || (blockOrder && blockOrder.index <= 1)
 
   // Render @react-visual/sanity-next
   return <SanityNextVisual {...{
