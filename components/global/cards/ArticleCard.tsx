@@ -1,5 +1,4 @@
-import Visual from '@react-visual/sanity-next'
-
+import SanityVisual from '~/components/global/SanityVisual'
 import AnimateInView from '~/packages/animate-in-view'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import type { ArticleCard } from '~/types'
@@ -46,7 +45,7 @@ export default function ArticleCard({
           className={`
             absolute inset-0
             animate-slow-scale-down-in`}>
-          <Visual
+          <SanityVisual
             expand
             image={ image }
             sizes='(min-width: 1024px) 33vw, 100vw'
