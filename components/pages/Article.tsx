@@ -1,7 +1,7 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
-import Visual from '@react-visual/sanity-next'
 
 import ArticlePortableText from '~/components/global/portableText/MarketingPortableText'
+import SanityVisual from '~/components/global/SanityVisual'
 import PageHead from '~/components/layout/PageHead'
 import { Article } from '~/types'
 
@@ -55,7 +55,7 @@ export default function Article({ page }: { page: Article }) {
             px-gutter py-24f min-h-80f'>
 
             {/* Make image fade into background */}
-            <Visual
+            <SanityVisual
               expand
               image={ page.image }
               sizes='100vw'

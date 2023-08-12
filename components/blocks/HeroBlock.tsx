@@ -1,7 +1,6 @@
-import Visual from '@react-visual/sanity-next'
-
 import { Icon } from '~/components/global/buttons/UnstyledButton'
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
+import SanityVisual from '~/components/global/SanityVisual'
 import AnimateInView from '~/packages/animate-in-view'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { ButtonIcon, HeroBlock as BlockType } from '~/types'
@@ -19,7 +18,7 @@ export default function HeroBlock({
       {/* Background image */}
       { background &&
         <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
-          <Visual
+          <SanityVisual
             expand
             sizes='100vw'
             src={ background } />
