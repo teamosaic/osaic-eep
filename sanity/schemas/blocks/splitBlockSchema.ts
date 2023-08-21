@@ -1,6 +1,6 @@
 import { TfiLayoutMediaCenterAlt } from 'react-icons/tfi'
 
-import { createListOptionsFromEnum,imageWithAlt,makeBlockSchema } from '~/sanity/lib/schema'
+import { createListOptionsFromEnum, makeBlockSchema, visual } from '~/sanity/lib/schema'
 import { SplitBlockOrientation } from '~/types'
 
 export const splitBlockSchema = makeBlockSchema({
@@ -26,16 +26,16 @@ export const splitBlockSchema = makeBlockSchema({
     {
       name: 'body',
       type: 'array',
-      description: 'The copy text for the Block.',
+      description: 'This copy will be displayed in one column.',
       of: [
         { type: 'block' },
         { type: 'buttonList' },
       ],
     },
 
-    imageWithAlt({
-      name: 'image',
-      description: 'Main image for the block.',
+    visual({
+      name: 'media',
+      description: 'This media asset will be displayed in the other column.',
     }),
   ]
 })
