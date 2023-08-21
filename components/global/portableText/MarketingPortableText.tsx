@@ -1,10 +1,8 @@
 import { type PortableTextComponents } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
-import clsx from 'clsx'
 
 import ButtonList from '~/components/global/buttons/ButtonList'
 import BasePortableText from '~/packages/portable-text/BasePortableText'
-
 
 // A PortableText instance for use in marketing blocks like a hero Block
 export default function MarketingPortableText({ value, className = '' }: {
