@@ -1,4 +1,4 @@
-import SanityNextVisual from '@react-visual/sanity-next';
+import SanityVisual from '~/components/global/SanityVisual';
 
 // Adapter so moving to @react-visual/sanity-next isn't a breaking change
 export default function SanityImage(props) {
@@ -12,6 +12,6 @@ export default function SanityImage(props) {
 
   // Make Visual instance
   return (
-    <SanityNextVisual {...props} />
+    <SanityVisual {...props} />
   )
 }
