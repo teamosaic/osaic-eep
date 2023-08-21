@@ -21,6 +21,6 @@ function getFirstHeroImage(page: Tower): Image {
     .find(block => block._type == 'heroBlock') as HeroBlock
   if (!firstHeroBlock) return
 
-  return firstHeroBlock.background
+  return firstHeroBlock.background?.image
 }
 

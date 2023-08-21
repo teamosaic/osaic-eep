@@ -1,11 +1,13 @@
 import { groq } from 'next-sanity'
 
+import { imageField } from './fields/assetFields'
+
 export const getArticle = groq`
   *[_type == 'article' && uri.current == $uri]{
     ...,
     'uri': uri.current,
     'date': coalesce(date, _createdAt),
-    image { ..., asset-> },
+    ${ imageField },
   }[0]
 `
 

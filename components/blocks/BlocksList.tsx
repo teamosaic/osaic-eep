@@ -10,6 +10,7 @@ const HeroBlock = dynamic(() => import('./HeroBlock'))
 const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
 const ArticlesBlock = dynamic(() => import('./ArticlesBlock'))
 const FaqBlock = dynamic(() => import('./FaqBlock'))
+const SplitBlock = dynamic(() => import('./SplitBlock'))
 
 // Render non-disabled blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks }: {
@@ -68,5 +69,6 @@ function getComponentFunction(type: string): Function {
     case 'ctaBlock': return CtaBlock
     case 'articlesBlock': return ArticlesBlock
     case 'faqBlock': return FaqBlock
+    case 'splitBlock': return SplitBlock
   }
 }

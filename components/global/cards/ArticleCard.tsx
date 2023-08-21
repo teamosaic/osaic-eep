@@ -1,5 +1,5 @@
+import SanityVisual from '~/components/global/SanityVisual'
 import AnimateInView from '~/packages/animate-in-view'
-import SanityImage from '~/packages/sanity-image'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import type { ArticleCard } from '~/types'
 
@@ -45,9 +45,9 @@ export default function ArticleCard({
           className={`
             absolute inset-0
             animate-slow-scale-down-in`}>
-          <SanityImage
+          <SanityVisual
             expand
-            source={ image }
+            image={ image }
             sizes='(min-width: 1024px) 33vw, 100vw'
             className='
               hover:scale-110

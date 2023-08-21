@@ -1,3 +1,5 @@
+import type { Asset,Image } from 'sanity'
+
 import { Slottable, Styleable } from './componentTypes'
 
 export enum ButtonType {
@@ -22,3 +24,9 @@ export interface Button {
 
 // Props needed to render a Button *component*
 export type ButtonComponent = Button & Slottable & Styleable
+
+export interface Visual {
+  image?: Image
+  video?: Asset
+  alt?: string
+}

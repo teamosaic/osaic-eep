@@ -35,7 +35,9 @@ export default function BlockParent({ block, children }: {
 
       // Set a background color
       'backgroundColor' in block && mapOption(block.backgroundColor, {
-        [BackgroundColor.Dark]: 'bg-indigo-700 text-white',
+        [BackgroundColor.Faint]: 'bg-indigo-200',
+        [BackgroundColor.Vibrant]: 'bg-indigo-700 text-white',
+        [BackgroundColor.Dark]: 'bg-gray-900 text-white',
       }),
 
       // Set padding within block, like if there is a background
