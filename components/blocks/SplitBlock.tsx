@@ -21,7 +21,7 @@ export default function SplitBlock({
         relative h-80 md:h-full overflow-hidden md:absolute
         md:w-1/3 lg:w-1/2
         ${orientation == SplitBlockOrientation.TextRight ?
-          'md:left-0 md:w-1/3 lg:w-1/2' :
+          'md:left-0' :
           'md:top-0 md:right-0'
         }`}>
 
