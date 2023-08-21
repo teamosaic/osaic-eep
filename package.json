@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
     "@portabletext/react": "^2.0.2",
+    "@react-visual/sanity-next": "^0.3.4",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.1.4",
     "clsx": "^1.2.1",

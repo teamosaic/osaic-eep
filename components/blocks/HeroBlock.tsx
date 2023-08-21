@@ -1,7 +1,7 @@
 import { Icon } from '~/components/global/buttons/UnstyledButton'
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
+import SanityVisual from '~/components/global/SanityVisual'
 import AnimateInView from '~/packages/animate-in-view'
-import SanityImage from '~/packages/sanity-image'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { ButtonIcon, HeroBlock as BlockType } from '~/types'
 
@@ -18,10 +18,10 @@ export default function HeroBlock({
       {/* Background image */}
       { background &&
         <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
-          <SanityImage
+          <SanityVisual
             expand
             sizes='100vw'
-            source={ background } />
+            src={ background } />
         </AnimateInView> }
 
       {/* Lightens part of the image */}
@@ -36,7 +36,7 @@ export default function HeroBlock({
         text-center text-white">
 
         {/* Call to action button */}
-        { announcementButton.text &&
+        { announcementButton?.text &&
           <AnimateInView className='
             animate-slide-right-in [animation-delay:1s]'>
             <CTA {...announcementButton } />

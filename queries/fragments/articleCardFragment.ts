@@ -1,11 +1,13 @@
 import { groq } from 'next-sanity'
 
+import { imageField } from '../fields/assetFields'
+
 export const articleCardFragment = groq`
   ...,
 
   'uri': uri.current,
   'date': coalesce(date, _createdAt),
-  image { ..., asset-> },
+  ${ imageField },
 
   // Make an excerpt from the body
   'body': undefined, // Don't fetch the whole body
