@@ -34,6 +34,8 @@ export interface BlockBackground extends SanityObject {
 
 export enum BackgroundColor {
   None = '',
+  Faint = 'faint',
+  Vibrant = 'vibrant',
   Dark = 'dark',
 }
 
