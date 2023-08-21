@@ -1,22 +1,20 @@
 import type { PortableTextBlock } from '@portabletext/types'
-import type { Image } from 'sanity'
 
-import type {
-  BlockLayout
-} from '~/types'
+import { BackgroundColor, BlockLayout, Visual } from '~/types'
 
 export interface SplitBlock extends BlockLayout {
-  type: SplitBlockType
+  orientation: SplitBlockOrientation
   body: PortableTextBlock[] // I couldn't figure out how to add Button here
-  image: Image
+  media: Visual
   button: {
     text: string
     cta: string
     url: string
   }
+  backgroundColor: BackgroundColor
 }
 
-export enum SplitBlockType {
-  ImageLeft = 'imageLeft',
-  ImageRight = 'imageRight',
+export enum SplitBlockOrientation {
+  TextRight = 'textRight',
+  TextLeft = 'textLeft',
 }
