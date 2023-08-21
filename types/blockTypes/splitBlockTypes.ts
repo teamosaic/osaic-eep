@@ -6,7 +6,7 @@ import type {
 } from '~/types'
 
 export interface SplitBlock extends BlockLayout {
-  type: SplitBlockType
+  orientation: SplitBlockOrientation
   body: PortableTextBlock[] // I couldn't figure out how to add Button here
   image: Image
   button: {
@@ -16,7 +16,7 @@ export interface SplitBlock extends BlockLayout {
   }
 }
 
-export enum SplitBlockType {
-  ImageLeft = 'imageLeft',
-  ImageRight = 'imageRight',
+export enum SplitBlockOrientation {
+  TextRight = 'textRight',
+  TextLeft = 'textLeft',
 }
