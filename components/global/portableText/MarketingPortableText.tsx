@@ -27,11 +27,11 @@ function makeComponents(parentClassName: string): PortableTextComponents {
     types: {
 
       // Render a row of buttons, adding some extra margins to it
-      buttonList: ({ value }) => {
-        const buttonClassName = ['mt-sm']
-        return <ButtonList {...value} className={clsx(buttonClassName)} />
-      }
-
-    },
+      buttonList: ({ value }) => (
+        <div className='mt-sm'>
+          <ButtonList {...value} />
+        </div>
+      ),
+    }
   }
 }
