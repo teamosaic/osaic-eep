@@ -11,8 +11,8 @@ export default function ButtonList({ buttons, className = '' }: {
   return (
 
     // List container. Using twMerge so these can be overridden
-    <div className={twMerge(`
-      flex items-center justify-center gap-x-6
+    <span className={twMerge(`
+      inline-flex items-center gap-x-6
       ${className}
     `)}>
 
@@ -21,6 +21,6 @@ export default function ButtonList({ buttons, className = '' }: {
         <Button key={ button._key } {...button} />
       ))}
 
-    </div>
+    </span>
   )
 }

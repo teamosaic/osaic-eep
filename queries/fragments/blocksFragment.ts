@@ -11,6 +11,11 @@ export const blocksFragment = groq`
     ${ visualField('background') },
   },
 
+  // De-reference image fields for acccessing image metadata
+  _type == 'splitBlock' => {
+    ${ visualField('media') },
+  },
+
   // Fetch recent articles
   _type == 'articlesBlock' => {
     'recentArticles': *[_type == 'article'] | order(date desc) [0...3]  {

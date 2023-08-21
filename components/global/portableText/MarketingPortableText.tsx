@@ -9,6 +9,7 @@ export default function MarketingPortableText({ value, className = '' }: {
   value: PortableTextBlock[]
   className?: string
 }): React.ReactElement {
+  const components = makeComponents()
   return (
     <BasePortableText
       className={`prose-marketing ${className}`}
@@ -18,12 +19,16 @@ export default function MarketingPortableText({ value, className = '' }: {
 }
 
 // Define components that can be rendered in this block
-const components: PortableTextComponents = {
+function makeComponents(): PortableTextComponents {
+  return {
+    types: {
 
-  types: {
-
-    // Render a row of buttons, adding some extra margins to it
-    buttonList: ({ value }) => <ButtonList {...value} className='mt-sm'/>,
-
-  },
+      // Render a row of buttons, adding some extra margins to it
+      buttonList: ({ value }) => (
+        <div className='mt-sm'>
+          <ButtonList {...value} />
+        </div>
+      ),
+    }
+  }
 }
