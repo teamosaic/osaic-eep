@@ -50,7 +50,9 @@ export default function SplitBlock({
           <AnimateInView
             target='descendants'
             className='prose-animate-in relative'>
-            <MarketingPortableText value={ body } className='text-white text-center md:text-left' alignmentClasses='justify-start' />
+            <MarketingPortableText
+              value={ body }
+              className='text-center md:text-left' />
           </AnimateInView>
 
         </div>
