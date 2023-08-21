@@ -6,6 +6,7 @@ import { SplitBlockOrientation } from '~/types'
 export const splitBlockSchema = makeBlockSchema({
   name: 'splitBlock',
   icon: TfiLayoutMediaCenterAlt,
+  hasBackground: true,
   contentFields: [
 
     {
@@ -38,4 +39,10 @@ export const splitBlockSchema = makeBlockSchema({
       description: 'This media asset will be displayed in the other column.',
     }),
   ]
+})
+
+// Remove the background padding fields, they're not relevant though I do
+// want to add the background color field
+splitBlockSchema.fields = splitBlockSchema.fields.filter(({ name }) => {
+  return !['paddingTop', 'paddingBottom'].includes(name)
 })

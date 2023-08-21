@@ -14,11 +14,11 @@ export default function SplitBlock({
 }: BlockType): React.ReactElement {
 
   return (
-    <div className="relative bg-gray-900 max-w-7xl mx-auto rounded-none lg:rounded-md lg:overflow-hidden">
+    <div className="relative max-w-7xl mx-auto lg:overflow-hidden">
 
       {/* Image Column */}
       <div className={`
-        relative h-80 md:h-full overflow-hidden bg-indigo-600 md:absolute
+        relative h-80 md:h-full overflow-hidden md:absolute
         md:w-1/3 lg:w-1/2
         ${orientation == SplitBlockOrientation.TextRight ?
           'md:left-0 md:w-1/3 lg:w-1/2' :

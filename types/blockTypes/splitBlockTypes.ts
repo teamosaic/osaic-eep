@@ -1,6 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types'
 
-import type { BlockLayout, Visual } from '~/types'
+import { BackgroundColor, BlockLayout, Visual } from '~/types'
 
 export interface SplitBlock extends BlockLayout {
   orientation: SplitBlockOrientation
@@ -11,6 +11,7 @@ export interface SplitBlock extends BlockLayout {
     cta: string
     url: string
   }
+  backgroundColor: BackgroundColor
 }
 
 export enum SplitBlockOrientation {
