@@ -29,6 +29,7 @@ export const faq = {
 export const faqBlockSchema = makeBlockSchema({
   name: 'faqBlock',
   icon: TfiLayoutMediaCenterAlt,
+  hasBackground: true,
   contentFields: [
 
     {
