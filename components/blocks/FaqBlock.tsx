@@ -6,22 +6,23 @@ import MarketingPortableText from '~/components/global/portableText/MarketingPor
 import AnimateInView from '~/packages/animate-in-view'
 import { Faq,FaqBlock as BlockType } from '~/types'
 
-
+// Based on
+// https://tailwindui.com/components/marketing/sections/faq-sections#component-6afc043edc7d0ccbcb42cf7cdc4a29ee
 export default function FaqBlock({
   title,
   faqs,
 }: BlockType): ReactNode {
   return (
-    <div className="bg-gray-900">
-      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
-        <div className="mx-auto max-w-4xl divide-y divide-white/10">
-          <h2 className="text-2xl font-bold leading-10 tracking-tight text-white">{title}</h2>
-          <dl className="mt-10 space-y-6 divide-y divide-white/10">
-            {faqs.map((faq) => (
-              <FaqAccordion {...faq} key={ faq._key } />
-            ))}
-          </dl>
-        </div>
+    <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
+      <div className="mx-auto max-w-4xl divide-y divide-blend-20">
+        <h2 className="text-2xl font-bold leading-10 tracking-tight">
+          {title}
+        </h2>
+        <dl className="mt-10 space-y-6 divide-y divide-blend-20">
+          {faqs.map((faq) => (
+            <FaqAccordion {...faq} key={ faq._key } />
+          ))}
+        </dl>
       </div>
     </div>
   )
@@ -35,7 +36,7 @@ function FaqAccordion({ question, answer }: Faq): ReactNode {
 
           {/* Question and toggle bar */}
           <dt>
-            <Disclosure.Button className="flex w-full items-start justify-between text-left text-white">
+            <Disclosure.Button className="flex w-full items-start justify-between text-left">
               <span className="text-base font-semibold leading-7">
                 {question}
               </span>
@@ -47,9 +48,7 @@ function FaqAccordion({ question, answer }: Faq): ReactNode {
 
           {/* Collapsable answer */}
           <Disclosure.Panel as="dd" className="mt-2 pr-12">
-            <AnimateInView
-              target='descendants'
-              className='prose-animate-in text-white'>
+            <AnimateInView className='animate-slide-up-in'>
               <MarketingPortableText value={ answer }/>
             </AnimateInView>
           </Disclosure.Panel>
