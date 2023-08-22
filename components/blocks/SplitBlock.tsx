@@ -14,7 +14,7 @@ export default function SplitBlock({
 }: BlockType): React.ReactElement {
 
   return (
-    <div className="relative max-w-7xl mx-auto lg:overflow-hidden">
+    <div className="relative max-w-screen-xl mx-auto">
 
       {/* Image Column */}
       <div className={`
@@ -37,13 +37,13 @@ export default function SplitBlock({
       </div>
 
       {/* Copy Column */}
-      <div className="relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40">
+      <div className="relative mx-auto py-lg">
         <div className={`
           pl-6 pr-6
           md:w-2/3 lg:w-1/2
           ${orientation == SplitBlockOrientation.TextRight ?
-            'md:ml-auto md:pl-16 lg:pl-24 lg:pr-12 xl:pl-32' :
-            'md:mr-auto md:pr-16 lg:pr-24 lg:pl-12 xl:pr-32'
+            'md:ml-auto md:pl-md' :
+            'md:mr-auto md:pr-md'
           }`}>
 
           {/* The Copy */}
