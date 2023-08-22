@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import type { ComponentType, ReactNode } from 'react'
 
 import { type BlockOrder,BlockOrderContext } from '~/providers/blockOrder'
 import type { Block } from '~/types'
@@ -14,7 +15,7 @@ const SplitBlock = dynamic(() => import('./SplitBlock'))
 // Render non-disabled blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks }: {
   blocks: Block[]
-}): React.ReactElement {
+}): ReactNode {
   return (<>{
     (blocks || [])
     .filter(block => !block?.disabled)
@@ -27,7 +28,7 @@ export function renderBlock(
   block: Block,
   index: number,
   blocks: Block[],
-): React.ReactElement {
+): ReactNode {
 
   // Make the actual block instance. It may not exist if content has been
   // created for a new schema whose related block component hasn't been
@@ -55,14 +56,14 @@ function makeBlockOrderValue(index: number, blocks:Block[]): BlockOrder {
 }
 
 // Return a block depending on the _type
-function makeBlockInstance(block: any): React.ReactElement {
+function makeBlockInstance(block: any): ReactNode {
 	const ComponentFunction = getComponentFunction(block._type)
 	if (!ComponentFunction) return
 	return <ComponentFunction {...block} />
 }
 
 // Return the component class based on the type
-function getComponentFunction(type: string): Function {
+function getComponentFunction(type: string): ComponentType {
   switch(type) {
     case 'heroBlock': return HeroBlock
     case 'ctaBlock': return CtaBlock
