@@ -32,6 +32,18 @@ module.exports = {
         article: { css: proseStyles.article, },
       },
 
+      colors: {
+
+        // Make tints of the current color
+        // https://stackoverflow.com/a/45075350/59160
+        blend: Object.fromEntries(
+          [10, 20, 30, 40, 50, 60, 70, 80, 90].map(perc => ([
+            perc,
+            `color-mix(in srgb, currentColor ${perc}%, transparent)`,
+          ]))
+        )
+      },
+
       spacing: {
 
         // Adds "f" suffixed space values for the default scale.  Use like:
