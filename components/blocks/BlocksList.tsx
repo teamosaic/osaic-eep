@@ -15,7 +15,7 @@ const SplitBlock = dynamic(() => import('./SplitBlock'))
 // Render non-disabled blocks based on type, wrapped in BlockParent
 export default function BlocksList({ blocks }: {
   blocks: Block[]
-}): ReactNode {
+}) {
   return (<>{
     (blocks || [])
     .filter(block => !block?.disabled)
