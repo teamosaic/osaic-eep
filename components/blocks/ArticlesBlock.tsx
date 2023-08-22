@@ -39,7 +39,7 @@ export default function ArticlesBlock({
 
       {/* Show view all link */}
       { totalArticles > recentArticles.length && (
-        <div className='flex place-content-center my-md'>
+        <div className='flex place-content-center mt-md'>
           <PrimaryButton url='/articles' icon={ ButtonIcon.RightArrow }>
             View all
           </PrimaryButton>
