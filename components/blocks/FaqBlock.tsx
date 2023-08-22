@@ -19,7 +19,7 @@ export default function FaqBlock({
           {title}
         </h2>
         <dl className="mt-10 space-y-6 divide-y divide-blend-10">
-          {faqs.map((faq) => (
+          {(faqs || []).map((faq) => (
             <FaqAccordion {...faq} key={ faq._key } />
           ))}
         </dl>
