@@ -1,45 +1,25 @@
-import { TfiLayoutMediaCenterAlt } from 'react-icons/tfi'
+import { FaQuestionCircle } from 'react-icons/fa'
 
 import { makeBlockSchema } from '~/sanity/lib/schema'
 
-export const faq = {
-  name: 'faq',
-  title: 'FAQ Item',
-  type: 'object',
-  fields: [
-    {
-      name: 'question',
-      description: 'Question',
-      type: 'string',
-      validation: Rule => Rule.required(),
-    },
-
-    {
-      name: 'answer',
-      description: 'Answer',
-      type: 'array',
-      of: [
-        { type: 'block' },
-        { type: 'buttonList' },
-      ],
-    },
-  ],
-}
-
 export const faqBlockSchema = makeBlockSchema({
   name: 'faqBlock',
-  icon: TfiLayoutMediaCenterAlt,
+  title: 'FAQ Block',
+  titleField: 'title',
+  icon: FaQuestionCircle,
   hasBackground: true,
   contentFields: [
 
     {
       name: 'title',
       type: 'string',
-      description: 'FAQ section title.',
+      description: 'Displayed above the FAQ list.',
     },
 
     {
       name: 'faqs',
+      title: 'FAQs',
+      description: 'A list of collapsable questions and answers.',
       type: 'array',
       of: [
         { type: 'faq' },
