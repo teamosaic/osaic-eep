@@ -1,11 +1,11 @@
-import { TfiLayoutMediaCenterAlt } from 'react-icons/tfi'
+import { BsLayoutSplit } from 'react-icons/bs'
 
 import { createListOptionsFromEnum, makeBlockSchema, visual } from '~/sanity/lib/schema'
 import { SplitBlockOrientation } from '~/types'
 
 export const splitBlockSchema = makeBlockSchema({
   name: 'splitBlock',
-  icon: TfiLayoutMediaCenterAlt,
+  icon: BsLayoutSplit,
   hasBackground: true,
   contentFields: [
 
