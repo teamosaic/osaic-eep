@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/outline'
-import { ReactNode } from 'react'
+import { ReactElement } from 'react'
 
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 import AnimateInView from '~/packages/animate-in-view'
@@ -11,7 +11,7 @@ import { Faq,FaqBlock as BlockType } from '~/types'
 export default function FaqBlock({
   title,
   faqs,
-}: BlockType): ReactNode {
+}: BlockType): ReactElement {
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
       <div className="mx-auto max-w-4xl divide-y divide-blend-10">
@@ -28,7 +28,7 @@ export default function FaqBlock({
   )
 }
 
-function FaqAccordion({ question, answer }: Faq): ReactNode {
+function FaqAccordion({ question, answer }: Faq): ReactElement {
   return (
     <Disclosure as="div" className="pt-6">
       {({ open }) => (
@@ -59,7 +59,7 @@ function FaqAccordion({ question, answer }: Faq): ReactNode {
   )
 }
 
-function ToggleIcon({ open }: { open: boolean}): ReactNode {
+function ToggleIcon({ open }: { open: boolean}): ReactElement {
   if (open) return <MinusSmallIcon className="h-6 w-6" aria-hidden="true" />
   return <PlusSmallIcon className="h-6 w-6" aria-hidden="true" />
 }
