@@ -6,8 +6,8 @@ import { getMoreArticles } from '~/queries/articlesIndexQueries'
 import { client } from '~/sanity/client'
 import { ArticleCard as IArticleCard, Button } from '~/types'
 
-// Make a memoized card so the card animations don't replay  when adding more
-// cards via loadMore
+// Make a memoized card so the intro animations of already rendered cards don't
+// replay when adding more via loadMore
 const MemoizedArticleCard = memo(ArticleCard)
 
 // Render a grid of article cards
