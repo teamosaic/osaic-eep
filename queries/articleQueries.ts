@@ -13,7 +13,9 @@ export const getArticle = groq`
 
 // Build just recent articles
 export const articleStaticPaths = groq`
-  *[_type == 'article' && defined(uri)] [0...3] | order(date desc) {
+  *[
+    _type == 'article' && defined(uri)
+  ] [0...3] | order(date desc, _id desc) {
     'uri': uri.current
   }
 `

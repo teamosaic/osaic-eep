@@ -17,7 +17,7 @@ export const getArticlesIndex = groq`
     // Get the initial page of articles
     'initialArticles': *[
       _type == 'article'
-    ] | order(date desc) [0...${perPage}]  {
+    ] | order(date desc, _id desc) [0...${perPage}]  {
       ${ articleCardFragment }
     },
 
@@ -33,7 +33,7 @@ export const getMoreArticles = groq`
   *[
     _type == 'article' &&
     (date < $lastDate || (date == $lastDate && _id < $lastId))
-  ] | order(date desc) [0...${perPage}]  {
+  ] | order(date desc, _id desc) [0...${perPage}]  {
     ${ articleCardFragment }
   }
 `
