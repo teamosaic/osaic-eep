@@ -75,7 +75,7 @@ function HeadTags({
           property='og:image'
           content={ makeImageUrl(image, { width: 1200 }) } /> }
 
-      { robots?.length && <meta
+      { robots?.length > 0 && <meta
           name='robots'
           content={ robots.join(', ') } /> }
 
