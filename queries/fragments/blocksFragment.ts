@@ -18,7 +18,9 @@ export const blocksFragment = groq`
 
   // Fetch recent articles
   _type == 'articlesBlock' => {
-    'recentArticles': *[_type == 'article'] | order(date desc) [0...3]  {
+    'recentArticles': *[
+      _type == 'article'
+    ] | order(date desc, _id desc) [0...3]  {
       ${ articleCardFragment },
     },
     'totalArticles': count(*[_type == "article"]),
