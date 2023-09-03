@@ -7,6 +7,8 @@ import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
+import StudioNavbar from '~/sanity/components/StudioNavbar'
+
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { addPreviewPane } from './sanity/lib/preview/previewPane'
 import { schema } from './sanity/schema'
@@ -18,6 +20,11 @@ export default defineConfig({
   dataset,
   title: 'Next Sanity Demo',
   schema,
+  studio: {
+    components: {
+      navbar: StudioNavbar,
+    }
+  },
   plugins: [
 
     // The main area where content is managed
