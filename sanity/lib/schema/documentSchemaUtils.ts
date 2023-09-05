@@ -1,7 +1,7 @@
 import startCase from 'lodash/startCase'
 import moment from 'moment'
 import pluralize from 'pluralize-esm'
-import type { BaseSchemaDefinition,DocumentDefinition, SortOrdering } from 'sanity'
+import type { BaseSchemaDefinition, DocumentDefinition, SortOrdering } from 'sanity'
 
 import { uriField } from '~/sanity/lib/uri'
 import { seoFields } from '~/sanity/schemas/fieldGroups/pageSeoSchema'
