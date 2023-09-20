@@ -32,7 +32,8 @@ export default function HeroBlock({
       <div className="
         relative
         max-w-screen-md mx-auto px-gutter
-        py-32f md:py-56f
+        fluid-[paddingTop,224,90]
+        fluid-[paddingBottom,224,90]
         text-center text-white">
 
         {/* Call to action button */}
