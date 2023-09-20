@@ -35,7 +35,7 @@ export default function HeroBlock({
         py-32f md:py-56f
         text-center text-white">
 
-        <div className='fluid-[font-size,100,40]'>Hey man</div>
+        <div className='fluid-[font-size,100,40,{minBreak:768}]'>Hey man</div>
 
         {/* Call to action button */}
         { announcementButton?.text &&
