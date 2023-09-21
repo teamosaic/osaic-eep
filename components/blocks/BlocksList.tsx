@@ -7,10 +7,10 @@ import type { Block } from '~/types'
 import BlockParent from './BlockParent'
 
 // Import blocks on demand
-const HeroBlock = dynamic(() => import('./HeroBlock'))
-const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
 const ArticlesBlock = dynamic(() => import('./ArticlesBlock'))
+const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
 const FaqBlock = dynamic(() => import('./FaqBlock'))
+const HeroBlock = dynamic(() => import('./HeroBlock'))
 const SplitBlock = dynamic(() => import('./SplitBlock'))
 
 // Render non-disabled blocks based on type, wrapped in BlockParent
@@ -66,10 +66,10 @@ function makeBlockInstance(block: any): ReactNode {
 // Return the component class based on the type
 function getComponentFunction(type: string): ComponentType {
   switch(type) {
-    case 'heroBlock': return HeroBlock
-    case 'ctaBlock': return CtaBlock
     case 'articlesBlock': return ArticlesBlock
+    case 'ctaBlock': return CtaBlock
     case 'faqBlock': return FaqBlock
+    case 'heroBlock': return HeroBlock
     case 'splitBlock': return SplitBlock
   }
 }

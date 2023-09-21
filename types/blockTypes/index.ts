@@ -10,8 +10,8 @@ import { FaqBlock } from './faqBlockTypes'
 import { HeroBlock } from './heroBlockTypes'
 import { SplitBlock } from './splitBlockTypes'
 
-export type Block = HeroBlock
+export type Block = ArticlesBlock
   | CtaBlock
-  | ArticlesBlock
-  | SplitBlock
   | FaqBlock
+  | HeroBlock
+  | SplitBlock
