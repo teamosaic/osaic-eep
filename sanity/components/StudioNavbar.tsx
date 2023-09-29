@@ -11,7 +11,7 @@ export default function StudioNavbar(props: NavbarProps) {
       {isDevelopment && isProdDataset && (
         <Card paddingX={4} paddingY={3} tone={"caution"}>
           <Text size={2}>
-            Using the <b>{dataset}</b> dataset
+            Using the <b style={{textTransform:'capitalize'}}>{dataset}</b> dataset
           </Text>
         </Card>
       )}
