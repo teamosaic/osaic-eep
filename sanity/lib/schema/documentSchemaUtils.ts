@@ -1,8 +1,7 @@
 import startCase from 'lodash/startCase'
 import moment from 'moment'
 import pluralize from 'pluralize-esm'
-import { ComponentType, ReactNode } from 'react'
-import type { DocumentDefinition, SortOrdering } from 'sanity'
+import type { BaseSchemaDefinition, DocumentDefinition, SortOrdering } from 'sanity'
 
 import { uriField } from '~/sanity/lib/uri'
 import { seoFields } from '~/sanity/schemas/fieldGroups/pageSeoSchema'
@@ -21,7 +20,7 @@ export function makePageSchema({
 }: {
   name: string // The singular page name
   title?: string // Document title
-  icon?: ReactNode | ComponentType // Icon for listing views
+  icon?: BaseSchemaDefinition['icon'] // Icon for listing views
   subtitleField?: string // The field to pull the subtitle from
   uriPrefix?: string // Used to build the uri
   contentFields?: any[] // Sanity fields to add to content fields
@@ -95,7 +94,7 @@ export function makeSingletonPageSchema({
   name: string // The singular page name
   uri: string, // The uri for this singleton
   title: string // Document title
-  icon?: ReactNode | ComponentType // Icon for listing views
+  icon?: BaseSchemaDefinition['icon'] // Icon for listing views
   contentFields?: any[] // Sanity fields to add to content fields
 }): DocumentDefinition {
   const documentTitle = title || pluralize(startCase(name))

@@ -21,7 +21,7 @@ export function makeBlockSchema({
   name: string // The block name
   title?: string // Explicit block title
   titleField?: string // The field the preview title is pulled from
-  icon?: ReactNode | ComponentType // Icon for listing views
+  icon?: ComponentType | ReactNode // Icon for listing views
   hasBackground?: boolean // Whether to add blockBackgroundSchema
   contentFields?: FieldDefinition[], // Sanity fields to add to content group
 }): ObjectDefinition {
@@ -67,7 +67,7 @@ export function makeBlockPreview({
 }: {
   titleField: string
   blockTitle: string
-  icon?: ReactNode | ComponentType
+  icon?: ComponentType | ReactNode
   contentFields?: FieldDefinition[]
 }): ObjectDefinition["preview"] {
 
