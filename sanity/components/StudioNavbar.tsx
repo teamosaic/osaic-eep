@@ -9,7 +9,7 @@ export default function StudioNavbar(props: NavbarProps) {
   return (
     <Stack>
       {isDevelopment && isProdDataset && (
-        <Card paddingX={4} paddingY={3} tone={"critical"}>
+        <Card paddingX={4} paddingY={3} tone={"caution"}>
           <Text size={2}>
             Using the <b>{dataset}</b> dataset
           </Text>
