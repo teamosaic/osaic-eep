@@ -29,23 +29,18 @@ export const settingsSchema = {
       metaImage,
     ]),
     {
-      name: 'slabDocs',
-      title: 'Slab Docs',
+      name: 'embedDocs',
+      title: 'Embed Docs',
       type: 'array',
       group: 'docs',
       of: [
         {
           type: 'reference',
           to: [
-            {type: 'slabDoc'},
+            {type: 'embedDoc'},
           ]
         },
       ],
-      // Showing this to only Buk users
-      hidden: (props) => {
-        const userEmail: string = props?.currentUser?.email
-        return !(userEmail.includes('@bkwld.com') || userEmail.includes('@bukwild.com'));
-      },
     },
   ],
   preview: {

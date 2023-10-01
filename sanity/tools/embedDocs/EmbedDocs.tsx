@@ -10,23 +10,44 @@ const client = createClient({
   useCdn: false,
 })
 
-const SlabDocs = (props) => {
+// Embed query for all documents of type "slabDoc"
+const embedQuery = `*[_type == "embedDoc"]`
+
+const EmbedDocs = (props) => {
   const [loading, setLoading] = useState(true)
   const [docs, setDocs] = useState([])
   const [selectedDoc, setSelectedDoc] = useState(null)
 
   useEffect(() => {
-    // Fetch all documents of type "slabDoc"
-    client.fetch('*[_type == "slabDoc"]').then((docs) => {
+    // Fetch all docs
+    client.fetch(embedQuery).then((docs) => {
       setDocs(docs)
+
+      // Get hash from route. This is used to set the selected doc.
+      const hash = window.location.hash
+      if (hash) {
+        const id = hash.replace('#', '')
+        const doc = docs.find((doc) => doc._id === id)
+        doc && setSelectedDoc(doc)
+      } else if (docs.length > 0) {
+        setSelectedDoc(docs[0])
+        updateHash(docs[0]._id)
+      }
     }).finally(() => {
       setLoading(false)
     })
   }, []);
 
-  const handleTitleClick = (id) => {
+  const updateHash = (id: string) => {
+    window.location.hash = id
+  }
+
+  const handleTitleClick = (id: string) => {
     const doc = docs.find((doc) => doc._id === id)
     setSelectedDoc(doc)
+
+    // Update the hash in the URL
+    updateHash(id)
   }
 
   return (
@@ -38,9 +59,9 @@ const SlabDocs = (props) => {
       ) : (
         <Card height={"stretch"}>
           <Flex padding={4} height={"stretch"}>
-            <Card flex={1} borderRight={true}>
+            <Card flex={2} borderRight={true}>
               <Stack space={4}>
-                <Heading style={{marginBottom: '1rem'}}>Docs</Heading>
+                <Heading style={{marginBottom: '1rem'}}>CMS Docs</Heading>
                 {docs.map((doc) => (
                   <Text
                     key={doc._id}
@@ -69,4 +90,4 @@ const SlabDocs = (props) => {
   )
 }
 
-export default SlabDocs
+export default EmbedDocs
