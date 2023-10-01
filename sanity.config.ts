@@ -8,6 +8,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
 import StudioNavbar from '~/sanity/components/StudioNavbar'
+import { SlabDocsTool } from "~/sanity/tools/slabDocs";
 
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { addPreviewPane } from './sanity/lib/preview/previewPane'
@@ -25,6 +26,9 @@ export default defineConfig({
       navbar: StudioNavbar,
     }
   },
+  tools: [
+    SlabDocsTool()
+  ],
   plugins: [
 
     // The main area where content is managed

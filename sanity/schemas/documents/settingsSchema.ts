@@ -11,6 +11,10 @@ export const settingsSchema = {
       name: 'seo',
       title: 'SEO Defaults',
     },
+    {
+      name: 'docs',
+      title: 'Docs',
+    },
   ],
   fields: [
     ...setGroup('seo', [
@@ -24,6 +28,25 @@ export const settingsSchema = {
       metaDescription,
       metaImage,
     ]),
+    {
+      name: 'slabDocs',
+      title: 'Slab Docs',
+      type: 'array',
+      group: 'docs',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {type: 'slabDoc'},
+          ]
+        },
+      ],
+      // Showing this to only Buk users
+      hidden: (props) => {
+        const userEmail: string = props?.currentUser?.email
+        return !(userEmail.includes('@bkwld.com') || userEmail.includes('@bukwild.com'));
+      },
+    },
   ],
   preview: {
     prepare() {
