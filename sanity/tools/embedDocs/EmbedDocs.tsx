@@ -10,7 +10,7 @@ const client = createClient({
   useCdn: false,
 })
 
-// Embed query for all documents of type "slabDoc"
+// Embed query for all documents of type "embedDoc"
 const embedQuery = `*[_type == "embedDoc"]`
 
 const EmbedDocs = (props) => {
