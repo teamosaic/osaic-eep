@@ -8,7 +8,8 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
 import StudioNavbar from '~/sanity/components/StudioNavbar'
-import { embedDocsTool } from "~/sanity/tools/embedDocs";
+import { embedDocsTool } from '~/sanity/tools/embedDocs'
+import { embedDocSchema } from "~/sanity/tools/embedDocs/embedDocSchema";
 
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { addPreviewPane } from './sanity/lib/preview/previewPane'
@@ -20,7 +21,12 @@ export default defineConfig({
   projectId,
   dataset,
   title: 'Next Sanity Demo',
-  schema,
+  schema: {
+    types: [
+      ...schema.types,
+      embedDocSchema,
+    ],
+  },
   studio: {
     components: {
       navbar: StudioNavbar,
