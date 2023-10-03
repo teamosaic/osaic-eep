@@ -61,7 +61,7 @@ const EmbedDocs = (props) => {
           <Flex padding={4} height={"stretch"}>
             <Card flex={2} borderRight={true}>
               <Stack space={4}>
-                <Heading style={{marginBottom: '1rem'}}>CMS Docs</Heading>
+                <Heading style={{marginBottom: '1rem'}}>Docs</Heading>
                 {docs.map((doc) => (
                   <Text
                     key={doc._id}
