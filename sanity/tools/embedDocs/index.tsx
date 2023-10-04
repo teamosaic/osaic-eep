@@ -4,7 +4,7 @@ import EmbedDocs from "./EmbedDocs";
 
 export const embedDocsTool = () => {
   return {
-    title: 'CMS Docs', // Better name for clients.
+    title: 'Docs',
     name: 'embed-docs',
     icon: DocumentTextIcon,
     component: EmbedDocs,
