@@ -1,8 +1,10 @@
+import { BiBookAlt } from 'react-icons/bi'
 import { defineField, defineType } from "sanity";
 
 export const embedDocSchema = defineType({
   name: 'embedDoc',
   type: 'document',
+  icon: BiBookAlt,
   title: 'Embed Doc',
   fields: [
     defineField({
