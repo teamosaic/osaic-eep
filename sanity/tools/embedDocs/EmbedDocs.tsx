@@ -2,13 +2,9 @@ import { createClient } from '@sanity/client'
 import { Card, Flex, Heading, Spinner, Stack, Text } from "@sanity/ui";
 import { useEffect, useState } from "react";
 
-import { dataset, projectId } from "~/sanity/env";
+import { makeClient } from '~/sanity/client'
 
-const client = createClient({
-  projectId,
-  dataset,
-  useCdn: false,
-})
+const client = makeClient()
 
 // Embed query for all documents of type "embedDoc"
 const embedQuery = `*[_type == "embedDoc"]`
