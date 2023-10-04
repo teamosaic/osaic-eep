@@ -53,7 +53,7 @@ const EmbedDocs = (props) => {
           <Spinner muted/>
         </Card>
       ) : (
-        <Card height={"stretch"}>
+        <Card padding={4} height={"stretch"}>
           <Flex padding={4} height={"stretch"}>
             <Card flex={2} borderRight={true}>
               <Stack space={4}>
