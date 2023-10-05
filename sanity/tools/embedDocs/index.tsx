@@ -1,4 +1,4 @@
-import { BiBookAlt } from 'react-icons/bi'
+import { BsBook } from 'react-icons/bs'
 
 import EmbedDocs from "./EmbedDocs";
 
@@ -6,7 +6,7 @@ export const embedDocsTool = () => {
   return {
     title: 'Docs',
     name: 'embed-docs',
-    icon: BiBookAlt,
+    icon: BsBook,
     component: EmbedDocs,
   }
 }

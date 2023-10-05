@@ -1,10 +1,10 @@
-import { BiBookAlt } from 'react-icons/bi'
+import { BsBook } from 'react-icons/bs'
 import { defineField, defineType } from "sanity";
 
 export const embedDocSchema = defineType({
   name: 'embedDoc',
   type: 'document',
-  icon: BiBookAlt,
+  icon: BsBook,
   description: 'External, embeddable documents (such as Slabs) that populate the Docs section of this Sanity instance.',
   title: 'Embed Doc',
   fields: [
