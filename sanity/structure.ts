@@ -1,6 +1,6 @@
-import type { StructureResolver } from 'sanity/desk'
-import { BsBuilding } from 'react-icons/bs'
 import { CogIcon } from '@sanity/icons'
+import { BsBuilding } from 'react-icons/bs'
+import type { StructureResolver } from 'sanity/desk'
 
 export const structure: StructureResolver = (S, context) => {
   return S.list().title('Content').items([
@@ -27,6 +27,9 @@ export const structure: StructureResolver = (S, context) => {
     S.listItem().title('Settings').icon(CogIcon).child(
       S.document().schemaType('settings')
     ),
+
+    // Embed Docs
+    S.documentTypeListItem('embedDoc').title('Docs'),
 
   ])
 }
