@@ -1,13 +1,10 @@
-import { createClient } from '@sanity/client'
 import { Card, Flex, Heading, Spinner, Stack, Text } from "@sanity/ui";
 import { useEffect, useState } from "react";
 
-import { makeClient } from '~/sanity/client'
-
-const client = makeClient()
+import { client } from '~/sanity/client'
 
 // Embed query for all documents of type "embedDoc"
-const embedQuery = `*[_type == "embedDoc"]`
+const embedQuery = `*[_type == "embedDoc"] | order(title)`
 
 const EmbedDocs = (props) => {
   const [loading, setLoading] = useState(true)
@@ -46,43 +43,55 @@ const EmbedDocs = (props) => {
     updateHash(id)
   }
 
+  // Do some mapping of embed types
+  const makeIframeSrc = (url: string): string => {
+
+    // Allow Slab post URLs to be used by turning them into embed URLs
+    if (url.includes('slab.com/posts/')) {
+      return url.replace('/posts/', '/embed/')
+    }
+
+    // Else just pass through
+    return url
+  }
+
+  return loading ? <Loader/> : (
+    <Card padding={4} height={"stretch"}>
+      <Flex height={"stretch"}>
+        <Card flex={2} borderRight={true}>
+          <Stack space={4}>
+            <Heading style={{marginBottom: '1rem'}}>Docs</Heading>
+            {docs.map((doc) => (
+              <Text
+                key={doc._id}
+                onClick={() => handleTitleClick(doc._id)}
+                style={{cursor: 'pointer'}}
+                weight={doc._id === selectedDoc?._id ? 'bold' : 'regular'}
+              >
+                {doc.title}
+              </Text>
+            ))}
+          </Stack>
+        </Card>
+        <Card flex={[5, 6, 7]} marginLeft={[2, 2, 3, 4]}>
+          {selectedDoc && (
+            <iframe
+              src={makeIframeSrc(selectedDoc.embedUrl)}
+              width="100%"
+              height="100%"
+            />
+          )}
+        </Card>
+      </Flex>
+    </Card>
+  )
+}
+
+function Loader() {
   return (
-    <>
-      {loading ? (
-        <Card padding={4} height={"stretch"} style={{justifyContent: 'center'}}>
-          <Spinner muted/>
-        </Card>
-      ) : (
-        <Card padding={4} height={"stretch"}>
-          <Flex padding={4} height={"stretch"}>
-            <Card flex={2} borderRight={true}>
-              <Stack space={4}>
-                <Heading style={{marginBottom: '1rem'}}>Docs</Heading>
-                {docs.map((doc) => (
-                  <Text
-                    key={doc._id}
-                    onClick={() => handleTitleClick(doc._id)}
-                    style={{cursor: 'pointer'}}
-                    weight={doc._id === selectedDoc?._id ? 'bold' : 'regular'}
-                  >
-                    {doc.title}
-                  </Text>
-                ))}
-              </Stack>
-            </Card>
-            <Card flex={[5, 6, 7]} marginLeft={[2, 2, 3, 4]}>
-              {selectedDoc && (
-                <iframe
-                  src={selectedDoc.embedUrl}
-                  width="100%"
-                  height="100%"
-                />
-              )}
-            </Card>
-          </Flex>
-        </Card>
-      )}
-    </>
+    <Card padding={4} height={"stretch"} style={{justifyContent: 'center'}}>
+      <Spinner muted/>
+    </Card>
   )
 }
 
