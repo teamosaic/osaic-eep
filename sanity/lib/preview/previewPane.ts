@@ -10,7 +10,7 @@ export const addPreviewPane: DefaultDocumentNodeResolver = (S, ctx) => {
 
   // If not a page type, just return a normal document
   // const schemaType = ctx.schema.get(ctx.schemaType)
-  if (ctx.schemaType == 'settings') return S.document()
+  if (['settings', 'embedDoc'].includes(ctx.schemaType)) return S.document()
 
   // Otherwise, add the preview pane view
   return S.document().views([

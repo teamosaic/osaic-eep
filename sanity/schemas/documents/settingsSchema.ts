@@ -11,10 +11,6 @@ export const settingsSchema = {
       name: 'seo',
       title: 'SEO Defaults',
     },
-    {
-      name: 'docs',
-      title: 'Docs',
-    },
   ],
   fields: [
     ...setGroup('seo', [
@@ -28,21 +24,6 @@ export const settingsSchema = {
       metaDescription,
       metaImage,
     ]),
-    {
-      name: 'embedDocs',
-      title: 'Embed Docs',
-      description: 'External, embeddable documents (such as Slabs) that populate the Docs section of this Sanity instance.',
-      type: 'array',
-      group: 'docs',
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {type: 'embedDoc'},
-          ]
-        },
-      ],
-    },
   ],
   preview: {
     prepare() {

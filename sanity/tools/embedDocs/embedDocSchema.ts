@@ -5,6 +5,7 @@ export const embedDocSchema = defineType({
   name: 'embedDoc',
   type: 'document',
   icon: BiBookAlt,
+  description: 'External, embeddable documents (such as Slabs) that populate the Docs section of this Sanity instance.',
   title: 'Embed Doc',
   fields: [
     defineField({
