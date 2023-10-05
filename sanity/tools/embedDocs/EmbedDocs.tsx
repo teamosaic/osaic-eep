@@ -46,6 +46,18 @@ const EmbedDocs = (props) => {
     updateHash(id)
   }
 
+  // Do some mapping of embed types
+  const makeIframeSrc = (url: string): string => {
+
+    // Allow Slab post URLs to be used by turning them into embed URLs
+    if (url.includes('slab.com/posts/')) {
+      return url.replace('/posts/', '/embed/')
+    }
+
+    // Else just pass through
+    return url
+  }
+
   return loading ? <Loader/> : (
     <Card padding={4} height={"stretch"}>
       <Flex height={"stretch"}>
@@ -67,7 +79,7 @@ const EmbedDocs = (props) => {
         <Card flex={[5, 6, 7]} marginLeft={[2, 2, 3, 4]}>
           {selectedDoc && (
             <iframe
-              src={selectedDoc.embedUrl}
+              src={makeIframeSrc(selectedDoc.embedUrl)}
               width="100%"
               height="100%"
             />
