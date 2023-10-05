@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { client } from '~/sanity/client'
 
 // Embed query for all documents of type "embedDoc"
-const embedQuery = `*[_type == "embedDoc"]`
+const embedQuery = `*[_type == "embedDoc"] | order(title)`
 
 const EmbedDocs = (props) => {
   const [loading, setLoading] = useState(true)
