@@ -31,6 +31,7 @@ export const settingsSchema = {
     {
       name: 'embedDocs',
       title: 'Embed Docs',
+      description: 'External, embeddable documents (such as Slabs) that populate the Docs section of this Sanity instance.',
       type: 'array',
       description: 'External, embeddable documents (such as Slabs) that populate the Docs section of this Sanity instance.',
       group: 'docs',
