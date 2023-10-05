@@ -48,7 +48,7 @@ const EmbedDocs = (props) => {
 
   return loading ? <Loader/> : (
     <Card padding={4} height={"stretch"}>
-      <Flex padding={4} height={"stretch"}>
+      <Flex height={"stretch"}>
         <Card flex={2} borderRight={true}>
           <Stack space={4}>
             <Heading style={{marginBottom: '1rem'}}>Docs</Heading>
