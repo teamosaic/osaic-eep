@@ -46,43 +46,43 @@ const EmbedDocs = (props) => {
     updateHash(id)
   }
 
+  return loading ? <Loader/> : (
+    <Card padding={4} height={"stretch"}>
+      <Flex padding={4} height={"stretch"}>
+        <Card flex={2} borderRight={true}>
+          <Stack space={4}>
+            <Heading style={{marginBottom: '1rem'}}>Docs</Heading>
+            {docs.map((doc) => (
+              <Text
+                key={doc._id}
+                onClick={() => handleTitleClick(doc._id)}
+                style={{cursor: 'pointer'}}
+                weight={doc._id === selectedDoc?._id ? 'bold' : 'regular'}
+              >
+                {doc.title}
+              </Text>
+            ))}
+          </Stack>
+        </Card>
+        <Card flex={[5, 6, 7]} marginLeft={[2, 2, 3, 4]}>
+          {selectedDoc && (
+            <iframe
+              src={selectedDoc.embedUrl}
+              width="100%"
+              height="100%"
+            />
+          )}
+        </Card>
+      </Flex>
+    </Card>
+  )
+}
+
+function Loader() {
   return (
-    <>
-      {loading ? (
-        <Card padding={4} height={"stretch"} style={{justifyContent: 'center'}}>
-          <Spinner muted/>
-        </Card>
-      ) : (
-        <Card padding={4} height={"stretch"}>
-          <Flex padding={4} height={"stretch"}>
-            <Card flex={2} borderRight={true}>
-              <Stack space={4}>
-                <Heading style={{marginBottom: '1rem'}}>Docs</Heading>
-                {docs.map((doc) => (
-                  <Text
-                    key={doc._id}
-                    onClick={() => handleTitleClick(doc._id)}
-                    style={{cursor: 'pointer'}}
-                    weight={doc._id === selectedDoc?._id ? 'bold' : 'regular'}
-                  >
-                    {doc.title}
-                  </Text>
-                ))}
-              </Stack>
-            </Card>
-            <Card flex={[5, 6, 7]} marginLeft={[2, 2, 3, 4]}>
-              {selectedDoc && (
-                <iframe
-                  src={selectedDoc.embedUrl}
-                  width="100%"
-                  height="100%"
-                />
-              )}
-            </Card>
-          </Flex>
-        </Card>
-      )}
-    </>
+    <Card padding={4} height={"stretch"} style={{justifyContent: 'center'}}>
+      <Spinner muted/>
+    </Card>
   )
 }
 
