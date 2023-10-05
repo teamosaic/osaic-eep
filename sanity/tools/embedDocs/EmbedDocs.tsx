@@ -49,7 +49,7 @@ const EmbedDocs = (props) => {
   return (
     <>
       {loading ? (
-        <Card height={"stretch"} style={{justifyContent: 'center'}}>
+        <Card padding={4} height={"stretch"} style={{justifyContent: 'center'}}>
           <Spinner muted/>
         </Card>
       ) : (
