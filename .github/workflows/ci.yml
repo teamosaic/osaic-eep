@@ -10,6 +10,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+env:
+  NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+  NEXT_PUBLIC_SANITY_API_VERSION: 2023-03-27
+  NEXT_PUBLIC_SANITY_DATASET: development
+
 jobs:
   build:
     runs-on: ubuntu-latest
