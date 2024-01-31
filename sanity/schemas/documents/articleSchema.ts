@@ -7,6 +7,15 @@ export const articleSchema = makePageSchema({
   uriPrefix: 'articles',
   icon: BsNewspaper,
   subtitleField: 'date',
+
+  // add more groups
+  groups: [
+    {
+      name: 'listing',
+      title: 'Listing'
+    }
+  ],
+
   contentFields: [
 
     {
@@ -22,12 +31,6 @@ export const articleSchema = makePageSchema({
       },
     },
 
-    imageWithAlt({
-      name: 'image',
-      description: `A 16:9 image that's displayed in listing cards and on the Article detail page.`,
-      required: true,
-    }),
-
     {
       name: 'body',
       type: 'array',
@@ -35,6 +38,15 @@ export const articleSchema = makePageSchema({
       group: 'content',
       of: [{ type: 'block' }]
     },
+
+    // listing group fields
+    imageWithAlt({
+      name: 'image',
+      group: 'listing',
+      description: `A 16:9 image that's displayed in listing cards and on the Article detail page.`,
+      required: true,
+    }),
+
   ],
 
   orderings: [
