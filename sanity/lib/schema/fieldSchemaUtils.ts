@@ -25,10 +25,11 @@ export function portableTextSummary(blocks: any[]): string {
 }
 
 export function imageWithAlt({
-  name, title, description, hotspot = true, required
+  name, title, group = 'content', description, hotspot = true, required
 }: {
   name: string,
   title?: string,
+  group?: string
   description?: string,
   hotspot?: boolean,
   required?: boolean,
@@ -36,6 +37,7 @@ export function imageWithAlt({
   return {
     name,
     type: 'image',
+    group,
     title,
     description,
     options: {

@@ -17,6 +17,7 @@ export function makePageSchema({
   uriPrefix,
   contentFields = [],
   orderings = [],
+  groups = []
 }: {
   name: string // The singular page name
   title?: string // Document title
@@ -24,6 +25,7 @@ export function makePageSchema({
   subtitleField?: string // The field to pull the subtitle from
   uriPrefix?: string // Used to build the uri
   contentFields?: any[] // Sanity fields to add to content fields
+  groups?: any[]
   orderings?: SortOrdering[]
 }): DocumentDefinition {
   return {
@@ -35,6 +37,8 @@ export function makePageSchema({
     groups: [
       { name: 'content', title: 'Content', default: true, },
       { name: 'seo', title: 'SEO' },
+
+      ...(groups.length ? groups : []), // add any groups coming from the document schema
     ],
 
     fields: [
