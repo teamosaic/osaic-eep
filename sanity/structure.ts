@@ -22,6 +22,10 @@ export const structure: StructureResolver = (S, context) => {
       ])
     ),
 
+    // Reusable Sections
+    S.divider(),
+    S.documentTypeListItem('reusableSections').title('Reusable Sections'),
+
     // Settings
     S.divider(),
     S.listItem().title('Settings').icon(CogIcon).child(

@@ -24,5 +24,9 @@ export const blocksFragment = groq`
       ${ articleCardFragment },
     },
     'totalArticles': count(*[_type == "article"]),
+  },
+
+  _type == 'reusableSectionBlock' => {
+    reusableSection[]->
   }
 `

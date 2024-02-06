@@ -11,6 +11,7 @@ const ArticlesBlock = dynamic(() => import('./ArticlesBlock'))
 const CtaBlock = dynamic(() => import('./ctaBlocks/CtaBlock'))
 const FaqBlock = dynamic(() => import('./FaqBlock'))
 const HeroBlock = dynamic(() => import('./HeroBlock'))
+const ReusableSectionBlock = dynamic(() => import('./ReusableSectionBlock'))
 const SplitBlock = dynamic(() => import('./SplitBlock'))
 
 // Render non-disabled blocks based on type, wrapped in BlockParent
@@ -70,6 +71,7 @@ function getComponentFunction(type: string): ComponentType {
     case 'ctaBlock': return CtaBlock
     case 'faqBlock': return FaqBlock
     case 'heroBlock': return HeroBlock
+    case 'reusableSectionBlock': return ReusableSectionBlock
     case 'splitBlock': return SplitBlock
   }
 }
