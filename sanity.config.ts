@@ -6,6 +6,7 @@
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
+import { media } from 'sanity-plugin-media';
 
 import StudioNavbar from '~/sanity/components/StudioNavbar'
 import { embedDocsTool } from '~/sanity/tools/embedDocs'
@@ -46,6 +47,10 @@ export default defineConfig({
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
+
+    // Media library plugin
+    // https://github.com/sanity-io/sanity-plugin-media
+    media()
   ],
   document: {
 

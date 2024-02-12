@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-intersection-observer": "^9.5.2",
+    "sanity-plugin-media": "^2.2.4",
     "sanity": "^3.20.2",
     "styled-components": "^5.3.11",
     "suspend-react": "^0.1.3",
