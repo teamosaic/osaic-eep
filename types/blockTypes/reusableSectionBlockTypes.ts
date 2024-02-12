@@ -1,6 +1,6 @@
-import { Block } from '../blockTypes'
+import { ReusableSection } from '../documentTypes'
 
 export interface ReusableSectionsBlock {
   _id: string
-  reusableSection: Block[]
+  reusableSection: ReusableSection[]
 }

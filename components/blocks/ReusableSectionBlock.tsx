@@ -8,7 +8,7 @@ export default function ReusableSectionBlock({
 
   return (
     <>
-      <BlocksList blocks={ reusableSection } />
+      <BlocksList blocks={ reusableSection.blocks } />
     </>
   )
 }

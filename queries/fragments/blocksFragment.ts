@@ -26,7 +26,8 @@ export const blocksFragment = groq`
     'totalArticles': count(*[_type == "article"]),
   },
 
+  // De-reference the reusable section document reference
   _type == 'reusableSectionBlock' => {
-    reusableSection[]->
+    reusableSection->
   }
 `
