@@ -1,6 +1,5 @@
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import clsx from 'clsx'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -8,24 +7,16 @@ import logo from '~/assets/images/logo.svg'
 import SmartLink from '~/packages/smart-link/SmartLink'
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'One', href: '#' },
 ]
 
 // Based on
-// https://tailwindui.com/components/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b
-export default function LayoutHeader({ overlap = false }:{
-  overlap?: boolean // Does the header overlap the page content
-}):React.ReactElement {
+export default function LayoutHeader():React.ReactElement {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className={clsx({
-      'absolute inset-x-0 top-0 z-50 text-white': overlap
-    })}>
+    <header className='fixed top-xxs left-xxs z-[5] text-white'>
 
       <nav className="
         flex items-center justify-between
@@ -34,7 +25,7 @@ export default function LayoutHeader({ overlap = false }:{
 
         <div className="flex lg:flex-1">
           <SmartLink href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">EEP</span>
             <Image
               className="h-8 w-auto"
               src={logo}
@@ -59,11 +50,6 @@ export default function LayoutHeader({ overlap = false }:{
               {item.name}
             </a>
           ))}
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
         </div>
       </nav>
 
