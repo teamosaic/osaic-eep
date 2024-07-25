@@ -1,4 +1,4 @@
-# Next.js Sanity Demo
+# Osaic EEP
 
 ## Development
 

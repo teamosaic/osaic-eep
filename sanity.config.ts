@@ -21,7 +21,7 @@ export default defineConfig({
   basePath: '/admin',
   projectId,
   dataset,
-  title: 'Next Sanity Demo',
+  title: 'Osaic EEP',
   schema: {
     types: [
       ...schema.types,
