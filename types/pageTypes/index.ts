@@ -1,5 +1,3 @@
-export * from './articlePageTypes'
-export * from './articlesIndexPageTypes'
 export * from './homePageTypes'
 export * from './pageTypes'
 export * from './towerPageTypes'
