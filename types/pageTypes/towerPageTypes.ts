@@ -8,10 +8,3 @@ export interface Tower extends PageDocument {
   description: string
 }
 
-
-export interface Home extends PageDocument {
-  blocks: Block[]
-}
-
-
-
