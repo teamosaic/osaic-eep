@@ -47,12 +47,10 @@ function render({ page, settings }: {
 function PageComponent({ page }: {
   page: PageDocument
 }): React.ReactElement {
-  console.log('page.type', page._type)
   switch(page._type) {
     case PageType.Tower:
       return <Tower page={ page as TowerPage } />
     case PageType.Home:
-      console.log('in page home');
       return <Home page={ page as HomePage } />
   }
 }
