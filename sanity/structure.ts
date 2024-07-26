@@ -5,35 +5,23 @@ import type { StructureResolver } from 'sanity/desk'
 export const structure: StructureResolver = (S, context) => {
   return S.list().title('Content').items([
 
-    // Towers
-    S.documentTypeListItem('tower').title('Towers'),
-
-    // Articles Category
-    S.listItem().title('Articles').child(
-      S.list().title('Articles').items([
-
-        // Articles index
-        S.listItem().title('Articles Index').icon(BsBuilding).child(
-          S.document().schemaType('articlesIndex')
-        ),
-
-        // All articles
-        S.documentTypeListItem('article').title('Article Entries'),
-      ])
+    // Pages
+    S.listItem().title('Home Page').icon(BsBuilding).child(
+      S.document().schemaType('homePage').title('Home Page')
     ),
 
+    // Towers (calling them Enhancement Category)
+    S.documentTypeListItem('tower').title('Enhancement Category'),
+
     // Reusable Sections
-    S.divider(),
-    S.documentTypeListItem('reusableSections').title('Reusable Sections'),
+    // S.divider(),
+    // S.documentTypeListItem('reusableSections').title('Reusable Sections'),
 
     // Settings
     S.divider(),
     S.listItem().title('Settings').icon(CogIcon).child(
       S.document().schemaType('settings')
     ),
-
-    // Embed Docs
-    S.documentTypeListItem('embedDoc').title('Docs'),
 
   ])
 }

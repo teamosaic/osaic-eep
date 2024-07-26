@@ -5,21 +5,17 @@ import { getSettings } from '~/queries/settingsQueries'
 import { makeClient, makePreviewClient } from '~/sanity/client'
 import PagePreview from '~/sanity/components/PagePeview'
 import {
-  Article as ArticlePage,
-  ArticlesIndex as ArticlesIndexPage,
+  Home as HomePage,
   PageDocument,
   PageType,
-  Tower as TowerPage,
-} from '~/types'
+  Tower as TowerPage} from '~/types'
 
 // Page components
+const Home = dynamic(() => import('../components/pages/HomePage'))
 const Tower = dynamic(() => import('../components/pages/Tower'))
-const Article = dynamic(() => import('../components/pages/Article'))
-const ArticlesIndex = dynamic(() => import('../components/pages/articlesIndex/ArticlesIndex'))
 
 // Page queries
-import { articleStaticPaths,getArticle } from '~/queries/articleQueries'
-import { articlesIndexStaticPaths,getArticlesIndex } from '~/queries/articlesIndexQueries'
+import { getHomePage, homeStaticPaths } from '~/queries/homeQueries'
 import { getTower, towerStaticPaths } from '~/queries/towerQueries'
 
 export default function PageDelegator({ previewToken, page, settings }) {
@@ -51,13 +47,13 @@ function render({ page, settings }: {
 function PageComponent({ page }: {
   page: PageDocument
 }): React.ReactElement {
+  console.log('page.type', page._type)
   switch(page._type) {
     case PageType.Tower:
       return <Tower page={ page as TowerPage } />
-    case PageType.Article:
-      return <Article page={ page as ArticlePage } />
-    case PageType.ArticlesIndex:
-      return <ArticlesIndex page={ page as ArticlesIndexPage } />
+    case PageType.Home:
+      console.log('in page home');
+      return <Home page={ page as HomePage } />
   }
 }
 
@@ -65,15 +61,13 @@ function PageComponent({ page }: {
 function pageQuery(type: PageType): string {
   switch(type) {
     case PageType.Tower: return getTower
-    case PageType.Article: return getArticle
-    case PageType.ArticlesIndex: return getArticlesIndex
+    case PageType.Home: return getHomePage
   }
 }
 
 // Parse a URI to figure out the type, falling back to Towers
 function determineTypeFromUri(uri: string): PageType {
-  if (uri == '/articles') return PageType.ArticlesIndex
-  if (uri.startsWith('/articles/')) return PageType.Article
+  if (uri == '/') return PageType.Home
   return PageType.Tower
 }
 
@@ -114,8 +108,7 @@ export async function getStaticPaths() {
   // Get all page slugs
   const pages = (await Promise.all([
     client.fetch(towerStaticPaths),
-    client.fetch(articleStaticPaths),
-    client.fetch(articlesIndexStaticPaths),
+    client.fetch(homeStaticPaths),
   ])).flat()
 
   // Make the slug an array of path segments, which is what Next requires when

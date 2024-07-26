@@ -1,6 +1,1 @@
-export * from './articlesBlockSchema'
-export * from './ctaBlockSchema'
-export * from './faqBlockSchema'
-export * from './heroBlockSchema'
-export * from './reusableSectionBlockSchema'
-export * from './splitBlockSchema'
+export * from './enhancementBlockSchema'

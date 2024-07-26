@@ -5,8 +5,7 @@ import { SanityObject } from '../sanityTypes'
 // The Sanity schema type names that generate pages
 export enum PageType {
   Tower = 'tower',
-  Article = 'article',
-  ArticlesIndex = 'articlesIndex',
+  Home = 'homePage'
 }
 
 // A helper type for a Santiy document whose type is one of the page types
