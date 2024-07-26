@@ -13,7 +13,7 @@ export const enhancementBlockSchema = makeBlockSchema({
       name: 'type',
       type: 'string',
       validation: Rule => Rule.required(),
-      initialValue: EnhancementBlockType.SimpleCentered,
+      initialValue: EnhancementBlockType.Simple,
       options: {
         list: createListOptionsFromEnum(EnhancementBlockType, {
           [EnhancementBlockType.Simple]: 'Simple',
