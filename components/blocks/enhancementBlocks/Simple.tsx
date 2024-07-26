@@ -1,18 +1,19 @@
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 import AnimateInView from '~/packages/animate-in-view'
-import { CtaBlock } from '~/types'
+import { EnhancementBlock } from '~/types'
 
-export default function SimpleCenteredCtaBlock(
-  { body }: CtaBlock
+export default function Simple(
+  { body }: EnhancementBlock
 ): React.ReactElement {
   return (
-    <div className="max-w-screen-md mx-auto px-gutter">
+    <div className="
+      max-w-screen-xl mx-auto px-gutter
+      md:flex md:items-center md:justify-between">
 
-      {/* The main WYSIWYG text */}
       <AnimateInView
         target='descendants'
         className='prose-animate-in'>
-        <MarketingPortableText value={ body } className='text-center'/>
+        <MarketingPortableText value={ body }/>
       </AnimateInView>
 
     </div>

@@ -1,5 +1,5 @@
-export * from './enhancementBlockTypes'
+export * from './enhancementBlock'
 
-import { EnhancementBlock } from './enhancementBlockTypes'
+import { EnhancementBlock } from './enhancementBlock'
 
 export type Block = EnhancementBlock
