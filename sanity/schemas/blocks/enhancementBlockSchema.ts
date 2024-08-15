@@ -10,6 +10,11 @@ export const enhancementBlockSchema = makeBlockSchema({
   hasBackground: false,
   contentFields: [
     {
+      name: 'enhancementTitle',
+      type: 'string',
+      description: 'Enhancement Title',
+    },
+    {
       name: 'type',
       type: 'string',
       validation: Rule => Rule.required(),

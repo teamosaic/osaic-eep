@@ -8,6 +8,8 @@ import SmartLink from '~/packages/smart-link/SmartLink'
 
 const navigation = [
   { name: 'One', href: '#' },
+  { name: 'Two', href: '#' },
+  { name: 'Three', href: '#' },
 ]
 
 // Based on
