@@ -9,3 +9,7 @@ export function mapOption(key: any, options: Object): any {
 export function mapOptions(keys: any[], options: Object): any {
   return (keys || []).map(key => mapOption(key, options))
 }
+
+export function handleize(string: String): any {
+  return string.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+}

@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import type { Image } from 'sanity'
 
+import SanityVisual from '~/components/global/SanityVisual'
 import PageHead from '~/components/layout/PageHead'
+import { handleize } from '~/lib/helpers'
+import AnimateInView from '~/packages/animate-in-view'
+import SmartLink from '~/packages/smart-link/SmartLink'
 import { getEnhancements } from '~/queries/enhancementQueries'
 import { client } from '~/sanity/client'
 import { Home } from '~/types'
@@ -28,6 +33,15 @@ export default function HomePage({ page }: { page: Home }) {
     <>
       <PageHead { ...page } />
 
+      { page.bg &&
+        <AnimateInView className='animate-slow-scale-down-in w-[300px] h-[300px] relative'>
+          <SanityVisual
+            className="w-[300px] h-[300px]"
+            expand
+            sizes='100vw'
+            src={ page.bg } />
+        </AnimateInView> }
+
       <div className="text-center w-11/12 mx-auto max-w-lg py-[100px]">
         <h1 className="text-3xl">HOME PAGE</h1>
         <h2 className="text-2xl">{ page.title }</h2>
@@ -49,8 +63,10 @@ export default function HomePage({ page }: { page: Home }) {
             ) : null }
 
             {category.blocks.map((enhancement) => (
-              <div key={enhancement._id}>
-                <p>{enhancement.enhancementTitle}</p>
+              <div key={enhancement._key}>
+                <SmartLink href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
+                  {enhancement.enhancementTitle}
+                </SmartLink>
               </div>
             ))}
           </div>

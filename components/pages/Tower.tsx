@@ -1,14 +1,17 @@
-import type { Image } from 'sanity'
-
-import BlocksList from '~/components/blocks/BlocksList'
 import PageHead from '~/components/layout/PageHead'
+import SmartLink from '~/packages/smart-link/SmartLink'
 import { Tower } from '~/types'
 
-export default function Tower({ page }: { page: Tower }) {
+export default function TowerPage({ page }: { page: Tower }) {
   return (
     <>
       <PageHead { ...page } />
-      <BlocksList blocks={ page.blocks } />
+
+      <div className="text-center p-lg">
+        <h1 className="">{page.title}</h1>
+        <SmartLink href="/">Back Home</SmartLink>
+      </div>
+
     </>
   )
 }
