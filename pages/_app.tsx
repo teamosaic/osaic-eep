@@ -2,13 +2,48 @@ import 'styles/global.css'
 
 import GoogleTagManager from 'components/layout/GoogleTagManager'
 import { AppProps } from 'next/app'
-// Example of using Google fonts via @next/font with a variable width font
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 
-const sans = Inter({
-  variable: '--font-sans',
-  subsets: ['latin'],
-  weight: 'variable',
+const marselis = localFont({
+  variable: '--font-marselis',
+  display: 'swap',
+  src: [
+    {
+      path: '../assets/fonts/MarselisPro.otf',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../assets/fonts/MarselisPro-Italic.otf',
+      weight: '400',
+      style: 'italic'
+    },
+    {
+      path: '../assets/fonts/MarselisPro-Bold.otf',
+      weight: '700',
+      style: 'normal'
+    },
+    {
+      path: '../assets/fonts/MarselisPro-BoldItalic.otf',
+      weight: '700',
+      style: 'italic'
+    },
+    {
+      path: '../assets/fonts/MarselisPro-Black.otf',
+      weight: '900',
+      style: 'normal'
+    },
+    {
+      path: '../assets/fonts/MarselisPro-Light.otf',
+      weight: '300',
+      style: 'normal'
+    },
+    {
+      path: '../assets/fonts/MarselisPro-LightItalic.otf',
+      weight: '300',
+      style: 'italic'
+    },
+  ]
 })
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -17,7 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <style jsx global>
         {`
           :root {
-            --font-sans: ${sans.style.fontFamily};
+            --font-marselis: ${marselis.style.fontFamily};
           }
         `}
       </style>

@@ -1,14 +1,31 @@
 @layer components {
 
+  .prose>p {
+    @apply style-body
+  }
+
   /* Alide up text elements */
   .prose-animate-in {
-    h1, h2, h3, h4, h5, h6, p {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       @apply animate-slide-up-in;
     }
+
     h2 {
       animation-delay: .1s;
     }
-    h3, h4, h5, h6, p {
+
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
       animation-delay: .2s;
     }
 
@@ -16,6 +33,123 @@
     .prose>div {
       @apply animate-scale-down-in;
       animation-delay: .75s;
+    }
+  }
+
+
+  .style-display {
+    @apply text-display leading-display font-marselis font-normal;
+
+    &:before {
+      content: '';
+      margin-bottom: -0.12em;
+      display: table;
+    }
+
+    &:after {
+      content: '';
+      margin-top: 0;
+      display: table;
+    }
+  }
+
+  .style-h1 {
+    @apply text-h1 leading-h1 font-marselis font-normal;
+  }
+
+  .style-h2 {
+    @apply text-h2 leading-h2 font-marselis;
+  }
+
+  .style-h3 {
+    @apply text-h3 leading-h3 font-marselis;
+
+    &:before {
+      content: '';
+      margin-bottom: -0.12em;
+      display: table;
+    }
+
+    &:after {
+      content: '';
+      margin-top: -0.12em;
+      display: table;
+    }
+  }
+
+  .style-h4 {
+    @apply text-h4 leading-h4 font-marselis;
+  }
+
+  .style-h5 {
+    @apply text-h5 leading-h5 font-marselis;
+  }
+
+  .style-h6 {
+    @apply text-h6 leading-h6 font-marselis;
+  }
+
+  .style-large {
+    @apply text-large leading-large tracking-large font-cordale font-normal;
+  }
+
+  .style-body {
+    @apply text-body leading-body tracking-body font-cordale font-normal;
+  }
+
+  .style-smallLabel {
+    @apply text-smallLabel leading-smallLabel tracking-smallLabel font-marselis font-bold uppercase;
+
+    &:before {
+      content: '';
+      margin-bottom: -0.8em;
+      display: table;
+    }
+
+    &:after {
+      content: '';
+      margin-top: -0.9em;
+      display: table;
+    }
+  }
+
+  .style-label {
+    @apply text-label leading-label tracking-label font-marselis font-bold uppercase;
+  }
+
+  .accordion {
+
+    .btn {
+      @apply bg-primary
+    }
+
+    .bg-jonquil {
+      @apply text-primary
+    }
+
+    .bg-light-satin-linen {
+      @apply text-primary
+    }
+  }
+
+  .pill-card {
+    >div {
+      @apply bg-jonquil;
+      @apply rounded-[60px];
+      @apply py-5;
+      @apply px-10;
+    }
+
+    .prose-animate-in {
+      margin-bottom: 0;
+    }
+
+    h4 {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 0;
     }
   }
 }

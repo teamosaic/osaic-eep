@@ -7,9 +7,9 @@ import logo from '~/assets/images/logo.svg'
 import SmartLink from '~/packages/smart-link/SmartLink'
 
 const navigation = [
-  { name: 'One', href: '#' },
-  { name: 'Two', href: '#' },
-  { name: 'Three', href: '#' },
+  // { name: 'One', href: '#' },
+  // { name: 'Two', href: '#' },
+  // { name: 'Three', href: '#' },
 ]
 
 // Based on
@@ -29,7 +29,7 @@ export default function LayoutHeader():React.ReactElement {
           <SmartLink href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">EEP</span>
             <Image
-              className="h-8 w-auto"
+              className="w-auto h-[40px]"
               src={logo}
               alt=""
             />

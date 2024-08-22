@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 
+import {
+  CategoryContainer,
+  CategoryContent,
+  CategoryHeading,
+  CategoryPill,
+  CategoryTitle } from '~/components/global/Category'
+import { EnhancementLink } from '~/components/global/Enhancement'
 import SanityVisual from '~/components/global/SanityVisual'
 import PageHead from '~/components/layout/PageHead'
 import { handleize } from '~/lib/helpers'
@@ -12,8 +19,6 @@ import { Home } from '~/types'
 export default function HomePage({ page }: { page: Home }) {
   const [loading, setLoading] = useState(true)
   const [enhancementCategories, setEnhancements] = useState([])
-
-  console.log('pagebg', page.bg)
 
   useEffect(() => {
 
@@ -41,55 +46,98 @@ export default function HomePage({ page }: { page: Home }) {
     <>
       <PageHead { ...page } />
 
-      { page.background &&
-        <AnimateInView className='animate-slow-scale-down-in w-[300px] h-[300px] relative'>
-          <SanityVisual
-            className="w-[300px] h-[300px]"
-            expand
-            sizes='100vw'
-            src={ page.background } />
-        </AnimateInView> }
 
-      <div className="text-center w-11/12 mx-auto max-w-lg py-[100px]">
-        <h1 className="text-3xl">{ page.title }</h1>
+      <div className="flex">
 
+        <div className="
+          relative
+          top-0
+          left-0
+          h-[100vh]
+          w-home-panel
+          overflow-hidden
+          bg-black
+          flex
+          shrink-0
+          items-end">
 
-        <div className="bg-white rounded-lg p-md">
+          { page.background &&
+            <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
+              <SanityVisual
+                expand
+                sizes='100vw'
+                src={ page.background } />
+            </AnimateInView> }
 
-          <h3 className="font-bold">{ page.enhancementsTitle }</h3>
-          <p>{ page.enhancementsDescription }</p>
+            <div className="bg-black/50 absolute inset-0 z-1"></div>
 
-          { loading ? (
-            <Spinner />
-          ) : (
-            <>
-              {enhancementCategories.map((category) => (
-                <div key={category._id}>
-                  <h3>{category.title}</h3>
-                  <p>{ category.blocks.length }</p>
+            <h1
+              className="
+                font-marselis
+                text-white
+                relative
+                z-2
+                p-gutter
+                text-home-heading
+                leading-home-heading
+                font-[400]
+                lg:font-[350]
+              ">{ page.title }</h1>
 
-                  { category.subhead ? (
-                    <h4>{category.subhead}</h4>
-                  ) : null }
+        </div>
 
-                  { category.description ? (
-                    <p>{category.description}</p>
-                  ) : null }
+        <div className="relative grow bg-white p-sm min-h-[100vh]">
 
-                  {category.blocks.map((enhancement) => (
-                    <div key={enhancement._key}>
-                      <SmartLink href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
-                        {enhancement.enhancementTitle}
-                      </SmartLink>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </>
-          )}
+          <div className="max-w-[750px] mx-auto mt-xs">
+            <h2 className="style-h5 font-marselis text-evergreen">{ page.enhancementsTitle }</h2>
+            <p className="style-body mt-xs mb-sm">{ page.enhancementsDescription }</p>
+
+            { loading ? (
+              <Spinner />
+            ) : (
+              <>
+                {enhancementCategories.map((category) => (
+                  <CategoryContainer key={category._id}>
+
+                    <CategoryHeading>
+                      <CategoryTitle title={category.title} />
+                      <CategoryPill count={category.blocks.length} />
+                    </CategoryHeading>
+
+                    <CategoryContent>
+
+                      <div className="max-w-[350px] mb-xxs">
+                        { category.subheading ? (
+                          <h4 className="font-marselis text-[18px] leading-[28px] text-evergreen font-[400] mb-3">{category.subheading}</h4>
+                        ) : null }
+
+                        { category.description ? (
+                          <p>{category.description}</p>
+                        ) : null }
+                      </div>
+
+                      {category.blocks.map((enhancement) => (
+                        <EnhancementLink key={enhancement._key}>
+                          <SmartLink href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
+                            <span>{enhancement.enhancementTitle}</span>
+                            <span className="icon-caret"></span>
+                          </SmartLink>
+                        </EnhancementLink>
+                      ))}
+
+                    </CategoryContent>
+
+                  </CategoryContainer>
+
+                ))}
+              </>
+            )}
+          </div>
 
         </div>
       </div>
+
+
     </>
   )
 }

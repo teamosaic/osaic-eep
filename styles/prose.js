@@ -24,43 +24,45 @@ export const base = {
 
   // Make fluid font sizes based on Cloak styleguide
   h1: {
-    fontSize: fluid(100, 70),
-    letterSpacing: '-0.07em',
-    lineHeight: 1,
+    fontSize: fluid(90, 76),
+    lineHeight: fluid(90, 76),
     fontWeight: 400,
+    fontFamily: 'var(--font-marselis)'
   },
   h2: {
-    fontSize: fluid(70, 50),
-    letterSpacing: '-0.07em',
-    lineHeight: 1,
+    fontSize: fluid(80, 64),
+    lineHeight: fluid(88, 64),
     fontWeight: 400,
+    fontFamily: 'var(--font-marselis)'
   },
   h3: {
-    fontSize: fluid(50, 36),
-    letterSpacing: '-0.06em',
-    lineHeight: fluid(55, 40),
+    fontSize: fluid(72, 42),
+    lineHeight: fluid(72, 42),
     fontWeight: 400,
+    fontFamily: 'var(--font-marselis)'
   },
   h4: {
-    fontSize: fluid(36, 28),
-    letterSpacing: '-0.03em',
-    lineHeight: fluid(40, 32),
+    fontSize: fluid(55, 32),
+    lineHeight: fluid(63.25, 40),
     fontWeight: 400,
+    fontFamily: 'var(--font-marselis)'
   },
   h5: {
-    fontSize: fluid(28, 20),
-    letterSpacing: '-0.02em',
-    lineHeight: 1,
+    fontSize: fluid(42, 26),
+    lineHeight: fluid(50.4, 29.9),
     fontWeight: 400,
+    fontFamily: 'var(--font-marselis)'
   },
   h6: {
-    fontSize: fluid(28, 14),
-    lineHeight: fluid(28, 22),
-    fontWeight: 600,
+    fontSize: fluid(30, 20),
+    lineHeight: fluid(37.5, 25),
+    fontWeight: 400,
+    fontFamily: 'var(--font-marselis)'
   },
   p: {
     fontSize: fluid(16, 14),
     lineHeight: fluid(24, 22),
+    fontFamily: 'cordale'
   },
 }
 
@@ -97,12 +99,16 @@ export const marketing = {
     lineHeight: 1.6,
     marginTop: '0.9em',
     marginBottom: '0.9em',
-    opacity: 0.7,
   },
 
   // Re-apply the margin clearing on first/last
   '> :first-child': { marginTop: 0 },
   '> :last-child': { marginBottom: 0 },
+
+  'a:not(.btn)': {
+    textDecoration: 'underline',
+    textDecorationColor: '#CBFA40'
+  },
 
 }
 
