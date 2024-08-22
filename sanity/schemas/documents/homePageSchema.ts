@@ -1,5 +1,6 @@
 import { BsFillHouseDoorFill } from 'react-icons/bs';
 
+import { visual } from '~/sanity/lib/schema'
 import { makeSingletonPageSchema } from '~/sanity/lib/schema'
 
 export const homePageSchema = makeSingletonPageSchema({
@@ -9,11 +10,11 @@ export const homePageSchema = makeSingletonPageSchema({
   icon: BsFillHouseDoorFill,
   contentFields: [
 
-    {
-      name: 'bg',
-      type: 'image',
+    visual({
+      name: 'background',
       description: 'Large Home Page BG Image (recommended 1600x1000px)',
-    },
+    }),
+
     {
       name: 'enhancementsTitle',
       type: 'string',

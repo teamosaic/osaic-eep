@@ -6,7 +6,7 @@ import { PageDocument } from './pageTypes'
 
 // Home page type
 export interface Home extends PageDocument {
-  bg: Visual
+  background: Visual
   enhancementsTitle: string
   enhancementsDescription: string
 }
