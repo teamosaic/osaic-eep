@@ -50,7 +50,7 @@ export default function HomePage({ page }: { page: Home }) {
       <div className="flex">
 
         <div className="
-          relative
+          lg:sticky
           top-0
           left-0
           h-[100vh]
@@ -119,7 +119,7 @@ export default function HomePage({ page }: { page: Home }) {
                       {category.blocks.map((enhancement) => (
                         <EnhancementLink key={enhancement._key}>
                           <SmartLink href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
-                            <span>{enhancement.enhancementTitle}</span>
+                            <span className="grow text-evergreen text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
                             <span className="icon-caret"></span>
                           </SmartLink>
                         </EnhancementLink>
