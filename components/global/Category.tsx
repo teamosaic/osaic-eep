@@ -1,7 +1,18 @@
-export function CategoryContainer({ children, key }) {
+import classNames from 'classnames';
+
+export function CategoryContainer({ children, key, visible }) {
   return (
-    <div className="bg-light-grey px-xs py-xxs rounded-default my-4" key={key}>
-      { children }
+    <div
+      className={classNames(
+        'px-xs py-xxs rounded-default my-4 transition',
+        {
+          'bg-medium-grey': visible,
+          'bg-light-grey': !visible,
+        }
+      )}
+      key={key}
+    >
+      {children}
     </div>
   )
 }
@@ -16,9 +27,9 @@ export function CategoryContent({ children }) {
 }
 
 
-export function CategoryHeading({ children }) {
+export function CategoryHeading({ children, onClick }) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center cursor-pointer" onClick={onClick}>
       { children }
     </div>
   )

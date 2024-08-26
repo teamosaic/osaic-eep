@@ -4,9 +4,31 @@ import type {
 
 import { PageDocument } from './pageTypes'
 
+interface UriInterface {
+  current: string
+}
+
+interface CategorInterface {
+  title: string
+  subheading: string
+  description: string
+  uri: UriInterface
+  blocks: EnhancementCategoryBlocks[]
+}
+
+interface EnhancementCategoryBlocks {
+  enhancementTitle: string
+}
+
 // Home page type
 export interface Home extends PageDocument {
   background: Visual
   enhancementsTitle: string
   enhancementsDescription: string
+}
+
+
+export interface EnhancementCategoryInterface {
+  key: number
+  category: CategorInterface
 }

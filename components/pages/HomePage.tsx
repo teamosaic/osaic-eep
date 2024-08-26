@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
 
-import {
-  CategoryContainer,
-  CategoryContent,
-  CategoryHeading,
-  CategoryPill,
-  CategoryTitle } from '~/components/global/Category'
-import { EnhancementLink } from '~/components/global/Enhancement'
+import EnhancementCategory from '~/components/global/EnhancementCategory'
 import SanityVisual from '~/components/global/SanityVisual'
 import PageHead from '~/components/layout/PageHead'
-import { handleize } from '~/lib/helpers'
 import AnimateInView from '~/packages/animate-in-view'
-import SmartLink from '~/packages/smart-link/SmartLink'
 import { getEnhancements } from '~/queries/enhancementQueries'
 import { client } from '~/sanity/client'
 import { Home } from '~/types'
@@ -19,6 +11,7 @@ import { Home } from '~/types'
 export default function HomePage({ page }: { page: Home }) {
   const [loading, setLoading] = useState(true)
   const [enhancementCategories, setEnhancements] = useState([])
+  const [visibleCategoryKey, setVisibleCategoryKey] = useState(null);
 
   useEffect(() => {
 
@@ -42,6 +35,10 @@ export default function HomePage({ page }: { page: Home }) {
     )
   }
 
+  const handleVisibilityChange = (key) => {
+    setVisibleCategoryKey(prevKey => (prevKey === key ? null : key));
+  };
+
   return (
     <>
       <PageHead { ...page } />
@@ -62,12 +59,10 @@ export default function HomePage({ page }: { page: Home }) {
           items-end">
 
           { page.background &&
-            <AnimateInView className='animate-slow-scale-down-in absolute inset-0'>
               <SanityVisual
                 expand
                 sizes='100vw'
-                src={ page.background } />
-            </AnimateInView> }
+                src={ page.background } /> }
 
             <div className="bg-black/50 absolute inset-0 z-1"></div>
 
@@ -96,39 +91,13 @@ export default function HomePage({ page }: { page: Home }) {
               <Spinner />
             ) : (
               <>
-                {enhancementCategories.map((category) => (
-                  <CategoryContainer key={category._id}>
-
-                    <CategoryHeading>
-                      <CategoryTitle title={category.title} />
-                      <CategoryPill count={category.blocks.length} />
-                    </CategoryHeading>
-
-                    <CategoryContent>
-
-                      <div className="max-w-[350px] mb-xxs">
-                        { category.subheading ? (
-                          <h4 className="font-marselis text-[18px] leading-[28px] text-evergreen font-[400] mb-3">{category.subheading}</h4>
-                        ) : null }
-
-                        { category.description ? (
-                          <p>{category.description}</p>
-                        ) : null }
-                      </div>
-
-                      {category.blocks.map((enhancement) => (
-                        <EnhancementLink key={enhancement._key}>
-                          <SmartLink href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
-                            <span className="grow text-evergreen text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
-                            <span className="icon-caret"></span>
-                          </SmartLink>
-                        </EnhancementLink>
-                      ))}
-
-                    </CategoryContent>
-
-                  </CategoryContainer>
-
+                {enhancementCategories.map((category, index) => (
+                  <EnhancementCategory
+                    key={index}
+                    category={category}
+                    isVisible={visibleCategoryKey === index}
+                    onVisibilityChange={() => handleVisibilityChange(index)}
+                  />
                 ))}
               </>
             )}

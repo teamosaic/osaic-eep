@@ -182,6 +182,7 @@ module.exports = {
         "accent": "#F8614B",
         "primary-text": "#555555",
         "light-grey": "#f8f8f8",
+        "medium-grey": "#E9E6DC",
         // Brand guideline colors
         "lime": "#CBFA40",
         "evergreen": "#15535E",
