@@ -14,6 +14,14 @@ export const enhancementBlockSchema = makeBlockSchema({
       type: 'string',
       description: 'Enhancement Title',
     },
+
+    {
+      name: 'featured',
+      type: 'boolean',
+      description: 'Is this enhancement featured (visible on the home page list)',
+      initialValue: false,
+    },
+
     {
       name: 'type',
       type: 'string',

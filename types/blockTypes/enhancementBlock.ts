@@ -7,6 +7,7 @@ import type {
 } from '~/types'
 
 export interface EnhancementBlock extends BlockLayout, BlockBackground {
+  featured: boolean
   type: EnhancementBlockType
   body: PortableTextBlock[]
   image: Visual

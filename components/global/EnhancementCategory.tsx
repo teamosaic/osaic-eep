@@ -30,6 +30,11 @@ export default function EnhancementCategory({ category, key, isVisible, onVisibi
     setVisible(!visible);
   };
 
+  const featuredEnhancements = category.blocks.filter(enhancement => enhancement.featured);
+  const nonFeaturedEnhancementsExist = category.blocks.some(enhancement => !enhancement.featured);
+
+
+
   return (
     <>
       <CategoryContainer key={key} visible={visible}>
@@ -53,15 +58,24 @@ export default function EnhancementCategory({ category, key, isVisible, onVisibi
               ) : null }
             </div>
 
-            {category.blocks.map((enhancement, index) => (
+            {featuredEnhancements.map((enhancement, index) => (
               <SmartLink key={index} href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
                 <EnhancementLink theme={enhancement.cardTheme}>
-                  <span className="grow text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
+                  <span className="block grow">
+                    <span className="w-full md:w-3/4 block text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
+                  </span>
                   <Caret theme={enhancement.cardTheme} />
-                  </EnhancementLink>
-                </SmartLink>
-
+                </EnhancementLink>
+              </SmartLink>
             ))}
+
+            {nonFeaturedEnhancementsExist && (
+              <SmartLink href={category.uri.current}
+                className="block text-center mt-xs p-2 text-evergreen underline uppercase font-marselis">
+                View Past Updates
+              </SmartLink>
+            )}
+
           </CategoryContent>
 
         </AnimateHeight>
