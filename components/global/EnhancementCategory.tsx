@@ -52,8 +52,8 @@ export default function EnhancementCategory({ category, key, isVisible, onVisibi
               ) : null }
             </div>
 
-            {category.blocks.map((enhancement) => (
-              <EnhancementLink key={enhancement._key}>
+            {category.blocks.map((enhancement, index) => (
+              <EnhancementLink key={index}>
                 <SmartLink href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
                   <span className="grow text-evergreen text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
                   <span className="icon-caret"></span>
