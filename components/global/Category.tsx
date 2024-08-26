@@ -45,9 +45,17 @@ export function CategoryTitle({ title }) {
 }
 
 
-export function CategoryPill({ count }) {
+export function CategoryPill({ count, visible }) {
   return (
-    <div className="bg-zircon ml-5 flex items-center h-[27px] px-[20px] rounded-full font-marselis font-[400] text-evergreen">
+
+    <div className={classNames(
+      'transition ml-5 flex items-center h-[27px] px-[20px] rounded-full font-marselis font-[400] ',
+        {
+          'bg-evergreen text-white': visible,
+          'bg-zircon text-evergreen': !visible,
+        }
+      )}
+    >
       { count }
     </div>
   )

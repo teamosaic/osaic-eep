@@ -18,3 +18,9 @@ export enum EnhancementBlockType {
   Simple = 'simple',
   Rich = 'rich',
 }
+
+export enum EnhancementCardTheme {
+  Default = 'default',
+  Red = 'red',
+  Green = 'green'
+}

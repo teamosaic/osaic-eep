@@ -1,7 +1,7 @@
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
 
 import { createListOptionsFromEnum, makeBlockSchema } from '~/sanity/lib/schema'
-import { EnhancementBlockType } from '~/types'
+import { EnhancementBlockType, EnhancementCardTheme } from '~/types'
 
 export const enhancementBlockSchema = makeBlockSchema({
   name: 'enhancementBlock',
@@ -27,6 +27,22 @@ export const enhancementBlockSchema = makeBlockSchema({
         layout: 'radio'
       }
     },
+
+    {
+      name: 'cardTheme',
+      type: 'string',
+      validation: Rule => Rule.required(),
+      initialValue: EnhancementCardTheme.Default,
+      options: {
+        list: createListOptionsFromEnum(EnhancementCardTheme, {
+          [EnhancementCardTheme.Default]: 'Default - White',
+          [EnhancementCardTheme.Red]: 'Red w/ white text',
+          [EnhancementCardTheme.Green]: 'Green w/ white text',
+        }),
+        layout: 'radio'
+      }
+    },
+
     {
       name: 'image',
       type: 'image',

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AnimateHeight from 'react-animate-height';
 
+import Caret from '~/components/global/Caret'
 import {
   CategoryContainer,
   CategoryContent,
@@ -34,7 +35,7 @@ export default function EnhancementCategory({ category, key, isVisible, onVisibi
       <CategoryContainer key={key} visible={visible}>
         <CategoryHeading onClick={toggleVisibility}>
           <CategoryTitle title={category.title} />
-          <CategoryPill count={category.blocks.length} />
+          <CategoryPill visible={visible} count={category.blocks.length} />
         </CategoryHeading>
 
         <AnimateHeight
@@ -53,12 +54,13 @@ export default function EnhancementCategory({ category, key, isVisible, onVisibi
             </div>
 
             {category.blocks.map((enhancement, index) => (
-              <EnhancementLink key={index}>
-                <SmartLink href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
-                  <span className="grow text-evergreen text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
-                  <span className="icon-caret"></span>
+              <SmartLink key={index} href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
+                <EnhancementLink theme={enhancement.cardTheme}>
+                  <span className="grow text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
+                  <Caret theme={enhancement.cardTheme} />
+                  </EnhancementLink>
                 </SmartLink>
-              </EnhancementLink>
+
             ))}
           </CategoryContent>
 

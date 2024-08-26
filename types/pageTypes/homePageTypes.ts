@@ -18,6 +18,7 @@ interface CategorInterface {
 
 interface EnhancementCategoryBlocks {
   enhancementTitle: string
+  cardTheme: string
 }
 
 // Home page type
