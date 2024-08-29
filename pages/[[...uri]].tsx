@@ -8,6 +8,7 @@ import {
   Home as HomePage,
   PageDocument,
   PageType,
+  Settings,
   Tower as TowerPage} from '~/types'
 
 // Page components
@@ -19,6 +20,7 @@ import { getHomePage, homeStaticPaths } from '~/queries/homeQueries'
 import { getTower, towerStaticPaths } from '~/queries/towerQueries'
 
 export default function PageDelegator({ previewToken, page, settings }) {
+
   if (previewToken) {
     return <PagePreview {...{
       previewToken,
@@ -38,20 +40,21 @@ function render({ page, settings }: {
 }): React.ReactElement {
   return (
     <DefaultLayout {...{ settings, page }} >
-      <PageComponent {...{ page }} />
+      <PageComponent {...{ settings, page }} />
     </DefaultLayout>
   )
 }
 
 // Render the appropriate page component
-function PageComponent({ page }: {
+function PageComponent({ page, settings }: {
   page: PageDocument
+  settings: Settings
 }): React.ReactElement {
   switch(page._type) {
     case PageType.Tower:
       return <Tower page={ page as TowerPage } />
     case PageType.Home:
-      return <Home page={ page as HomePage } />
+      return <Home page={ page as HomePage } settings={settings as Settings} />
   }
 }
 

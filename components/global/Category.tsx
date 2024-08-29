@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-export function CategoryContainer({ children, key, visible }) {
+export function CategoryContainer({ children, visible }) {
   return (
     <div
       className={classNames(
@@ -10,7 +10,6 @@ export function CategoryContainer({ children, key, visible }) {
           'bg-light-grey': !visible,
         }
       )}
-      key={key}
     >
       {children}
     </div>

@@ -8,11 +8,42 @@ export const settingsSchema = {
   title: 'Settings',
   groups: [
     {
+      name: 'misc',
+      title: 'Miscellaneous',
+    },
+    {
       name: 'seo',
       title: 'SEO Defaults',
-    },
+    }
   ],
   fields: [
+    ...setGroup('misc', [
+
+      {
+        name: 'instagram',
+        type: 'url',
+        description: 'Instagram'
+      },
+      {
+        name: 'twitter',
+        type: 'url',
+        description: 'Twitter/X'
+      },
+      {
+        name: 'linkedin',
+        type: 'url',
+        description: 'LinkedIn'
+      },
+
+      {
+        name: 'footer',
+        type: 'array',
+        description: 'Footer Body',
+        of: [{ type: 'block' }]
+      },
+
+    ]),
+
     ...setGroup('seo', [
 
       {

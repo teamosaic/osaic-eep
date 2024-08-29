@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 import EnhancementCategory from '~/components/global/EnhancementCategory'
+import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 import SanityVisual from '~/components/global/SanityVisual'
 import PageHead from '~/components/layout/PageHead'
-import AnimateInView from '~/packages/animate-in-view'
 import { getEnhancements } from '~/queries/enhancementQueries'
 import { client } from '~/sanity/client'
-import { Home } from '~/types'
+import { Home, Settings } from '~/types'
 
-export default function HomePage({ page }: { page: Home }) {
+export default function HomePage({ page, settings }: { page: Home, settings: Settings }) {
   const [loading, setLoading] = useState(true)
   const [enhancementCategories, setEnhancements] = useState([])
   const [visibleCategoryKey, setVisibleCategoryKey] = useState(null);
@@ -81,9 +81,9 @@ export default function HomePage({ page }: { page: Home }) {
 
         </div>
 
-        <div className="relative grow bg-white p-sm min-h-[100vh]">
+        <div className="relative grow bg-white min-h-[100vh]">
 
-          <div className="max-w-[750px] mx-auto mt-xs">
+          <div className="max-w-[750px] mx-auto mt-xs p-sm">
             <h2 className="style-h5 font-marselis text-evergreen">{ page.enhancementsTitle }</h2>
             <p className="style-body mt-xs mb-sm">{ page.enhancementsDescription }</p>
 
@@ -92,17 +92,26 @@ export default function HomePage({ page }: { page: Home }) {
             ) : (
               <>
                 {enhancementCategories.map((category, index) => (
-                  <EnhancementCategory
-                    key={index}
-                    category={category}
-                    isVisible={visibleCategoryKey === index}
-                    onVisibilityChange={() => handleVisibilityChange(index)}
-                  />
+                  <div key={index}>
+                    <EnhancementCategory
+                      category={category}
+                      isVisible={visibleCategoryKey === index}
+                      onVisibilityChange={() => handleVisibilityChange(index)}
+                    />
+                  </div>
+
                 ))}
               </>
             )}
+
+
           </div>
 
+
+          {/* footer */}
+          <div className="bg-evergreen p-sm text-white">
+            <MarketingPortableText value={ settings.footer }/>
+          </div>
         </div>
       </div>
 

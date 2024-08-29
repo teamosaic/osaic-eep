@@ -1,6 +1,7 @@
 export * from './blockTypes'
 export * from './componentTypes'
 export * from './fieldGroupTypes'
+export * from './globalTypes'
 export * from './objectTypes'
 export * from './pageTypes'
 export * from './sanityTypes'

@@ -18,7 +18,7 @@ interface EnhancementCategoryProps extends EnhancementCategoryInterface {
   onVisibilityChange: () => void;
 }
 
-export default function EnhancementCategory({ category, key, isVisible, onVisibilityChange }: EnhancementCategoryProps) {
+export default function EnhancementCategory({ category, isVisible, onVisibilityChange }: EnhancementCategoryProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function EnhancementCategory({ category, key, isVisible, onVisibi
 
   return (
     <>
-      <CategoryContainer key={key} visible={visible}>
+      <CategoryContainer visible={visible}>
         <CategoryHeading onClick={toggleVisibility}>
           <CategoryTitle title={category.title} />
           <CategoryPill visible={visible} count={category.blocks.length} />
@@ -64,7 +64,9 @@ export default function EnhancementCategory({ category, key, isVisible, onVisibi
                   <span className="block grow">
                     <span className="w-full md:w-3/4 block text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
                   </span>
-                  <Caret theme={enhancement.cardTheme} />
+                  <span className="shrink-0">
+                    <Caret theme={enhancement.cardTheme} />
+                  </span>
                 </EnhancementLink>
               </SmartLink>
             ))}

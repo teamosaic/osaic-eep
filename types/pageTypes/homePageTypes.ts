@@ -31,6 +31,5 @@ export interface Home extends PageDocument {
 
 
 export interface EnhancementCategoryInterface {
-  key: number
   category: CategorInterface
 }

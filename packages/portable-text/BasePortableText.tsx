@@ -1,4 +1,4 @@
-import { type PortableTextComponents, PortableText } from '@portabletext/react'
+import { PortableText,type PortableTextComponents } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import merge from 'lodash/merge'
 
