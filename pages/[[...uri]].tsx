@@ -50,11 +50,12 @@ function PageComponent({ page, settings }: {
   page: PageDocument
   settings: Settings
 }): React.ReactElement {
+
   switch(page._type) {
     case PageType.Tower:
       return <Tower page={ page as TowerPage } />
     case PageType.Home:
-      return <Home page={ page as HomePage } settings={settings as Settings} />
+      return <Home page={ page as HomePage } settings={settings} />
   }
 }
 
