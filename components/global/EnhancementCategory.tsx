@@ -20,6 +20,7 @@ interface EnhancementCategoryProps extends EnhancementCategoryInterface {
 
 export default function EnhancementCategory({ category, isVisible, onVisibilityChange }: EnhancementCategoryProps) {
   const [visible, setVisible] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     setVisible(isVisible);
@@ -30,17 +31,31 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
     setVisible(!visible);
   };
 
+  const enableHovered = () => {
+    setHovered(true);
+  }
+
+  const disableHovered = () => {
+    setHovered(false);
+  }
+
   const featuredEnhancements = category.blocks.filter(enhancement => enhancement.featured);
   const nonFeaturedEnhancementsExist = category.blocks.some(enhancement => !enhancement.featured);
-
-
 
   return (
     <>
       <CategoryContainer visible={visible}>
-        <CategoryHeading onClick={toggleVisibility}>
+        <CategoryHeading
+          onClick={toggleVisibility}
+          onMouseEnter={enableHovered}
+          onMouseLeave={disableHovered}
+        >
           <CategoryTitle title={category.title} />
-          <CategoryPill visible={visible} count={category.blocks.length} />
+          <CategoryPill
+            visible={visible}
+            hovered={hovered}
+            count={category.blocks.length}
+          />
         </CategoryHeading>
 
         <AnimateHeight

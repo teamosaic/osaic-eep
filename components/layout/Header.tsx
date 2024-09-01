@@ -1,107 +1,161 @@
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
-import { useState } from 'react'
+import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import classNames from 'classnames';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
-import logo from '~/assets/images/logo.svg'
-import SmartLink from '~/packages/smart-link/SmartLink'
+import close from '~/assets/images/close.svg';
+import hamburger from '~/assets/images/hamburger.svg';
+import logoLight from '~/assets/images/logo.svg';
+import logoDark from '~/assets/images/logo-dark.svg';
+import {
+  CategoryContainer,
+  CategoryHeading,
+  CategoryPill,
+  CategoryTitle
+} from '~/components/global/Category';
+import Spinner from '~/components/global/Spinner';
+import SmartLink from '~/packages/smart-link/SmartLink';
+import { getEnhancements } from '~/queries/enhancementQueries';
+import { client } from '~/sanity/client';
 
-const navigation = [
-  // { name: 'One', href: '#' },
-  // { name: 'Two', href: '#' },
-  // { name: 'Three', href: '#' },
-]
+export default function LayoutHeader(): React.ReactElement {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [enhancementCategories, setEnhancements] = useState([]);
+  const scrollerRef = React.createRef<HTMLDivElement>();
 
-// Based on
-export default function LayoutHeader():React.ReactElement {
+  useEffect(() => {
+    client.fetch(getEnhancements).then((sections) => {
+      setEnhancements(sections);
+    }).finally(() => {
+      setLoading(false);
+    });
+  }, []);
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  useEffect(() => {
+    if (menuOpen && scrollerRef.current) {
+      disableBodyScroll(scrollerRef.current);
+    } else {
+      clearAllBodyScrollLocks();
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      clearAllBodyScrollLocks();
+    };
+  }, [menuOpen]);
+
+  const toggleMenu = function() {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
-    <header className='fixed top-xxs left-xxs z-[5] text-white'>
-
-      <nav className="
-        flex items-center justify-between
-        px-gutter h-header"
-        aria-label="Global">
-
+    <header className='flex items-center w-full fixed z-[5] text-white px-[30px] when-not-mobile:px-[50px] h-header'>
+      <nav className="flex grow items-center justify-between relative z-[100]" aria-label="Global">
         <div className="flex lg:flex-1">
-          <SmartLink href="/" className="-m-1.5 p-1.5">
+          <SmartLink href="/">
             <span className="sr-only">EEP</span>
-            <Image
-              className="w-auto h-[40px]"
-              src={logo}
-              alt=""
-            />
+            {menuOpen ? (
+              <Image className="w-auto h-[40px]" src={logoDark} alt="Osaic EEP" />
+            ) : (
+              <Image className="w-auto h-[40px]" src={logoLight} alt="Osaic EEP" />
+            )}
           </SmartLink>
         </div>
 
-        <div className="flex lg:hidden">
+        <div className="flex">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-            onClick={() => setMobileMenuOpen(true)}
+            className="
+              w-[50px]
+              h-[50px]
+              bg-lime
+              inline-flex
+              items-center
+              justify-center
+              rounded-full
+              shrink-0
+              p-2.5
+              text-gray-400
+            "
+            onClick={toggleMenu}
           >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            <span className="sr-only">Toggle Main Menu</span>
+
+              <Image
+                className={classNames(
+                  "w-[18px] h-auto transition absolute",
+                  {
+                    "opacity-1": menuOpen,
+                    "opacity-0": !menuOpen,
+                  })}
+                  src={close} alt="Osaic EEP" />
+              <Image
+                className={classNames(
+                  "w-[28px] h-auto transition absolute",
+                  {
+                    "opacity-0": menuOpen,
+                    "opacity-1": !menuOpen,
+                  })}
+                  src={hamburger} alt="Osaic EEP" />
           </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6">
-              {item.name}
-            </a>
-          ))}
         </div>
       </nav>
 
-      {/* Mobile nav */}
-      <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-        <div className="fixed inset-0 z-50" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-          <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <Image
-                className="h-8 w-auto"
-                src={logo}
-                alt=""
-              />
-            </a>
-            <button
-              type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-400"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-            </button>
-          </div>
+      <div className={classNames(
+        "absolute border-b-2 border-border-light/0 inset-0 transition duration-300 z-[51]",
+        {
+          "bg-white border-border-light/100": menuOpen,
+          "bg-transparent": !menuOpen,
+        }
+      )} />
+
+      <div className="relative z-[50]">
+        <div onClick={toggleMenu} className={classNames(
+          "fixed inset-0 bg-black/50 transition",
+          {
+            "opacity-1 visible": menuOpen,
+            "opacity-0 invisible": !menuOpen,
+          }
+        )} />
+        <div
+          ref={scrollerRef}
+          className={classNames(
+            "right-0 top-header mb-header h-full overflow-y-scroll fixed w-screen max-w-lg transform transition duration-500 bg-white px-6 py-6 sm:ring-1 sm:ring-white/10",
+            {
+              "translate-x-0": menuOpen,
+              "translate-x-full": !menuOpen,
+            }
+          )}
+        >
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/25">
+            <div className="-my-6">
               <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                {loading ? (
+                  <Spinner />
+                ) : (
+                  <>
+                    <span className="uppercase text-tower-grey font-marselis font-bold text-[16px] tracking-[1px] ml-xxs">Categories</span>
+                    {enhancementCategories.map((category, index) => (
+                      <div key={index}>
+                        <CategoryContainer nav visible={true}>
+                          <CategoryHeading nav>
+                            <CategoryTitle title={category.title} />
+                            <CategoryPill nav count={category.blocks.length} />
+                          </CategoryHeading>
+                        </CategoryContainer>
+                      </div>
+                    ))}
+                  </>
+                )}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
-                >
-                  Log in
-                </a>
+                <p>Social Here</p>
               </div>
             </div>
           </div>
-        </Dialog.Panel>
-      </Dialog>
+        </div>
+      </div>
     </header>
-  )
+  );
 }

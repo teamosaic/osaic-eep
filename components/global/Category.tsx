@@ -1,13 +1,22 @@
 import classNames from 'classnames';
 
-export function CategoryContainer({ children, visible }) {
+type CategoryContainerProps = {
+  children: React.ReactNode;
+  visible?: boolean,
+  nav?: boolean
+};
+export function CategoryContainer({
+  children,
+  visible,
+  nav,
+}: CategoryContainerProps): React.ReactElement {
   return (
     <div
       className={classNames(
-        'px-xs py-xxs rounded-default my-4 transition',
+        'rounded-default my-4 transition',
         {
-          'bg-medium-grey': visible,
-          'bg-light-grey': !visible,
+          'bg-medium-grey': visible && !nav,
+          'bg-light-grey': !visible && !nav,
         }
       )}
     >
@@ -19,16 +28,40 @@ export function CategoryContainer({ children, visible }) {
 
 export function CategoryContent({ children }) {
   return (
-    <div className="mt-xxs">
+    <div className="mt-xxs px-xs py-xxs pt-0">
       { children }
     </div>
   )
 }
 
+type CategoryHeadingProps = {
+  children: React.ReactNode;
+  nav?: boolean;
+  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+};
 
-export function CategoryHeading({ children, onClick }) {
+export function CategoryHeading({
+  children,
+  nav,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}: CategoryHeadingProps): React.ReactElement {
   return (
-    <div className="flex items-center cursor-pointer" onClick={onClick}>
+    <div
+      className={classNames(
+        'rounded-default px-xs py-xxs flex items-center cursor-pointer transition',
+        {
+          'hover:bg-medium-grey': !nav,
+          'hover:bg-lime': nav,
+        }
+      )}
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       { children }
     </div>
   )
@@ -43,15 +76,28 @@ export function CategoryTitle({ title }) {
   )
 }
 
+type CategoryPillProps = {
+  count: number;
+  visible?: boolean;
+  hovered?: boolean;
+  nav?: boolean;
+};
 
-export function CategoryPill({ count, visible }) {
+export function CategoryPill({
+  count,
+  visible,
+  hovered,
+  nav
+}: CategoryPillProps): React.ReactElement {
   return (
 
     <div className={classNames(
-      'transition ml-5 flex items-center h-[27px] px-[20px] rounded-full font-marselis font-[400] ',
+      "transition ml-5 flex items-center h-[27px] px-[20px] rounded-full font-marselis font-[400] ",
         {
-          'bg-evergreen text-white': visible,
-          'bg-zircon text-evergreen': !visible,
+          'bg-zircon text-evergreen': !visible && !hovered && !nav,
+          'bg-evergreen text-white': visible || hovered && !nav,
+          'bg-zircon text-evergreen ml-0': nav,
+          'bg-white text-evergreen': nav && hovered
         }
       )}
     >

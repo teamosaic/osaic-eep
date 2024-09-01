@@ -79,7 +79,7 @@ module.exports = {
         'banner-point-lg': fluid(60,42),
         'banner-point-sm': fluid(42,31),
         'banner-point-sub': fluid(21,16),
-        'home-heading': fluid(126,48),
+        'home-heading': fluid(126,38),
         'enhancement-title': fluid(18, 16),
         'card-title': fluid(24, 20),
 
@@ -101,11 +101,11 @@ module.exports = {
 
         'card-title': fluid(30, 25),
         'enhancement-title': fluid(25, 22),
-        'home-heading': fluid(138,57),
+        'home-heading': fluid(138,47),
       },
 
       width: {
-        'home-panel': fluid(750,350)
+        'home-panel': fluid(750,150)
       },
 
       letterSpacing: {
@@ -133,7 +133,7 @@ module.exports = {
         'half-gutter': fluid(25, 15),
 
         // The header height
-        header: fluid(80, 60),
+        header: fluid(90, 90),
 
         'button-h': fluid(67,44),
         button: fluid(60, 26),
@@ -195,6 +195,8 @@ module.exports = {
         "ada-bitter-sweet": "#F8614B",
         "white": "#FFF",
         "black": "#000",
+        "border-light": "#E9E9E9",
+        "tower-grey": "#A0BFC2"
       },
 
       animation: {

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import EnhancementCategory from '~/components/global/EnhancementCategory'
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 import SanityVisual from '~/components/global/SanityVisual'
+import Spinner from '~/components/global/Spinner'
 import PageHead from '~/components/layout/PageHead'
 import { getEnhancements } from '~/queries/enhancementQueries'
 import { client } from '~/sanity/client'
@@ -24,17 +25,6 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
   }, []);
 
 
-  function Spinner() {
-    return (
-      <svg
-        className='animate-spin'
-        width='24' height='24' viewBox='0 0 24 24'
-        xmlns='http://www.w3.org/2000/svg'>
-        <path d='M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z' fill='currentColor' />
-      </svg>
-    )
-  }
-
   const handleVisibilityChange = (key) => {
     setVisibleCategoryKey(prevKey => (prevKey === key ? null : key));
   };
@@ -47,11 +37,15 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
       <div className="flex">
 
         <div className="
-          lg:sticky
+          when-not-mobile:sticky
+          when-not-mobile:w-home-panel
+          when-not-mobile:flex-nowrap
+          when-not-mobile:h-[100vh]
+          h-[80vh]
+          flex
+          flex-wrap
           top-0
           left-0
-          h-[100vh]
-          w-home-panel
           overflow-hidden
           bg-black
           flex
