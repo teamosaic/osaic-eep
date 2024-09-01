@@ -36,7 +36,7 @@ export default function PageDelegator({ previewToken, page, settings }) {
 // Render page components given required data
 function render({ page, settings }: {
   page: PageDocument
-  settings: object
+  settings: Settings
 }): React.ReactElement {
   return (
     <DefaultLayout {...{ settings, page }} >

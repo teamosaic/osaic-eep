@@ -43,7 +43,7 @@ export default function LayoutHeader(): React.ReactElement {
     return () => {
       clearAllBodyScrollLocks();
     };
-  }, [menuOpen]);
+  }, [menuOpen, scrollerRef]);
 
   const toggleMenu = function() {
     setMenuOpen(!menuOpen);
