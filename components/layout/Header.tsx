@@ -6,6 +6,7 @@ import { SettingsContext } from '~/providers/settings'
 
 import close from '~/assets/images/close.svg';
 import hamburger from '~/assets/images/hamburger.svg';
+import garnish from '~/assets/images/garnish-a.svg';
 import logoLight from '~/assets/images/logo.svg';
 import logoDark from '~/assets/images/logo-dark.svg';
 
@@ -136,7 +137,12 @@ export default function LayoutHeader(): React.ReactElement {
             }
           )}
         >
-          <div className="grow">
+
+          <div className="absolute inset-0">
+            <Image className="w-full h-auto" src={garnish} alt="" />
+          </div>
+
+          <div className="grow relative z-2">
             {loading ? (
               <Spinner />
             ) : (
@@ -155,7 +161,7 @@ export default function LayoutHeader(): React.ReactElement {
               </>
             )}
           </div>
-          <div className="b-0 flex items-center">
+          <div className="b-0 flex items-center relative z-3">
 
             <SocialLink link={settings.linkedin} img='linkedin' alt="Osaic LinkedIn" />
             <SocialLink link={settings.instagram} img='instagram' alt="Osaic Instagram" />

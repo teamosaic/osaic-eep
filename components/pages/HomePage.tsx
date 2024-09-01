@@ -79,7 +79,7 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
 
           <div className="max-w-[750px] mx-auto mt-xs p-sm">
             <h2 className="style-h5 font-marselis text-evergreen">{ page.enhancementsTitle }</h2>
-            <p className="style-body mt-xs mb-sm">{ page.enhancementsDescription }</p>
+            <p className="font-cordale style-body mt-xs mb-sm">{ page.enhancementsDescription }</p>
 
             { loading ? (
               <Spinner />
