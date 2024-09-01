@@ -159,6 +159,9 @@ module.exports = {
       borderRadius: {
 
         'default': 16,
+
+        'large': 32,
+
         // Border radius
         'card-corner': fluid(42, 15),
         // Stories

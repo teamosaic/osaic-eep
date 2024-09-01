@@ -26,6 +26,7 @@ export default function LayoutHeader(): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [enhancementCategories, setEnhancements] = useState([]);
+  const [scrolledPastThreshold, setScrolledPastThreshold] = useState(false);
   const scrollerRef = React.createRef<HTMLDivElement>();
   const settings = useContext(SettingsContext)
 
@@ -36,6 +37,26 @@ export default function LayoutHeader(): React.ReactElement {
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isMobile = window.innerWidth <= 768;
+      const scrolled = window.scrollY > 500;
+
+      if (isMobile && scrolled) {
+        setScrolledPastThreshold(true);
+      } else {
+        setScrolledPastThreshold(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
   useEffect(() => {
     if (menuOpen && scrollerRef.current) {
@@ -58,9 +79,9 @@ export default function LayoutHeader(): React.ReactElement {
     <header className='flex items-center w-full fixed z-[5] text-white px-[30px] when-not-mobile:px-[50px] h-header'>
       <nav className="flex grow items-center justify-between relative z-[100]" aria-label="Global">
         <div className="flex lg:flex-1">
-          <SmartLink href="/">
+          <SmartLink className="relative -top-1" href="/">
             <span className="sr-only">EEP</span>
-            {menuOpen ? (
+            {menuOpen || scrolledPastThreshold ? (
               <Image className="w-auto h-[40px]" src={logoDark} alt="Osaic EEP" />
             ) : (
               <Image className="w-auto h-[40px]" src={logoLight} alt="Osaic EEP" />
@@ -110,8 +131,8 @@ export default function LayoutHeader(): React.ReactElement {
       <div className={classNames(
         "absolute border-b-2 border-border-light/0 inset-0 transition duration-300 z-[51]",
         {
-          "bg-white border-border-light/100": menuOpen,
-          "bg-transparent": !menuOpen,
+          "bg-white border-border-light/100": menuOpen || scrolledPastThreshold,
+          "bg-transparent": !menuOpen || !scrolledPastThreshold,
         }
       )} />
 

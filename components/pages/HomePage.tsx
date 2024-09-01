@@ -34,16 +34,18 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
       <PageHead { ...page } />
 
 
-      <div className="flex">
+      <div className="when-not-mobile:flex">
 
         <div className="
           when-not-mobile:sticky
           when-not-mobile:w-home-panel
           when-not-mobile:flex-nowrap
           when-not-mobile:h-[100vh]
+          relative
+          w-full
           h-[80vh]
-          flex
-          flex-wrap
+          when-not-mobile:flex
+          when-not-mobile:flex-wrap
           top-0
           left-0
           overflow-hidden
@@ -71,13 +73,36 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
                 leading-home-heading
                 font-[400]
                 lg:font-[350]
+                max-w-[500px]
+                pb-[100px]
+                when-not-mobile:max-w-full
+                when-not-mobile:pb-0
               ">{ page.title }</h1>
 
         </div>
 
-        <div className="relative grow bg-white min-h-[100vh]">
+        <div className="
+          relative
+          grow
+          bg-white
+          rounded-large
+          -mt-[32px]
+          when-not-mobile:rounded-0
+          when-not-mobile:mt-0
+          when-not-mobile:min-h-[100vh]">
 
-          <div className="max-w-[750px] mx-auto mt-xs p-sm">
+          <div className="
+            when-not-mobile:max-w-[750px]
+            when-not-mobile:mx-auto
+            when-not-mobile:mt-xs
+            when-not-mobile:
+            px-sm
+            py-md
+            rounded-large
+            when-not-mobile:p-sm
+            relative
+            bg-white
+            z-[2]">
             <h2 className="style-h5 font-marselis text-evergreen">{ page.enhancementsTitle }</h2>
             <p className="font-cordale style-body mt-xs mb-sm">{ page.enhancementsDescription }</p>
 
@@ -101,9 +126,18 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
 
           </div>
 
-
           {/* footer */}
-          <div className="bg-evergreen p-sm text-white">
+          <div className="
+            bg-evergreen
+            px-sm
+            py-[100px]
+            when-not-mobile:p-sm
+            when-not-mobile:mt-0
+            text-white
+            -mt-[32px]
+            relative
+            z-[1]
+            ">
             <MarketingPortableText value={ settings.footer }/>
           </div>
         </div>
