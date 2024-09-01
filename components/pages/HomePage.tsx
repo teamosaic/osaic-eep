@@ -8,6 +8,8 @@ import PageHead from '~/components/layout/PageHead'
 import { getEnhancements } from '~/queries/enhancementQueries'
 import { client } from '~/sanity/client'
 import { Home, Settings } from '~/types'
+import garnish from '~/assets/images/garnish-a.svg';
+import Image from 'next/image';
 
 export default function HomePage({ page, settings }: { page: Home, settings: Settings }) {
   const [loading, setLoading] = useState(true)
@@ -76,7 +78,7 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
                 max-w-[500px]
                 pb-[100px]
                 when-not-mobile:max-w-full
-                when-not-mobile:pb-0
+                when-not-mobile:pb-sm
               ">{ page.title }</h1>
 
         </div>
@@ -91,6 +93,9 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
           when-not-mobile:mt-0
           when-not-mobile:min-h-[100vh]">
 
+          {/* garnish on mobile */}
+          <Image className="when-not-mobile:hidden absolute top-0 right-0 w-[300px] h-auto z-[1]" src={garnish} alt="" />
+
           <div className="
             when-not-mobile:max-w-[750px]
             when-not-mobile:mx-auto
@@ -101,7 +106,6 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
             rounded-large
             when-not-mobile:p-sm
             relative
-            bg-white
             z-[2]">
             <h2 className="style-h5 font-marselis text-evergreen">{ page.enhancementsTitle }</h2>
             <p className="font-cordale style-body mt-xs mb-sm">{ page.enhancementsDescription }</p>
@@ -125,6 +129,8 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
 
 
           </div>
+
+          <div className="when-not-mobile:hidden bg-white h-[32px] w-full block relative z-[3] rounded-b-large"></div>
 
           {/* footer */}
           <div className="

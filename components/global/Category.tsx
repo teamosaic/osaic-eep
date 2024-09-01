@@ -52,7 +52,7 @@ export function CategoryHeading({
   return (
     <div
       className={classNames(
-        'rounded-default px-xs py-xxs flex items-center cursor-pointer transition',
+        'rounded-default px-xs py-xxs flex items-center cursor-pointer transition group',
         {
           'hover:bg-medium-grey': !nav,
           'hover:bg-lime': nav,
@@ -92,12 +92,14 @@ export function CategoryPill({
   return (
 
     <div className={classNames(
-      "transition ml-5 flex items-center h-[27px] px-[20px] rounded-full font-marselis font-[400] ",
+      "transition ml-5 flex items-center h-[27px] px-[20px]",
+      "rounded-full font-marselis font-[400]",
         {
-          'bg-zircon text-evergreen': !visible && !hovered && !nav,
-          'bg-evergreen text-white': visible || hovered && !nav,
+          'bg-zircon text-evergreen': !visible && !nav,
+          'bg-evergreen text-white': visible && !nav,
+          'group-hover:bg-evergreen group-hover:text-white': !nav,
           'bg-zircon text-evergreen ml-0': nav,
-          'bg-white text-evergreen': nav && hovered
+          'group-hover:bg-white group-hover:text-evergreen': nav
         }
       )}
     >
