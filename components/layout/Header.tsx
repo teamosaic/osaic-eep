@@ -1,18 +1,21 @@
 import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { SettingsContext } from '~/providers/settings'
 
 import close from '~/assets/images/close.svg';
 import hamburger from '~/assets/images/hamburger.svg';
 import logoLight from '~/assets/images/logo.svg';
 import logoDark from '~/assets/images/logo-dark.svg';
+
 import {
   CategoryContainer,
   CategoryHeading,
   CategoryPill,
   CategoryTitle
 } from '~/components/global/Category';
+import SocialLink from '~/components/global/SocialLink';
 import Spinner from '~/components/global/Spinner';
 import SmartLink from '~/packages/smart-link/SmartLink';
 import { getEnhancements } from '~/queries/enhancementQueries';
@@ -23,6 +26,7 @@ export default function LayoutHeader(): React.ReactElement {
   const [loading, setLoading] = useState(true);
   const [enhancementCategories, setEnhancements] = useState([]);
   const scrollerRef = React.createRef<HTMLDivElement>();
+  const settings = useContext(SettingsContext)
 
   useEffect(() => {
     client.fetch(getEnhancements).then((sections) => {
@@ -121,38 +125,42 @@ export default function LayoutHeader(): React.ReactElement {
         <div
           ref={scrollerRef}
           className={classNames(
-            "right-0 top-header mb-header h-full overflow-y-scroll fixed w-screen max-w-lg transform transition duration-500 bg-white px-6 py-6 sm:ring-1 sm:ring-white/10",
+            "flex flex-col right-0 top-header",
+            "nav-pane-h-calc overflow-y-scroll",
+            "fixed w-screen max-w-lg transform",
+            "transition duration-500 bg-white",
+            "px-6 py-6 sm:ring-1 sm:ring-white/10",
             {
               "translate-x-0": menuOpen,
               "translate-x-full": !menuOpen,
             }
           )}
         >
-          <div className="mt-6 flow-root">
-            <div className="-my-6">
-              <div className="space-y-2 py-6">
-                {loading ? (
-                  <Spinner />
-                ) : (
-                  <>
-                    <span className="uppercase text-tower-grey font-marselis font-bold text-[16px] tracking-[1px] ml-xxs">Categories</span>
-                    {enhancementCategories.map((category, index) => (
-                      <div key={index}>
-                        <CategoryContainer nav visible={true}>
-                          <CategoryHeading nav>
-                            <CategoryTitle title={category.title} />
-                            <CategoryPill nav count={category.blocks.length} />
-                          </CategoryHeading>
-                        </CategoryContainer>
-                      </div>
-                    ))}
-                  </>
-                )}
-              </div>
-              <div className="py-6">
-                <p>Social Here</p>
-              </div>
-            </div>
+          <div className="grow">
+            {loading ? (
+              <Spinner />
+            ) : (
+              <>
+                <span className="uppercase text-tower-grey font-marselis font-bold text-[16px] tracking-[1px] ml-xxs">Categories</span>
+                {enhancementCategories.map((category, index) => (
+                  <div key={index}>
+                    <CategoryContainer nav visible={true}>
+                      <CategoryHeading nav>
+                        <CategoryTitle title={category.title} />
+                        <CategoryPill nav count={category.blocks.length} />
+                      </CategoryHeading>
+                    </CategoryContainer>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+          <div className="b-0 flex items-center">
+
+            <SocialLink link={settings.linkedin} img='linkedin' alt="Osaic LinkedIn" />
+            <SocialLink link={settings.instagram} img='instagram' alt="Osaic Instagram" />
+            <SocialLink link={settings.twitter} img='twitter' alt="Osaic Twitter" />
+
           </div>
         </div>
       </div>

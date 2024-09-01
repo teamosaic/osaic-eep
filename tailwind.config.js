@@ -186,6 +186,7 @@ module.exports = {
         // Brand guideline colors
         "lime": "#CBFA40",
         "evergreen": "#15535E",
+        "evergreen-hover": "#217A8A",
         "light-satin-linen": "#E9E6DC",
         "satin-linen": "#DED9C4",
         "dark-screen-satin-linen": "#C4BFAD",
@@ -533,6 +534,17 @@ module.exports = {
     'mb-block-corner',
   ],
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+
+    function ({ addUtilities, theme }) {
+
+      const calcUtilities = {
+        '.nav-pane-h-calc': {
+          height: `calc(100vh - ${theme('spacing.header')})`,
+        },
+      };
+
+      addUtilities(calcUtilities, ['responsive', 'hover']);
+    },
   ],
 }
