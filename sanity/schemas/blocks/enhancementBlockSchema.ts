@@ -65,7 +65,7 @@ export const enhancementBlockSchema = makeBlockSchema({
     },
     {
       name: 'ctaText',
-      type: 'text',
+      type: 'string',
       description: 'Link button text.',
     },
     {

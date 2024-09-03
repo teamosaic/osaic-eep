@@ -34,8 +34,9 @@ export function PanelWrap({
           -mt-[32px]
           relative
           z-[1]"
-      >
-        <MarketingPortableText value={settingsContext.footer} />
+        >
+        <div className="absolute inset-0 z-1 bg-black/20"></div>
+        <MarketingPortableText className="relative z-2" value={settingsContext.footer} />
       </div>
     </>
   );

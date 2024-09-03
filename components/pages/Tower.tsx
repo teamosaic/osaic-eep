@@ -1,4 +1,5 @@
 import PageHead from '~/components/layout/PageHead'
+import { EEPButton } from '~/components/global/EEPButton'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { Tower } from '~/types'
 import { PanelWrap, PanelLeft, PanelRight, PanelTitle, PanelRightContent } from '~/components/global/Panels'
@@ -35,8 +36,59 @@ export default function TowerPage({ page }: { page: Tower }) {
           {/* <Image className="when-not-mobile:hidden absolute top-0 right-0 w-[300px] h-auto z-[1]" src={garnish} alt="" /> */}
 
           <PanelRightContent>
-            <p>Content Here</p>
-            <p><SmartLink href="/">Back Home</SmartLink></p>
+            <div className="mt-lg">
+
+              { page.subheading ? (
+                <h4
+                  className="
+                    font-marselis
+                    text-[40px]
+                    leading-[46px]
+                    text-evergreen
+                    font-[400]"
+                >
+                  {page.subheading}
+                </h4>
+              ) : null }
+
+              { page.description ? (
+                <p className="
+                font-marselis
+                text-[24px]
+                leading-[28px]
+                text-evergreen
+                font-[400] my-xs">
+              {page.description}</p>
+              ) : null }
+
+
+              <div>
+
+                {page.blocks.map((item, index) => (
+                  <div className={item.type} key={index}>
+                    <div className="my-md">
+                      <div
+                        className="
+                          font-marselis
+                          text-[40px]
+                          leading-[46px]
+                          text-evergreen
+                          font-[400]"
+                        >
+                        {item.enhancementTitle}
+                      </div>
+
+                      { item.ctaUrl ? (
+                        <EEPButton
+                          href={item.ctaUrl}
+                          label={item.ctaText} />
+                      ) : null }
+
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </PanelRightContent>
 
         </PanelRight>
