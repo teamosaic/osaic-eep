@@ -5,12 +5,16 @@ import type {
   Visual,
 } from '~/types'
 
+interface ThemeColor {
+  hex: string
+}
+
 // Tower page type
 export interface Tower extends PageDocument {
   blocks: Block[]
   subheading: string
   description: string
-  theme: string
+  theme: ThemeColor
   garnish: Visual
 }
 

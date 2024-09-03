@@ -1,3 +1,6 @@
+import classNames from 'classnames';
+
+
 type PanelWrapProps = {
   children: React.ReactNode;
 };
@@ -25,23 +28,18 @@ export function PanelLeft({
   theme,
 }: PanelLeftProps): React.ReactElement {
   return (
-    <div className="
-      when-not-mobile:sticky
-      when-not-mobile:w-home-panel
-      when-not-mobile:flex-nowrap
-      when-not-mobile:h-[100vh]
-      relative
-      w-full
-      h-[80vh]
-      when-not-mobile:flex
-      when-not-mobile:flex-wrap
-      top-0
-      left-0
-      overflow-hidden
-      bg-black
-      flex
-      shrink-0
-      items-end"
+    <div className={classNames(
+      'when-not-mobile:sticky when-not-mobile:w-home-panel',
+      'when-not-mobile:flex-nowrap when-not-mobile:h-[100vh]',
+      'relative w-full h-[80vh] when-not-mobile:flex',
+      'when-not-mobile:flex-wrap top-0 left-0 overflow-hidden',
+      'bg-black flex shrink-0 items-end',
+        {
+          'text-evergreen': theme,
+          'text-white': !theme,
+        }
+      )}
+
       style={theme ? { backgroundColor: theme.hex } : undefined}>
 
 
@@ -109,7 +107,6 @@ export function PanelTitle({
   return (
     <h1 className="
       font-marselis
-      text-white
       relative
       z-2
       p-gutter
