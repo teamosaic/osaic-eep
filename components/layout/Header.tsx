@@ -9,6 +9,7 @@ import hamburger from '~/assets/images/hamburger.svg';
 import garnish from '~/assets/images/garnish-a.svg';
 import logoLight from '~/assets/images/logo.svg';
 import logoDark from '~/assets/images/logo-dark.svg';
+import { useRouter } from 'next/router';
 
 import {
   CategoryContainer,
@@ -29,6 +30,7 @@ export default function LayoutHeader(): React.ReactElement {
   const [scrolledPastThreshold, setScrolledPastThreshold] = useState(false);
   const scrollerRef = React.createRef<HTMLDivElement>();
   const settings = useContext(SettingsContext)
+  const router = useRouter();
 
   useEffect(() => {
     client.fetch(getEnhancements).then((sections) => {
@@ -56,6 +58,18 @@ export default function LayoutHeader(): React.ReactElement {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setMenuOpen(false); // Close the menu when the route changes
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router.events]);
 
 
   useEffect(() => {
@@ -170,14 +184,14 @@ export default function LayoutHeader(): React.ReactElement {
               <>
                 <span className="uppercase text-tower-grey font-marselis font-bold text-[16px] tracking-[1px] ml-xxs">Categories</span>
                 {enhancementCategories.map((category, index) => (
-                  <div key={index}>
+                  <SmartLink key={index} href={category.uri.current}>
                     <CategoryContainer nav visible={true}>
                       <CategoryHeading nav>
                         <CategoryTitle title={category.title} />
                         <CategoryPill nav count={category.blocks.length} />
                       </CategoryHeading>
                     </CategoryContainer>
-                  </div>
+                  </SmartLink>
                 ))}
               </>
             )}

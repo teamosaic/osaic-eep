@@ -8,6 +8,7 @@ export default function SmartLink({ href, children, className = '' }: {
 	href?: Href
 	children: React.ReactNode
 	className?: string
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>
 }): React.ReactElement {
 
 	// Return children if empty
