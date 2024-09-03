@@ -12,17 +12,15 @@ export function PanelWrap({
 }
 
 
-interface ThemeColor {
-  hex: string
-}
+// interface ThemeColor {
+//   hex: string
+// }
 
 type PanelLeftProps = {
   children: React.ReactNode;
-  theme?: ThemeColor;
 };
 export function PanelLeft({
   children,
-  theme,
 }: PanelLeftProps): React.ReactElement {
   return (
     <div className="
@@ -41,13 +39,11 @@ export function PanelLeft({
       bg-black
       flex
       shrink-0
-      items-end"
+      items-end">
 
-      style={{ backgroundColor: theme?.hex }}>
-
-      { !theme ? (
+      {/* { !theme ? (
         <div className="bg-black/50 absolute inset-0 z-1"></div>
-      ) : null }
+      ) : null } */}
 
       {children}
     </div>

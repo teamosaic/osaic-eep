@@ -12,7 +12,7 @@ export default function TowerPage({ page }: { page: Tower }) {
 
       <PanelWrap>
 
-        <PanelLeft theme={page.theme}>
+        <PanelLeft>
 
           { page.garnish &&
             <SanityVisual
