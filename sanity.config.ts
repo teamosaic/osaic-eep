@@ -4,6 +4,7 @@
  */
 
 import { visionTool } from '@sanity/vision'
+import {colorInput} from '@sanity/color-input'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { media } from 'sanity-plugin-media';
@@ -50,7 +51,10 @@ export default defineConfig({
 
     // Media library plugin
     // https://github.com/sanity-io/sanity-plugin-media
-    media()
+    media(),
+
+    // color picker
+    colorInput()
   ],
   document: {
 

@@ -1,0 +1,127 @@
+type PanelWrapProps = {
+  children: React.ReactNode;
+};
+export function PanelWrap({
+  children,
+}: PanelWrapProps): React.ReactElement {
+  return (
+    <div className="when-not-mobile:flex">
+      {children}
+    </div>
+  )
+}
+
+
+interface ThemeColor {
+  hex: string
+}
+
+type PanelLeftProps = {
+  children: React.ReactNode;
+  theme?: ThemeColor;
+};
+export function PanelLeft({
+  children,
+  theme,
+}: PanelLeftProps): React.ReactElement {
+  return (
+    <div className="
+      when-not-mobile:sticky
+      when-not-mobile:w-home-panel
+      when-not-mobile:flex-nowrap
+      when-not-mobile:h-[100vh]
+      relative
+      w-full
+      h-[80vh]
+      when-not-mobile:flex
+      when-not-mobile:flex-wrap
+      top-0
+      left-0
+      overflow-hidden
+      bg-black
+      flex
+      shrink-0
+      items-end"
+
+      style={{ backgroundColor: theme?.hex }}>
+
+      { !theme ? (
+        <div className="bg-black/50 absolute inset-0 z-1"></div>
+      ) : null }
+
+      {children}
+    </div>
+  )
+}
+
+
+type PanelRightProps = {
+  children: React.ReactNode;
+};
+export function PanelRight({
+  children,
+}: PanelRightProps): React.ReactElement {
+  return (
+    <div className="
+      relative
+      grow
+      bg-white
+      rounded-large
+      -mt-[32px]
+      when-not-mobile:rounded-0
+      when-not-mobile:mt-0
+      when-not-mobile:min-h-[100vh]">
+      {children}
+    </div>
+  )
+}
+
+type PanelRightContentProps = {
+  children: React.ReactNode;
+};
+export function PanelRightContent({
+  children,
+}: PanelRightContentProps): React.ReactElement {
+  return (
+    <div className="
+      when-not-mobile:max-w-[750px]
+      when-not-mobile:mx-auto
+      when-not-mobile:mt-xs
+      when-not-mobile:
+      px-sm
+      py-md
+      rounded-large
+      when-not-mobile:p-sm
+      relative
+      z-[2]">
+      {children}
+    </div>
+  )
+}
+
+
+type PanelTitleProps = {
+  title: string;
+};
+export function PanelTitle({
+  title,
+}: PanelTitleProps): React.ReactElement {
+  return (
+    <h1 className="
+      font-marselis
+      text-white
+      relative
+      z-2
+      p-gutter
+      text-home-heading
+      leading-home-heading
+      font-[400]
+      lg:font-[350]
+      max-w-[500px]
+      pb-[100px]
+      when-not-mobile:max-w-full
+      when-not-mobile:pb-sm
+    ">{ title }</h1>
+  )
+}
+

@@ -1,6 +1,6 @@
 import { BsBuilding } from 'react-icons/bs'
 
-import { makePageSchema } from '~/sanity/lib/schema'
+import { makePageSchema, imageWithAlt } from '~/sanity/lib/schema'
 
 import * as blocksSchemas from '../blocks'
 
@@ -18,6 +18,24 @@ export const towerSchema = makePageSchema({
       type: 'text',
       description: 'Sidebar/Nav Description.',
     },
+    {
+      name: 'theme',
+      type: 'color',
+      description: 'Main color theme',
+      required: true,
+      options: {
+        colorList: [
+          '#15535E',
+          '#CBFA40'
+        ]
+      }
+    },
+
+    imageWithAlt({
+      name: 'garnish',
+      description: `Semi-transparent "a"`,
+    }),
+
     {
       name: 'blocks',
       title: 'Enhancements',
