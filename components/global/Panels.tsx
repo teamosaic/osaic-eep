@@ -27,6 +27,7 @@ export function PanelLeft({
   children,
   theme,
 }: PanelLeftProps): React.ReactElement {
+
   return (
     <div className={classNames(
       'when-not-mobile:sticky when-not-mobile:w-home-panel',
@@ -36,7 +37,7 @@ export function PanelLeft({
       'bg-black flex shrink-0 items-end',
         {
           'text-evergreen': theme,
-          'text-white': !theme,
+          'text-white': !theme || theme.hex == '#15535e',
         }
       )}
 
