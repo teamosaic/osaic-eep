@@ -1,4 +1,4 @@
-import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock';
 import classNames from 'classnames';
 import Image from 'next/image';
 import React, { useEffect, useState, useContext } from 'react';
@@ -10,6 +10,7 @@ import garnish from '~/assets/images/garnish-a.svg';
 import logoLight from '~/assets/images/logo.svg';
 import logoDark from '~/assets/images/logo-dark.svg';
 import { useRouter } from 'next/router';
+import { isDark } from '@bkwld/light-or-dark'
 
 import {
   CategoryContainer,
@@ -23,9 +24,10 @@ import SmartLink from '~/packages/smart-link/SmartLink';
 import { getEnhancements } from '~/queries/enhancementQueries';
 import { client } from '~/sanity/client';
 
-export default function LayoutHeader(): React.ReactElement {
+export default function LayoutHeader({ theme }): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showDarkLogo, setShowDarkLogo] = useState(false);
   const [enhancementCategories, setEnhancements] = useState([]);
   const [scrolledPastThreshold, setScrolledPastThreshold] = useState(false);
   const scrollerRef = React.createRef<HTMLDivElement>();
@@ -60,17 +62,16 @@ export default function LayoutHeader(): React.ReactElement {
   }, []);
 
   useEffect(() => {
-    const handleRouteChange = () => {
-      setMenuOpen(false); // Close the menu when the route changes
-    };
+    setMenuOpen(false);
+  }, [router.asPath]);
 
-    router.events.on('routeChangeStart', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, [router.events]);
-
+  useEffect(() => {
+    if(isDark(theme.hex)){
+      setShowDarkLogo(false);
+    } else {
+      setShowDarkLogo(true);
+    }
+  }, [theme]);
 
   useEffect(() => {
     if (menuOpen && scrollerRef.current) {
@@ -95,7 +96,7 @@ export default function LayoutHeader(): React.ReactElement {
         <div className="flex lg:flex-1">
           <SmartLink className="relative -top-1" href="/">
             <span className="sr-only">EEP</span>
-            {menuOpen || scrolledPastThreshold ? (
+            {menuOpen || scrolledPastThreshold || showDarkLogo ? (
               <Image className="w-auto h-[40px]" src={logoDark} alt="Osaic EEP" />
             ) : (
               <Image className="w-auto h-[40px]" src={logoLight} alt="Osaic EEP" />

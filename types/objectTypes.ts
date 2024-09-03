@@ -30,3 +30,7 @@ export interface Visual {
   video?: Asset
   alt?: string
 }
+
+export interface PageColorTheme {
+  hex: string
+}

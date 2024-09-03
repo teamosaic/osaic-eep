@@ -1,4 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types'
+import type { Image } from 'sanity'
+
 
 // SEO fields for pages
 export interface Settings {
@@ -6,4 +8,7 @@ export interface Settings {
   twitter: string
   linkedin: string
   footer: PortableTextBlock[]
+  metaTitleSuffix: string
+  metaDescription: string
+  metaImage: Image
 }

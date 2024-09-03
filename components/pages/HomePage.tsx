@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import EnhancementCategory from '~/components/global/EnhancementCategory'
-import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
 import SanityVisual from '~/components/global/SanityVisual'
 import Spinner from '~/components/global/Spinner'
 import PageHead from '~/components/layout/PageHead'
@@ -9,11 +8,11 @@ import { PanelWrap, PanelLeft, PanelRight, PanelTitle, PanelRightContent } from 
 
 import { getEnhancements } from '~/queries/enhancementQueries'
 import { client } from '~/sanity/client'
-import { Home, Settings } from '~/types'
+import { Home } from '~/types'
 import garnish from '~/assets/images/garnish-a.svg';
 import Image from 'next/image';
 
-export default function HomePage({ page, settings }: { page: Home, settings: Settings }) {
+export default function HomePage({ page }: { page: Home }) {
   const [loading, setLoading] = useState(true)
   const [enhancementCategories, setEnhancements] = useState([])
   const [visibleCategoryKey, setVisibleCategoryKey] = useState(null);
@@ -80,28 +79,8 @@ export default function HomePage({ page, settings }: { page: Home, settings: Set
             )}
 
           </PanelRightContent>
-
-          <div className="when-not-mobile:hidden bg-white h-[32px] w-full block relative z-[3] rounded-b-large"></div>
-
-          {/* footer */}
-          <div className="
-            bg-evergreen
-            px-sm
-            py-[100px]
-            when-not-mobile:p-sm
-            when-not-mobile:mt-0
-            text-white
-            -mt-[32px]
-            relative
-            z-[1]
-            ">
-            <MarketingPortableText value={ settings.footer }/>
-          </div>
-
         </PanelRight>
-
       </PanelWrap>
-
     </>
   )
 }

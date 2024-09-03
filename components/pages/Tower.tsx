@@ -39,29 +39,8 @@ export default function TowerPage({ page }: { page: Tower }) {
             <p><SmartLink href="/">Back Home</SmartLink></p>
           </PanelRightContent>
 
-
-          <div className="when-not-mobile:hidden bg-white h-[32px] w-full block relative z-[3] rounded-b-large"></div>
-
-          {/* footer */}
-          <div className="
-            bg-evergreen
-            px-sm
-            py-[100px]
-            when-not-mobile:p-sm
-            when-not-mobile:mt-0
-            text-white
-            -mt-[32px]
-            relative
-            z-[1]
-            ">
-            {/* <MarketingPortableText value={ settings.footer }/> */}
-          </div>
-
         </PanelRight>
-
       </PanelWrap>
-
-
     </>
   )
 }

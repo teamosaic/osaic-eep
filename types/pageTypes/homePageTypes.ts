@@ -2,6 +2,7 @@ import type {
   Visual,
 } from '~/types'
 
+import { PageColorTheme } from '../objectTypes'
 import { PageDocument } from './pageTypes'
 
 interface UriInterface {
@@ -27,6 +28,8 @@ export interface Home extends PageDocument {
   background: Visual
   enhancementsTitle: string
   enhancementsDescription: string
+  theme: PageColorTheme
+
 }
 
 

@@ -24,7 +24,20 @@ export const homePageSchema = makeSingletonPageSchema({
       name: 'enhancementsDescription',
       type: 'text',
       description: 'Description for the main Enhancements panel.',
-    }
+    },
+
+    {
+      name: 'theme',
+      type: 'color',
+      description: 'Main color theme',
+      required: true,
+      options: {
+        colorList: [
+          '#15535E',
+          '#CBFA40'
+        ]
+      }
+    },
 
   ],
 })

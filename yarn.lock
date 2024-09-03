@@ -391,6 +391,11 @@
     hotscript "^1.0.13"
     nanoid "^5.0.4"
 
+"@bkwld/light-or-dark@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@bkwld/light-or-dark/-/light-or-dark-1.0.1.tgz#23a365153a75d14cc6b2432a8cd338f5b489165d"
+  integrity sha512-iPE6K+Z14D+kaJaymJ8w9g9Lbhc+ylf0VWH61KwL1k5AwV0OEjtKQs9DFsnORV0sayfyiznp7DOKIkl8w/tG/w==
+
 "@codemirror/autocomplete@^6.0.0", "@codemirror/autocomplete@^6.1.0":
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/@codemirror/autocomplete/-/autocomplete-6.8.0.tgz#20d46587ffe0e8df24f5a503c13ab994c2c73107"

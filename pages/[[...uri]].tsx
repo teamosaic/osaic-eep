@@ -46,16 +46,15 @@ function render({ page, settings }: {
 }
 
 // Render the appropriate page component
-function PageComponent({ page, settings }: {
+function PageComponent({ page }: {
   page: PageDocument
-  settings: Settings
 }): React.ReactElement {
 
   switch(page._type) {
     case PageType.Tower:
       return <Tower page={ page as TowerPage } />
     case PageType.Home:
-      return <Home page={ page as HomePage } settings={settings} />
+      return <Home page={ page as HomePage } />
   }
 }
 

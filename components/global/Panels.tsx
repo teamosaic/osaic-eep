@@ -1,5 +1,9 @@
+import React, { useContext } from 'react';
 import classNames from 'classnames';
-
+import { PageColorTheme } from '~/types/objectTypes';
+import MarketingPortableText from '~/components/global/portableText/MarketingPortableText';
+import { SettingsContext } from '~/providers/settings';
+import { Settings } from '~/types/globalTypes';
 
 type PanelWrapProps = {
   children: React.ReactNode;
@@ -7,21 +11,39 @@ type PanelWrapProps = {
 export function PanelWrap({
   children,
 }: PanelWrapProps): React.ReactElement {
+
+  const settingsContext = useContext<Settings>(SettingsContext);
+
   return (
-    <div className="when-not-mobile:flex">
-      {children}
-    </div>
-  )
-}
+    <>
+      <div className="when-not-mobile:flex">
+        {children}
+      </div>
 
+      <div className="when-not-mobile:hidden bg-white h-[32px] w-full block relative z-[3] rounded-b-large"></div>
 
-interface ThemeColor {
-  hex: string
+      {/* footer */}
+      <div
+        className="
+          bg-evergreen
+          px-sm
+          py-[100px]
+          when-not-mobile:p-sm
+          when-not-mobile:mt-0
+          text-white
+          -mt-[32px]
+          relative
+          z-[1]"
+      >
+        <MarketingPortableText value={settingsContext.footer} />
+      </div>
+    </>
+  );
 }
 
 type PanelLeftProps = {
   children: React.ReactNode;
-  theme?: ThemeColor;
+  theme?: PageColorTheme;
 };
 export function PanelLeft({
   children,
@@ -40,19 +62,16 @@ export function PanelLeft({
           'text-white': !theme || theme.hex == '#15535e',
         }
       )}
-
-      style={theme ? { backgroundColor: theme.hex } : undefined}>
-
-
-      { !theme ? (
+      style={theme ? { backgroundColor: theme.hex } : undefined}
+    >
+      {!theme ? (
         <div className="bg-black/50 absolute inset-0 z-1"></div>
-      ) : null }
+      ) : null}
 
       {children}
     </div>
-  )
+  );
 }
-
 
 type PanelRightProps = {
   children: React.ReactNode;
@@ -72,7 +91,7 @@ export function PanelRight({
       when-not-mobile:min-h-[100vh]">
       {children}
     </div>
-  )
+  );
 }
 
 type PanelRightContentProps = {
@@ -95,9 +114,8 @@ export function PanelRightContent({
       z-[2]">
       {children}
     </div>
-  )
+  );
 }
-
 
 type PanelTitleProps = {
   title: string;
@@ -119,7 +137,6 @@ export function PanelTitle({
       pb-[100px]
       when-not-mobile:max-w-full
       when-not-mobile:pb-sm
-    ">{ title }</h1>
-  )
+    ">{title}</h1>
+  );
 }
-

@@ -1,20 +1,17 @@
 import { Block } from '../blockTypes'
 import { PageDocument } from './pageTypes'
+import { PageColorTheme } from '../objectTypes'
 
 import type {
   Visual,
 } from '~/types'
-
-interface ThemeColor {
-  hex: string
-}
 
 // Tower page type
 export interface Tower extends PageDocument {
   blocks: Block[]
   subheading: string
   description: string
-  theme: ThemeColor
+  theme: PageColorTheme
   garnish: Visual
 }
 
