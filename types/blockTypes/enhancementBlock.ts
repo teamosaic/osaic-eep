@@ -9,6 +9,7 @@ import type {
 export interface EnhancementBlock extends BlockLayout, BlockBackground {
   enhancementTitle: string
   featured: boolean
+  featuredImage: boolean
   type: EnhancementBlockType
   body: PortableTextBlock[]
   image: Visual

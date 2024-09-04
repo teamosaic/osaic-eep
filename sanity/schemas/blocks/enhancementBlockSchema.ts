@@ -1,4 +1,5 @@
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
+import { visual } from '~/sanity/lib/schema'
 
 import { createListOptionsFromEnum, makeBlockSchema } from '~/sanity/lib/schema'
 import { EnhancementBlockType, EnhancementCardTheme } from '~/types'
@@ -19,6 +20,13 @@ export const enhancementBlockSchema = makeBlockSchema({
       name: 'featured',
       type: 'boolean',
       description: 'Is this enhancement featured (visible on the home page list)',
+      initialValue: false,
+    },
+
+    {
+      name: 'featuredImage',
+      type: 'boolean',
+      description: 'If checked, the image will show as a thumbnail on the featured card',
       initialValue: false,
     },
 
@@ -51,11 +59,12 @@ export const enhancementBlockSchema = makeBlockSchema({
       }
     },
 
-    {
+    visual({
       name: 'image',
-      type: 'image',
       description: 'Main Image',
-    },
+    }),
+
+
     {
       name: 'body',
       type: 'array',

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AnimateHeight from 'react-animate-height';
+import SanityVisual from '~/components/global/SanityVisual'
 
 import Caret from '~/components/global/Caret'
 import {
@@ -76,7 +77,21 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
             {featuredEnhancements.map((enhancement, index) => (
               <SmartLink key={index} href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
                 <EnhancementLink theme={enhancement.cardTheme}>
-                  <span className="block grow">
+                  <span className="flex grow items-center">
+
+                    { enhancement.featuredImage ? (
+                      <>
+                        <div className="h-[80px] w-[80px] overflow-hidden rounded-[10px] shrink-0 w-auto mr-5 relative">
+                          <SanityVisual
+                            expand
+                            sizes='100px'
+                            src={ enhancement.image } />
+                        </div>
+
+                      </>
+
+                    ) : null }
+
                     <span className="w-full md:w-3/4 block text-enhancement-title leading-enhancement-title font-marselis">{enhancement.enhancementTitle}</span>
                   </span>
                   <span className="shrink-0">

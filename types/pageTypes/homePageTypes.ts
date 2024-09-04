@@ -20,7 +20,9 @@ interface CategorInterface {
 interface EnhancementCategoryBlocks {
   enhancementTitle: string
   cardTheme: string
+  image: Visual
   featured: boolean
+  featuredImage: boolean
 }
 
 // Home page type
