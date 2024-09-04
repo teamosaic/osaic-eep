@@ -11,7 +11,7 @@ import {
   CategoryTitle } from '~/components/global/Category'
 import { EnhancementLink } from '~/components/global/Enhancement'
 import { handleize } from '~/lib/helpers'
-import SmartLink from '~/packages/smart-link/SmartLink'
+import Link from 'next/link'
 import { EnhancementCategoryInterface } from '~/types'
 
 interface EnhancementCategoryProps extends EnhancementCategoryInterface {
@@ -75,7 +75,7 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
             </div>
 
             {featuredEnhancements.map((enhancement, index) => (
-              <SmartLink key={index} href={`${category.uri.current}#${handleize(enhancement.enhancementTitle)}`}>
+              <Link key={index} href={`${category.uri.current}#${handleize(enhancement.enhancementTitle)}`}>
                 <EnhancementLink theme={enhancement.cardTheme}>
                   <span className="flex grow items-center">
 
@@ -98,14 +98,14 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
                     <Caret theme={enhancement.cardTheme} />
                   </span>
                 </EnhancementLink>
-              </SmartLink>
+              </Link>
             ))}
 
             {nonFeaturedEnhancementsExist && (
-              <SmartLink href={category.uri.current}
+              <Link href={category.uri.current}
                 className="block text-center mt-xs p-2 text-evergreen underline uppercase font-marselis">
                 View Past Updates
-              </SmartLink>
+              </Link>
             )}
 
           </CategoryContent>
