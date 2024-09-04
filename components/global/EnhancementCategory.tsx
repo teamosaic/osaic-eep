@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import AnimateHeight from 'react-animate-height';
 import SanityVisual from '~/components/global/SanityVisual'
+import close from '~/assets/images/close.svg';
+import Caret from '~/components/global/Caret';
+import classNames from 'classnames';
+import Image from 'next/image';
 
-import Caret from '~/components/global/Caret'
 import {
   CategoryContainer,
   CategoryContent,
@@ -52,11 +55,15 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
           onMouseLeave={disableHovered}
         >
           <CategoryTitle title={category.title} />
-          <CategoryPill
-            visible={visible}
-            hovered={hovered}
-            count={category.blocks.length}
-          />
+
+          <div>
+            <Image className={classNames(
+              "w-[24px] h-auto transition absolute -mt-3 -ml-5 transition",
+              {
+                "rotate-[45deg]": !visible,
+              })} src={close} alt='' />
+          </div>
+
         </CategoryHeading>
 
         <AnimateHeight
@@ -68,11 +75,11 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
               { category.subheading ? (
                 <h4 className="font-marselis text-[18px] leading-[28px] text-evergreen font-[400] mb-3">{category.subheading}</h4>
               ) : null }
-
               { category.description ? (
                 <p>{category.description}</p>
               ) : null }
             </div>
+
 
             {featuredEnhancements.map((enhancement, index) => (
               <Link key={index} href={`${category.uri.current}#${handleize(enhancement.enhancementTitle)}`}>
@@ -103,8 +110,13 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
 
             {nonFeaturedEnhancementsExist && (
               <Link href={category.uri.current}
-                className="block text-center mt-xs p-2 text-evergreen underline uppercase font-marselis">
+                className="flex items-center justify-center text-center mt-xs p-2 text-evergreen underline uppercase font-marselis">
                 View Past Updates
+                <CategoryPill
+                  visible={visible}
+                  hovered={false}
+                  count={category.blocks.length}
+                />
               </Link>
             )}
 
