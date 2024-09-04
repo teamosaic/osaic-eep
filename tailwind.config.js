@@ -183,6 +183,7 @@ const twConfig = {
         "secondary": "#CBFA40",
         "muted-secondary": "#EAFF99",
         "accent": "#F8614B",
+        "accent-dark": "#D7513E",
         "primary-text": "#555555",
         "light-grey": "#f8f8f8",
         "medium-grey": "#E9E6DC",
