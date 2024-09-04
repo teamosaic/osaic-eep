@@ -8,7 +8,7 @@ type EBWrapProps = { title: string; children: React.ReactNode };
 export function EBWrap({ title, children }: EBWrapProps): React.ReactElement {
 
   return (
-    <div className="relative mt-md mb-lg" id={handleize(title)}>
+    <div className="relative pt-lg pb-sm" id={handleize(title)}>
       {children}
     </div>
   );
