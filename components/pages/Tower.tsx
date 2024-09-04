@@ -2,7 +2,6 @@ import PageHead from '~/components/layout/PageHead'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { Tower } from '~/types'
 import { PanelWrap, PanelLeft, PanelRight, PanelTitle, PanelRightContent } from '~/components/global/Panels'
-import SanityVisual from '~/components/global/SanityVisual'
 import EnhancementBlock from '~/components/blocks/enhancementBlocks/EnhancementBlock'
 
 export default function TowerPage({ page }: { page: Tower }) {
@@ -14,13 +13,6 @@ export default function TowerPage({ page }: { page: Tower }) {
 
         <PanelLeft theme={page.theme}>
 
-          { page.garnish &&
-            <SanityVisual
-              expand
-              sizes='100vw'
-              src={ page.garnish } /> }
-
-
           <div className="relative z-2">
             <p className="px-md"><SmartLink href="/">Back Home</SmartLink></p>
             <PanelTitle title={ page.title } />
@@ -29,10 +21,6 @@ export default function TowerPage({ page }: { page: Tower }) {
         </PanelLeft>
 
         <PanelRight>
-
-
-          {/* garnish on mobile */}
-          {/* <Image className="when-not-mobile:hidden absolute top-0 right-0 w-[300px] h-auto z-[1]" src={garnish} alt="" /> */}
 
           <PanelRightContent>
             <div className="mt-lg">

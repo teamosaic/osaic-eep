@@ -4,6 +4,10 @@ import { PageColorTheme } from '~/types/objectTypes';
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText';
 import { SettingsContext } from '~/providers/settings';
 import { Settings } from '~/types/globalTypes';
+import { isDark } from '@bkwld/light-or-dark';
+import Image from 'next/image';
+import garnishLight from '~/assets/images/garnish-light.png';
+import garnishDark from '~/assets/images/garnish-dark.png';
 
 type PanelWrapProps = {
   children: React.ReactNode;
@@ -45,10 +49,12 @@ export function PanelWrap({
 type PanelLeftProps = {
   children: React.ReactNode;
   theme?: PageColorTheme;
+  noGarnish?: boolean
 };
 export function PanelLeft({
   children,
   theme,
+  noGarnish
 }: PanelLeftProps): React.ReactElement {
 
   return (
@@ -69,7 +75,21 @@ export function PanelLeft({
         <div className="bg-black/50 absolute inset-0 z-1"></div>
       ) : null}
 
-      {children}
+      {/* garnish */}
+      { noGarnish ? null : (
+        <>
+          {isDark(theme.hex) ? (
+            <Image className="absolute top-0 right-0 w-full" src={garnishDark} alt="" />
+          ) : (
+            <Image className="absolute top-0 right-0 w-full" src={garnishLight} alt="" />
+          )}
+        </>
+      )}
+
+      <div className="">
+        {children}
+      </div>
+
     </div>
   );
 }

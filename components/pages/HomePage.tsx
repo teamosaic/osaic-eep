@@ -39,7 +39,7 @@ export default function HomePage({ page }: { page: Home }) {
 
       <PanelWrap>
 
-        <PanelLeft>
+        <PanelLeft noGarnish>
 
           { page.background &&
             <SanityVisual
