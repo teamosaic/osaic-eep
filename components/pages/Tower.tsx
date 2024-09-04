@@ -1,10 +1,9 @@
 import PageHead from '~/components/layout/PageHead'
-import { EEPButton } from '~/components/global/EEPButton'
 import SmartLink from '~/packages/smart-link/SmartLink'
 import { Tower } from '~/types'
 import { PanelWrap, PanelLeft, PanelRight, PanelTitle, PanelRightContent } from '~/components/global/Panels'
 import SanityVisual from '~/components/global/SanityVisual'
-// import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
+import EnhancementBlock from '~/components/blocks/enhancementBlocks/EnhancementBlock'
 
 export default function TowerPage({ page }: { page: Tower }) {
   return (
@@ -64,28 +63,8 @@ export default function TowerPage({ page }: { page: Tower }) {
 
               <div>
 
-                {page.blocks.map((item, index) => (
-                  <div className={item.type} key={index}>
-                    <div className="my-md">
-                      <div
-                        className="
-                          font-marselis
-                          text-[40px]
-                          leading-[46px]
-                          text-evergreen
-                          font-[400]"
-                        >
-                        {item.enhancementTitle}
-                      </div>
-
-                      { item.ctaUrl ? (
-                        <EEPButton
-                          href={item.ctaUrl}
-                          label={item.ctaText} />
-                      ) : null }
-
-                    </div>
-                  </div>
+                {page.blocks.map((block, index) => (
+                  <EnhancementBlock {...block} key={index} />
                 ))}
               </div>
             </div>

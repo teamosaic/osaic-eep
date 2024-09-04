@@ -81,6 +81,12 @@ export const enhancementBlockSchema = makeBlockSchema({
       name: 'ctaUrl',
       type: 'url',
       description: 'Link URL.',
+    },
+    {
+      title: 'Date',
+      name: 'date',
+      type: 'date',
+      description: 'If desired, this will show the red date above the enhancement entry.',
     }
   ]
 })

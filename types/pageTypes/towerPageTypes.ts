@@ -8,6 +8,7 @@ import type {
 
 // Tower page type
 export interface Tower extends PageDocument {
+  slug: string
   blocks: Block[]
   subheading: string
   description: string

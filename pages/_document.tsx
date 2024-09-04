@@ -7,7 +7,7 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="stylesheet" href="https://use.typekit.net/exd2wbj.css"></link>
       </Head>
-      <body className='bg-ehite text-primary-text'>
+      <body className='bg-white text-primary-text'>
         <Main />
         <NextScript />
       </body>

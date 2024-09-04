@@ -23,3 +23,12 @@ body {
   margin: 0;
 }
 
+
+.block-image img {
+  display: block !important;
+  position: relative !important;
+  top: inherit !important;
+  bottom: inherit !important;
+  left: inherit !important;
+  right: inherit !important;
+}

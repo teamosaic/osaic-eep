@@ -11,7 +11,7 @@ const compressedRadius = fluid(100,75)
 
 // The main Tailwind config
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const twConfig = {
   content: [
     './sanity/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -551,3 +551,8 @@ module.exports = {
     },
   ],
 }
+
+
+
+
+export default twConfig;

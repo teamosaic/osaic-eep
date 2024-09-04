@@ -1,21 +1,34 @@
-import MarketingPortableText from '~/components/global/portableText/MarketingPortableText'
-import AnimateInView from '~/packages/animate-in-view'
-import { EnhancementBlock } from '~/types'
 
-export default function Simple(
-  { body }: EnhancementBlock
+import { EnhancementBlock } from '~/types'
+import { EEPButton } from '~/components/global/EEPButton'
+import { EBTitle, EBDate, EBWrap, EBBody } from './EBComponents'
+
+export default function Simple({
+  enhancementTitle,
+  image,
+  ctaText,
+  ctaUrl,
+  body,
+  date
+}: EnhancementBlock
 ): React.ReactElement {
   return (
-    <div className="
-      max-w-screen-xl mx-auto px-gutter
-      md:flex md:items-center md:justify-between">
+    <EBWrap title={enhancementTitle}>
 
-      <AnimateInView
-        target='descendants'
-        className='prose-animate-in'>
-        <MarketingPortableText value={ body }/>
-      </AnimateInView>
+      { date ? (
+        <EBDate date={date} />
+      ) : null }
+      <EBTitle label={enhancementTitle} />
+      <EBBody body={body} />
 
-    </div>
+      { ctaUrl ? (
+        <div className="mt-4">
+          <EEPButton
+            href={ctaUrl}
+            label={ctaText} />
+        </div>
+      ) : null }
+
+    </EBWrap>
   )
 }

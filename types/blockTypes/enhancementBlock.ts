@@ -15,6 +15,7 @@ export interface EnhancementBlock extends BlockLayout, BlockBackground {
   image: Visual
   ctaText: string
   ctaUrl: string
+  date: string
 }
 
 export enum EnhancementBlockType {

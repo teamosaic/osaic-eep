@@ -75,7 +75,7 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
             </div>
 
             {featuredEnhancements.map((enhancement, index) => (
-              <SmartLink key={index} href={`${category.uri.current}?section=${handleize(enhancement.enhancementTitle)}`}>
+              <SmartLink key={index} href={`${category.uri.current}#${handleize(enhancement.enhancementTitle)}`}>
                 <EnhancementLink theme={enhancement.cardTheme}>
                   <span className="flex grow items-center">
 
