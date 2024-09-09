@@ -13,6 +13,5 @@ export interface Tower extends PageDocument {
   subheading: string
   description: string
   theme: PageColorTheme
-  garnish: Visual
 }
 

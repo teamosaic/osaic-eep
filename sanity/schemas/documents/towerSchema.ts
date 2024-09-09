@@ -31,11 +31,6 @@ export const towerSchema = makePageSchema({
       }
     },
 
-    imageWithAlt({
-      name: 'garnish',
-      description: `Semi-transparent "a"`,
-    }),
-
     {
       name: 'blocks',
       title: 'Enhancements',
