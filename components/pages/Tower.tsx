@@ -3,6 +3,8 @@ import SmartLink from '~/packages/smart-link/SmartLink'
 import { Tower } from '~/types'
 import { PanelWrap, PanelLeft, PanelRight, PanelTitle, PanelRightContent } from '~/components/global/Panels'
 import EnhancementBlock from '~/components/blocks/enhancementBlocks/EnhancementBlock'
+import { Icon } from '~/components/global/buttons/Icon'
+import {ButtonIcon} from '~/types'
 
 export default function TowerPage({ page }: { page: Tower }) {
   return (
@@ -14,7 +16,15 @@ export default function TowerPage({ page }: { page: Tower }) {
         <PanelLeft theme={page.theme}>
 
           <div className="relative z-2">
-            <p className="px-md"><SmartLink href="/">Back Home</SmartLink></p>
+            <div className="px-md">
+              <SmartLink href="/" className="flex items-center">
+                <Icon
+                  className="h-4 rotate-[180deg]"
+                  type={ButtonIcon.RightArrow}
+                />
+                <span className="ml-2 font-marselis font-bold uppercase text-[16px] tracking-[1px]">Back Home</span>
+              </SmartLink>
+            </div>
             <PanelTitle title={ page.title } />
           </div>
 

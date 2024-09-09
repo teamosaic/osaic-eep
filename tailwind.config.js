@@ -79,7 +79,7 @@ const twConfig = {
         'banner-point-lg': fluid(60,42),
         'banner-point-sm': fluid(42,31),
         'banner-point-sub': fluid(21,16),
-        'home-heading': fluid(126,38),
+        'home-heading': fluid(96,38),
         'enhancement-title': fluid(18, 16),
         'card-title': fluid(24, 20),
 
@@ -101,7 +101,7 @@ const twConfig = {
 
         'card-title': fluid(30, 25),
         'enhancement-title': fluid(25, 22),
-        'home-heading': fluid(138,47),
+        'home-heading': fluid(112,47),
       },
 
       width: {

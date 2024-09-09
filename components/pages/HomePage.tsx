@@ -58,7 +58,7 @@ export default function HomePage({ page }: { page: Home }) {
           <Image className="when-not-mobile:hidden absolute top-0 right-0 w-[300px] h-auto z-[1]" src={garnish} alt="" />
 
           <PanelRightContent>
-            <h2 className="style-h5 font-marselis text-evergreen">{ page.enhancementsTitle }</h2>
+            <h2 className="when-not-mobile:mt-lg style-h5 font-marselis text-evergreen">{ page.enhancementsTitle }</h2>
             <p className="font-cordale style-body mt-xs mb-sm">{ page.enhancementsDescription }</p>
 
             { loading ? (

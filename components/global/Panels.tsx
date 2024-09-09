@@ -86,7 +86,7 @@ export function PanelLeft({
         </>
       )}
 
-      <div className="">
+      <div>
         {children}
       </div>
 
