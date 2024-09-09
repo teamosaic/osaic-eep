@@ -16,7 +16,7 @@ export default function TowerPage({ page }: { page: Tower }) {
         <PanelLeft theme={page.theme}>
 
           <div className="relative z-2">
-            <div className="px-md">
+            <div className="px-gutter">
               <SmartLink href="/" className="flex items-center">
                 <Icon
                   className="h-4 rotate-[180deg]"
