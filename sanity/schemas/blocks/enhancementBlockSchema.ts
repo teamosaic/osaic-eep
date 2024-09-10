@@ -87,6 +87,15 @@ export const enhancementBlockSchema = makeBlockSchema({
       name: 'date',
       type: 'date',
       description: 'If desired, this will show the red date above the enhancement entry.',
-    }
+    },
+
+    {
+      name: 'tooltip',
+      type: 'array',
+      description: 'Special Users can see this tooltip next to the date',
+      of: [
+        { type: 'block' },
+      ],
+    },
   ]
 })

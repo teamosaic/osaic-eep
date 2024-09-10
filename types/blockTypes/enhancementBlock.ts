@@ -12,6 +12,7 @@ export interface EnhancementBlock extends BlockLayout, BlockBackground {
   featuredImage: boolean
   type: EnhancementBlockType
   body: PortableTextBlock[]
+  tooltip: PortableTextBlock[]
   image: Visual
   ctaText: string
   ctaUrl: string
