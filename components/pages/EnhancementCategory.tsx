@@ -26,7 +26,6 @@ export default function EnhancementCategoryPage({ page }: { page: EnhancementCat
         } catch (error) {
           console.error('Error fetching next enhancement:', error);
         } finally {
-          console.log('next', next);
           setLoading(false);
         }
       }
