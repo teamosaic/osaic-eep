@@ -1,14 +1,37 @@
-import { EnhancementBlockType } from '~/types'
 
-import RichBlock from './Rich'
-import SimpleBlock from './Simple'
+import { EEPButton } from '~/components/global/EEPButton'
+import { EnhancementBlock } from '~/types'
 
-// Delegates the rendering of the block to a specific type of cta blokck
-export default function EnhancementBlock(block: any): React.ReactElement {
-  switch(block.type) {
-    case EnhancementBlockType.Simple:
-      return <SimpleBlock {...block} />
-    case EnhancementBlockType.Rich:
-      return <RichBlock {...block} />
-  }
+import { EBBody,EBDate, EBImage, EBTitle, EBWrap } from './EBComponents'
+
+export default function Simple({
+  enhancementTitle,
+  image,
+  ctaText,
+  ctaUrl,
+  body,
+  date
+}: EnhancementBlock
+): React.ReactElement {
+  return (
+    <EBWrap title={enhancementTitle}>
+
+      <EBImage image={image} />
+      { date ? (
+        <EBDate date={date} />
+      ) : null }
+
+      <EBTitle label={enhancementTitle} />
+      <EBBody body={body} />
+
+      { ctaUrl ? (
+        <div className="mt-4">
+          <EEPButton
+            href={ctaUrl}
+            label={ctaText} />
+        </div>
+      ) : null }
+
+    </EBWrap>
+  )
 }

@@ -19,5 +19,11 @@ export const enhancementStaticPaths = groq`
 export const getEnhancements = groq`
   *[_type == 'enhancementCategory']{
     ...,
-  }
+  } | order(orderRank asc)
+`
+
+export const getNextEnhancement = groq`
+  *[_type == "enhancementCategory" && orderRank > $currentOrderRank]{
+    ...,
+  }[0]
 `

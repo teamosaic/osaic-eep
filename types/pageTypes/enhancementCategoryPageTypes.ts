@@ -12,5 +12,6 @@ export interface EnhancementCategory extends PageDocument {
   subheading: string
   description: string
   theme: PageColorTheme
+  orderRank: string
 }
 

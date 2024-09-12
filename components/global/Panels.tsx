@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import { isDark } from '@bkwld/light-or-dark';
 import classNames from 'classnames';
-import { PageColorTheme } from '~/types/objectTypes';
+import Image from 'next/image';
+import React, { useContext } from 'react';
+
+import garnishDark from '~/assets/images/garnish-dark.png';
+import garnishLight from '~/assets/images/garnish-light.png';
 import MarketingPortableText from '~/components/global/portableText/MarketingPortableText';
 import { SettingsContext } from '~/providers/settings';
 import { Settings } from '~/types/globalTypes';
-import { isDark } from '@bkwld/light-or-dark';
-import Image from 'next/image';
-import garnishLight from '~/assets/images/garnish-light.png';
-import garnishDark from '~/assets/images/garnish-dark.png';
+import { PageColorTheme } from '~/types/objectTypes';
 
 type PanelWrapProps = {
   children: React.ReactNode;
