@@ -2,10 +2,11 @@
 import { EEPButton } from '~/components/global/EEPButton'
 import { EnhancementBlock } from '~/types'
 
-import { EBBody,EBDate, EBImage, EBTitle, EBWrap } from './EBComponents'
+import { EBBody,EBDate, EBImage, EBTitle, EBTooltip, EBWrap } from './EBComponents'
 
 export default function Simple({
   enhancementTitle,
+  tooltip,
   image,
   ctaText,
   ctaUrl,
@@ -17,9 +18,18 @@ export default function Simple({
     <EBWrap title={enhancementTitle}>
 
       <EBImage image={image} />
-      { date ? (
-        <EBDate date={date} />
-      ) : null }
+
+      <div className="flex items-center mb-4">
+
+        { tooltip ? (
+          <EBTooltip body={tooltip} />
+        ) : null }
+
+        { date ? (
+          <EBDate date={date} />
+        ) : null }
+      </div>
+
 
       <EBTitle label={enhancementTitle} />
       <EBBody body={body} />
