@@ -1,6 +1,6 @@
-import type { Settings } from '~/types/globalTypes';
-import { SettingsContext } from '~/providers/settings'
 import LayoutHeader from '~/components/layout/Header'
+import { SettingsContext } from '~/providers/settings'
+import type { Settings } from '~/types/globalTypes';
 
 interface DefaultLayoutProps {
   settings: Settings;
@@ -9,10 +9,15 @@ interface DefaultLayoutProps {
 }
 
 export default function DefaultLayout({ settings, page, children }: DefaultLayoutProps) {
+
+  const defaultTheme = {
+    hex: '#333333'
+  }
+
   return (
     <SettingsContext.Provider value={settings}>
       <>
-        <LayoutHeader theme={page.theme} />
+        <LayoutHeader theme={page?.theme ? page.theme : defaultTheme} />
         <main className="w-full min-h-full flex flex-col">
           {children}
         </main>

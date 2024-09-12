@@ -1,6 +1,6 @@
 export * from './articleSchema'
 export * from './articlesIndexSchema'
-export * from './homePageSchema'
+export * from './enhancementCategorySchema'
 export * from './reusableSectionsSchema';
 export * from './settingsSchema'
 export * from './towerSchema'

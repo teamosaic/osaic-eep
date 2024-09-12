@@ -1,17 +1,15 @@
+import { isDark } from '@bkwld/light-or-dark'
 import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock';
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useEffect, useState, useContext } from 'react';
-import { SettingsContext } from '~/providers/settings'
+import { useRouter } from 'next/router';
+import React, { useContext,useEffect, useState } from 'react';
 
 import close from '~/assets/images/close.svg';
-import hamburger from '~/assets/images/hamburger.svg';
 import garnish from '~/assets/images/garnish-a.svg';
+import hamburger from '~/assets/images/hamburger.svg';
 import logoLight from '~/assets/images/logo.svg';
 import logoDark from '~/assets/images/logo-dark.svg';
-import { useRouter } from 'next/router';
-import { isDark } from '@bkwld/light-or-dark'
-
 import {
   CategoryContainer,
   CategoryHeading,
@@ -21,6 +19,7 @@ import {
 import SocialLink from '~/components/global/SocialLink';
 import Spinner from '~/components/global/Spinner';
 import SmartLink from '~/packages/smart-link/SmartLink';
+import { SettingsContext } from '~/providers/settings'
 import { getEnhancements } from '~/queries/enhancementQueries';
 import { client } from '~/sanity/client';
 

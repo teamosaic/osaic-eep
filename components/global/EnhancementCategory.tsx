@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import AnimateHeight from 'react-animate-height';
-import SanityVisual from '~/components/global/SanityVisual'
-import close from '~/assets/images/close.svg';
-import Caret from '~/components/global/Caret';
 import classNames from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link'
+import { useEffect, useState } from "react";
+import AnimateHeight from 'react-animate-height';
 
+import close from '~/assets/images/close.svg';
+import Caret from '~/components/global/Caret';
 import {
   CategoryContainer,
   CategoryContent,
@@ -13,8 +13,8 @@ import {
   CategoryPill,
   CategoryTitle } from '~/components/global/Category'
 import { EnhancementLink } from '~/components/global/Enhancement'
+import SanityVisual from '~/components/global/SanityVisual'
 import { handleize } from '~/lib/helpers'
-import Link from 'next/link'
 import { EnhancementCategoryInterface } from '~/types'
 
 interface EnhancementCategoryProps extends EnhancementCategoryInterface {

@@ -1,6 +1,6 @@
 import { TfiLayoutCtaCenter } from 'react-icons/tfi'
-import { visual } from '~/sanity/lib/schema'
 
+import { visual } from '~/sanity/lib/schema'
 import { createListOptionsFromEnum, makeBlockSchema } from '~/sanity/lib/schema'
 import { EnhancementBlockType, EnhancementCardTheme } from '~/types'
 
@@ -28,20 +28,6 @@ export const enhancementBlockSchema = makeBlockSchema({
       type: 'boolean',
       description: 'If checked, the image will show as a thumbnail on the featured card',
       initialValue: false,
-    },
-
-    {
-      name: 'type',
-      type: 'string',
-      validation: Rule => Rule.required(),
-      initialValue: EnhancementBlockType.Simple,
-      options: {
-        list: createListOptionsFromEnum(EnhancementBlockType, {
-          [EnhancementBlockType.Simple]: 'Simple',
-          [EnhancementBlockType.Rich]: 'Rich - Full Image',
-        }),
-        layout: 'radio'
-      }
     },
 
     {
