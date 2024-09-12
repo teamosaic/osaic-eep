@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 
 import garnish from '~/assets/images/s.png';
@@ -15,6 +16,7 @@ import { ButtonIcon } from '~/types';
 export default function EnhancementCategoryPage({ page }: { page: EnhancementCategory }) {
   const [next, setNext] = useState(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchNextEnhancement = async () => {
@@ -34,8 +36,20 @@ export default function EnhancementCategoryPage({ page }: { page: EnhancementCat
     fetchNextEnhancement();
   }, [page.orderRank]);
 
+  useEffect(() => {
+    if (router.asPath.includes('#')) {
+      const elementId = router.asPath.split('#')[1];
+      const element = document.getElementById(elementId);
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [router.asPath]);
+
+
   if (loading) {
-    return <p>Loading...</p>; // or a spinner or any loading indication you prefer
+    return <p>Loading...</p>;
   }
 
   return (

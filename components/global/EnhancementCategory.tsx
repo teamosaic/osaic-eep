@@ -24,7 +24,6 @@ interface EnhancementCategoryProps extends EnhancementCategoryInterface {
 
 export default function EnhancementCategory({ category, isVisible, onVisibilityChange }: EnhancementCategoryProps) {
   const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     setVisible(isVisible);
@@ -35,25 +34,13 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
     setVisible(!visible);
   };
 
-  const enableHovered = () => {
-    setHovered(true);
-  }
-
-  const disableHovered = () => {
-    setHovered(false);
-  }
-
   const featuredEnhancements = category.blocks.filter(enhancement => enhancement.featured);
   const nonFeaturedEnhancementsExist = category.blocks.some(enhancement => !enhancement.featured);
 
   return (
     <>
       <CategoryContainer visible={visible}>
-        <CategoryHeading
-          onClick={toggleVisibility}
-          onMouseEnter={enableHovered}
-          onMouseLeave={disableHovered}
-        >
+        <CategoryHeading onClick={toggleVisibility} >
           <CategoryTitle title={category.title} />
 
           <div>
@@ -82,7 +69,7 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
 
 
             {featuredEnhancements.map((enhancement, index) => (
-              <Link key={index} href={`${category.uri.current}#${handleize(enhancement.enhancementTitle)}`}>
+              <Link key={index} href={`${category.uri.current}#${handleize(enhancement.enhancementTitle)}`} scroll={false}>
                 <EnhancementLink theme={enhancement.cardTheme}>
                   <span className="flex grow items-center">
 
