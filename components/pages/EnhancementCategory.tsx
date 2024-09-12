@@ -39,13 +39,18 @@ export default function EnhancementCategoryPage({ page }: { page: EnhancementCat
   useEffect(() => {
     if (router.asPath.includes('#')) {
       const elementId = router.asPath.split('#')[1];
-      const element = document.getElementById(elementId);
 
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      // Delay the scroll to allow the content to render
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 1000); // Delay set to 0ms; adjust if needed for larger content
     }
   }, [router.asPath]);
+
+
 
 
   if (loading) {
