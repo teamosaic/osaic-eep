@@ -75,7 +75,7 @@ export default function EnhancementCategory({ category, isVisible, onVisibilityC
 
                     { enhancement.featuredImage ? (
                       <>
-                        <div className="h-[80px] w-[80px] overflow-hidden rounded-[10px] shrink-0 w-auto mr-5 relative">
+                        <div className="h-[80px] shrink-0 block w-[80px] overflow-hidden rounded-[10px] shrink-0 mr-5 relative">
                           <SanityVisual
                             expand
                             sizes='100px'

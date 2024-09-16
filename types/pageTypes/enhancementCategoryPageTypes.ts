@@ -1,7 +1,3 @@
-import type {
-  Visual,
-} from '~/types'
-
 import { Block } from '../blockTypes'
 import { PageColorTheme } from '../objectTypes'
 import { PageDocument } from './pageTypes'
