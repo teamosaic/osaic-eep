@@ -5,8 +5,8 @@ export const getWelcome = groq`
 `
 
 export const welcomeStaticPaths = groq`
-  *[_type == 'tower' && defined(slug)] {
+  *[_type == 'tower' && defined(uri)] {
     _type,
-    'slug': slug.current
+    'uri': uri.current
   }
 `
