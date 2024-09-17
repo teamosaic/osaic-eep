@@ -31,20 +31,17 @@ export default function Footer({ previewSite }: FooterProps) {
 
       <MarketingPortableText className="relative z-2" value={settingsContext.footer} />
 
-      <button onClick={() => { signOut() }}>
-        <span className="absolute inset-0" aria-hidden="true" />
-        Log Out
-      </button>
-
-
-     {!!previewSite && (
+      { previewSite ? (
         <>
+           <>
           <button onClick={() => { signOut() }}>
             <span className="absolute inset-0" aria-hidden="true" />
             Log Out
           </button>
         </>
-      )}
+        </>
+      ) : null}
+
     </footer>
   )
 }
