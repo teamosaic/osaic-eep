@@ -12,19 +12,19 @@ import { client } from '~/sanity/client'
 import { Tower } from '~/types'
 
 export default function TowerPage({ page }: { page: Tower }) {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [enhancementCategories, setEnhancements] = useState([])
   const [visibleCategoryKey, setVisibleCategoryKey] = useState(null);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    client.fetch(getEnhancements).then((sections) => {
-      setEnhancements(sections)
-    }).finally(() => {
-      setLoading(false)
-    })
+  //   client.fetch(getEnhancements).then((sections) => {
+  //     setEnhancements(sections)
+  //   }).finally(() => {
+  //     setLoading(false)
+  //   })
 
-  }, []);
+  // }, []);
 
 
   const handleVisibilityChange = (key) => {
@@ -64,7 +64,7 @@ export default function TowerPage({ page }: { page: Tower }) {
               <Spinner />
             ) : (
               <>
-                {enhancementCategories.map((category, index) => (
+                {/* {enhancementCategories.map((category, index) => (
                   <div key={index}>
                     <EnhancementCategory
                       category={category}
@@ -73,7 +73,7 @@ export default function TowerPage({ page }: { page: Tower }) {
                     />
                   </div>
 
-                ))}
+                ))} */}
               </>
             )}
 
