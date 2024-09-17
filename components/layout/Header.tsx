@@ -25,7 +25,7 @@ import { client } from '~/sanity/client';
 
 export default function LayoutHeader({ theme }): React.ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [showDarkLogo, setShowDarkLogo] = useState(false);
   const [enhancementCategories, setEnhancements] = useState([]);
   const [scrolledPastThreshold, setScrolledPastThreshold] = useState(false);
@@ -33,13 +33,13 @@ export default function LayoutHeader({ theme }): React.ReactElement {
   const settings = useContext(SettingsContext)
   const router = useRouter();
 
-  // useEffect(() => {
-  //   client.fetch(getEnhancements).then((sections) => {
-  //     setEnhancements(sections);
-  //   }).finally(() => {
-  //     setLoading(false);
-  //   });
-  // }, []);
+  useEffect(() => {
+    client.fetch(getEnhancements).then((sections) => {
+      setEnhancements(sections);
+    }).finally(() => {
+      setLoading(false);
+    });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -183,7 +183,7 @@ export default function LayoutHeader({ theme }): React.ReactElement {
             ) : (
               <>
                 <span className="uppercase text-tower-grey font-marselis font-bold text-[16px] tracking-[1px] ml-xxs">Categories</span>
-                {/* {enhancementCategories.map((category, index) => (
+                {enhancementCategories.map((category, index) => (
                   <SmartLink key={index} href={category.uri.current}>
                     <CategoryContainer nav visible={true}>
                       <CategoryHeading nav>
@@ -192,7 +192,7 @@ export default function LayoutHeader({ theme }): React.ReactElement {
                       </CategoryHeading>
                     </CategoryContainer>
                   </SmartLink>
-                ))} */}
+                ))}
               </>
             )}
           </div>
