@@ -22,7 +22,6 @@ export default function EnhancementCategoryPage({ page }: { page: EnhancementCat
     const fetchNextEnhancement = async () => {
       if (page?.orderRank) {
         try {
-          console.log('page.orderRank', page.orderRank)
           const enhancement = await client.fetch(getNextEnhancement, { currentOrderRank: page.orderRank });
           setNext(enhancement);
         } catch (error) {

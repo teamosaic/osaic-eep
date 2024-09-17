@@ -12,6 +12,7 @@ export const getEnhancement = groq`
 // Get all enhancements
 export const enhancementStaticPaths = groq`
   *[_type == 'enhancementCategory' && defined(uri)]{
+      _type,
      'uri': uri.current,
   }
 `

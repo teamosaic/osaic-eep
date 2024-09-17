@@ -13,6 +13,7 @@ export const getTower = groq`
 // Get all towers
 export const towerStaticPaths = groq`
   *[_type == 'tower' && defined(uri)]{
+      _type,
      'uri': uri.current,
   }
 `

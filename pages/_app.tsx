@@ -3,6 +3,7 @@ import 'styles/global.css'
 import GoogleTagManager from 'components/layout/GoogleTagManager'
 import { AppProps } from 'next/app'
 import localFont from 'next/font/local'
+import { SessionProvider } from "next-auth/react"
 
 const marselis = localFont({
   variable: '--font-marselis',
@@ -46,8 +47,10 @@ const marselis = localFont({
   ]
 })
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {  return (
     <>
       <style jsx global>
         {`
@@ -60,7 +63,9 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Google Tag Manager Script */}
       <GoogleTagManager />
 
-      <Component {...pageProps} />
+      <SessionProvider session={session} refetchInterval={5 * 60}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </>
   )
 }

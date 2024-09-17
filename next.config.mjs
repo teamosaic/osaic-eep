@@ -8,7 +8,8 @@ const config = {
   // Serve images from Sanity's image CDN
   images: {
     domains: ['cdn.sanity.io']
-  }
+  },
+  swcMinify: false
 }
 
 export default config

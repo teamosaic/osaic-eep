@@ -18,7 +18,7 @@ const Tower = dynamic(() => import('../components/pages/Tower'))
 import { enhancementStaticPaths,getEnhancement } from '~/queries/enhancementQueries'
 import { getTower, towerStaticPaths } from '~/queries/towerQueries'
 
-export default function PageDelegator({ previewToken, page, settings }) {
+export default function PageDelegator({ previewToken, page, settings, previewSite }) {
 
   if (previewToken) {
     return <PagePreview {...{
@@ -28,17 +28,18 @@ export default function PageDelegator({ previewToken, page, settings }) {
       render,
     }} />
   } else {
-    return render({ page, settings })
+    return render({ page, settings, previewSite })
   }
 }
 
 // Render page components given required data
-function render({ page, settings }: {
+function render({ page, settings, previewSite }: {
   page: PageDocument
   settings: Settings
+  previewSite: string
 }): React.ReactElement {
   return (
-    <DefaultLayout {...{ settings, page }} >
+    <DefaultLayout previewSite={previewSite} {...{ settings, page }} >
       <PageComponent {...{ settings, page }} />
     </DefaultLayout>
   )
@@ -48,7 +49,6 @@ function render({ page, settings }: {
 function PageComponent({ page }: {
   page: PageDocument
 }): React.ReactElement {
-
   switch(page._type) {
     case PageType.Tower:
       return <Tower page={ page as TowerPage } />

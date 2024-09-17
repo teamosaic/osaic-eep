@@ -1,5 +1,5 @@
-import SmartLink from '~/packages/smart-link/SmartLink'
 import { Icon } from '~/components/global/buttons/Icon'
+import SmartLink from '~/packages/smart-link/SmartLink'
 import {ButtonIcon} from '~/types'
 
 type EEPButtonProps = {
