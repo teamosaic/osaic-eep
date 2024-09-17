@@ -49,7 +49,7 @@ function render({ page, settings, previewSite }: {
 function PageComponent({ page }: {
   page: PageDocument
 }): React.ReactElement {
-
+  console.log('page._type', page._type)
   switch(page._type) {
     case PageType.Tower:
       return <Tower page={ page as TowerPage } />
@@ -123,6 +123,9 @@ export async function getStaticPaths() {
         .split('/') // Split up remaining slashes
     }
   }))
+
+  console.log('PATHS', paths);
+  console.log('PAGES', pages);
 
   return {
     fallback: 'blocking', // Fetch data on demand if path not present
