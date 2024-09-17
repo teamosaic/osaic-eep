@@ -78,8 +78,12 @@ export async function getStaticProps({ params, previewData}) {
   // Convert Next's uri array back into a string
   const uri = '/' + (params.uri || ['']).join('/')
 
+  console.log('uri', uri);
+
   // Figure out the type of the page by looking at the uri
   const type = determineTypeFromUri(uri)
+
+  console.log('type', type);
 
   // If previewing, use preview client so we can fetch draft entries
   const previewToken = previewData?.token || null,
@@ -92,6 +96,8 @@ export async function getStaticProps({ params, previewData}) {
     client.fetch(pageQuery(type), { uri }),
     client.fetch(getSettings),
   ])
+
+  console.log('page', page);
 
   // Return 404
   if (!page) return { notFound: true }
