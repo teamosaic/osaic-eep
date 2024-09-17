@@ -1,13 +1,10 @@
 import { isDark } from '@bkwld/light-or-dark';
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useContext } from 'react';
+import React from 'react';
 
 import garnishDark from '~/assets/images/garnish-dark.png';
 import garnishLight from '~/assets/images/garnish-light.png';
-import MarketingPortableText from '~/components/global/portableText/MarketingPortableText';
-import { SettingsContext } from '~/providers/settings';
-import { Settings } from '~/types/globalTypes';
 import { PageColorTheme } from '~/types/objectTypes';
 
 type PanelWrapProps = {
@@ -17,7 +14,6 @@ export function PanelWrap({
   children,
 }: PanelWrapProps): React.ReactElement {
 
-  const settingsContext = useContext<Settings>(SettingsContext);
 
   return (
     <>
@@ -27,22 +23,6 @@ export function PanelWrap({
 
       <div className="when-not-mobile:hidden bg-white h-[32px] w-full block relative z-[3] rounded-b-large"></div>
 
-      {/* footer */}
-      <div
-        className="
-          bg-evergreen
-          px-sm
-          py-[100px]
-          when-not-mobile:p-sm
-          when-not-mobile:mt-0
-          text-white
-          -mt-[32px]
-          relative
-          z-[1]"
-        >
-        <div className="absolute inset-0 z-1 bg-black/20"></div>
-        <MarketingPortableText className="relative z-2" value={settingsContext.footer} />
-      </div>
     </>
   );
 }

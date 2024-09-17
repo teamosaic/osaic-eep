@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import garnish from '~/assets/images/garnish-button.svg';
 import Image from 'next/image';
+
+import garnish from '~/assets/images/garnish-button.svg';
 
 export function EnhancementLink({ children, theme }) {
   return (

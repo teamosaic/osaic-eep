@@ -1,6 +1,7 @@
-import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '../tailwind.config';
 import classNames from 'classnames';
+import resolveConfig from 'tailwindcss/resolveConfig';
+
+import tailwindConfig from '../tailwind.config';
 
 export default function StyleGuidePage() {
   const config = resolveConfig(tailwindConfig);

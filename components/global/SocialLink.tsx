@@ -1,9 +1,9 @@
 import Image, { StaticImageData } from 'next/image';
-import SmartLink from '~/packages/smart-link/SmartLink';
 
 import instagram from '~/assets/images/instagram.svg';
 import linkedin from '~/assets/images/linkedin.svg';
 import twitter from '~/assets/images/twitter.svg';
+import SmartLink from '~/packages/smart-link/SmartLink';
 
 type SocialLinkProps = {
   link: string;
