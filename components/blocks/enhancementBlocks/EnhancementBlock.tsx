@@ -1,3 +1,5 @@
+import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 
 import { EEPButton } from '~/components/global/EEPButton'
 import { EnhancementBlock } from '~/types'
@@ -14,6 +16,15 @@ export default function Simple({
   date
 }: EnhancementBlock
 ): React.ReactElement {
+
+  const { data: session, status, update } = useSession()
+  const [isHO, setIsHO] = useState(false)
+
+  useEffect(() => {
+    if (!(status=='authenticated')) return
+    setIsHO(session?.user?.attributes?.UserType[0] == 'HO')
+  }, [status, session])
+
   return (
     <EBWrap title={enhancementTitle}>
 
@@ -21,7 +32,7 @@ export default function Simple({
 
       <div className="flex items-center mb-4">
 
-        { tooltip ? (
+        { tooltip && isHO ? (
           <EBTooltip body={tooltip} />
         ) : null }
 

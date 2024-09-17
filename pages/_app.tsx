@@ -47,8 +47,10 @@ const marselis = localFont({
   ]
 })
 
-export default function App({ Component, pageProps }: AppProps) {
-  return (
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {  return (
     <>
       <style jsx global>
         {`
