@@ -30,7 +30,8 @@ export function PanelWrap({
 type PanelLeftProps = {
   children: React.ReactNode;
   theme?: PageColorTheme;
-  noGarnish?: boolean
+  noGarnish?: boolean;
+  enableOverlay?: boolean;
 };
 export function PanelLeft({
   children,
@@ -52,9 +53,6 @@ export function PanelLeft({
       )}
       style={theme ? { backgroundColor: theme.hex } : undefined}
     >
-      {!theme ? (
-        <div className="bg-black/50 absolute inset-0 z-1"></div>
-      ) : null}
 
       {/* garnish */}
       { noGarnish ? null : (

@@ -38,15 +38,18 @@ export default function TowerPage({ page }: { page: Tower }) {
 
       <PanelWrap>
 
-        <PanelLeft noGarnish>
+        <PanelLeft noGarnish enableOverlay={page.enableOverlay}>
 
           { page.background &&
             <SanityVisual
               expand
               sizes='100vw'
-              src={ page.background } /> }
+              src={ page.background } /> }\
 
-          <div className="bg-black/50 absolute inset-0 z-1"></div>
+          { page.enableOverlay ? (
+            <div className="absolute inset-0 z-1 bg-black/50"></div>
+          ) : null }
+
           <PanelTitle title={ page.title } />
         </PanelLeft>
 

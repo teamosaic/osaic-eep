@@ -3,8 +3,6 @@ import { BsBuilding } from 'react-icons/bs'
 import { makePageSchema } from '~/sanity/lib/schema'
 import { visual } from '~/sanity/lib/schema'
 
-import * as blocksSchemas from '../blocks'
-
 export const towerSchema = makePageSchema({
   name: 'tower',
   icon: BsBuilding,
@@ -23,6 +21,12 @@ export const towerSchema = makePageSchema({
       name: 'background',
       description: 'Large BG Image (recommended 1000x1600px)',
     }),
+    {
+      name: 'enableOverlay',
+      type: 'boolean',
+      description: 'Renders a semi-transparent black overlay above the image.',
+      initialValue: false,
+    },
   ]
 })
 

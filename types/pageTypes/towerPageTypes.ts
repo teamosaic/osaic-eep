@@ -9,5 +9,6 @@ export interface Tower extends PageDocument {
   subheading: string
   description: string
   background: Visual
+  enableOverlay: boolean
 }
 
