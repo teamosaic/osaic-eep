@@ -460,6 +460,7 @@ const twConfig = {
         // The banner layout needs to break earlier
         'when-small-stories': { max: '1000px'},
         'when-large-stories': { min: '1001px'},
+        'when-ultrawide': { min: '1800px'},
       },
 
       // Grid layout templating

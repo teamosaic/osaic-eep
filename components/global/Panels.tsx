@@ -44,7 +44,7 @@ export function PanelLeft({
       'when-not-mobile:flex-nowrap when-not-mobile:h-[100vh]',
       'relative w-full h-[80vh] when-not-mobile:flex',
       'when-not-mobile:flex-wrap top-0 left-0 overflow-hidden',
-      'bg-black flex shrink-0 items-end',
+      'bg-black flex shrink-0 items-end when-ultrawide:w-[50%]',
         {
           'text-evergreen': theme,
           'text-white': !theme || theme.hex == '#15535e',
@@ -137,8 +137,9 @@ export function PanelTitle({
       lg:font-[350]
       max-w-[500px]
       pb-[100px]
-      when-not-mobile:max-w-full
+      when-not-mobile:max-w-[800px]
       when-not-mobile:pb-sm
+
     ">{title}</h1>
   );
 }
