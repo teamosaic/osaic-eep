@@ -125,10 +125,14 @@ export function PanelTitle({
 }: PanelTitleProps): React.ReactElement {
   return (
     <h1 className="
+      left-panel-title
+      transition
       font-marselis
       relative
       z-2
-      p-gutter
+      px-gutter
+      pb-gutter
+      pt-[20px]
       text-home-heading
       leading-home-heading
       font-[400]

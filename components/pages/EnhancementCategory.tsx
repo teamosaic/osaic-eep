@@ -63,7 +63,7 @@ export default function EnhancementCategoryPage({ page }: { page: EnhancementCat
       <PanelWrap>
         <PanelLeft theme={page.theme}>
           <div className="relative z-2">
-            <div className="px-gutter">
+            <div className="px-gutter left-panel-back transition">
               <SmartLink href="/" className="flex items-center">
                 <Icon
                   className="h-4 rotate-[180deg]"
@@ -116,7 +116,7 @@ export default function EnhancementCategoryPage({ page }: { page: EnhancementCat
 
           { !loading && next ? (
             <>
-              <div className="relative bg-zircon text-evergreen text-center p-xs md:p-md rounded-tr-[32px] rounded-tl-[32px]">
+              <div className="relative bg-zircon text-evergreen text-center p-xs md:p-md rounded-tr-[32px] rounded-tl-[32px] overflow-hidden">
 
                 <Image className="absolute top-0 right-0 w-full z-[1]" src={garnish} alt="" />
 

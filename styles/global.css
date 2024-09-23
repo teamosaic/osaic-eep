@@ -32,3 +32,8 @@ body {
   left: inherit !important;
   right: inherit !important;
 }
+
+
+main.hide-title .left-panel-title, main.hide-title .left-panel-back {
+  opacity: 0;
+}
