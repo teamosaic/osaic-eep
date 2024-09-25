@@ -54,10 +54,6 @@ function SSOModal({ previewSite }) {
         />
       </AnimateInView>
 
-      <AnimateInView className='animate-slide-up-in [animation-delay:0.4s]'>
-        <p className='style-large mt-9 mb-10'>Sign into your transition portal.</p>
-      </AnimateInView>
-
       { previewSite ? (
         <AnimateInView className='animate-slide-up-in [animation-delay:0.5s]'>
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
