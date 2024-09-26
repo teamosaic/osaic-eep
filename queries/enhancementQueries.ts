@@ -24,7 +24,7 @@ export const getEnhancements = groq`
 `
 
 export const getNextEnhancement = groq`
-  *[_type == "enhancementCategory" && orderRank > $currentOrderRank]{
+  *[_type == "enhancementCategory" && orderRank > $currentOrderRank] | order(orderRank asc)[0] {
     ...,
-  }[0]
+  }
 `
