@@ -210,6 +210,10 @@ export default NextAuth({
           })
 
         const { user } = await postAssert(lincolnProvider, samlBody)
+
+        // Grab relay state which should be our destination and add to user to
+        // be used by middleware.ts
+        user.destination = samlBody?.RelayState || null
         console.log(user)
         return user
       }
