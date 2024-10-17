@@ -7,7 +7,7 @@ import { serviceProvider } from "~/lib/serviceProvider"
 export default async (req, res) => {
   if (req.method === "POST") {
     const { data, headers } = await axios.get("/api/auth/csrf", {
-      baseURL: `${process.env.NEXTAUTH_URL}`,
+      baseURL: `${process.env.URL}`,
     })
     const { csrfToken } = data
 
